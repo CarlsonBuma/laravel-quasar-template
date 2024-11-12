@@ -1,0 +1,1630 @@
+{
+    "categories": [
+      {
+        "category_id": 1,
+        "category_name": "Frontend Development",
+        "description": "Frontend Development involves creating the visible parts of a website or application that users interact with. It focuses on user interface and user experience.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 2,
+        "category_name": "Backend Development",
+        "description": "Backend Development involves server-side programming and is responsible for managing the database, server, and application logic.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 3,
+        "category_name": "Full Stack Development",
+        "description": "Full Stack Development involves working on both the frontend and backend parts of a web application, as well as managing databases and server infrastructure.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 4,
+        "category_name": "Mobile Development",
+        "description": "Mobile Development focuses on creating applications for mobile devices such as smartphones and tablets, typically using specialized programming languages and frameworks.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 5,
+        "category_name": "DevOps",
+        "description": "DevOps is a set of practices that combines software development (Dev) and IT operations (Ops). It aims to shorten the systems development life cycle and deliver software releases faster and more reliably.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 6,
+        "category_name": "Cloud Computing",
+        "description": "Cloud Computing refers to the delivery of computing services—including servers, storage, databases, networking, software, and more—over the Internet (the cloud).",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 7,
+        "category_name": "Big Data",
+        "description": "Big Data refers to large volumes of structured and unstructured data that can be mined for information and used in machine learning projects, business intelligence, and other data-driven insights.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 8,
+        "category_name": "Database Management",
+        "description": "Database Management involves designing, implementing, and maintaining database systems. It includes tasks such as database administration, data manipulation, and database security.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 9,
+        "category_name": "Quality Assurance",
+        "description": "Quality Assurance (QA) involves monitoring and improving the quality of software and applications throughout their development life cycle. It includes testing, debugging, and ensuring adherence to quality standards.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 10,
+        "category_name": "UI/UX Design",
+        "description": "UI/UX Design focuses on enhancing user satisfaction by improving the usability, accessibility, and aesthetic appeal of a product's interface.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 11,
+        "category_name": "Graphic Design",
+        "description": "Graphic Design involves creating visual content to communicate messages. It encompasses various mediums such as print, digital, and multimedia.",
+        "industry_area": "Creative Arts"
+      },
+      {
+        "category_id": 12,
+        "category_name": "Multimedia",
+        "description": "Multimedia refers to content that uses a combination of different content forms such as text, audio, images, animations, and video.",
+        "industry_area": "Creative Arts"
+      },
+      {
+        "category_id": 13,
+        "category_name": "Architecture",
+        "description": "Architecture in software development refers to the overall structure and design of a system or application, including its components, interactions, and interfaces.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 14,
+        "category_name": "Agile Methodologies",
+        "description": "Agile Methodologies are approaches to software development that promote teamwork, collaboration, and adaptability throughout the development life cycle.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 15,
+        "category_name": "Project Management",
+        "description": "Project Management involves planning, organizing, and managing resources to achieve specific project goals within time, budget, and scope constraints.",
+        "industry_area": "Business Management"
+      },
+      {
+        "category_id": 16,
+        "category_name": "Cybersecurity",
+        "description": "Cybersecurity involves protecting computer systems, networks, and data from cyber attacks, breaches, and unauthorized access.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 17,
+        "category_name": "Artificial Intelligence",
+        "description": "Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are programmed to think and learn like humans.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 18,
+        "category_name": "Machine Learning",
+        "description": "Machine Learning is a subset of AI that enables computers to learn and improve from experience without being explicitly programmed.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 19,
+        "category_name": "Data Science",
+        "description": "Data Science involves extracting insights and knowledge from structured and unstructured data using scientific methods, processes, algorithms, and systems.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 20,
+        "category_name": "Blockchain",
+        "description": "Blockchain is a decentralized digital ledger technology used to record transactions across multiple computers securely and transparently.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 21,
+        "category_name": "Quantum Computing",
+        "description": "Quantum Computing is a new paradigm in computation that uses quantum bits (qubits) to process information and solve complex problems faster than classical computers.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 22,
+        "category_name": "Embedded Systems",
+        "description": "Embedded Systems are specialized computing systems designed to perform dedicated functions within larger mechanical or electrical systems.",
+        "industry_area": "Electrical Engineering"
+      },
+      {
+        "category_id": 23,
+        "category_name": "Internet of Things (IoT)",
+        "description": "Internet of Things (IoT) refers to the network of physical devices, vehicles, appliances, and other items embedded with sensors, software, and connectivity to exchange data with other devices and systems over the Internet.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 24,
+        "category_name": "Virtual Reality (VR)",
+        "description": "Virtual Reality (VR) is a simulated experience that can be similar to or completely different from the real world. It immerses users in a 3D environment through headsets or devices.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 25,
+        "category_name": "Augmented Reality (AR)",
+        "description": "Augmented Reality (AR) overlays digital information and virtual objects onto the real world through devices like smartphones or AR glasses, enhancing the user's experience.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 26,
+        "category_name": "Game Development",
+        "description": "Game Development involves creating interactive games for various platforms such as consoles, PCs, mobile devices, and virtual reality (VR) systems.",
+        "industry_area": "Entertainment"
+      },
+      {
+        "category_id": 27,
+        "category_name": "Robotics",
+        "description": "Robotics involves designing, building, and programming robots for tasks that mimic human capabilities or perform repetitive or dangerous tasks autonomously.",
+        "industry_area": "Engineering"
+      },
+      {
+        "category_id": 28,
+        "category_name": "Natural Language Processing (NLP)",
+        "description": "Natural Language Processing (NLP) is a branch of AI that enables computers to understand, interpret, and generate human language in a way that is valuable.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 29,
+        "category_name": "Computer Vision",
+        "description": "Computer Vision is a field of AI that trains computers to interpret and understand the visual world through digital images, videos, and deep learning models.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 30,
+        "category_name": "Bioinformatics",
+        "description": "Bioinformatics combines biology, computer science, and information technology to analyze biological data, such as DNA sequences and protein structures, using software tools and algorithms.",
+        "industry_area": "Biology"
+      },
+      {
+        "category_id": 31,
+        "category_name": "Cloud Security",
+        "description": "Cloud Security focuses on protecting data, applications, and infrastructure involved in cloud computing from threats and vulnerabilities.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 32,
+        "category_name": "Network Security",
+        "description": "Network Security involves implementing measures to protect computer networks from unauthorized access, misuse, modification, or denial of network-accessible resources.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 33,
+        "category_name": "IT Service Management",
+        "description": "IT Service Management (ITSM) refers to the implementation and management of IT services to meet the needs of an organization and its customers.",
+        "industry_area": "Information Technology"
+      },
+      {
+        "category_id": 34,
+        "category_name": "ERP Systems",
+        "description": "ERP (Enterprise Resource Planning) Systems are integrated software applications used to manage and automate business processes across departments, functions, and workflows within an organization.",
+        "industry_area": "Business Management"
+      },
+      {
+        "category_id": 35,
+        "category_name": "Supply Chain Management",
+        "description": "Supply Chain Management (SCM) involves planning, coordinating, and optimizing the flow of goods, services, and information between suppliers, manufacturers, distributors, and customers.",
+        "industry_area": "Business Management"
+      },
+      {
+        "category_id": 36,
+        "category_name": "Customer Relationship Management (CRM)",
+        "description": "Customer Relationship Management (CRM) refers to strategies, technologies, and practices used by organizations to manage and analyze customer interactions and data throughout the customer lifecycle.",
+        "industry_area": "Business Management"
+      },
+      {
+        "category_id": 37,
+        "category_name": "Financial Technology (FinTech)",
+        "description": "Financial Technology (FinTech) refers to innovative technologies that aim to improve and automate the delivery and use of financial services.",
+        "industry_area": "Finance"
+      },
+      {
+        "category_id": 38,
+        "category_name": "Health Informatics",
+        "description": "Health Informatics integrates healthcare with information technology, focusing on the management and use of patient health information to improve healthcare delivery and outcomes.",
+        "industry_area": "Healthcare"
+      },
+      {
+        "category_id": 39,
+        "category_name": "E-commerce",
+        "description": "E-commerce involves buying and selling of goods or services over the internet or other electronic networks, including online retail, online auctions, and digital storefronts.",
+        "industry_area": "Business Management"
+      },
+      {
+        "category_id": 40,
+        "category_name": "Digital Marketing",
+        "description": "Digital Marketing encompasses online marketing strategies and tactics used to promote products, services, or brands through digital channels such as search engines, websites, social media, email, and mobile apps.",
+        "industry_area": "Marketing"
+      },
+    {
+    "category_id": 41,
+    "category_name": "Legal Tech",
+    "description": "Legal Tech refers to the use of technology and software to provide legal services, improve efficiency in legal practice, and deliver legal solutions.",
+    "industry_area": "Legal Services"
+    },
+    {
+    "category_id": 42,
+    "category_name": "Artificial Neural Networks",
+    "description": "Artificial Neural Networks (ANNs) are a type of machine learning model inspired by the biological neural networks in the human brain. They are used for pattern recognition, classification, and prediction tasks.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 43,
+    "category_name": "Bioengineering",
+    "description": "Bioengineering applies engineering principles and techniques to biology and healthcare, including medical devices, tissue engineering, biomechanics, and genetic engineering.",
+    "industry_area": "Biotechnology"
+    },
+    {
+    "category_id": 44,
+    "category_name": "Environmental Engineering",
+    "description": "Environmental Engineering focuses on designing and implementing solutions to protect and improve the quality of air, water, and soil through sustainable practices and technologies.",
+    "industry_area": "Environmental Science"
+    },
+    {
+    "category_id": 45,
+    "category_name": "Renewable Energy",
+    "description": "Renewable Energy involves harnessing natural resources such as sunlight, wind, rain, tides, and geothermal heat to generate clean and sustainable energy.",
+    "industry_area": "Energy"
+    },
+    {
+    "category_id": 46,
+    "category_name": "Aerospace Engineering",
+    "description": "Aerospace Engineering involves designing, testing, and manufacturing aircraft, spacecraft, satellites, and related systems and equipment.",
+    "industry_area": "Engineering"
+    },
+    {
+    "category_id": 47,
+    "category_name": "Robotics Process Automation (RPA)",
+    "description": "Robotic Process Automation (RPA) involves using software robots or 'bots' to automate repetitive tasks and processes traditionally performed by humans.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 48,
+    "category_name": "Industrial Automation",
+    "description": "Industrial Automation involves using control systems such as robots or computers to handle different processes and machinery in an industry to replace a human being.",
+    "industry_area": "Manufacturing"
+    },
+    {
+    "category_id": 49,
+    "category_name": "Cyber-Physical Systems",
+    "description": "Cyber-Physical Systems (CPS) are integrations of computation, networking, and physical processes. Embedded computers and networks monitor and control the physical processes, usually with feedback loops where physical processes affect computations and vice versa.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 50,
+    "category_name": "Business Intelligence (BI)",
+    "description": "Business Intelligence (BI) involves using software and services to transform data into actionable insights that inform an organization's strategic and tactical business decisions.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 51,
+    "category_name": "Social Media Marketing",
+    "description": "Social Media Marketing involves using social media platforms to promote products, services, or brands and engage with potential customers.",
+    "industry_area": "Marketing"
+    },
+    {
+    "category_id": 52,
+    "category_name": "User Acquisition",
+    "description": "User Acquisition involves strategies and tactics to acquire new users or customers for a product, service, or platform.",
+    "industry_area": "Marketing"
+    },
+    {
+    "category_id": 53,
+    "category_name": "Brand Management",
+    "description": "Brand Management involves managing and maintaining the perception and reputation of a brand or product in the market.",
+    "industry_area": "Marketing"
+    },
+    {
+    "category_id": 54,
+    "category_name": "Corporate Finance",
+    "description": "Corporate Finance involves managing financial decisions within a corporation, including capital investment, budgeting, financial planning, and risk management.",
+    "industry_area": "Finance"
+    },
+    {
+    "category_id": 55,
+    "category_name": "Behavioral Economics",
+    "description": "Behavioral Economics combines insights from psychology and economics to understand how individuals make decisions and choices.",
+    "industry_area": "Social Sciences"
+    },
+    {
+    "category_id": 56,
+    "category_name": "Cryptocurrency",
+    "description": "Cryptocurrency is a digital or virtual currency that uses cryptography for security and operates independently of a central bank.",
+    "industry_area": "Finance"
+    },
+    {
+    "category_id": 57,
+    "category_name": "Geographic Information Systems (GIS)",
+    "description": "Geographic Information Systems (GIS) are computer systems that capture, store, analyze, manage, and present spatial or geographic data.",
+    "industry_area": "Geography"
+    },
+    {
+    "category_id": 58,
+    "category_name": "Remote Sensing",
+    "description": "Remote Sensing is the science and technology of obtaining information about objects or areas from a distance, typically from aircraft or satellites.",
+    "industry_area": "Earth Sciences"
+    },
+    {
+    "category_id": 59,
+    "category_name": "Legal Compliance",
+    "description": "Legal Compliance involves adhering to laws, regulations, standards, and ethical practices relevant to an organization's operations, products, and services.",
+    "industry_area": "Legal Services"
+    },
+    {
+    "category_id": 60,
+    "category_name": "Ethical Hacking",
+    "description": "Ethical Hacking involves testing and assessing computer systems, networks, and applications to identify and resolve security vulnerabilities.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 61,
+    "category_name": "Supply Chain Automation",
+    "description": "Supply Chain Automation involves using technology and software to automate processes and operations within the supply chain, improving efficiency and reducing costs.",
+    "industry_area": "Logistics"
+    },
+    {
+    "category_id": 62,
+    "category_name": "Human Resources Management",
+    "description": "Human Resources Management (HRM) involves managing and coordinating the workforce of an organization, including recruitment, training, performance evaluation, and employee relations.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 63,
+    "category_name": "Digital Transformation",
+    "description": "Digital Transformation is the integration of digital technology into all areas of a business, fundamentally changing how businesses operate and deliver value to customers.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 64,
+    "category_name": "Content Management Systems (CMS)",
+    "description": "Content Management Systems (CMS) are software applications used to create, manage, and modify digital content on websites or web applications.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 65,
+    "category_name": "Healthcare IT",
+    "description": "Healthcare IT involves the use of information technology to manage healthcare data, improve patient care, and streamline healthcare delivery.",
+    "industry_area": "Healthcare"
+    },
+    {
+    "category_id": 66,
+    "category_name": "Telecommunications",
+    "description": "Telecommunications involves transmitting and receiving information through electronic and optical signals over long distances, typically using networks and devices like telephones and computers.",
+    "industry_area": "Telecommunications"
+    },
+    {
+    "category_id": 67,
+    "category_name": "Machine Vision",
+    "description": "Machine Vision refers to technologies that enable machines to visually perceive the world and make decisions based on images or videos captured by cameras.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 68,
+    "category_name": "Microservices Architecture",
+    "description": "Microservices Architecture is an architectural style that structures an application as a collection of loosely coupled services, each independently deployable and scalable.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 69,
+    "category_name": "Cyber Threat Intelligence",
+    "description": "Cyber Threat Intelligence involves gathering and analyzing information about potential or current cyber threats to inform decision-making and improve cybersecurity defenses.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 70,
+    "category_name": "Data Privacy",
+    "description": "Data Privacy focuses on protecting the confidentiality, integrity, and accessibility of personal data collected, processed, and stored by organizations.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 71,
+    "category_name": "Educational Technology (EdTech)",
+    "description": "Educational Technology (EdTech) involves using technology to facilitate learning and improve educational outcomes through digital tools, resources, and platforms.",
+    "industry_area": "Education"
+    },
+    {
+    "category_id": 72,
+    "category_name": "Remote Work Tools",
+    "description": "Remote Work Tools are software and platforms that facilitate remote collaboration, communication, and productivity for distributed teams.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 73,
+    "category_name": "Business Analytics",
+    "description": "Business Analytics involves the use of data analysis and statistical methods to make data-driven decisions and improve business performance.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 74,
+    "category_name": "Artificial General Intelligence (AGI)",
+    "description": "Artificial General Intelligence (AGI) refers to AI that can understand and perform any intellectual task that a human can do.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 75,
+    "category_name": "Geographic Information Science (GISc)",
+    "description": "Geographic Information Science (GISc) is the scientific study of geographic information systems (GIS) and their applications.",
+    "industry_area": "Geography"
+    },
+    {
+    "category_id": 76,
+    "category_name": "Bioinformatics",
+    "description": "Bioinformatics combines biology, computer science, and information technology to analyze biological data, such as DNA sequences and protein structures, using software tools and algorithms.",
+    "industry_area": "Biology"
+    },
+    {
+    "category_id": 77,
+    "category_name": "Retail Technology",
+    "description": "Retail Technology involves using technology to enhance retail operations, improve customer experiences, and optimize inventory management and sales.",
+    "industry_area": "Retail"
+    },
+    {
+    "category_id": 78,
+    "category_name": "Regulatory Compliance",
+    "description": "Regulatory Compliance involves adhering to laws, regulations, and standards relevant to an organization's industry, products, and operations.",
+    "industry_area": "Legal Services"
+    },
+    {
+    "category_id": 79,
+    "category_name": "Behavioral Psychology",
+    "description": "Behavioral Psychology studies the behavior of individuals and applies psychological principles to understand and influence human behavior.",
+    "industry_area": "Psychology"
+    },
+    {
+    "category_id": 80,
+    "category_name": "Digital Rights Management (DRM)",
+    "description": "Digital Rights Management (DRM) involves technologies and strategies to protect and manage digital content and intellectual property rights.",
+    "industry_area": "Information Technology"
+    },
+    {
+    "category_id": 81,
+    "category_name": "Strategic Planning",
+    "description": "Strategic Planning involves setting goals, objectives, and action plans to guide an organization's long-term direction and decision-making.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 82,
+    "category_name": "Corporate Governance",
+    "description": "Corporate Governance refers to the system of rules, practices, and processes by which a company is directed, controlled, and managed to enhance shareholder value and ensure accountability.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 83,
+    "category_name": "Executive Leadership",
+    "description": "Executive Leadership involves setting strategic goals, managing resources, and guiding an organization towards achieving its objectives and vision.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 84,
+    "category_name": "Change Management",
+    "description": "Change Management involves implementing strategies and processes to manage organizational change effectively, minimize resistance, and achieve desired outcomes.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 85,
+    "category_name": "Corporate Strategy",
+    "description": "Corporate Strategy involves defining the overall scope and direction of an organization to achieve competitive advantage and long-term success.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 86,
+    "category_name": "Risk Management",
+    "description": "Risk Management involves identifying, assessing, and prioritizing risks followed by coordinated efforts to minimize, monitor, and control the probability or impact of unfortunate events.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 87,
+    "category_name": "Executive Coaching",
+    "description": "Executive Coaching involves providing personalized guidance and support to executives and senior leaders to enhance their leadership skills, decision-making, and performance.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 88,
+    "category_name": "Corporate Communication",
+    "description": "Corporate Communication involves managing internal and external communications to build and maintain a positive corporate image, reputation, and relationships.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 89,
+    "category_name": "Strategic Partnerships",
+    "description": "Strategic Partnerships involve forming alliances or collaborations with other organizations to achieve mutual goals, enhance capabilities, and create value.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 90,
+    "category_name": "Board Governance",
+    "description": "Board Governance involves overseeing the performance and accountability of an organization's board of directors to ensure effective governance and decision-making.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 91,
+    "category_name": "Digital Transformation Strategy",
+    "description": "Digital Transformation Strategy involves developing and implementing plans to leverage digital technologies and innovation to transform business processes, operations, and customer experiences.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 92,
+    "category_name": "Corporate Social Responsibility (CSR)",
+    "description": "Corporate Social Responsibility (CSR) refers to a company's initiatives to assess and take responsibility for its effects on environmental and social wellbeing.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 93,
+    "category_name": "Leadership Development",
+    "description": "Leadership Development involves programs and initiatives aimed at enhancing leadership skills, capabilities, and effectiveness at all levels of an organization.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 94,
+    "category_name": "Corporate Finance Strategy",
+    "description": "Corporate Finance Strategy involves developing and executing financial strategies to optimize capital structure, funding, investments, and financial performance.",
+    "industry_area": "Finance"
+    },
+    {
+    "category_id": 95,
+    "category_name": "Global Business Strategy",
+    "description": "Global Business Strategy involves developing strategies and plans to expand and manage operations in international markets to achieve global growth and competitiveness.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 96,
+    "category_name": "Ethics and Compliance",
+    "description": "Ethics and Compliance involves establishing and maintaining ethical standards, policies, and practices to ensure legal compliance and ethical behavior within an organization.",
+    "industry_area": "Legal Services"
+    },
+    {
+    "category_id": 97,
+    "category_name": "Sustainability Strategy",
+    "description": "Sustainability Strategy involves integrating sustainable practices into business operations and strategies to minimize environmental impact and create long-term value.",
+    "industry_area": "Environmental Science"
+    },
+    {
+    "category_id": 98,
+    "category_name": "Business Resilience",
+    "description": "Business Resilience involves developing strategies and capabilities to anticipate, prepare for, respond to, and recover from disruptions and crises.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 99,
+    "category_name": "Corporate Branding",
+    "description": "Corporate Branding involves managing and promoting a company's brand identity, values, and reputation to build trust and loyalty among stakeholders.",
+    "industry_area": "Business Management"
+    },
+    {
+    "category_id": 100,
+    "category_name": "Innovation Management",
+    "description": "Innovation Management involves creating an environment and processes that foster continuous innovation, idea generation, and product development within an organization.",
+    "industry_area": "Business Management"
+    },
+    {
+        "category_id": 101,
+        "category_name": "Product Management",
+        "description": "Product Management involves overseeing the development, marketing, and management of a product throughout its lifecycle, from ideation to market launch and beyond.",
+        "industry_area": "Product Management"
+      },
+      {
+        "category_id": 102,
+        "category_name": "Product Strategy",
+        "description": "Product Strategy involves defining the vision, goals, and roadmap for a product to achieve business objectives and meet customer needs.",
+        "industry_area": "Product Management"
+      },
+      {
+        "category_id": 103,
+        "category_name": "Product Development",
+        "description": "Product Development involves designing, prototyping, testing, and refining new products or features to ensure they meet customer requirements and market demands.",
+        "industry_area": "Product Management"
+      },
+      {
+        "category_id": 104,
+        "category_name": "Product Launch",
+        "description": "Product Launch involves planning and executing the introduction of a new product or feature into the market, including marketing, sales, and customer adoption strategies.",
+        "industry_area": "Product Management"
+      },
+      {
+        "category_id": 105,
+        "category_name": "Agile Project Management",
+        "description": "Agile Project Management is an iterative approach to planning and managing projects, emphasizing collaboration, flexibility, and continuous improvement.",
+        "industry_area": "Project Management"
+      },
+      {
+        "category_id": 106,
+        "category_name": "Scrum Methodology",
+        "description": "Scrum Methodology is a framework within Agile Project Management that structures the development of complex products by breaking work into manageable chunks called sprints.",
+        "industry_area": "Project Management"
+      },
+      {
+        "category_id": 107,
+        "category_name": "Project Planning",
+        "description": "Project Planning involves defining project goals, scope, deliverables, timelines, and resources required to successfully complete a project.",
+        "industry_area": "Project Management"
+      },
+      {
+        "category_id": 108,
+        "category_name": "Project Execution",
+        "description": "Project Execution involves implementing the project plan, managing resources, tasks, and timelines, and ensuring project objectives are met.",
+        "industry_area": "Project Management"
+      },
+      {
+        "category_id": 109,
+        "category_name": "Project Risk Management",
+        "description": "Project Risk Management involves identifying, assessing, and mitigating risks that could impact project timelines, budgets, or deliverables.",
+        "industry_area": "Project Management"
+      },
+      {
+        "category_id": 110,
+        "category_name": "Project Portfolio Management",
+        "description": "Project Portfolio Management involves managing a collection of projects or programs to prioritize resources, optimize investments, and align with organizational goals.",
+        "industry_area": "Project Management"
+      },
+      {
+        "category_id": 111,
+        "category_name": "Lean Project Management",
+        "description": "Lean Project Management focuses on delivering value to customers through continuous improvement, reducing waste, and maximizing efficiency.",
+        "industry_area": "Project Management"
+      },
+      {
+        "category_id": 112,
+        "category_name": "Product Owner",
+        "description": "A Product Owner is a role responsible for defining and prioritizing product features and requirements, representing the voice of the customer.",
+        "industry_area": "Product Management"
+      },
+      {
+        "category_id": 113,
+        "category_name": "Project Leadership",
+        "description": "Project Leadership involves guiding and motivating project teams, fostering collaboration, and ensuring project success.",
+        "industry_area": "Project Management"
+      },
+      {
+        "category_id": 114,
+        "category_name": "Product Marketing",
+        "description": "Product Marketing involves developing and executing strategies to promote and sell a product, including market analysis, positioning, and messaging.",
+        "industry_area": "Product Management"
+      },
+      {
+        "category_id": 115,
+        "category_name": "Product Lifecycle Management (PLM)",
+        "description": "Product Lifecycle Management (PLM) involves managing the entire lifecycle of a product from conception through design, manufacturing, and service.",
+        "industry_area": "Product Management"
+      },
+      {
+        "category_id": 116,
+        "category_name": "Digital Product Management",
+        "description": "Digital Product Management focuses on managing digital products and services, leveraging technology to enhance user experience and drive business growth.",
+        "industry_area": "Product Management"
+      },
+      {
+        "category_id": 117,
+        "category_name": "Project Communication",
+        "description": "Project Communication involves establishing and maintaining effective communication channels among project stakeholders to ensure clarity, alignment, and progress.",
+        "industry_area": "Project Management"
+      },
+      {
+        "category_id": 118,
+        "category_name": "Project Quality Management",
+        "description": "Project Quality Management involves ensuring that project deliverables meet quality standards and requirements through quality planning, assurance, and control.",
+        "industry_area": "Project Management"
+      },
+      {
+        "category_id": 119,
+        "category_name": "Product Innovation",
+        "description": "Product Innovation involves developing new products or enhancing existing products to meet emerging market needs and customer expectations.",
+        "industry_area": "Product Management"
+      },
+      {
+        "category_id": 120,
+        "category_name": "Project Stakeholder Management",
+        "description": "Project Stakeholder Management involves identifying stakeholders, understanding their interests and expectations, and managing relationships to support project success.",
+        "industry_area": "Project Management"
+      },
+          {
+            "category_id": 121,
+            "category_name": "Product Design",
+            "description": "Product Design involves conceptualizing and creating the physical or digital form and functionality of a product to meet user needs and enhance usability.",
+            "industry_area": "Product Management"
+          },
+          {
+            "category_id": 122,
+            "category_name": "User Experience (UX) Design",
+            "description": "User Experience (UX) Design focuses on enhancing user satisfaction by improving the usability, accessibility, and pleasure provided in the interaction between the user and the product.",
+            "industry_area": "Product Management"
+          },
+          {
+            "category_id": 123,
+            "category_name": "User Interface (UI) Design",
+            "description": "User Interface (UI) Design involves designing the visual elements and interactive experiences of a product or digital interface to optimize usability and aesthetics.",
+            "industry_area": "Product Management"
+          },
+          {
+            "category_id": 124,
+            "category_name": "Customer Relationship Management (CRM)",
+            "description": "Customer Relationship Management (CRM) involves managing relationships and interactions with current and potential customers to improve business relationships and customer retention.",
+            "industry_area": "Business Management"
+          },
+          {
+            "category_id": 125,
+            "category_name": "Customer Experience (CX)",
+            "description": "Customer Experience (CX) encompasses all interactions a customer has with a company and its products, focusing on enhancing satisfaction, loyalty, and advocacy.",
+            "industry_area": "Business Management"
+          },
+          {
+            "category_id": 126,
+            "category_name": "Market Research",
+            "description": "Market Research involves gathering, analyzing, and interpreting information about a market, including customer needs, preferences, and behaviors, to inform business decisions.",
+            "industry_area": "Marketing"
+          },
+          {
+            "category_id": 127,
+            "category_name": "Product Analytics",
+            "description": "Product Analytics involves collecting and analyzing data related to product usage, performance, and customer behavior to derive insights and optimize product strategies.",
+            "industry_area": "Product Management"
+          },
+          {
+            "category_id": 128,
+            "category_name": "Business Intelligence (BI)",
+            "description": "Business Intelligence (BI) involves using data analysis tools and techniques to gather, store, and analyze business data to support decision-making and strategic planning.",
+            "industry_area": "Business Management"
+          },
+          {
+            "category_id": 129,
+            "category_name": "Digital Marketing",
+            "description": "Digital Marketing involves using digital channels such as websites, social media, email, and mobile apps to reach and engage with audiences, drive traffic, and generate leads.",
+            "industry_area": "Marketing"
+          },
+          {
+            "category_id": 130,
+            "category_name": "Project Governance",
+            "description": "Project Governance involves defining and implementing structures, policies, and processes to ensure effective project oversight, accountability, and decision-making.",
+            "industry_area": "Project Management"
+          },
+          {
+            "category_id": 131,
+            "category_name": "Project Budgeting and Cost Management",
+            "description": "Project Budgeting and Cost Management involves estimating, allocating, and controlling project costs to ensure projects are completed within approved budgets.",
+            "industry_area": "Project Management"
+          },
+          {
+            "category_id": 132,
+            "category_name": "Project Resource Management",
+            "description": "Project Resource Management involves planning, allocating, and managing resources such as personnel, equipment, and materials to support project execution and success.",
+            "industry_area": "Project Management"
+          },
+          {
+            "category_id": 133,
+            "category_name": "Product Roadmapping",
+            "description": "Product Roadmapping involves creating and maintaining a strategic plan or roadmap that outlines the vision, goals, and timeline for product development and enhancements.",
+            "industry_area": "Product Management"
+          },
+          {
+            "category_id": 134,
+            "category_name": "Quality Assurance and Testing",
+            "description": "Quality Assurance and Testing involves ensuring that products and systems meet specified requirements and quality standards through rigorous testing and validation.",
+            "industry_area": "Quality Assurance"
+          },
+          {
+            "category_id": 135,
+            "category_name": "Technical Documentation",
+            "description": "Technical Documentation involves creating, managing, and updating documents that describe the technical aspects, functionalities, and use of products and systems.",
+            "industry_area": "Technical Writing"
+          },
+          {
+            "category_id": 136,
+            "category_name": "Project Scheduling",
+            "description": "Project Scheduling involves developing and maintaining schedules that outline project activities, milestones, dependencies, and timelines to ensure timely project completion.",
+            "industry_area": "Project Management"
+          },
+          {
+            "category_id": 137,
+            "category_name": "Product Management Tools",
+            "description": "Product Management Tools are software applications and platforms that assist product managers in planning, tracking, and managing product development and lifecycle.",
+            "industry_area": "Product Management"
+          },
+          {
+            "category_id": 138,
+            "category_name": "Project Closure",
+            "description": "Project Closure involves formally completing and evaluating a project, including finalizing deliverables, conducting post-project reviews, and transitioning resources.",
+            "industry_area": "Project Management"
+          },
+          {
+            "category_id": 139,
+            "category_name": "Product Pricing Strategy",
+            "description": "Product Pricing Strategy involves determining the optimal pricing strategy for a product based on market demand, competition, costs, and perceived value.",
+            "industry_area": "Product Management"
+          },
+          {
+            "category_id": 140,
+            "category_name": "Project Reporting and Documentation",
+            "description": "Project Reporting and Documentation involves preparing and maintaining reports, documentation, and records to communicate project status, progress, and outcomes.",
+            "industry_area": "Project Management"
+          },
+          {
+            "category_id": 141,
+            "category_name": "IT Project Management",
+            "description": "IT Project Management involves planning, organizing, and managing IT projects to ensure they are completed on time, within budget, and meet organizational objectives.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 142,
+            "category_name": "Software Development Lifecycle (SDLC)",
+            "description": "Software Development Lifecycle (SDLC) encompasses the processes and methodologies used in the development, testing, deployment, and maintenance of software applications.",
+            "industry_area": "Software Development"
+          },
+          {
+            "category_id": 143,
+            "category_name": "IT Service Management (ITSM)",
+            "description": "IT Service Management (ITSM) involves designing, delivering, managing, and improving IT services to meet the needs of the organization and its customers.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 144,
+            "category_name": "Cybersecurity Management",
+            "description": "Cybersecurity Management involves protecting organizational assets, data, and systems from cyber threats through proactive security measures and incident response.",
+            "industry_area": "Cybersecurity"
+          },
+          {
+            "category_id": 145,
+            "category_name": "Cloud Computing",
+            "description": "Cloud Computing involves using remote servers hosted on the internet to store, manage, and process data, applications, and services, providing scalability and flexibility.",
+            "industry_area": "Cloud Computing"
+          },
+          {
+            "category_id": 146,
+            "category_name": "Network Infrastructure Management",
+            "description": "Network Infrastructure Management involves designing, deploying, and maintaining the physical and virtual components of a computer network to ensure reliable connectivity and performance.",
+            "industry_area": "Network Management"
+          },
+          {
+            "category_id": 147,
+            "category_name": "Database Management",
+            "description": "Database Management involves designing, implementing, and maintaining databases to store, organize, and retrieve data efficiently and securely.",
+            "industry_area": "Database Management"
+          },
+          {
+            "category_id": 148,
+            "category_name": "IT Governance",
+            "description": "IT Governance involves establishing and enforcing policies, procedures, and controls to ensure IT investments support organizational goals, manage risks, and optimize resources.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 149,
+            "category_name": "IT Risk Management",
+            "description": "IT Risk Management involves identifying, assessing, and mitigating risks associated with IT systems, operations, and projects to protect organizational assets and continuity.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 150,
+            "category_name": "DevOps Practices",
+            "description": "DevOps Practices involve integrating software development (Dev) and IT operations (Ops) to shorten development cycles, increase deployment frequency, and improve collaboration.",
+            "industry_area": "DevOps"
+          },
+          {
+            "category_id": 151,
+            "category_name": "IT Infrastructure Planning",
+            "description": "IT Infrastructure Planning involves designing and planning the physical and virtual infrastructure components required to support IT operations and business objectives.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 152,
+            "category_name": "IT Architecture",
+            "description": "IT Architecture involves designing and implementing the structure and framework of IT systems, applications, and networks to ensure compatibility, scalability, and performance.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 153,
+            "category_name": "IT Compliance and Auditing",
+            "description": "IT Compliance and Auditing involve ensuring that IT systems, processes, and practices comply with regulatory requirements and industry standards through audits and assessments.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 154,
+            "category_name": "IT Service Desk Management",
+            "description": "IT Service Desk Management involves managing the support and resolution of IT service requests and incidents to minimize downtime and disruptions.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 155,
+            "category_name": "Enterprise Resource Planning (ERP)",
+            "description": "Enterprise Resource Planning (ERP) involves integrating and managing core business processes and operations through centralized software systems to improve efficiency and productivity.",
+            "industry_area": "Enterprise Systems"
+          },
+          {
+            "category_id": 156,
+            "category_name": "IT Project Portfolio Management",
+            "description": "IT Project Portfolio Management involves prioritizing, planning, and managing a portfolio of IT projects to align with organizational strategy, maximize benefits, and optimize resources.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 157,
+            "category_name": "IT Service Level Management",
+            "description": "IT Service Level Management involves defining, negotiating, and monitoring service level agreements (SLAs) to ensure IT services meet agreed-upon performance and quality standards.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 158,
+            "category_name": "IT Asset Management",
+            "description": "IT Asset Management involves managing the lifecycle and inventory of IT assets (hardware, software, and infrastructure) to optimize costs, usage, and compliance.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 159,
+            "category_name": "Big Data Management",
+            "description": "Big Data Management involves capturing, storing, processing, and analyzing large volumes of data to extract valuable insights and support decision-making.",
+            "industry_area": "Big Data"
+          },
+          {
+            "category_id": 160,
+            "category_name": "IT Vendor Management",
+            "description": "IT Vendor Management involves overseeing relationships with external IT vendors and service providers to ensure delivery of quality services, manage costs, and mitigate risks.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 161,
+            "category_name": "IT Strategy",
+            "description": "IT Strategy involves developing and implementing strategic plans and initiatives to align IT capabilities with business goals and objectives.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 162,
+            "category_name": "Mobile App Development",
+            "description": "Mobile App Development involves designing, developing, and deploying applications specifically for mobile devices to meet user needs and business requirements.",
+            "industry_area": "Software Development"
+          },
+          {
+            "category_id": 163,
+            "category_name": "Virtualization",
+            "description": "Virtualization involves creating virtual versions of computing resources such as servers, storage, and networks to improve efficiency, flexibility, and scalability.",
+            "industry_area": "Cloud Computing"
+          },
+          {
+            "category_id": 164,
+            "category_name": "Artificial Intelligence (AI)",
+            "description": "Artificial Intelligence (AI) involves developing systems and algorithms that can perform tasks traditionally requiring human intelligence, such as speech recognition and decision-making.",
+            "industry_area": "AI and Machine Learning"
+          },
+          {
+            "category_id": 165,
+            "category_name": "Machine Learning",
+            "description": "Machine Learning involves training algorithms to learn patterns and make predictions or decisions based on data, enabling systems to improve performance over time.",
+            "industry_area": "AI and Machine Learning"
+          },
+          {
+            "category_id": 166,
+            "category_name": "Data Science",
+            "description": "Data Science involves analyzing and interpreting complex data sets to extract valuable insights and inform business decisions, using statistical methods and machine learning techniques.",
+            "industry_area": "Data Science"
+          },
+          {
+            "category_id": 167,
+            "category_name": "Blockchain Technology",
+            "description": "Blockchain Technology involves creating secure, decentralized databases (blocks) linked together (chain) to store and manage transactions and data across multiple computers.",
+            "industry_area": "Blockchain"
+          },
+          {
+            "category_id": 168,
+            "category_name": "IT Architecture Design",
+            "description": "IT Architecture Design involves designing the overall structure and framework of IT systems, applications, and networks to ensure scalability, security, and performance.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 169,
+            "category_name": "IT Compliance",
+            "description": "IT Compliance involves ensuring that IT practices, processes, and systems adhere to regulatory requirements, industry standards, and internal policies.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 170,
+            "category_name": "Software Quality Assurance",
+            "description": "Software Quality Assurance involves testing software applications to ensure they meet quality standards, functional requirements, and user expectations.",
+            "industry_area": "Quality Assurance"
+          },
+          {
+            "category_id": 171,
+            "category_name": "IT Audit and Security Assessment",
+            "description": "IT Audit and Security Assessment involves evaluating and assessing IT systems, controls, and processes to identify vulnerabilities, risks, and compliance gaps.",
+            "industry_area": "Cybersecurity"
+          },
+          {
+            "category_id": 172,
+            "category_name": "IT Project Risk Management",
+            "description": "IT Project Risk Management involves identifying, analyzing, and mitigating risks that could impact IT projects, resources, timelines, and deliverables.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 173,
+            "category_name": "IT Change Management",
+            "description": "IT Change Management involves managing changes to IT systems, processes, and infrastructure in a controlled manner to minimize disruption and maximize benefits.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 174,
+            "category_name": "IT Asset Security",
+            "description": "IT Asset Security involves protecting and securing IT assets (hardware, software, data) from unauthorized access, theft, or damage.",
+            "industry_area": "Cybersecurity"
+          },
+          {
+            "category_id": 175,
+            "category_name": "IT Help Desk Support",
+            "description": "IT Help Desk Support involves providing technical assistance and troubleshooting support to users for IT-related issues and inquiries.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 176,
+            "category_name": "IT Disaster Recovery",
+            "description": "IT Disaster Recovery involves planning and implementing strategies and procedures to recover and restore IT systems and operations after a disaster or disruption.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 177,
+            "category_name": "IT Capacity Planning",
+            "description": "IT Capacity Planning involves forecasting future IT infrastructure requirements and allocating resources to meet current and future demands.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 178,
+            "category_name": "IT Vendor Relationship Management",
+            "description": "IT Vendor Relationship Management involves managing relationships with IT vendors, negotiating contracts, and ensuring service delivery meets expectations.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 179,
+            "category_name": "IT Service Catalog Management",
+            "description": "IT Service Catalog Management involves creating and maintaining a catalog of IT services offered to users, including service details, availability, and service level agreements (SLAs).",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 180,
+            "category_name": "IT Governance Frameworks",
+            "description": "IT Governance Frameworks involve establishing frameworks, policies, and controls to ensure IT investments support business objectives, manage risks, and comply with regulations.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 181,
+            "category_name": "IT Incident Management",
+            "description": "IT Incident Management involves identifying, responding to, and resolving IT incidents to minimize disruption to business operations and restore normal service quickly.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 182,
+            "category_name": "IT Service Continuity Management",
+            "description": "IT Service Continuity Management involves planning and implementing strategies to ensure IT services continue to operate during and after a significant incident or disaster.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 183,
+            "category_name": "IT Service Integration and Management (SIAM)",
+            "description": "IT Service Integration and Management (SIAM) involves managing multiple service providers to deliver cohesive and integrated IT services that meet business requirements.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 184,
+            "category_name": "IT Automation",
+            "description": "IT Automation involves using software and tools to automate repetitive tasks and processes in IT operations, improving efficiency, reliability, and scalability.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 185,
+            "category_name": "IT Ethics and Compliance",
+            "description": "IT Ethics and Compliance involves ensuring ethical practices and adherence to legal and regulatory requirements in the use and management of IT resources and data.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 186,
+            "category_name": "IT Performance Management",
+            "description": "IT Performance Management involves monitoring and optimizing the performance and efficiency of IT systems, applications, and services to meet business objectives.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 187,
+            "category_name": "IT Service Design",
+            "description": "IT Service Design involves designing new or modified IT services to meet agreed service levels and deliver business value, considering service strategy and requirements.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 188,
+            "category_name": "IT Procurement and Vendor Management",
+            "description": "IT Procurement and Vendor Management involves acquiring IT hardware, software, and services from external vendors, managing contracts, and ensuring cost-effective procurement.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 189,
+            "category_name": "IT Asset Disposal and Recycling",
+            "description": "IT Asset Disposal and Recycling involves securely disposing of decommissioned IT assets and ensuring environmentally responsible recycling or disposal.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 190,
+            "category_name": "IT Training and Development",
+            "description": "IT Training and Development involves providing education and training programs to enhance IT skills, knowledge, and capabilities of employees within an organization.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 191,
+            "category_name": "IT Change Control",
+            "description": "IT Change Control involves managing and controlling changes to IT systems, infrastructure, and processes to minimize disruption and maintain system integrity.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 192,
+            "category_name": "IT Disaster Preparedness",
+            "description": "IT Disaster Preparedness involves planning and preparing strategies, procedures, and resources to minimize the impact of disasters and ensure IT system resilience.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 193,
+            "category_name": "IT Policy Development",
+            "description": "IT Policy Development involves creating and implementing policies and guidelines that govern the use, management, and security of IT resources within an organization.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 194,
+            "category_name": "IT Governance and Risk Assessment",
+            "description": "IT Governance and Risk Assessment involves assessing and managing IT-related risks, ensuring alignment with business objectives, and establishing governance frameworks.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 195,
+            "category_name": "IT Service Performance Metrics",
+            "description": "IT Service Performance Metrics involves defining, measuring, and analyzing key performance indicators (KPIs) to assess and improve the performance of IT services.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 196,
+            "category_name": "IT Infrastructure Security",
+            "description": "IT Infrastructure Security involves implementing and maintaining security measures and controls to protect IT infrastructure from unauthorized access, attacks, and breaches.",
+            "industry_area": "Cybersecurity"
+          },
+          {
+            "category_id": 197,
+            "category_name": "IT Service Cost Management",
+            "description": "IT Service Cost Management involves managing and optimizing costs associated with IT services, resources, and operations to align with budgetary constraints and business goals.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 198,
+            "category_name": "IT Service Desk Automation",
+            "description": "IT Service Desk Automation involves leveraging automation tools and technologies to streamline and improve the efficiency of IT service desk operations and support.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 199,
+            "category_name": "IT Compliance Audits",
+            "description": "IT Compliance Audits involve conducting regular audits and assessments to ensure adherence to regulatory requirements, industry standards, and organizational policies.",
+            "industry_area": "IT Management"
+          },
+          {
+            "category_id": 200,
+            "category_name": "IT Service Catalog",
+            "description": "IT Service Catalog involves maintaining a catalog of IT services offered to users, including service details, availability, pricing, and service level agreements (SLAs).",
+            "industry_area": "IT Management"
+          },
+          {
+            "categories": [
+              {
+                "category_id": 201,
+                "category_name": "Digital Marketing",
+                "description": "Digital Marketing involves promoting products, services, and brands using digital channels and technologies such as websites, social media, email, and online advertising.",
+                "industry_area": "Marketing"
+              },
+              {
+                "category_id": 202,
+                "category_name": "E-commerce",
+                "description": "E-commerce involves buying and selling goods and services online through websites or electronic platforms, utilizing IT systems for transactions, payments, and logistics.",
+                "industry_area": "Retail"
+              },
+              {
+                "category_id": 203,
+                "category_name": "Financial Technology (FinTech)",
+                "description": "Financial Technology (FinTech) involves using technology to deliver financial services such as payments, lending, and investing, often leveraging IT systems and digital platforms.",
+                "industry_area": "Finance"
+              },
+              {
+                "category_id": 204,
+                "category_name": "Health Information Technology (Health IT)",
+                "description": "Health Information Technology (Health IT) involves using IT systems to manage and exchange health information electronically, improving healthcare delivery and patient outcomes.",
+                "industry_area": "Healthcare"
+              },
+              {
+                "category_id": 205,
+                "category_name": "Telecommunications",
+                "description": "Telecommunications involves transmitting and receiving information over long distances using electronic and IT systems, enabling voice, data, and multimedia communications.",
+                "industry_area": "Telecommunications"
+              },
+              {
+                "category_id": 206,
+                "category_name": "Supply Chain Management",
+                "description": "Supply Chain Management involves planning, coordinating, and optimizing the flow of goods, services, and information across the supply chain using IT systems and technologies.",
+                "industry_area": "Logistics"
+              },
+              {
+                "category_id": 207,
+                "category_name": "Smart Cities",
+                "description": "Smart Cities involve using IT and digital technologies to enhance infrastructure, services, and sustainability in urban areas, improving quality of life for residents.",
+                "industry_area": "Urban Development"
+              },
+              {
+                "category_id": 208,
+                "category_name": "Education Technology (EdTech)",
+                "description": "Education Technology (EdTech) involves using IT and digital tools to enhance teaching, learning, and educational administration, improving access and quality of education.",
+                "industry_area": "Education"
+              },
+              {
+                "category_id": 209,
+                "category_name": "Legal Technology (LegalTech)",
+                "description": "Legal Technology (LegalTech) involves using IT and digital solutions to streamline legal processes, manage cases, and deliver legal services more efficiently and effectively.",
+                "industry_area": "Legal"
+              },
+              {
+                "category_id": 210,
+                "category_name": "Media and Entertainment Technology",
+                "description": "Media and Entertainment Technology involves using IT systems and digital platforms to create, distribute, and manage content across various media channels and platforms.",
+                "industry_area": "Media and Entertainment"
+              }
+            ]
+          },
+          {
+            "category_id": 211,
+            "category_name": "Customer Relationship Management (CRM)",
+            "description": "Customer Relationship Management (CRM) involves managing interactions and relationships with customers using IT systems to improve customer retention, satisfaction, and sales.",
+            "industry_area": "Sales and Marketing"
+          },
+          {
+            "category_id": 212,
+            "category_name": "Digital Advertising",
+            "description": "Digital Advertising involves promoting products, services, and brands through digital channels such as websites, social media, search engines, and mobile apps.",
+            "industry_area": "Sales and Marketing"
+          },
+          {
+            "category_id": 213,
+            "category_name": "Market Research and Analysis",
+            "description": "Market Research and Analysis involves using IT tools and techniques to gather, analyze, and interpret data about markets, customers, and competitors to support strategic decisions.",
+            "industry_area": "Sales and Marketing"
+          },
+          {
+            "category_id": 214,
+            "category_name": "Sales Enablement",
+            "description": "Sales Enablement involves using IT solutions and tools to empower sales teams with resources, content, and insights to improve efficiency, effectiveness, and sales performance.",
+            "industry_area": "Sales and Marketing"
+          },
+          {
+            "category_id": 215,
+            "category_name": "Marketing Automation",
+            "description": "Marketing Automation involves using IT software and platforms to automate repetitive marketing tasks such as email campaigns, social media posting, and lead nurturing.",
+            "industry_area": "Sales and Marketing"
+          },
+          {
+            "category_id": 216,
+            "category_name": "Retail Technology",
+            "description": "Retail Technology involves using IT systems and digital solutions to enhance customer experiences, optimize operations, and drive sales in retail environments.",
+            "industry_area": "Sales and Marketing"
+          },
+          {
+            "category_id": 217,
+            "category_name": "E-commerce Platforms",
+            "description": "E-commerce Platforms involve using IT systems to operate online stores, manage product catalogs, process payments, and deliver goods and services to customers.",
+            "industry_area": "Sales and Marketing"
+          },
+          {
+            "category_id": 218,
+            "category_name": "Content Management Systems (CMS)",
+            "description": "Content Management Systems (CMS) involve using IT software to create, manage, and publish digital content such as articles, videos, and images for marketing purposes.",
+            "industry_area": "Sales and Marketing"
+          },
+          {
+            "category_id": 219,
+            "category_name": "Search Engine Optimization (SEO)",
+            "description": "Search Engine Optimization (SEO) involves optimizing websites and content to improve visibility and rankings on search engine results pages (SERPs), enhancing organic traffic.",
+            "industry_area": "Sales and Marketing"
+          },
+          {
+            "category_id": 220,
+            "category_name": "Social Media Marketing",
+            "description": "Social Media Marketing involves using social media platforms and IT tools to create and share content, engage audiences, and promote products and services.",
+            "industry_area": "Sales and Marketing"
+          },
+              {
+                "category_id": 221,
+                "category_name": "Email Marketing",
+                "description": "Email Marketing involves using IT tools and platforms to send targeted messages and promotional content to subscribers, nurturing leads and driving conversions.",
+                "industry_area": "Sales and Marketing"
+              },
+              {
+                "category_id": 222,
+                "category_name": "Lead Generation",
+                "description": "Lead Generation involves using IT strategies and technologies to attract and capture potential customers' interest in products or services, converting them into sales leads.",
+                "industry_area": "Sales and Marketing"
+              },
+              {
+                "category_id": 223,
+                "category_name": "Customer Analytics",
+                "description": "Customer Analytics involves using IT systems and data analysis techniques to gain insights into customer behavior, preferences, and trends to optimize marketing strategies.",
+                "industry_area": "Sales and Marketing"
+              },
+              {
+                "category_id": 224,
+                "category_name": "Digital Commerce",
+                "description": "Digital Commerce involves using IT systems and technologies to conduct online transactions, manage digital storefronts, and deliver goods and services to customers.",
+                "industry_area": "Sales and Marketing"
+              },
+              {
+                "category_id": 225,
+                "category_name": "Brand Management",
+                "description": "Brand Management involves using IT tools and platforms to develop, maintain, and strengthen brand identity, reputation, and perception among target audiences.",
+                "industry_area": "Sales and Marketing"
+              },
+              {
+                "category_id": 226,
+                "category_name": "Customer Experience Management",
+                "description": "Customer Experience Management involves using IT systems and strategies to optimize interactions and touchpoints throughout the customer journey, enhancing satisfaction and loyalty.",
+                "industry_area": "Sales and Marketing"
+              },
+              {
+                "category_id": 227,
+                "category_name": "Marketing Technology (MarTech)",
+                "description": "Marketing Technology (MarTech) involves using IT tools and platforms specifically designed for marketing purposes, including analytics, automation, and campaign management.",
+                "industry_area": "Sales and Marketing"
+              },
+              {
+                "category_id": 228,
+                "category_name": "Influencer Marketing",
+                "description": "Influencer Marketing involves collaborating with influential individuals on social media and using IT platforms to amplify brand messages and reach targeted audiences.",
+                "industry_area": "Sales and Marketing"
+              },
+              {
+                "category_id": 229,
+                "category_name": "Retail Analytics",
+                "description": "Retail Analytics involves using IT systems and data analytics to analyze customer behavior, sales patterns, and inventory management to optimize retail operations and strategies.",
+                "industry_area": "Sales and Marketing"
+              },
+              {
+                "category_id": 230,
+                "category_name": "Customer Segmentation",
+                "description": "Customer Segmentation involves using IT data analysis techniques to divide customers into groups based on common characteristics or behaviors, enabling targeted marketing efforts.",
+                "industry_area": "Sales and Marketing"
+              },
+              {
+                "category_id": 231,
+                "category_name": "Cloud Computing",
+                "description": "Cloud Computing involves delivering computing services (such as servers, storage, databases, networking, software, analytics, and intelligence) over the Internet (the cloud) to offer faster innovation, flexible resources, and economies of scale.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 232,
+                "category_name": "Mobile App Development",
+                "description": "Mobile App Development involves creating software applications that run on mobile devices such as smartphones and tablets, utilizing platforms and frameworks for iOS, Android, or cross-platform development.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 233,
+                "category_name": "Web Development",
+                "description": "Web Development involves designing, building, and maintaining websites and web applications, using programming languages, frameworks, and content management systems (CMS).",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 234,
+                "category_name": "Software Development",
+                "description": "Software Development involves designing, coding, testing, and maintaining software applications and systems, utilizing programming languages, development tools, and methodologies.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 235,
+                "category_name": "Enterprise Resource Planning (ERP)",
+                "description": "Enterprise Resource Planning (ERP) involves integrating and managing core business processes (such as finance, HR, inventory, and supply chain) through a unified system, often deployed as SaaS or PaaS solutions.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 236,
+                "category_name": "Customer Relationship Management (CRM) Software",
+                "description": "Customer Relationship Management (CRM) Software involves managing interactions and relationships with customers, utilizing cloud-based CRM platforms for sales, marketing, and service automation.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 237,
+                "category_name": "Collaboration Tools",
+                "description": "Collaboration Tools involve using SaaS platforms for real-time communication, document sharing, project management, and team collaboration, enhancing productivity and efficiency.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 238,
+                "category_name": "DevOps",
+                "description": "DevOps involves combining software development (Dev) and IT operations (Ops) to automate and streamline processes, utilizing PaaS tools and continuous integration/continuous deployment (CI/CD) pipelines.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 239,
+                "category_name": "Business Intelligence (BI) Tools",
+                "description": "Business Intelligence (BI) Tools involve using SaaS solutions for data analytics, visualization, and reporting to gain insights into business operations and support data-driven decision-making.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 240,
+                "category_name": "SaaS Integration",
+                "description": "SaaS Integration involves connecting and integrating multiple SaaS applications and services to streamline data flows, synchronize information, and optimize business processes.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 241,
+                "category_name": "API Management",
+                "description": "API Management involves designing, publishing, documenting, and analyzing APIs (Application Programming Interfaces) to enable secure and efficient interaction between applications, services, and systems.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 242,
+                "category_name": "Containerization",
+                "description": "Containerization involves encapsulating applications and their dependencies into lightweight, portable containers for easier deployment, scaling, and management across different computing environments.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 243,
+                "category_name": "Serverless Computing",
+                "description": "Serverless Computing (Function-as-a-Service, FaaS) involves deploying and running applications without managing server infrastructure, utilizing cloud providers to automatically manage and scale resources.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 244,
+                "category_name": "Microservices Architecture",
+                "description": "Microservices Architecture involves developing applications as a collection of loosely coupled services, each running in its own process and communicating via lightweight APIs, often deployed using PaaS solutions.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 245,
+                "category_name": "IT Service Management (ITSM)",
+                "description": "IT Service Management (ITSM) involves implementing and managing IT services through processes, people, and technology, utilizing ITSM platforms and frameworks to deliver value to customers.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 246,
+                "category_name": "Digital Transformation",
+                "description": "Digital Transformation involves using IT and digital technologies to fundamentally change business operations, processes, and models to adapt to market demands and deliver value.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 247,
+                "category_name": "Blockchain Technology",
+                "description": "Blockchain Technology involves creating decentralized and secure digital ledgers to record transactions and manage data across distributed networks, utilizing blockchain platforms and applications.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 248,
+                "category_name": "Artificial Intelligence (AI) Applications",
+                "description": "Artificial Intelligence (AI) Applications involve developing and deploying AI-powered applications and systems that mimic human intelligence and automate complex tasks, leveraging AI platforms and frameworks.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 249,
+                "category_name": "Augmented Reality (AR) Applications",
+                "description": "Augmented Reality (AR) Applications involve integrating digital information and virtual objects into the real-world environment, enhancing user experiences and interactions through AR platforms.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 250,
+                "category_name": "Virtual Reality (VR) Applications",
+                "description": "Virtual Reality (VR) Applications involve creating immersive virtual environments and experiences using VR hardware and software platforms, enhancing training, simulation, and entertainment.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 251,
+                "category_name": "Machine Learning (ML) Applications",
+                "description": "Machine Learning (ML) Applications involve developing algorithms and models that allow systems to learn and improve from data, deployed using ML frameworks and cloud-based ML platforms.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 252,
+                "category_name": "Internet of Things (IoT) Applications",
+                "description": "Internet of Things (IoT) Applications involve connecting and managing IoT devices and sensors to collect, analyze, and act on data, leveraging IoT platforms and cloud services.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 253,
+                "category_name": "Big Data Analytics",
+                "description": "Big Data Analytics involves processing and analyzing large volumes of data to uncover patterns, trends, and insights, using big data platforms, tools, and frameworks.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 254,
+                "category_name": "Cybersecurity Solutions",
+                "description": "Cybersecurity Solutions involve protecting systems, networks, and data from cyber threats and attacks, utilizing cybersecurity platforms, tools, and services.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 255,
+                "category_name": "Cloud Migration and Management",
+                "description": "Cloud Migration and Management involve moving applications, data, and workloads to cloud environments and managing cloud services, optimizing performance, cost, and security.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 256,
+                "category_name": "Digital Asset Management",
+                "description": "Digital Asset Management involves organizing, storing, and distributing digital assets such as images, videos, and documents, using DAM systems and platforms.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 257,
+                "category_name": "Software-defined Networking (SDN)",
+                "description": "Software-defined Networking (SDN) involves managing and controlling network infrastructure using software and virtualization technologies, enhancing agility and flexibility.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 258,
+                "category_name": "Edge Computing Solutions",
+                "description": "Edge Computing Solutions involve processing data near the source or edge of the network to reduce latency and bandwidth usage, utilizing edge computing platforms and technologies.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 259,
+                "category_name": "Application Performance Management (APM)",
+                "description": "Application Performance Management (APM) involves monitoring and optimizing the performance and availability of applications, using APM tools and solutions.",
+                "industry_area": "Technology"
+              },
+              {
+                "category_id": 260,
+                "category_name": "Low-Code / No-Code Development Platforms",
+                "description": "Low-Code / No-Code Development Platforms involve using visual interfaces and pre-built components to create applications with minimal coding, accelerating development and deployment.",
+                "industry_area": "Technology"
+              },
+                  {
+                    "category_id": 261,
+                    "category_name": "Systems Administration",
+                    "description": "Systems Administration involves managing and maintaining IT systems, servers, networks, and infrastructure to ensure optimal performance, security, and availability.",
+                    "industry_area": "Technology"
+                  },
+                  {
+                    "category_id": 262,
+                    "category_name": "Network Engineering",
+                    "description": "Network Engineering involves designing, implementing, and managing computer networks, including LANs, WANs, and wireless networks, to ensure efficient data communication.",
+                    "industry_area": "Technology"
+                  },
+                  {
+                    "category_id": 263,
+                    "category_name": "Database Administration",
+                    "description": "Database Administration involves managing and maintaining databases, ensuring data integrity, security, and availability through backup, recovery, and optimization processes.",
+                    "industry_area": "Technology"
+                  },
+                  {
+                    "category_id": 264,
+                    "category_name": "Cloud Architecture",
+                    "description": "Cloud Architecture involves designing and overseeing the structure and deployment of cloud computing solutions, ensuring scalability, security, and efficiency in cloud environments.",
+                    "industry_area": "Technology"
+                  },
+                  {
+                    "category_id": 265,
+                    "category_name": "IT Infrastructure Management",
+                    "description": "IT Infrastructure Management involves planning, designing, and managing IT infrastructure components such as servers, storage, networks, and virtualization technologies.",
+                    "industry_area": "Technology"
+                  },
+                  {
+                    "category_id": 266,
+                    "category_name": "IT Operations Management",
+                    "description": "IT Operations Management involves overseeing and optimizing IT operations and processes to ensure efficient service delivery, incident management, and IT infrastructure support.",
+                    "industry_area": "Technology"
+                  },
+                  {
+                    "category_id": 267,
+                    "category_name": "IT Architecture",
+                    "description": "IT Architecture involves designing and managing the overall structure and integration of IT systems, applications, and technologies to meet business objectives and requirements.",
+                    "industry_area": "Technology"
+                  },
+                  {
+                    "category_id": 268,
+                    "category_name": "Enterprise Architecture Management (EAM)",
+                    "description": "Enterprise Architecture Management (EAM) involves aligning IT strategy and infrastructure with business goals and processes, optimizing IT investments and capabilities across the organization.",
+                    "industry_area": "Technology"
+                  },
+                  {
+                    "category_id": 269,
+                    "category_name": "IT Service Delivery",
+                    "description": "IT Service Delivery involves managing and delivering IT services to meet business needs, ensuring service levels, performance, and customer satisfaction through effective service management.",
+                    "industry_area": "Technology"
+                  },
+                  {
+                    "category_id": 270,
+                    "category_name": "IT Governance",
+                    "description": "IT Governance involves establishing policies, processes, and controls to ensure IT investments align with business objectives, manage risks, and comply with regulatory requirements.",
+                    "industry_area": "Technology"
+                  }
+                               
+    ]
+}
+  

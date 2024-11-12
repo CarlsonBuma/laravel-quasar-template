@@ -1,0 +1,426 @@
+{
+  "functionalUnits": [
+    {
+      "unitName": "Engineering",
+      "definition": "The Engineering department is responsible for developing, maintaining, and scaling the organization’s software products and systems.",
+      "responsibilities": [
+        "Developing new software features",
+        "Maintaining and improving existing systems",
+        "Ensuring the scalability and performance of applications",
+        "Collaborating with other departments to deliver technical solutions",
+        "Implementing best practices in software development"
+      ]
+    },
+    {
+      "unitName": "IT Operations",
+      "definition": "The IT Operations unit is responsible for managing the organization's infrastructure, ensuring the reliability and security of systems, and providing technical support.",
+      "responsibilities": [
+        "Managing cloud infrastructure and on-premise systems",
+        "Ensuring system uptime and availability",
+        "Implementing security measures and monitoring",
+        "Managing networks, servers, and storage",
+        "Providing technical support to internal teams"
+      ]
+    },
+    {
+      "unitName": "Product Management",
+      "definition": "Product Management oversees the planning, development, and execution of products, ensuring alignment with business objectives and customer needs.",
+      "responsibilities": [
+        "Defining product strategy and roadmap",
+        "Gathering and prioritizing product requirements",
+        "Coordinating with engineering and design teams",
+        "Monitoring product performance and user feedback",
+        "Driving product development in alignment with market trends"
+      ]
+    },
+    {
+      "unitName": "DevOps",
+      "definition": "The DevOps unit bridges development and operations teams to streamline software development, deployment, and infrastructure management processes.",
+      "responsibilities": [
+        "Building and maintaining CI/CD pipelines",
+        "Automating infrastructure provisioning and configuration",
+        "Monitoring and optimizing system performance",
+        "Ensuring smooth deployment of software updates",
+        "Implementing Infrastructure as Code practices"
+      ]
+    },
+    {
+      "unitName": "Data Science & Analytics",
+      "definition": "The Data Science & Analytics unit focuses on leveraging data to provide insights, drive decision-making, and build predictive models for various business functions.",
+      "responsibilities": [
+        "Analyzing large datasets to derive actionable insights",
+        "Developing machine learning models to solve business problems",
+        "Building data pipelines for data collection and processing",
+        "Collaborating with product and marketing teams to optimize strategies",
+        "Ensuring data quality and integrity across the organization"
+      ]
+    },
+    {
+      "unitName": "Information Security",
+      "definition": "The Information Security unit is responsible for protecting the organization's systems, data, and networks from cyber threats and ensuring compliance with security policies.",
+      "responsibilities": [
+        "Implementing security protocols and policies",
+        "Monitoring systems for vulnerabilities and threats",
+        "Responding to security incidents and breaches",
+        "Ensuring compliance with industry standards (e.g., GDPR, ISO)",
+        "Conducting security audits and penetration testing"
+      ]
+    },
+    {
+      "unitName": "Human Resources (HR)",
+      "definition": "The HR unit manages employee relations, recruitment, and talent development, ensuring the organization attracts, retains, and develops talent.",
+      "responsibilities": [
+        "Managing talent acquisition and recruitment processes",
+        "Overseeing employee onboarding and training",
+        "Ensuring compliance with employment laws and regulations",
+        "Facilitating employee engagement and retention",
+        "Developing and implementing employee performance reviews"
+      ]
+    },
+    {
+      "unitName": "Sales & Business Development",
+      "definition": "The Sales & Business Development unit is responsible for driving revenue by identifying business opportunities, managing customer relationships, and closing deals.",
+      "responsibilities": [
+        "Identifying and pursuing new business opportunities",
+        "Developing and maintaining relationships with key clients",
+        "Negotiating contracts and closing sales",
+        "Collaborating with marketing to align on sales strategies",
+        "Managing sales pipelines and forecasting revenue"
+      ]
+    },
+    {
+      "unitName": "Marketing",
+      "definition": "The Marketing unit is responsible for promoting the organization’s products and services through various channels, driving brand awareness, and generating leads.",
+      "responsibilities": [
+        "Developing and executing marketing campaigns",
+        "Managing digital marketing strategies (SEO, PPC, social media)",
+        "Creating content for various platforms (blogs, ads, social media)",
+        "Conducting market research to understand trends and opportunities",
+        "Collaborating with sales to generate and nurture leads"
+      ]
+    },
+    {
+      "unitName": "Customer Support / Success",
+      "definition": "The Customer Support and Success unit ensures that customers have a positive experience with the organization’s products by providing technical support and customer relationship management.",
+      "responsibilities": [
+        "Providing technical support and troubleshooting assistance",
+        "Managing customer inquiries and resolving issues",
+        "Ensuring customer satisfaction and retention",
+        "Offering product training and onboarding",
+        "Collecting feedback and collaborating with product teams to improve offerings"
+      ]
+    },{
+      "unitName": "Network Administration",
+      "definition": "The Network Administration unit is responsible for managing and maintaining the organization’s network infrastructure, ensuring connectivity and optimal performance.",
+      "responsibilities": [
+        "Configuring and maintaining network equipment (routers, switches, firewalls)",
+        "Monitoring network performance and troubleshooting connectivity issues",
+        "Ensuring network security and applying patches",
+        "Managing VPNs and remote access systems",
+        "Implementing and managing LAN/WAN environments"
+      ]
+    },
+    {
+      "unitName": "System Administration",
+      "definition": "The System Administration unit handles the maintenance, configuration, and reliable operation of the organization’s computer systems, especially servers and infrastructure.",
+      "responsibilities": [
+        "Installing and configuring server software and hardware",
+        "Managing user access and permissions on systems",
+        "Monitoring system performance and resolving issues",
+        "Applying patches and updates to operating systems and software",
+        "Backing up and restoring data to ensure business continuity"
+      ]
+    },
+    {
+      "unitName": "IT Support / Helpdesk",
+      "definition": "The IT Support / Helpdesk unit provides technical assistance to users, resolving hardware, software, and network issues.",
+      "responsibilities": [
+        "Providing first-level technical support for employees or customers",
+        "Troubleshooting and resolving hardware/software issues",
+        "Setting up and configuring new user accounts and devices",
+        "Documenting support processes and solutions",
+        "Managing IT assets and inventory"
+      ]
+    },
+    {
+      "unitName": "Information Security (Cybersecurity)",
+      "definition": "The Information Security unit ensures that the organization’s data, networks, and systems are protected from cyber threats and complies with security protocols.",
+      "responsibilities": [
+        "Monitoring systems for vulnerabilities and potential breaches",
+        "Implementing security protocols and ensuring data encryption",
+        "Responding to cybersecurity incidents and threats",
+        "Conducting security audits and assessments",
+        "Ensuring compliance with security standards (GDPR, ISO, etc.)"
+      ]
+    },
+    {
+      "unitName": "Cloud Infrastructure Management",
+      "definition": "The Cloud Infrastructure Management unit is responsible for managing and optimizing the organization’s cloud services and infrastructure.",
+      "responsibilities": [
+        "Provisioning and managing cloud resources (e.g., AWS, Azure, Google Cloud)",
+        "Ensuring cloud services are secure and cost-efficient",
+        "Automating cloud infrastructure using Infrastructure as Code (IaC)",
+        "Monitoring cloud environments for performance and security issues",
+        "Collaborating with development teams to deploy cloud-native applications"
+      ]
+    },
+    {
+      "unitName": "Database Administration",
+      "definition": "The Database Administration unit manages the organization’s databases, ensuring data integrity, availability, and performance.",
+      "responsibilities": [
+        "Installing and configuring database management systems (DBMS)",
+        "Ensuring data backups and recovery systems are in place",
+        "Monitoring database performance and tuning queries",
+        "Managing user access and database security",
+        "Planning for database scaling and capacity"
+      ]
+    },
+    {
+      "unitName": "Enterprise Architecture",
+      "definition": "The Enterprise Architecture unit designs and oversees the organization's overall IT infrastructure and technology strategy, ensuring alignment with business goals.",
+      "responsibilities": [
+        "Developing long-term IT architecture strategies",
+        "Ensuring technology systems and infrastructure are scalable and secure",
+        "Collaborating with stakeholders to define IT needs and solutions",
+        "Evaluating and integrating new technologies into the IT ecosystem",
+        "Creating blueprints for software and system architecture"
+      ]
+    },
+    {
+      "unitName": "Software Quality Assurance (QA)",
+      "definition": "The Software Quality Assurance (QA) unit ensures the quality and reliability of the organization's software products by testing and identifying defects.",
+      "responsibilities": [
+        "Designing and executing test cases for software applications",
+        "Performing functional, regression, and performance testing",
+        "Identifying and documenting bugs or issues",
+        "Collaborating with development teams to resolve defects",
+        "Ensuring software adheres to quality standards before release"
+      ]
+    }, {
+      "unitName": "Executive Leadership",
+      "definition": "The Executive Leadership unit oversees the overall direction and strategy of the organization, providing leadership and making high-level decisions.",
+      "responsibilities": [
+        "Defining the organization's vision, mission, and strategic goals",
+        "Making high-level decisions regarding operations and policies",
+        "Communicating with stakeholders and the board of directors",
+        "Overseeing company performance and ensuring financial health",
+        "Leading and supporting the senior management team"
+      ]
+    },
+    {
+      "unitName": "Human Resources (HR)",
+      "definition": "The Human Resources unit manages the organization’s workforce, focusing on recruitment, talent development, and employee relations.",
+      "responsibilities": [
+        "Managing recruitment, onboarding, and employee training",
+        "Overseeing performance management and employee evaluations",
+        "Ensuring compliance with labor laws and company policies",
+        "Developing and managing employee benefits and compensation",
+        "Promoting employee engagement and workplace culture"
+      ]
+    },
+    {
+      "unitName": "Financial Management",
+      "definition": "The Financial Management unit is responsible for the organization’s financial planning, budgeting, and reporting, ensuring financial stability and growth.",
+      "responsibilities": [
+        "Creating and managing financial plans and budgets",
+        "Monitoring and analyzing financial performance and risks",
+        "Overseeing accounting, auditing, and tax compliance",
+        "Managing cash flow, investments, and financing strategies",
+        "Providing financial reports to executives and stakeholders"
+      ]
+    },
+    {
+      "unitName": "Project Management",
+      "definition": "The Project Management unit ensures successful execution of projects by planning, executing, and monitoring project progress and deliverables.",
+      "responsibilities": [
+        "Developing project plans, timelines, and resource allocation",
+        "Managing project teams and ensuring collaboration",
+        "Monitoring project progress, risks, and milestones",
+        "Ensuring projects are completed on time and within budget",
+        "Communicating project updates to stakeholders"
+      ]
+    },
+    {
+      "unitName": "Operations Management",
+      "definition": "Operations Management focuses on optimizing the day-to-day functions of the business, ensuring efficiency and the smooth running of internal processes.",
+      "responsibilities": [
+        "Overseeing the organization’s operational processes",
+        "Improving efficiency, quality, and productivity",
+        "Managing supply chains and logistics",
+        "Developing and implementing operational policies",
+        "Ensuring compliance with safety and regulatory standards"
+      ]
+    },
+    {
+      "unitName": "Risk Management",
+      "definition": "The Risk Management unit identifies, assesses, and mitigates risks that could impact the organization’s operations, finances, or reputation.",
+      "responsibilities": [
+        "Identifying and assessing risks across the organization",
+        "Developing risk mitigation strategies and contingency plans",
+        "Monitoring compliance with risk management policies",
+        "Ensuring the organization has appropriate insurance coverage",
+        "Conducting regular risk audits and assessments"
+      ]
+    },
+    {
+      "unitName": "Compliance and Legal",
+      "definition": "The Compliance and Legal unit ensures that the organization adheres to laws, regulations, and internal policies, minimizing legal risks.",
+      "responsibilities": [
+        "Ensuring compliance with industry regulations and legal standards",
+        "Managing legal contracts, disputes, and litigation",
+        "Providing legal advice to management and employees",
+        "Overseeing corporate governance and ethics programs",
+        "Collaborating with external legal counsel when needed"
+      ]
+    },
+    {
+      "unitName": "Strategic Planning",
+      "definition": "The Strategic Planning unit is responsible for long-term business planning and aligning organizational goals with market opportunities.",
+      "responsibilities": [
+        "Developing and updating the organization's strategic plan",
+        "Identifying growth opportunities and market trends",
+        "Aligning business goals with operational capabilities",
+        "Collaborating with department heads to set long-term goals",
+        "Monitoring the implementation of strategic initiatives"
+      ]
+    },
+    {
+      "unitName": "Marketing Management",
+      "definition": "The Marketing Management unit oversees marketing strategy, brand development, and the promotion of products and services.",
+      "responsibilities": [
+        "Developing marketing strategies to promote products and services",
+        "Managing brand identity and corporate communications",
+        "Coordinating marketing campaigns and promotional activities",
+        "Conducting market research to understand customer needs",
+        "Monitoring marketing performance and ROI"
+      ]
+    },
+    {
+      "unitName": "Sales Management",
+      "definition": "Sales Management focuses on driving revenue growth by overseeing sales strategies, managing customer relationships, and achieving sales targets.",
+      "responsibilities": [
+        "Developing sales strategies and setting sales targets",
+        "Managing sales teams and ensuring collaboration",
+        "Building and maintaining relationships with key customers",
+        "Overseeing sales performance and reporting on KPIs",
+        "Collaborating with marketing and product teams to drive growth"
+      ]
+    }
+  ]
+}
+
+{
+  "softwareEcosystemUnits": [
+    {
+      "unitName": "Requirements Engineering",
+      "definition": "The Requirements Engineering unit is responsible for gathering, analyzing, documenting, and managing the functional and non-functional requirements of a software product.",
+      "responsibilities": [
+        "Eliciting and documenting software requirements from stakeholders",
+        "Analyzing and validating requirements for feasibility and alignment with business goals",
+        "Creating detailed requirement specifications and use cases",
+        "Managing and tracking requirements throughout the development lifecycle",
+        "Collaborating with development, design, and testing teams to ensure requirements are met"
+      ]
+    },
+    {
+      "unitName": "Product Ownership",
+      "definition": "The Product Owner is responsible for defining the product vision and strategy, prioritizing features, and working closely with development teams to ensure successful product delivery.",
+      "responsibilities": [
+        "Defining and communicating the product vision and roadmap",
+        "Prioritizing and managing the product backlog based on business value",
+        "Collaborating with stakeholders to gather product requirements",
+        "Ensuring the development team understands the product goals and requirements",
+        "Making decisions about scope, release timelines, and trade-offs"
+      ]
+    },
+    {
+      "unitName": "Scrum Master",
+      "definition": "The Scrum Master facilitates Agile processes, removes obstacles, and ensures that the development team follows Agile best practices for iterative and incremental delivery.",
+      "responsibilities": [
+        "Facilitating daily Scrum meetings, sprint planning, and retrospectives",
+        "Removing impediments that hinder team progress",
+        "Coaching the development team on Agile best practices and principles",
+        "Ensuring smooth communication between product owner and the development team",
+        "Monitoring team performance and ensuring continuous improvement"
+      ]
+    },
+    {
+      "unitName": "Software Architecture",
+      "definition": "The Software Architecture unit designs the high-level structure of software systems, ensuring scalability, reliability, and alignment with business goals and technical constraints.",
+      "responsibilities": [
+        "Defining the overall software architecture and design principles",
+        "Ensuring scalability, performance, and security in system design",
+        "Collaborating with developers to translate architecture into code",
+        "Evaluating and selecting appropriate technologies and frameworks",
+        "Reviewing and ensuring adherence to architectural standards during development"
+      ]
+    },
+    {
+      "unitName": "Quality Assurance (QA)",
+      "definition": "The QA unit ensures the quality of the software product by identifying defects, performing testing, and verifying that the product meets business and user requirements.",
+      "responsibilities": [
+        "Developing and executing test plans and test cases",
+        "Performing functional, regression, and performance testing",
+        "Identifying, reporting, and tracking bugs and defects",
+        "Collaborating with developers to ensure defect resolution",
+        "Ensuring product quality through automated and manual testing"
+      ]
+    },
+    {
+      "unitName": "User Experience (UX) Design",
+      "definition": "The UX Design unit focuses on creating intuitive, user-friendly interfaces and experiences, ensuring that the product meets the needs and expectations of users.",
+      "responsibilities": [
+        "Conducting user research and gathering user feedback",
+        "Designing wireframes, prototypes, and user interfaces",
+        "Collaborating with product and development teams to ensure alignment with user needs",
+        "Conducting usability testing to validate design choices",
+        "Refining and iterating on designs based on user feedback and data"
+      ]
+    },
+    {
+      "unitName": "Frontend Development",
+      "definition": "The Frontend Development unit is responsible for implementing the visual and interactive elements of a software product, focusing on user interface and client-side functionality.",
+      "responsibilities": [
+        "Developing user interfaces using HTML, CSS, JavaScript, and related frameworks",
+        "Ensuring responsive and mobile-friendly design",
+        "Optimizing front-end performance and ensuring cross-browser compatibility",
+        "Collaborating with backend developers to integrate APIs",
+        "Maintaining and improving existing front-end features"
+      ]
+    },
+    {
+      "unitName": "Backend Development",
+      "definition": "The Backend Development unit focuses on server-side development, managing databases, APIs, and core application logic to ensure smooth functionality of software products.",
+      "responsibilities": [
+        "Designing and developing server-side logic and APIs",
+        "Managing databases and ensuring data security and integrity",
+        "Integrating backend services with front-end systems",
+        "Optimizing application performance and scalability",
+        "Collaborating with DevOps to ensure smooth deployment and operation"
+      ]
+    },
+    {
+      "unitName": "DevOps",
+      "definition": "The DevOps unit automates and streamlines the development, deployment, and operation of software, ensuring continuous integration, delivery, and reliable infrastructure management.",
+      "responsibilities": [
+        "Building and maintaining CI/CD pipelines for automated deployment",
+        "Managing cloud infrastructure and automating infrastructure provisioning",
+        "Monitoring system performance and ensuring high availability",
+        "Collaborating with development and operations teams to improve workflows",
+        "Ensuring infrastructure is secure, scalable, and cost-effective"
+      ]
+    },
+    {
+      "unitName": "Technical Support / Customer Support",
+      "definition": "The Technical Support unit provides post-release support, troubleshooting software issues, and ensuring customers have a smooth experience using the product.",
+      "responsibilities": [
+        "Providing technical assistance and resolving customer queries",
+        "Troubleshooting software bugs and performance issues",
+        "Escalating issues to development teams when necessary",
+        "Creating documentation and FAQs for common support issues",
+        "Ensuring high levels of customer satisfaction and responsiveness"
+      ]
+    }
+  ]
+}
+

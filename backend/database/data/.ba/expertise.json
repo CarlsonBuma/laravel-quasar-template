@@ -1,0 +1,29 @@
+{
+  "expertiseLevels": [
+    {
+      "level": "Novice",
+      "description": "Basic understanding of concepts and skills. Requires close supervision and guidance. Often still in learning mode and developing foundational knowledge.",
+      "evaluation": 1
+    },
+    {
+      "level": "Intermediate",
+      "description": "Adequate understanding and capability to perform tasks with moderate supervision. Can handle routine issues and start addressing more complex problems.",
+      "evaluation": 2
+    },
+    {
+      "level": "Advanced",
+      "description": "Deep understanding and significant experience in the field. Capable of solving complex problems independently and providing guidance to others.",
+      "evaluation": 3
+    },
+    {
+      "level": "Expert",
+      "description": "Recognized authority with extensive knowledge and experience. Influences best practices, leads strategic initiatives, and provides high-level insights.",
+      "evaluation": 4
+    },
+    {
+      "level": "Thought Leader",
+      "description": "Pioneering expert with significant contributions to the field. Often involved in shaping industry standards, publishing research, and leading major innovations.",
+      "evaluation": 5
+    }
+  ]
+}

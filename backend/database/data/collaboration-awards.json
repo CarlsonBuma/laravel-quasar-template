@@ -1,0 +1,182 @@
+{
+  "collaborationAwards": [
+    {
+      "type": "Employment Verification",
+      "description": "Documents an individual's employment in a specific role within an organization, detailing job responsibilities, achievements, and tenure.",
+      "credits": 4,
+      "evaluation": 150,
+      "icon": "engineering",
+      "is_public": true
+    },
+    {
+      "type": "Academic Qualification",
+      "description": "Certifies the completion of formal education programs such as degrees, diplomas, or collaborations from recognized institutions. Highlights academic achievements and qualifications.",
+      "credits": 3,
+      "evaluation": 140,
+      "icon": "school",
+      "is_public": true
+    },
+    {
+      "type": "Outstanding Service Partnership",
+      "description": "Awarded to service recipients who have actively collaborated in the service delivery process, contributing to its success through meaningful engagement and partnership. This recognition highlights the vital role of the recipient in achieving exceptional service outcomes and fostering a productive service relationship.",
+      "credits": 4,
+      "evaluation": 150,
+      "icon": "diversity_3",
+      "is_public": true
+    },
+    {
+      "type": "Volunteer Service Recognition",
+      "description": "Acknowledges significant contributions through volunteer work, recognizing commitment to community service, non-profit organizations, or humanitarian efforts.",
+      "credits": 0,
+      "evaluation": 20,
+      "icon": "volunteer_activism",
+      "is_public": true
+    },
+    {
+      "type": "Project Collaboration",
+      "description": "Recognizes successful participation in a specific project or initiative, documenting individual and team contributions, achievements, and outcomes.",
+      "credits": 1,
+      "evaluation": 100,
+      "icon": "group_work",
+      "is_public": true
+    },
+    {
+      "type": "Training Completion",
+      "description": "Awarded upon successful completion of specific training programs or workshops. Recognizes the acquisition of new skills or knowledge relevant to job functions or personal development.",
+      "credits": 1,
+      "evaluation": 40,
+      "icon": "school",
+      "is_public": true
+    },
+    {
+      "type": "Professional Certification",
+      "description": "Formal acknowledgment that an individual has met the required standards or qualifications for a specific role, skill, or profession. Often involves passing exams or demonstrating proficiency.",
+      "credits": 3,
+      "evaluation": 120,
+      "icon": "verified",
+      "is_public": true
+    },
+    {
+      "type": "Skill Badge",
+      "description": "Awards given for demonstrating specific skills or competencies, typically assessed through practical evaluations or micro-credentials. Highlights expertise in particular tools, technologies, or methodologies.",
+      "credits": 1,
+      "evaluation": 50,
+      "icon": "flash_on",
+      "is_public": true
+    },
+    {
+      "type": "Achievement Award",
+      "description": "Recognizes significant accomplishments or exceptional contributions in a specific area, celebrating milestones, innovative solutions, or noteworthy achievements.",
+      "credits": 1,
+      "evaluation": 100,
+      "icon": "emoji_events",
+      "is_public": true
+    },
+    {
+      "type": "Membership Certificate",
+      "description": "Acknowledges membership in a professional organization, association, or group, highlighting affiliation and commitment to the organization’s standards and practices.",
+      "credits": 1,
+      "evaluation": 30,
+      "icon": "card_membership",
+      "is_public": true
+    },
+    {
+      "type": "Technical Proficiency Certification",
+      "description": "Certifies advanced technical skills or knowledge in specific technologies, tools, or platforms. Often awarded after passing technical assessments or demonstrating high-level expertise.",
+      "credits": 2,
+      "evaluation": 120,
+      "icon": "build",
+      "is_public": true
+    },
+    {
+      "type": "Employee of the Month",
+      "description": "Recognizes an employee who has shown exceptional performance, dedication, or contribution in a given month.",
+      "credits": 1,
+      "evaluation": 60,
+      "icon": "thumb_up",
+      "is_public": true
+    },
+    {
+      "type": "Innovation and Creativity Award",
+      "description": "Given to individuals who introduce innovative ideas, solutions, or processes that lead to significant improvements in their work environment or industry.",
+      "credits": 1,
+      "evaluation": 80,
+      "icon": "lightbulb",
+      "is_public": true
+    },
+    {
+      "type": "Top Performer Award",
+      "description": "Recognizes the highest-performing individuals based on key performance indicators (KPIs) and overall contributions to the organization’s success.",
+      "credits": 2,
+      "evaluation": 140,
+      "icon": "leaderboard",
+      "is_public": true
+    },
+    {
+      "type": "Lifetime Achievement Award",
+      "description": "Honors individuals for their long-term contributions and lasting impact in their field or organization, recognizing a career of excellence.",
+      "credits": 5,
+      "evaluation": 500,
+      "icon": "stars",
+      "is_public": true
+    },
+    {
+      "type": "Professional Development Certificate",
+      "description": "Issued for engagement in ongoing professional development activities such as workshops, seminars, or conferences. Emphasizes a commitment to continuous learning and career growth.",
+      "credits": 2,
+      "evaluation": 120,
+      "icon": "trending_up",
+      "is_public": true
+    },
+    {
+      "type": "Rising Star Award",
+      "description": "Awarded to emerging professionals who show great potential and have made significant contributions early in their careers.",
+      "credits": 2,
+      "evaluation": 100,
+      "icon": "star",
+      "is_public": true
+    },
+    {
+      "type": "Research Contribution Award",
+      "description": "Recognizes significant contributions to research or academic studies, acknowledging impactful research findings, publications, or advancements in a particular field.",
+      "credits": 1,
+      "evaluation": 120,
+      "icon": "science",
+      "is_public": true
+    },
+    {
+      "type": "Excellence in Leadership",
+      "description": "Given to individuals who demonstrate exceptional leadership qualities, guiding teams to success and driving organizational goals.",
+      "credits": 2,
+      "evaluation": 120,
+      "icon": "supervisor_account",
+      "is_public": true
+    },
+    {
+      "type": "Community Impact Award",
+      "description": "Recognizes efforts that have a positive impact on the community or society, often through volunteer work, social initiatives, or community service projects.",
+      "credits": 1,
+      "evaluation": 80,
+      "icon": "public",
+      "is_public": true
+    },
+    {
+      "type": "Book Consumer Award",
+      "description": "Awarded for gaining specialized knowledge from authoritative books. Recognizes self-initiated learning and expertise in specific fields acquired through reading and research.",
+      "credits": 1,
+      "evaluation": 50,
+      "icon": "menu_book",
+      "is_public": true
+    },
+    {
+      "type": "Review & Evaluation",
+      "description": "Awarded for providing insightful, constructive, and impactful collaboration or interactions with other collaborators, highlighting their contributions, professionalism, and cooperation.",
+      "credits": 0,
+      "evaluation": 60,
+      "icon": "reviews",
+      "is_public": true
+    }
+  ]
+}
+
+  

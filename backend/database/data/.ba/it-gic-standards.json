@@ -1,0 +1,387 @@
+{
+    "sectors": [
+      {
+        "sector_id": 1,
+        "sector_name": "Energy",
+        "description": "Companies involved in the production and distribution of energy products.",
+        "subindustries": [
+          {
+            "subindustry_id": 1,
+            "subindustry_name": "Oil & Gas Exploration & Production",
+            "description": "Companies engaged in the exploration and production of oil and gas."
+          },
+          {
+            "subindustry_id": 2,
+            "subindustry_name": "Oil & Gas Refining & Marketing",
+            "description": "Companies involved in refining and marketing oil and gas products."
+          },
+          {
+            "subindustry_id": 3,
+            "subindustry_name": "Oil & Gas Storage & Transportation",
+            "description": "Companies that store and transport oil and gas."
+          },
+          {
+            "subindustry_id": 4,
+            "subindustry_name": "Coal & Consumable Fuels",
+            "description": "Companies that mine coal and produce consumable fuels."
+          }
+        ]
+      },
+      {
+        "sector_id": 2,
+        "sector_name": "Materials",
+        "description": "Companies that manufacture chemicals, construction materials, glass, paper, forest products, and related packaging products.",
+        "subindustries": [
+          {
+            "subindustry_id": 5,
+            "subindustry_name": "Chemicals",
+            "description": "Companies that produce chemicals and related products."
+          },
+          {
+            "subindustry_id": 6,
+            "subindustry_name": "Construction Materials",
+            "description": "Companies that manufacture construction materials."
+          },
+          {
+            "subindustry_id": 7,
+            "subindustry_name": "Containers & Packaging",
+            "description": "Companies that produce containers and packaging products."
+          },
+          {
+            "subindustry_id": 8,
+            "subindustry_name": "Metals & Mining",
+            "description": "Companies that mine and process metals and minerals."
+          },
+          {
+            "subindustry_id": 9,
+            "subindustry_name": "Paper & Forest Products",
+            "description": "Companies that produce paper and forest products."
+          }
+        ]
+      },
+      {
+        "sector_id": 3,
+        "sector_name": "Industrials",
+        "description": "Companies that manufacture and distribute capital goods, including aerospace & defense, construction, engineering & building products, electrical equipment, and industrial machinery.",
+        "subindustries": [
+          {
+            "subindustry_id": 10,
+            "subindustry_name": "Aerospace & Defense",
+            "description": "Companies that produce aircraft and defense products."
+          },
+          {
+            "subindustry_id": 11,
+            "subindustry_name": "Building Products",
+            "description": "Companies that manufacture building products."
+          },
+          {
+            "subindustry_id": 12,
+            "subindustry_name": "Construction & Engineering",
+            "description": "Companies that provide construction and engineering services."
+          },
+          {
+            "subindustry_id": 13,
+            "subindustry_name": "Electrical Equipment",
+            "description": "Companies that produce electrical equipment."
+          },
+          {
+            "subindustry_id": 14,
+            "subindustry_name": "Industrial Conglomerates",
+            "description": "Diversified industrial companies with multiple lines of business."
+          },
+          {
+            "subindustry_id": 15,
+            "subindustry_name": "Machinery",
+            "description": "Companies that manufacture industrial machinery."
+          },
+          {
+            "subindustry_id": 16,
+            "subindustry_name": "Trading Companies & Distributors",
+            "description": "Companies that trade and distribute industrial products."
+          }
+        ]
+      },
+      {
+        "sector_id": 4,
+        "sector_name": "Consumer Discretionary",
+        "description": "Companies that manufacture products and provide services that consumers purchase on a discretionary basis.",
+        "subindustries": [
+          {
+            "subindustry_id": 17,
+            "subindustry_name": "Auto Components",
+            "description": "Companies that manufacture auto parts and components."
+          },
+          {
+            "subindustry_id": 18,
+            "subindustry_name": "Automobiles",
+            "description": "Companies that produce cars and other vehicles."
+          },
+          {
+            "subindustry_id": 19,
+            "subindustry_name": "Consumer Durables",
+            "description": "Companies that manufacture durable consumer goods."
+          },
+          {
+            "subindustry_id": 20,
+            "subindustry_name": "Consumer Services",
+            "description": "Companies that provide various consumer services."
+          },
+          {
+            "subindustry_id": 21,
+            "subindustry_name": "Hotels, Restaurants & Leisure",
+            "description": "Companies that operate hotels, restaurants, and leisure facilities."
+          },
+          {
+            "subindustry_id": 22,
+            "subindustry_name": "Household Durables",
+            "description": "Companies that produce durable household goods."
+          },
+          {
+            "subindustry_id": 23,
+            "subindustry_name": "Internet & Direct Marketing Retail",
+            "description": "Companies that sell products online and through direct marketing."
+          },
+          {
+            "subindustry_id": 24,
+            "subindustry_name": "Leisure Products",
+            "description": "Companies that manufacture leisure products."
+          },
+          {
+            "subindustry_id": 25,
+            "subindustry_name": "Media",
+            "description": "Companies that produce and distribute media content."
+          },
+          {
+            "subindustry_id": 26,
+            "subindustry_name": "Multiline Retail",
+            "description": "Companies that operate multiple retail stores."
+          },
+          {
+            "subindustry_id": 27,
+            "subindustry_name": "Specialty Retail",
+            "description": "Companies that operate specialty retail stores."
+          },
+          {
+            "subindustry_id": 28,
+            "subindustry_name": "Textiles, Apparel & Luxury Goods",
+            "description": "Companies that produce textiles, apparel, and luxury goods."
+          }
+        ]
+      },
+      {
+        "sector_id": 5,
+        "sector_name": "Consumer Staples",
+        "description": "Companies that manufacture products and provide services that consumers purchase on a regular basis.",
+        "subindustries": [
+          {
+            "subindustry_id": 29,
+            "subindustry_name": "Beverages",
+            "description": "Companies that produce beverages."
+          },
+          {
+            "subindustry_id": 30,
+            "subindustry_name": "Food & Staples Retailing",
+            "description": "Companies that sell food and staple products."
+          },
+          {
+            "subindustry_id": 31,
+            "subindustry_name": "Food Products",
+            "description": "Companies that produce food products."
+          },
+          {
+            "subindustry_id": 32,
+            "subindustry_name": "Household Products",
+            "description": "Companies that produce household products."
+          },
+          {
+            "subindustry_id": 33,
+            "subindustry_name": "Personal Products",
+            "description": "Companies that produce personal care products."
+          },
+          {
+            "subindustry_id": 34,
+            "subindustry_name": "Tobacco",
+            "description": "Companies that produce tobacco products."
+          }
+        ]
+      },
+      {
+        "sector_id": 6,
+        "sector_name": "Health Care",
+        "description": "Companies that manufacture health care equipment and supplies or provide health care-related services.",
+        "subindustries": [
+          {
+            "subindustry_id": 35,
+            "subindustry_name": "Health Care Equipment & Supplies",
+            "description": "Companies that produce health care equipment and supplies."
+          },
+          {
+            "subindustry_id": 36,
+            "subindustry_name": "Health Care Providers & Services",
+            "description": "Companies that provide health care services."
+          },
+          {
+            "subindustry_id": 37,
+            "subindustry_name": "Health Care Technology",
+            "description": "Companies that develop health care technology."
+          },
+          {
+            "subindustry_id": 38,
+            "subindustry_name": "Life Sciences Tools & Services",
+            "description": "Companies that provide tools and services for life sciences."
+          },
+          {
+            "subindustry_id": 39,
+            "subindustry_name": "Pharmaceuticals",
+            "description": "Companies that produce pharmaceutical products."
+          },
+          {
+            "subindustry_id": 40,
+            "subindustry_name": "Biotechnology",
+            "description": "Companies that develop biotechnology products."
+          }
+        ]
+      },
+      {
+        "sector_id": 7,
+        "sector_name": "Financials",
+        "description": "Companies involved in activities such as banking, mortgage finance, consumer finance, specialized finance, investment banking and brokerage, asset management, insurance, and financial investments.",
+        "subindustries": [
+          {
+            "subindustry_id": 41,
+            "subindustry_name": "Banks",
+            "description": "Companies that provide banking services."
+          },
+          {
+            "subindustry_id": 42,
+            "subindustry_name": "Capital Markets",
+            "description": "Companies that provide capital market services."
+          },
+          {
+            "subindustry_id": 43,
+            "subindustry_name": "Consumer Finance",
+            "description": "Companies that provide consumer financial services."
+          },
+          {
+            "subindustry_id": 44,
+            "subindustry_name": "Diversified Financial Services",
+            "description": "Companies that provide diversified financial services."
+          },
+          {
+            "subindustry_id": 45,
+            "subindustry_name": "Insurance",
+            "description": "Companies that provide insurance services."
+          },
+          {
+            "subindustry_id": 46,
+            "subindustry_name": "Mortgage Real Estate Investment Trusts (REITs)",
+            "description": "Companies that invest in mortgages and related securities."
+          }
+        ]
+      },
+      {
+        "sector_id": 8,
+        "sector_name": "Information Technology",
+        "description": "Companies that offer software, IT services, hardware, and electronic equipment.",
+        "subindustries": [
+          {
+            "subindustry_id": 47,
+            "subindustry_name": "IT Services",
+            "description": "Companies that provide IT services."
+          },
+          {
+            "subindustry_id": 48,
+            "subindustry_name": "Software",
+            "description": "Companies that develop software."
+          },
+          {
+            "subindustry_id": 49,
+            "subindustry_name": "Communications Equipment",
+            "description": "Companies that produce communications equipment."
+          },
+          {
+            "subindustry_id": 50,
+            "subindustry_name": "Technology Hardware, Storage & Peripherals",
+            "description": "Companies that produce technology hardware, storage, and peripherals."
+          },
+          {
+            "subindustry_id": 51,
+            "subindustry_name": "Electronic Equipment, Instruments & Components",
+            "description": "Companies that produce electronic equipment, instruments, and components."
+          },
+          {
+            "subindustry_id": 52,
+            "subindustry_name": "Semiconductors & Semiconductor Equipment",
+            "description": "Companies that produce semiconductors and related equipment."
+          }
+        ]
+      },
+      {
+        "sector_id": 9,
+        "sector_name": "Telecommunication Services",
+        "description": "Companies that provide communications services primarily through fixed-line, cellular, wireless, high bandwidth, and/or fiber optic cable networks.",
+        "subindustries": [
+          {
+            "subindustry_id": 53,
+            "subindustry_name": "Diversified Telecommunication Services",
+            "description": "Companies that provide diversified telecommunication services."
+          },
+          {
+            "subindustry_id": 54,
+            "subindustry_name": "Wireless Telecommunication Services",
+            "description": "Companies that provide wireless telecommunication services."
+          }
+        ]
+      },
+      {
+        "sector_id": 10,
+        "sector_name": "Utilities",
+        "description": "Companies that provide utility services such as electric, gas, and water utilities.",
+        "subindustries": [
+          {
+            "subindustry_id": 55,
+            "subindustry_name": "Electric Utilities",
+            "description": "Companies that provide electric utility services."
+          },
+          {
+            "subindustry_id": 56,
+            "subindustry_name": "Gas Utilities",
+            "description": "Companies that provide gas utility services."
+          },
+          {
+            "subindustry_id": 57,
+            "subindustry_name": "Multi-Utilities",
+            "description": "Companies that provide multiple utility services."
+          },
+          {
+            "subindustry_id": 58,
+            "subindustry_name": "Water Utilities",
+            "description": "Companies that provide water utility services."
+          },
+          {
+            "subindustry_id": 59,
+            "subindustry_name": "Independent Power and Renewable Electricity Producers",
+            "description": "Companies that produce independent and renewable electricity."
+          }
+        ]
+      },
+      {
+        "sector_id": 11,
+        "sector_name": "Real Estate",
+        "description": "Companies that are involved in real estate management and development, and Real Estate Investment Trusts (REITs).",
+        "subindustries": [
+          {
+            "subindustry_id": 60,
+            "subindustry_name": "Equity Real Estate Investment Trusts (REITs)",
+            "description": "Companies that invest in and manage real estate properties."
+          },
+          {
+            "subindustry_id": 61,
+            "subindustry_name": "Real Estate Management & Development",
+            "description": "Companies that manage and develop real estate properties."
+          }
+        ]
+      }
+    ]
+  }
+  

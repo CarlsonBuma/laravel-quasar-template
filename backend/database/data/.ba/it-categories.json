@@ -1,0 +1,741 @@
+{
+    "IT_Categories": [
+      {
+        "Category": "Software Development",
+        "Area": "IT",
+        "Skills": [
+          "Programming Languages",
+          "Version Control",
+          "Testing and Debugging",
+          "Database Management"
+        ],
+        "Certifications": [
+          "Microsoft Certified: Azure Developer Associate",
+          "Oracle Certified Professional: Java SE Programmer",
+          "Certified Secure Software Lifecycle Professional (CSSLP)"
+        ]
+      },
+      {
+        "Category": "Networking",
+        "Area": "IT",
+        "Skills": [
+          "Network Design",
+          "Network Security",
+          "Wireless Networking",
+          "Network Troubleshooting"
+        ],
+        "Certifications": [
+          "Cisco Certified Network Associate (CCNA)",
+          "CompTIA Network+",
+          "Certified Information Systems Security Professional (CISSP)"
+        ]
+      },
+      {
+        "Category": "Cybersecurity",
+        "Area": "IT",
+        "Skills": [
+          "Risk Assessment",
+          "Security Protocols",
+          "Penetration Testing",
+          "Incident Response"
+        ],
+        "Certifications": [
+          "Certified Information Systems Security Professional (CISSP)",
+          "Certified Ethical Hacker (CEH)",
+          "CompTIA Security+"
+        ]
+      },
+      {
+        "Category": "Cloud Computing",
+        "Area": "IT",
+        "Skills": [
+          "Cloud Architecture",
+          "Cloud Security",
+          "Virtualization",
+          "Cloud Services Management"
+        ],
+        "Certifications": [
+          "Amazon Web Services (AWS) Certified Solutions Architect",
+          "Microsoft Certified: Azure Solutions Architect Expert",
+          "Google Cloud Professional Cloud Architect"
+        ]
+      },
+      {
+        "Category": "Data Science",
+        "Area": "IT",
+        "Skills": [
+          "Data Analysis",
+          "Machine Learning",
+          "Data Visualization",
+          "Big Data Technologies"
+        ],
+        "Certifications": [
+          "Certified Analytics Professional (CAP)",
+          "Microsoft Certified: Azure Data Scientist Associate",
+          "Google Professional Data Engineer"
+        ]
+      },
+      {
+        "Category": "DevOps",
+        "Area": "IT",
+        "Skills": [
+          "Continuous Integration",
+          "Continuous Deployment",
+          "Infrastructure as Code",
+          "Monitoring and Logging"
+        ],
+        "Certifications": [
+          "AWS Certified DevOps Engineer",
+          "Microsoft Certified: DevOps Engineer Expert",
+          "Docker Certified Associate (DCA)"
+        ]
+      },
+      {
+        "Category": "IT Support",
+        "Area": "IT",
+        "Skills": [
+          "Troubleshooting",
+          "Customer Service",
+          "Hardware Maintenance",
+          "Software Support"
+        ],
+        "Certifications": [
+          "CompTIA A+",
+          "HDI Support Center Analyst",
+          "Microsoft Certified: Modern Desktop Administrator Associate"
+        ]
+      },
+      {
+        "Category": "Project Management",
+        "Area": "IT",
+        "Skills": [
+          "Agile Methodologies",
+          "Risk Management",
+          "Project Planning",
+          "Stakeholder Communication"
+        ],
+        "Certifications": [
+          "Project Management Professional (PMP)",
+          "Certified ScrumMaster (CSM)",
+          "PRINCE2 Practitioner"
+        ]
+      },
+      {
+        "Category": "Database Administration",
+        "Area": "IT",
+        "Skills": [
+          "Database Design",
+          "SQL",
+          "Performance Tuning",
+          "Backup and Recovery"
+        ],
+        "Certifications": [
+          "Oracle Certified Professional (OCP)",
+          "Microsoft Certified: Azure Database Administrator Associate",
+          "IBM Certified Database Administrator"
+        ]
+      },
+      {
+        "Category": "Web Development",
+        "Area": "IT",
+        "Skills": [
+          "HTML/CSS",
+          "JavaScript",
+          "Web Frameworks",
+          "Responsive Design"
+        ],
+        "Certifications": [
+          "Certified Web Developer (CIW)",
+          "Google Mobile Web Specialist",
+          "Microsoft Certified: Azure Developer Associate"
+        ]
+      },
+      {
+        "Category": "Mobile Development",
+        "Area": "IT",
+        "Skills": [
+          "iOS Development",
+          "Android Development",
+          "Cross-Platform Development",
+          "Mobile UI/UX"
+        ],
+        "Certifications": [
+          "Android Certified Application Developer",
+          "Apple Certified iOS Developer",
+          "Google Associate Android Developer"
+        ]
+      },
+      {
+        "Category": "Artificial Intelligence",
+        "Area": "IT",
+        "Skills": [
+          "Machine Learning",
+          "Natural Language Processing",
+          "Neural Networks",
+          "Computer Vision"
+        ],
+        "Certifications": [
+          "Microsoft Certified: Azure AI Engineer Associate",
+          "IBM AI Engineering Professional Certificate",
+          "Certified Artificial Intelligence Practitioner (CAIP)"
+        ]
+      },
+      {
+        "Category": "Game Development",
+        "Area": "IT",
+        "Skills": [
+          "Game Design",
+          "Game Programming",
+          "3D Modeling",
+          "Animation"
+        ],
+        "Certifications": [
+          "Unity Certified Developer",
+          "Unreal Engine Developer",
+          "Certified Game Developer (CGD)"
+        ]
+      },
+      {
+        "Category": "IT Consulting",
+        "Area": "IT",
+        "Skills": [
+          "Business Analysis",
+          "IT Strategy",
+          "System Integration",
+          "Technology Advisory"
+        ],
+        "Certifications": [
+          "Certified Information Systems Auditor (CISA)",
+          "Certified Management Consultant (CMC)",
+          "ITIL Foundation"
+        ]
+      },
+      {
+        "Category": "IT Governance",
+        "Area": "IT",
+        "Skills": [
+          "Compliance",
+          "Risk Management",
+          "Audit Management",
+          "Policy Development"
+        ],
+        "Certifications": [
+          "Certified in Governance of Enterprise IT (CGEIT)",
+          "Certified Information Systems Auditor (CISA)",
+          "ITIL Foundation"
+        ]
+      },
+      {
+        "Category": "Digital Marketing",
+        "Area": "IT",
+        "Skills": [
+          "SEO",
+          "Content Marketing",
+          "Social Media Management",
+          "Email Marketing"
+        ],
+        "Certifications": [
+          "Google Analytics Individual Qualification",
+          "HubSpot Content Marketing Certification",
+          "Hootsuite Social Marketing Certification"
+        ]
+      },
+      {
+        "Category": "E-commerce",
+        "Area": "IT",
+        "Skills": [
+          "Online Store Management",
+          "Payment Gateway Integration",
+          "User Experience Design",
+          "Digital Marketing"
+        ],
+        "Certifications": [
+          "Certified E-Commerce Manager (CEM)",
+          "Digital Marketing Institute Certified Digital Marketing Professional (CDMP)",
+          "Shopify Expert Certification"
+        ]
+      },
+      {
+        "Category": "Robotics",
+        "Area": "IT",
+        "Skills": [
+          "Robot Programming",
+          "Automation",
+          "Sensors and Actuators",
+          "Robotic Process Automation"
+        ],
+        "Certifications": [
+          "Robotic Process Automation (RPA) Certification",
+          "Certified Robotics Technician",
+          "FANUC Certified Robot Operator"
+        ]
+      },
+      {
+        "Category": "System Administration",
+        "Area": "IT",
+        "Skills": [
+          "Server Management",
+          "Shell Scripting",
+          "Backup and Recovery",
+          "System Monitoring"
+        ],
+        "Certifications": [
+          "Red Hat Certified System Administrator (RHCSA)",
+          "Microsoft Certified: Windows Server Administrator",
+          "CompTIA Linux+"
+        ]
+      },
+      {
+        "Category": "Technical Writing",
+        "Area": "IT",
+        "Skills": [
+          "Documentation",
+          "API Writing",
+          "User Guides",
+          "Technical Manuals"
+        ],
+        "Certifications": [
+          "Certified Professional Technical Communicator (CPTC)",
+          "Microsoft Certified: Dynamics 365 Fundamentals",
+          "Certified Technical Writer (CTW)"
+        ]
+      },
+      {
+        "Category": "UX/UI Design",
+        "Area": "IT",
+        "Skills": [
+          "User Research",
+          "Wireframing",
+          "Prototyping",
+          "Interaction Design"
+        ],
+        "Certifications": [
+          "Certified User Experience Professional (CUXP)",
+          "Nielsen Norman Group UX Certification",
+          "Human Factors International Certified Usability Analyst (CUA)"
+        ]
+      },
+      {
+        "Category": "Virtual Reality",
+        "Area": "IT",
+        "Skills": [
+          "VR Development",
+          "3D Modeling",
+          "Interactive Design",
+          "Game Engines"
+        ],
+        "Certifications": [
+          "Unity Certified Developer",
+          "Certified VR Developer",
+          "Virtual Reality Development and Design Certificate"
+        ]
+      },
+      {
+        "Category": "Augmented Reality",
+        "Area": "IT",
+        "Skills": [
+          "AR Development",
+          "3D Modeling",
+          "Interactive Design",
+          "Marker-Based AR"
+        ],
+        "Certifications": [
+          "Certified AR Developer",
+          "Unity Certified Developer",
+          "Augmented Reality Development Certificate"
+        ]
+      },
+      {
+        "Category": "IoT (Internet of Things)",
+        "Area": "IT",
+        "Skills": [
+          "Sensor Networks",
+          "Embedded Systems",
+          "IoT Security",
+          "Data Analytics"
+        ],
+        "Certifications": [
+          "Certified Internet of Things Professional (CIoTP)",
+          "Microsoft Certified: Azure IoT Developer Specialty",
+          "AWS Certified IoT Core"
+        ]
+      },
+      {
+        "Category": "Enterprise Architecture",
+        "Area": "IT",
+        "Skills": [
+          "Business Process Modeling",
+          "TOGAF",
+          "Solution Architecture",
+          "Integration Architecture"
+        ],
+        "Certifications": [
+          "TOGAF 9 Certified",
+          "Certified Information Systems Auditor (CISA)",
+          "Certified Business Architect (CBA)"
+        ]
+      },
+      {
+        "Category": "Scrum Master",
+        "Area": "IT",
+        "Skills": [
+          "Agile Methodologies",
+          "Scrum Framework",
+          "Team Facilitation",
+          "Sprint Planning"
+        ],
+        "Certifications": [
+          "Certified ScrumMaster (CSM)",
+          "Professional Scrum Master (PSM)",
+          "Certified Scrum Product Owner (CSPO)"
+        ]
+      },
+      {
+        "Category": "Requirements Engineering",
+        "Area": "IT",
+        "Skills": [
+          "Requirements Elicitation",
+          "Requirements Analysis",
+          "Requirements Documentation",
+          "Stakeholder Management"
+        ],
+        "Certifications": [
+          "Certified Professional for Requirements Engineering (CPRE)",
+          "IREB Certified Professional for Requirements Engineering (CPRE)",
+          "Business Analysis Certification (IIBA)"
+        ]
+      },
+      {
+        "Category": "ITIL",
+        "Area": "IT",
+        "Skills": [
+          "Service Management",
+          "IT Service Delivery",
+          "Service Lifecycle Management",
+          "Incident Management"
+        ],
+        "Certifications": [
+          "ITIL Foundation",
+          "ITIL Intermediate",
+          "ITIL Expert"
+        ]
+      },
+      {
+        "Category": "Business Analysis",
+        "Area": "IT",
+        "Skills": [
+          "Requirements Gathering",
+          "Process Mapping",
+          "Stakeholder Management",
+          "Business Process Improvement"
+        ],
+        "Certifications": [
+          "Certified Business Analysis Professional (CBAP)",
+          "PMI Professional in Business Analysis (PMI-PBA)",
+          "Entry Certificate in Business Analysis (ECBA)"
+        ]
+      }, 
+      {
+        "Category": "Blockchain Development",
+        "Area": "IT",
+        "Skills": [
+          "Smart Contracts",
+          "Cryptography",
+          "Decentralized Applications (DApps)",
+          "Blockchain Architecture"
+        ],
+        "Certifications": [
+          "Certified Blockchain Developer",
+          "Certified Blockchain Professional",
+          "Ethereum Developer Certification"
+        ]
+      },
+      {
+        "Category": "Machine Learning",
+        "Area": "IT",
+        "Skills": [
+          "Algorithm Design",
+          "Data Preprocessing",
+          "Model Training",
+          "Model Evaluation"
+        ],
+        "Certifications": [
+          "AWS Certified Machine Learning",
+          "Google Professional Machine Learning Engineer",
+          "Microsoft Certified: Azure AI Engineer Associate"
+        ]
+      },
+      {
+        "Category": "Big Data",
+        "Area": "IT",
+        "Skills": [
+          "Hadoop",
+          "Spark",
+          "Data Mining",
+          "Data Warehousing"
+        ],
+        "Certifications": [
+          "Cloudera Certified Professional (CCP) Data Engineer",
+          "Hortonworks Data Platform Certified",
+          "Google Certified Professional Data Engineer"
+        ]
+      },
+      {
+        "Category": "Computer Forensics",
+        "Area": "IT",
+        "Skills": [
+          "Digital Evidence",
+          "Incident Response",
+          "Forensic Analysis",
+          "Malware Analysis"
+        ],
+        "Certifications": [
+          "Certified Computer Forensics Examiner (CCFE)",
+          "GIAC Certified Forensic Examiner (GCFE)",
+          "Certified Cyber Forensics Professional (CCFP)"
+        ]
+      },
+      {
+        "Category": "IT Sales",
+        "Area": "IT",
+        "Skills": [
+          "Technical Sales",
+          "Solution Selling",
+          "Sales Engineering",
+          "Account Management"
+        ],
+        "Certifications": [
+          "Certified Sales Professional (CSP)",
+          "Certified Technical Sales Professional (CTSP)",
+          "Salesforce Certified Sales Cloud Consultant"
+        ]
+      },
+      {
+        "Category": "IT Operations",
+        "Area": "IT",
+        "Skills": [
+          "Operations Management",
+          "Service Delivery",
+          "Process Improvement",
+          "Incident Management"
+        ],
+        "Certifications": [
+          "Certified in IT Operations (CITO)",
+          "ITIL Foundation",
+          "Certified Information Systems Manager (CISM)"
+        ]
+      },
+      {
+        "Category": "Quantum Computing",
+        "Area": "IT",
+        "Skills": [
+          "Quantum Algorithms",
+          "Quantum Programming",
+          "Quantum Cryptography",
+          "Quantum Machine Learning"
+        ],
+        "Certifications": [
+          "IBM Quantum Developer Certification",
+          "Quantum Computing Professional Certification",
+          "Microsoft Quantum Development Kit Certification"
+        ]
+      },
+      {
+        "Category": "IT Auditing",
+        "Area": "IT",
+        "Skills": [
+          "Audit Planning",
+          "Risk Assessment",
+          "Compliance Testing",
+          "Internal Controls"
+        ],
+        "Certifications": [
+          "Certified Information Systems Auditor (CISA)",
+          "Certified Internal Auditor (CIA)",
+          "Certified Information Security Manager (CISM)"
+        ]
+      },
+      {
+        "Category": "AI and Machine Learning Operations (MLOps)",
+        "Area": "IT",
+        "Skills": [
+          "Model Deployment",
+          "Continuous Integration",
+          "Model Monitoring",
+          "Data Pipelines"
+        ],
+        "Certifications": [
+          "Google Cloud Professional Machine Learning Engineer",
+          "AWS Certified Machine Learning – Specialty",
+          "Microsoft Certified: Azure AI Engineer Associate"
+        ]
+      },
+      {
+        "Category": "Software Testing and QA",
+        "Area": "IT",
+        "Skills": [
+          "Test Automation",
+          "Manual Testing",
+          "Performance Testing",
+          "Bug Tracking"
+        ],
+        "Certifications": [
+          "ISTQB Certified Tester",
+          "Certified Software Quality Analyst (CSQA)",
+          "Certified Software Tester (CSTE)"
+        ]
+      },
+      {
+        "Category": "Embedded Systems",
+        "Area": "IT",
+        "Skills": [
+          "Microcontroller Programming",
+          "Real-Time Operating Systems (RTOS)",
+          "Embedded C/C++",
+          "Hardware Interface"
+        ],
+        "Certifications": [
+          "Certified Embedded Systems Engineer",
+          "ARM Accredited Engineer (AAE)",
+          "Certified LabVIEW Embedded Systems Developer (CLED)"
+        ]
+      },
+      {
+        "Category": "IT Asset Management",
+        "Area": "IT",
+        "Skills": [
+          "Asset Lifecycle Management",
+          "Inventory Control",
+          "Compliance Management",
+          "Cost Optimization"
+        ],
+        "Certifications": [
+          "Certified IT Asset Manager (CITAM)",
+          "Certified Hardware Asset Management Professional (CHAMP)",
+          "ITIL Foundation"
+        ]
+      },
+      {
+        "Category": "IT Service Management",
+        "Area": "IT",
+        "Skills": [
+          "Service Design",
+          "Service Transition",
+          "Service Operation",
+          "Continual Service Improvement"
+        ],
+        "Certifications": [
+          "ITIL Foundation",
+          "Certified in the Governance of Enterprise IT (CGEIT)",
+          "ISO/IEC 20000 Certification"
+        ]
+      },
+      {
+        "Category": "Artificial Neural Networks",
+        "Area": "IT",
+        "Skills": [
+          "Deep Learning",
+          "Backpropagation",
+          "Convolutional Neural Networks",
+          "Recurrent Neural Networks"
+        ],
+        "Certifications": [
+          "Deep Learning Specialization (Coursera)",
+          "Certified Artificial Intelligence Practitioner (CAIP)",
+          "Microsoft Certified: Azure AI Engineer Associate"
+        ]
+      },
+      {
+        "Category": "IT Risk Management",
+        "Area": "IT",
+        "Skills": [
+          "Risk Assessment",
+          "Risk Mitigation",
+          "Compliance",
+          "Business Continuity Planning"
+        ],
+        "Certifications": [
+          "Certified in Risk and Information Systems Control (CRISC)",
+          "Certified Information Systems Auditor (CISA)",
+          "Certified Information Security Manager (CISM)"
+        ]
+      },
+      {
+        "Category": "IT Compliance",
+        "Area": "IT",
+        "Skills": [
+          "Regulatory Knowledge",
+          "Policy Development",
+          "Compliance Auditing",
+          "Risk Management"
+        ],
+        "Certifications": [
+          "Certified in the Governance of Enterprise IT (CGEIT)",
+          "Certified Information Systems Auditor (CISA)",
+          "Certified Information Security Manager (CISM)"
+        ]
+      },
+      {
+        "Category": "IT Procurement",
+        "Area": "IT",
+        "Skills": [
+          "Vendor Management",
+          "Contract Negotiation",
+          "Strategic Sourcing",
+          "Cost Management"
+        ],
+        "Certifications": [
+          "Certified Purchasing Professional (CPP)",
+          "Certified Professional in Supply Management (CPSM)",
+          "Certified Technology Procurement Manager (CTPM)"
+        ]
+      },
+      {
+        "Category": "IT Infrastructure Management",
+        "Area": "IT",
+        "Skills": [
+          "Infrastructure Planning",
+          "Capacity Management",
+          "Systems Integration",
+          "Performance Monitoring"
+        ],
+        "Certifications": [
+          "Certified Information Systems Manager (CISM)",
+          "ITIL Foundation",
+          "Certified in the Governance of Enterprise IT (CGEIT)"
+        ]
+      },
+      {
+        "Category": "IT Financial Management",
+        "Area": "IT",
+        "Skills": [
+          "Budgeting",
+          "Cost Allocation",
+          "Financial Reporting",
+          "Investment Appraisal"
+        ],
+        "Certifications": [
+          "Certified Information Technology Financial Management (CITFM)",
+          "Certified in the Governance of Enterprise IT (CGEIT)",
+          "Certified Information Systems Auditor (CISA)"
+        ]
+      },
+      {
+        "Category": "Enterprise Resource Planning (ERP)",
+        "Area": "IT",
+        "Skills": [
+          "ERP Implementation",
+          "Process Integration",
+          "System Customization",
+          "User Training"
+        ],
+        "Certifications": [
+          "SAP Certified Application Associate",
+          "Oracle Certified Professional: Oracle E-Business Suite",
+          "Microsoft Certified: Dynamics 365 Fundamentals"
+        ]
+      }
+    ]
+  }
+  
+  

@@ -1,0 +1,2088 @@
+{
+  "skills": [
+    {
+      "skill_id": 1,
+      "skill_name": "Python",
+      "category": "Programming Languages",
+      "description": "Python is a high-level programming language known for its readability and versatility.",
+      "related_skills": [2, 3, 4],
+      "required_skills": [],
+      "suggested_skills": [5, 6]
+    },
+    {
+      "skill_id": 2,
+      "skill_name": "Java",
+      "category": "Programming Languages",
+      "description": "Java is a class-based, object-oriented programming language designed to have as few implementation dependencies as possible.",
+      "related_skills": [1, 7, 8],
+      "required_skills": [],
+      "suggested_skills": [9, 10]
+    },
+    {
+      "skill_id": 3,
+      "skill_name": "Django",
+      "category": "Web Frameworks",
+      "description": "Django is a high-level Python Web framework that encourages rapid development and clean, pragmatic design.",
+      "related_skills": [1, 11, 12],
+      "required_skills": [1],
+      "suggested_skills": [13, 14]
+    },
+    {
+      "skill_id": 4,
+      "skill_name": "Flask",
+      "category": "Web Frameworks",
+      "description": "Flask is a micro web framework written in Python.",
+      "related_skills": [1, 11, 15],
+      "required_skills": [1],
+      "suggested_skills": [16, 17]
+    },
+    {
+      "skill_id": 5,
+      "skill_name": "SQL",
+      "category": "Databases",
+      "description": "SQL is a standard language for managing and manipulating databases.",
+      "related_skills": [18, 19, 20],
+      "required_skills": [],
+      "suggested_skills": [21, 22]
+    },
+    {
+      "skill_id": 6,
+      "skill_name": "JavaScript",
+      "category": "Programming Languages",
+      "description": "JavaScript is a high-level, dynamic programming language commonly used in web development.",
+      "related_skills": [23, 24, 25],
+      "required_skills": [],
+      "suggested_skills": [26, 27]
+    },
+    {
+      "skill_id": 7,
+      "skill_name": "Spring",
+      "category": "Web Frameworks",
+      "description": "Spring is a comprehensive framework for enterprise Java development.",
+      "related_skills": [2, 28, 29],
+      "required_skills": [2],
+      "suggested_skills": [30, 31]
+    },
+    {
+      "skill_id": 8,
+      "skill_name": "Hibernate",
+      "category": "ORM Frameworks",
+      "description": "Hibernate is an object-relational mapping tool for the Java programming language.",
+      "related_skills": [2, 7, 32],
+      "required_skills": [2],
+      "suggested_skills": [33, 34]
+    },
+    {
+      "skill_id": 9,
+      "skill_name": "C#",
+      "category": "Programming Languages",
+      "description": "C# is a modern, object-oriented programming language developed by Microsoft.",
+      "related_skills": [35, 36, 37],
+      "required_skills": [],
+      "suggested_skills": [38, 39]
+    },
+    {
+      "skill_id": 10,
+      "skill_name": ".NET",
+      "category": "Frameworks",
+      "description": ".NET is a free, cross-platform, open-source developer platform for building many different types of applications.",
+      "related_skills": [9, 40, 41],
+      "required_skills": [9],
+      "suggested_skills": [42, 43]
+    },
+    {
+      "skill_id": 11,
+      "skill_name": "HTML",
+      "category": "Markup Languages",
+      "description": "HTML is the standard markup language for creating web pages and web applications.",
+      "related_skills": [6, 12, 44],
+      "required_skills": [],
+      "suggested_skills": [45, 46]
+    },
+    {
+      "skill_id": 12,
+      "skill_name": "CSS",
+      "category": "Stylesheet Languages",
+      "description": "CSS is a stylesheet language used for describing the presentation of a document written in HTML or XML.",
+      "related_skills": [6, 11, 47],
+      "required_skills": [],
+      "suggested_skills": [48, 49]
+    },
+    {
+      "skill_id": 13,
+      "skill_name": "React",
+      "category": "JavaScript Frameworks",
+      "description": "React is a JavaScript library for building user interfaces.",
+      "related_skills": [6, 24, 25],
+      "required_skills": [6],
+      "suggested_skills": [50, 51]
+    },
+    {
+      "skill_id": 14,
+      "skill_name": "Angular",
+      "category": "JavaScript Frameworks",
+      "description": "Angular is a platform for building mobile and desktop web applications.",
+      "related_skills": [6, 24, 26],
+      "required_skills": [6],
+      "suggested_skills": [52, 53]
+    },
+    {
+      "skill_id": 15,
+      "skill_name": "Node.js",
+      "category": "JavaScript Frameworks",
+      "description": "Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine.",
+      "related_skills": [6, 26, 27],
+      "required_skills": [6],
+      "suggested_skills": [54, 55]
+    },
+    {
+      "skill_id": 16,
+      "skill_name": "AWS",
+      "category": "Cloud Platforms",
+      "description": "Amazon Web Services (AWS) is a comprehensive, evolving cloud computing platform provided by Amazon.",
+      "related_skills": [56, 57, 58],
+      "required_skills": [],
+      "suggested_skills": [59, 60]
+    },
+    {
+      "skill_id": 17,
+      "skill_name": "Azure",
+      "category": "Cloud Platforms",
+      "description": "Microsoft Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services.",
+      "related_skills": [16, 61, 62],
+      "required_skills": [],
+      "suggested_skills": [63, 64]
+    },
+    {
+      "skill_id": 18,
+      "skill_name": "MySQL",
+      "category": "Databases",
+      "description": "MySQL is an open-source relational database management system.",
+      "related_skills": [5, 19, 20],
+      "required_skills": [5],
+      "suggested_skills": [65, 66]
+    },
+    {
+      "skill_id": 19,
+      "skill_name": "PostgreSQL",
+      "category": "Databases",
+      "description": "PostgreSQL is a powerful, open-source object-relational database system.",
+      "related_skills": [5, 18, 67],
+      "required_skills": [5],
+      "suggested_skills": [68, 69]
+    },
+    {
+      "skill_id": 20,
+      "skill_name": "MongoDB",
+      "category": "Databases",
+      "description": "MongoDB is a source-available cross-platform document-oriented database program.",
+      "related_skills": [5, 70, 71],
+      "required_skills": [],
+      "suggested_skills": [72, 73]
+    },
+    {
+      "skill_id": 21,
+      "skill_name": "Redis",
+      "category": "Databases",
+      "description": "Redis is an in-memory data structure store, used as a distributed, in-memory key–value database, cache, and message broker.",
+      "related_skills": [5, 74, 75],
+      "required_skills": [],
+      "suggested_skills": [76, 77]
+    },
+    {
+      "skill_id": 22,
+      "skill_name": "GraphQL",
+      "category": "API",
+      "description": "GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.",
+      "related_skills": [78, 79, 80],
+      "required_skills": [],
+      "suggested_skills": [81, 82]
+    },
+    {
+      "skill_id": 23,
+      "skill_name": "TypeScript",
+      "category": "Programming Languages",
+      "description": "TypeScript is a strict syntactical superset of JavaScript and adds optional static typing to the language.",
+      "related_skills": [6, 83, 84],
+      "required_skills": [6],
+      "suggested_skills": [85, 86]
+    },
+    {
+      "skill_id": 24,
+      "skill_name": "Vue.js",
+      "category": "JavaScript Frameworks",
+      "description": "Vue.js is an open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications.",
+      "related_skills": [6, 13, 25],
+      "required_skills": [6],
+      "suggested_skills": [87, 88]
+    },
+    {
+      "skill_id": 25,
+      "skill_name": "Svelte",
+      "category": "JavaScript Frameworks",
+      "description": "Svelte is a new way to build web applications. It's a framework that compiles your code to efficient JavaScript that directly manipulates the DOM.",
+      "related_skills": [6, 13, 24],
+      "required_skills": [6],
+      "suggested_skills": [89, 90]
+    },
+    {
+      "skill_id": 26,
+      "skill_name": "Express.js",
+      "category": "JavaScript Frameworks",
+      "description": "Express.js is a web application framework for Node.js, designed for building web applications and APIs.",
+      "related_skills": [6, 15, 27],
+      "required_skills": [6],
+      "suggested_skills": [91, 92]
+    },
+    {
+      "skill_id": 27,
+      "skill_name": "Kubernetes",
+      "category": "DevOps",
+      "description": "Kubernetes is an open-source container-orchestration system for automating computer application deployment, scaling, and management.",
+      "related_skills": [6, 93, 94],
+      "required_skills": [],
+      "suggested_skills": [95, 96]
+    },
+    {
+      "skill_id": 28,
+      "skill_name": "Docker",
+      "category": "DevOps",
+      "description": "Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers.",
+      "related_skills": [7, 93, 97],
+      "required_skills": [],
+      "suggested_skills": [98, 99]
+    },
+    {
+      "skill_id": 29,
+      "skill_name": "Terraform",
+      "category": "DevOps",
+      "description": "Terraform is an open-source infrastructure as code software tool created by HashiCorp.",
+      "related_skills": [7, 28, 100],
+      "required_skills": [],
+      "suggested_skills": [101, 102]
+    },
+    {
+      "skill_id": 30,
+      "skill_name": "Ansible",
+      "category": "DevOps",
+      "description": "Ansible is an open-source software provisioning, configuration management, and application-deployment tool.",
+      "related_skills": [7, 29, 103],
+      "required_skills": [],
+      "suggested_skills": [104, 105]
+    },
+    {
+      "skill_id": 31,
+      "skill_name": "Chef",
+      "category": "DevOps",
+      "description": "Chef is a configuration management tool written in Ruby and Erlang.",
+      "related_skills": [7, 30, 106],
+      "required_skills": [],
+      "suggested_skills": [107, 108]
+    },
+    {
+      "skill_id": 32,
+      "skill_name": "Puppet",
+      "category": "DevOps",
+      "description": "Puppet is an open-source software configuration management tool.",
+      "related_skills": [8, 30, 109],
+      "required_skills": [],
+      "suggested_skills": [110, 111]
+    },
+    {
+      "skill_id": 33,
+      "skill_name": "Linux",
+      "category": "Operating Systems",
+      "description": "Linux is a family of open-source Unix-like operating systems based on the Linux kernel.",
+      "related_skills": [8, 112, 113],
+      "required_skills": [],
+      "suggested_skills": [114, 115]
+    },
+    {
+      "skill_id": 34,
+      "skill_name": "Bash",
+      "category": "Scripting Languages",
+      "description": "Bash is a Unix shell and command language written by Brian Fox for the GNU Project as a free software replacement for the Bourne shell.",
+      "related_skills": [8, 33, 116],
+      "required_skills": [],
+      "suggested_skills": [117, 118]
+    },
+    {
+      "skill_id": 35,
+      "skill_name": "PowerShell",
+      "category": "Scripting Languages",
+      "description": "PowerShell is a task automation and configuration management framework from Microsoft, consisting of a command-line shell and the associated scripting language.",
+      "related_skills": [9, 119, 120],
+      "required_skills": [],
+      "suggested_skills": [121, 122]
+    },
+    {
+      "skill_id": 36,
+      "skill_name": "Ruby",
+      "category": "Programming Languages",
+      "description": "Ruby is an interpreted, high-level, general-purpose programming language.",
+      "related_skills": [9, 35, 123],
+      "required_skills": [],
+      "suggested_skills": [124, 125]
+    },
+    {
+      "skill_id": 37,
+      "skill_name": "Rails",
+      "category": "Web Frameworks",
+      "description": "Rails, also known as Ruby on Rails, is a server-side web application framework written in Ruby under the MIT License.",
+      "related_skills": [9, 36, 126],
+      "required_skills": [36],
+      "suggested_skills": [127, 128]
+    },
+    {
+      "skill_id": 38,
+      "skill_name": "PHP",
+      "category": "Programming Languages",
+      "description": "PHP is a popular general-purpose scripting language that is especially suited to web development.",
+      "related_skills": [9, 37, 129],
+      "required_skills": [],
+      "suggested_skills": [130, 131]
+    },
+    {
+      "skill_id": 39,
+      "skill_name": "Laravel",
+      "category": "Web Frameworks",
+      "description": "Laravel is a web application framework with expressive, elegant syntax.",
+      "related_skills": [9, 38, 132],
+      "required_skills": [38],
+      "suggested_skills": [133, 134]
+    },
+    {
+      "skill_id": 40,
+      "skill_name": "Swift",
+      "category": "Programming Languages",
+      "description": "Swift is a powerful and intuitive programming language for macOS, iOS, watchOS, and tvOS.",
+      "related_skills": [10, 135, 136],
+      "required_skills": [],
+      "suggested_skills": [137, 138]
+    },
+    {
+      "skill_id": 41,
+      "skill_name": "Kotlin",
+      "category": "Programming Languages",
+      "description": "Kotlin is a cross-platform, statically typed, general-purpose programming language with type inference.",
+      "related_skills": [10, 40, 139],
+      "required_skills": [],
+      "suggested_skills": [140, 141]
+    },
+    {
+      "skill_id": 42,
+      "skill_name": "iOS Development",
+      "category": "Mobile Development",
+      "description": "iOS Development is the process of creating applications for Apple's mobile operating system, iOS.",
+      "related_skills": [10, 40, 142],
+      "required_skills": [40],
+      "suggested_skills": [143, 144]
+    },
+    {
+      "skill_id": 43,
+      "skill_name": "Android Development",
+      "category": "Mobile Development",
+      "description": "Android Development is the process of creating applications for devices running the Android operating system.",
+      "related_skills": [10, 41, 145],
+      "required_skills": [41],
+      "suggested_skills": [146, 147]
+    },
+    {
+      "skill_id": 44,
+      "skill_name": "XML",
+      "category": "Markup Languages",
+      "description": "XML (eXtensible Markup Language) is a markup language that defines a set of rules for encoding documents in a format that is both human-readable and machine-readable.",
+      "related_skills": [11, 43, 148],
+      "required_skills": [],
+      "suggested_skills": [149, 150]
+    },
+    {
+      "skill_id": 45,
+      "skill_name": "JSON",
+      "category": "Data Formats",
+      "description": "JSON (JavaScript Object Notation) is a lightweight data interchange format that's easy for humans to read and write, and easy for machines to parse and generate.",
+      "related_skills": [11, 26, 151],
+      "required_skills": [],
+      "suggested_skills": [152, 153]
+    },
+    {
+      "skill_id": 46,
+      "skill_name": "Bootstrap",
+      "category": "CSS Frameworks",
+      "description": "Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.",
+      "related_skills": [11, 12, 154],
+      "required_skills": [12],
+      "suggested_skills": [155, 156]
+    },
+    {
+      "skill_id": 47,
+      "skill_name": "Sass",
+      "category": "CSS Frameworks",
+      "description": "Sass (Syntactically Awesome Stylesheets) is a preprocessor scripting language that is interpreted or compiled into CSS.",
+      "related_skills": [12, 46, 157],
+      "required_skills": [12],
+      "suggested_skills": [158, 159]
+    },
+    {
+      "skill_id": 48,
+      "skill_name": "LESS",
+      "category": "CSS Frameworks",
+      "description": "LESS is a backwards-compatible language extension for CSS.",
+      "related_skills": [12, 47, 160],
+      "required_skills": [12],
+      "suggested_skills": [161, 162]
+    },
+    {
+      "skill_id": 49,
+      "skill_name": "Webpack",
+      "category": "Build Tools",
+      "description": "Webpack is an open-source JavaScript module bundler.",
+      "related_skills": [12, 48, 163],
+      "required_skills": [12],
+      "suggested_skills": [164, 165]
+    },
+    {
+      "skill_id": 50,
+      "skill_name": "Gulp",
+      "category": "Build Tools",
+      "description": "Gulp is an open-source JavaScript toolkit by Fractal Innovations and the open-source community at GitHub, used as a streaming build system in front-end web development.",
+      "related_skills": [13, 49, 166],
+      "required_skills": [13],
+      "suggested_skills": [167, 168]
+    },
+    {
+      "skill_id": 51,
+      "skill_name": "Elasticsearch",
+      "category": "Databases",
+      "description": "Elasticsearch is a distributed, RESTful search and analytics engine capable of solving a growing number of use cases.",
+      "related_skills": [18, 19, 20],
+      "required_skills": [],
+      "suggested_skills": [21, 22]
+    },
+    {
+      "skill_id": 52,
+      "skill_name": "RabbitMQ",
+      "category": "Messaging Systems",
+      "description": "RabbitMQ is an open-source message broker software that implements the Advanced Message Queuing Protocol (AMQP).",
+      "related_skills": [21, 169, 170],
+      "required_skills": [],
+      "suggested_skills": [171, 172]
+    },
+    {
+      "skill_id": 53,
+      "skill_name": "Kafka",
+      "category": "Messaging Systems",
+      "description": "Apache Kafka is an open-source stream-processing software platform developed by the Apache Software Foundation.",
+      "related_skills": [21, 173, 174],
+      "required_skills": [],
+      "suggested_skills": [175, 176]
+    },
+    {
+      "skill_id": 54,
+      "skill_name": "GraphQL",
+      "category": "API",
+      "description": "GraphQL is a query language for your API, and a server-side runtime for executing queries by using a type system you define for your data.",
+      "related_skills": [78, 79, 80],
+      "required_skills": [],
+      "suggested_skills": [81, 82]
+    },
+    {
+      "skill_id": 55,
+      "skill_name": "RESTful APIs",
+      "category": "API",
+      "description": "RESTful APIs are a standard for building APIs that are scalable and maintainable.",
+      "related_skills": [54, 177, 178],
+      "required_skills": [],
+      "suggested_skills": [179, 180]
+    },
+    {
+      "skill_id": 56,
+      "skill_name": "Microservices",
+      "category": "Architecture",
+      "description": "Microservices are a software development technique that structures an application as a collection of loosely coupled services.",
+      "related_skills": [54, 181, 182],
+      "required_skills": [],
+      "suggested_skills": [183, 184]
+    },
+    {
+      "skill_id": 57,
+      "skill_name": "Continuous Integration (CI)",
+      "category": "DevOps",
+      "description": "Continuous Integration is a development practice that requires developers to integrate code into a shared repository several times a day.",
+      "related_skills": [28, 185, 186],
+      "required_skills": [],
+      "suggested_skills": [187, 188]
+    },
+    {
+      "skill_id": 58,
+      "skill_name": "Continuous Deployment (CD)",
+      "category": "DevOps",
+      "description": "Continuous Deployment is a strategy for software releases wherein any code commit that passes the automated testing phase is automatically released into the production environment.",
+      "related_skills": [29, 185, 189],
+      "required_skills": [],
+      "suggested_skills": [190, 191]
+    },
+    {
+      "skill_id": 59,
+      "skill_name": "Jenkins",
+      "category": "DevOps",
+      "description": "Jenkins is an open-source automation server that helps to automate the non-human part of the software development process.",
+      "related_skills": [28, 192, 193],
+      "required_skills": [],
+      "suggested_skills": [194, 195]
+    },
+    {
+      "skill_id": 60,
+      "skill_name": "Git",
+      "category": "Version Control",
+      "description": "Git is a distributed version control system for tracking changes in source code during software development.",
+      "related_skills": [196, 197, 198],
+      "required_skills": [],
+      "suggested_skills": [199, 200]
+    },
+    {
+      "skill_id": 61,
+      "skill_name": "Subversion (SVN)",
+      "category": "Version Control",
+      "description": "Subversion (SVN) is an open-source version control system.",
+      "related_skills": [200, 201, 202],
+      "required_skills": [],
+      "suggested_skills": [203, 204]
+    },
+    {
+      "skill_id": 62,
+      "skill_name": "Machine Learning",
+      "category": "AI/ML",
+      "description": "Machine Learning is the study of computer algorithms that improve automatically through experience.",
+      "related_skills": [205, 206, 207],
+      "required_skills": [],
+      "suggested_skills": [208, 209]
+    },
+    {
+      "skill_id": 63,
+      "skill_name": "Natural Language Processing (NLP)",
+      "category": "AI/ML",
+      "description": "Natural Language Processing (NLP) is a subfield of artificial intelligence concerned with the interactions between computers and human languages.",
+      "related_skills": [62, 210, 211],
+      "required_skills": [],
+      "suggested_skills": [212, 213]
+    },
+    {
+      "skill_id": 64,
+      "skill_name": "Deep Learning",
+      "category": "AI/ML",
+      "description": "Deep Learning is a subset of machine learning where artificial neural networks, algorithms inspired by the human brain, learn from large amounts of data.",
+      "related_skills": [62, 214, 215],
+      "required_skills": [],
+      "suggested_skills": [216, 217]
+    },
+    {
+      "skill_id": 65,
+      "skill_name": "Data Engineering",
+      "category": "Data Science",
+      "description": "Data Engineering is the process of designing, building, and managing data pipelines for large-scale data processing and analytics.",
+      "related_skills": [62, 218, 219],
+      "required_skills": [],
+      "suggested_skills": [220, 221]
+    },
+    {
+      "skill_id": 66,
+      "skill_name": "Data Visualization",
+      "category": "Data Science",
+      "description": "Data Visualization is the graphical representation of information and data to aid understanding and decision making.",
+      "related_skills": [65, 222, 223],
+      "required_skills": [],
+      "suggested_skills": [224, 225]
+    },
+    {
+      "skill_id": 67,
+      "skill_name": "Big Data",
+      "category": "Data Science",
+      "description": "Big Data refers to large and complex datasets that are difficult to process using traditional data processing applications.",
+      "related_skills": [65, 226, 227],
+      "required_skills": [],
+      "suggested_skills": [228, 229]
+    },
+    {
+      "skill_id": 68,
+      "skill_name": "Cybersecurity",
+      "category": "Security",
+      "description": "Cybersecurity is the practice of protecting systems, networks, and programs from digital attacks.",
+      "related_skills": [230, 231, 232],
+      "required_skills": [],
+      "suggested_skills": [233, 234]
+    },
+    {
+      "skill_id": 69,
+      "skill_name": "Blockchain",
+      "category": "Emerging Technologies",
+      "description": "Blockchain is a decentralized and distributed digital ledger technology used to record transactions across multiple computers.",
+      "related_skills": [235, 236, 237],
+      "required_skills": [],
+      "suggested_skills": [238, 239]
+    },
+    {
+      "skill_id": 70,
+      "skill_name": "React Native",
+      "category": "Mobile Development",
+      "description": "React Native is an open-source mobile application framework created by Facebook for building native mobile apps using React.",
+      "related_skills": [13, 240, 241],
+      "required_skills": [13],
+      "suggested_skills": [242, 243]
+    },
+    {
+      "skill_id": 71,
+      "skill_name": "Angular",
+      "category": "JavaScript Frameworks",
+      "description": "Angular is a platform and framework for building single-page client applications using HTML and TypeScript.",
+      "related_skills": [6, 13, 24],
+      "required_skills": [6],
+      "suggested_skills": [89, 90]
+    },
+    {
+      "skill_id": 72,
+      "skill_name": "Vue.js",
+      "category": "JavaScript Frameworks",
+      "description": "Vue.js is an open-source model–view–viewmodel front end JavaScript framework for building user interfaces and single-page applications.",
+      "related_skills": [6, 13, 25],
+      "required_skills": [6],
+      "suggested_skills": [87, 88]
+    },
+    {
+      "skill_id": 73,
+      "skill_name": "React",
+      "category": "JavaScript Frameworks",
+      "description": "React is a JavaScript library for building user interfaces, developed by Facebook.",
+      "related_skills": [6, 13, 71],
+      "required_skills": [6],
+      "suggested_skills": [91, 92]
+    },
+    {
+      "skill_id": 74,
+      "skill_name": "Spring Boot",
+      "category": "Java Frameworks",
+      "description": "Spring Boot is an open-source Java-based framework used to create a micro Service.",
+      "related_skills": [14, 15, 27],
+      "required_skills": [14],
+      "suggested_skills": [93, 94]
+    },
+    {
+      "skill_id": 75,
+      "skill_name": "Hibernate",
+      "category": "Java Frameworks",
+      "description": "Hibernate is an object-relational mapping tool for the Java programming language.",
+      "related_skills": [14, 26, 28],
+      "required_skills": [14],
+      "suggested_skills": [95, 96]
+    },
+    {
+      "skill_id": 76,
+      "skill_name": "JUnit",
+      "category": "Testing Frameworks",
+      "description": "JUnit is a unit testing framework for the Java programming language.",
+      "related_skills": [14, 29, 30],
+      "required_skills": [14],
+      "suggested_skills": [97, 98]
+    },
+    {
+      "skill_id": 77,
+      "skill_name": "Python",
+      "category": "Programming Languages",
+      "description": "Python is an interpreted, high-level, general-purpose programming language.",
+      "related_skills": [16, 31, 32],
+      "required_skills": [16],
+      "suggested_skills": [99, 100]
+    },
+    {
+      "skill_id": 78,
+      "skill_name": "Django",
+      "category": "Python Frameworks",
+      "description": "Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.",
+      "related_skills": [16, 33, 34],
+      "required_skills": [16],
+      "suggested_skills": [101, 102]
+    },
+    {
+      "skill_id": 79,
+      "skill_name": "Flask",
+      "category": "Python Frameworks",
+      "description": "Flask is a lightweight WSGI web application framework in Python.",
+      "related_skills": [16, 35, 36],
+      "required_skills": [16],
+      "suggested_skills": [103, 104]
+    },
+    {
+      "skill_id": 80,
+      "skill_name": "Pandas",
+      "category": "Data Analysis",
+      "description": "Pandas is a fast, powerful, flexible, and easy-to-use open-source data analysis and manipulation library built on top of the Python programming language.",
+      "related_skills": [16, 37, 38],
+      "required_skills": [16],
+      "suggested_skills": [105, 106]
+    },
+    {
+      "skill_id": 81,
+      "skill_name": "NumPy",
+      "category": "Data Analysis",
+      "description": "NumPy is a library for the Python programming language, adding support for large, multi-dimensional arrays and matrices, along with a large collection of high-level mathematical functions to operate on these arrays.",
+      "related_skills": [16, 39, 40],
+      "required_skills": [16],
+      "suggested_skills": [107, 108]
+    },
+    {
+      "skill_id": 82,
+      "skill_name": "Scikit-learn",
+      "category": "Machine Learning",
+      "description": "Scikit-learn is a free software machine learning library for the Python programming language.",
+      "related_skills": [16, 41, 42],
+      "required_skills": [16],
+      "suggested_skills": [109, 110]
+    },
+    {
+      "skill_id": 83,
+      "skill_name": "TensorFlow",
+      "category": "Machine Learning",
+      "description": "TensorFlow is an open-source software library for dataflow and differentiable programming across a range of tasks in machine learning and numerical computing.",
+      "related_skills": [16, 43, 44],
+      "required_skills": [16],
+      "suggested_skills": [111, 112]
+    },
+    {
+      "skill_id": 84,
+      "skill_name": "PyTorch",
+      "category": "Machine Learning",
+      "description": "PyTorch is an open-source machine learning library based on the Torch library, used for applications such as computer vision and natural language processing.",
+      "related_skills": [16, 45, 46],
+      "required_skills": [16],
+      "suggested_skills": [113, 114]
+    },
+    {
+      "skill_id": 85,
+      "skill_name": "Spark",
+      "category": "Big Data",
+      "description": "Apache Spark is an open-source unified analytics engine for large-scale data processing.",
+      "related_skills": [16, 47, 48],
+      "required_skills": [16],
+      "suggested_skills": [115, 116]
+    },
+    {
+      "skill_id": 86,
+      "skill_name": "Hadoop",
+      "category": "Big Data",
+      "description": "Apache Hadoop is a collection of open-source software utilities that facilitates using a network of many computers to solve problems involving massive amounts of data and computation.",
+      "related_skills": [16, 49, 50],
+      "required_skills": [16],
+      "suggested_skills": [117, 118]
+    },
+    {
+      "skill_id": 87,
+      "skill_name": "AWS",
+      "category": "Cloud Computing",
+      "description": "Amazon Web Services (AWS) is a subsidiary of Amazon providing on-demand cloud computing platforms and APIs to individuals, companies, and governments, on a metered pay-as-you-go basis.",
+      "related_skills": [51, 52, 53],
+      "required_skills": [],
+      "suggested_skills": [54, 55]
+    },
+    {
+      "skill_id": 88,
+      "skill_name": "Azure",
+      "category": "Cloud Computing",
+      "description": "Microsoft Azure, commonly referred to as Azure, is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through Microsoft-managed data centers.",
+      "related_skills": [51, 52, 56],
+      "required_skills": [],
+      "suggested_skills": [57, 58]
+    },
+    {
+      "skill_id": 89,
+      "skill_name": "Google Cloud Platform (GCP)",
+      "category": "Cloud Computing",
+      "description": "Google Cloud Platform (GCP), offered by Google, is a suite of cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products, such as Google Search, Gmail, file storage, and YouTube.",
+      "related_skills": [51, 52, 59],
+      "required_skills": [],
+      "suggested_skills": [60, 61]
+    },
+    {
+      "skill_id": 90,
+      "skill_name": "React Native",
+      "category": "Mobile Development",
+      "description": "React Native is an open-source mobile application framework created by Facebook for building native mobile apps using React.",
+      "related_skills": [62, 63, 64],
+      "required_skills": [62],
+      "suggested_skills": [65, 66]
+    },
+    {
+      "skill_id": 91,
+      "skill_name": "Flutter",
+      "category": "Mobile Development",
+      "description": "Flutter is an open-source UI software development kit created by Google. It is used to develop cross-platform applications for Android, iOS, Linux, Mac, Windows, Google Fuchsia, and the web from a single codebase.",
+      "related_skills": [62, 63, 67],
+      "required_skills": [62],
+      "suggested_skills": [68, 69]
+    },
+    {
+      "skill_id": 93,
+      "skill_name": "Unity",
+      "category": "Game Development",
+      "description": "Unity is a cross-platform game engine developed by Unity Technologies.",
+      "related_skills": [70, 71, 72],
+      "required_skills": [],
+      "suggested_skills": [73, 74]
+    },
+    {
+      "skill_id": 94,
+      "skill_name": "Unreal Engine",
+      "category": "Game Development",
+      "description": "Unreal Engine is a suite of integrated tools for game developers to design and build games, simulations, and visualizations.",
+      "related_skills": [70, 71, 75],
+      "required_skills": [],
+      "suggested_skills": [76, 77]
+    },
+    {
+      "skill_id": 95,
+      "skill_name": "Unity3D",
+      "category": "Game Development",
+      "description": "Unity3D is a cross-platform game engine used to develop video games for PC, consoles, mobile devices, and websites.",
+      "related_skills": [70, 71, 78],
+      "required_skills": [],
+      "suggested_skills": [79, 80]
+    },
+    {
+      "skill_id": 96,
+      "skill_name": "Blender",
+      "category": "3D Modeling",
+      "description": "Blender is a free and open-source 3D computer graphics software toolset used for creating animated films, visual effects, art, 3D printed models, motion graphics, interactive 3D applications, virtual reality, and computer games.",
+      "related_skills": [81, 82, 83],
+      "required_skills": [],
+      "suggested_skills": [84, 85]
+    },
+    {
+      "skill_id": 97,
+      "skill_name": "Adobe Photoshop",
+      "category": "Graphic Design",
+      "description": "Adobe Photoshop is a raster graphics editor developed and published by Adobe Inc. for Windows and macOS.",
+      "related_skills": [86, 87, 88],
+      "required_skills": [],
+      "suggested_skills": [89, 90]
+    },
+    {
+      "skill_id": 98,
+      "skill_name": "Adobe Illustrator",
+      "category": "Graphic Design",
+      "description": "Adobe Illustrator is a vector graphics editor developed and marketed by Adobe Inc.",
+      "related_skills": [86, 87, 91],
+      "required_skills": [],
+      "suggested_skills": [92, 93]
+    },
+    {
+      "skill_id": 99,
+      "skill_name": "Adobe InDesign",
+      "category": "Graphic Design",
+      "description": "Adobe InDesign is a desktop publishing and typesetting software application produced by Adobe Inc.",
+      "related_skills": [86, 87, 94],
+      "required_skills": [],
+      "suggested_skills": [95, 96]
+    },
+    {
+      "skill_id": 100,
+      "skill_name": "Final Cut Pro",
+      "category": "Video Editing",
+      "description": "Final Cut Pro is a series of non-linear video editing software programs first developed by Macromedia Inc. and later Apple Inc.",
+      "related_skills": [97, 98, 99],
+      "required_skills": [],
+      "suggested_skills": [100, 101]
+    },
+    {
+      "skill_id": 101,
+      "skill_name": "Adobe Premiere Pro",
+      "category": "Video Editing",
+      "description": "Adobe Premiere Pro is a timeline-based video editing software application developed by Adobe Inc. and published as part of the Adobe Creative Cloud licensing program.",
+      "related_skills": [97, 98, 100],
+      "required_skills": [],
+      "suggested_skills": [102, 103]
+    },
+    {
+      "skill_id": 102,
+      "skill_name": "DaVinci Resolve",
+      "category": "Video Editing",
+      "description": "DaVinci Resolve is a color correction and non-linear video editing application for macOS, Windows, and Linux, originally developed by da Vinci Systems, and now developed by Blackmagic Design.",
+      "related_skills": [97, 98, 101],
+      "required_skills": [],
+      "suggested_skills": [104, 105]
+    },
+    {
+      "skill_id": 103,
+      "skill_name": "Linux System Administration",
+      "category": "System Administration",
+      "description": "Linux System Administration involves managing and maintaining Linux-based operating systems and servers.",
+      "related_skills": [104, 105, 106],
+      "required_skills": [],
+      "suggested_skills": [107, 108]
+    },
+    {
+      "skill_id": 104,
+      "skill_name": "Windows Server Administration",
+      "category": "System Administration",
+      "description": "Windows Server Administration involves managing and maintaining Windows-based servers and systems.",
+      "related_skills": [103, 105, 106],
+      "required_skills": [],
+      "suggested_skills": [109, 110]
+    },
+    {
+      "skill_id": 105,
+      "skill_name": "Network Security",
+      "category": "Security",
+      "description": "Network Security involves securing computer networks from unauthorized access, attacks, and vulnerabilities.",
+      "related_skills": [111, 112, 113],
+      "required_skills": [],
+      "suggested_skills": [114, 115]
+    },
+    {
+      "skill_id": 106,
+      "skill_name": "Penetration Testing",
+      "category": "Security",
+      "description": "Penetration Testing involves simulating cyber attacks to evaluate the security of computer systems, networks, and applications.",
+      "related_skills": [111, 112, 113],
+      "required_skills": [],
+      "suggested_skills": [116, 117]
+    },
+    {
+      "skill_id": 107,
+      "skill_name": "Cloud Security",
+      "category": "Security",
+      "description": "Cloud Security involves protecting data, applications, and services hosted in cloud environments.",
+      "related_skills": [111, 112, 113],
+      "required_skills": [],
+      "suggested_skills": [118, 119]
+    },
+    {
+      "skill_id": 108,
+      "skill_name": "CI/CD Pipeline Automation",
+      "category": "DevOps",
+      "description": "CI/CD Pipeline Automation involves automating the processes of Continuous Integration and Continuous Deployment (CI/CD) to streamline software delivery.",
+      "related_skills": [28, 29, 30],
+      "required_skills": [],
+      "suggested_skills": [120, 121]
+    },
+    {
+      "skill_id": 109,
+      "skill_name": "Containerization (Docker)",
+      "category": "DevOps",
+      "description": "Containerization with Docker involves creating and managing lightweight, portable containers to package applications and dependencies.",
+      "related_skills": [28, 29, 30],
+      "required_skills": [],
+      "suggested_skills": [122, 123]
+    },
+    {
+      "skill_id": 110,
+      "skill_name": "Kubernetes",
+      "category": "DevOps",
+      "description": "Kubernetes is an open-source container orchestration platform for automating the deployment, scaling, and management of containerized applications.",
+      "related_skills": [28, 29, 30],
+      "required_skills": [],
+      "suggested_skills": [124, 125]
+    },
+    {
+      "skill_id": 111,
+      "skill_name": "Agile Methodologies",
+      "category": "Project Management",
+      "description": "Agile Methodologies are approaches to software development that prioritize flexibility, collaboration, and iterative delivery.",
+      "related_skills": [126, 127, 128],
+      "required_skills": [],
+      "suggested_skills": [129, 130]
+    },
+    {
+      "skill_id": 112,
+      "skill_name": "Scrum Framework",
+      "category": "Project Management",
+      "description": "Scrum is a framework for Agile project management that emphasizes teamwork, accountability, and iterative progress toward a well-defined goal.",
+      "related_skills": [126, 127, 128],
+      "required_skills": [],
+      "suggested_skills": [131, 132]
+    },
+    {
+      "skill_id": 113,
+      "skill_name": "ITIL Foundation",
+      "category": "IT Service Management",
+      "description": "ITIL (Information Technology Infrastructure Library) Foundation is a widely recognized framework for managing IT services.",
+      "related_skills": [133, 134, 135],
+      "required_skills": [],
+      "suggested_skills": [136, 137]
+    },
+    {
+      "skill_id": 114,
+      "skill_name": "Customer Relationship Management (CRM) Systems",
+      "category": "Business Applications",
+      "description": "CRM Systems are tools and strategies used to manage and analyze customer interactions and data throughout the customer lifecycle, with the goal of improving business relationships with customers, assisting in customer retention, and driving sales growth.",
+      "related_skills": [138, 139, 140],
+      "required_skills": [],
+      "suggested_skills": [141, 142]
+    },
+    {
+      "skill_id": 115,
+      "skill_name": "Enterprise Resource Planning (ERP) Systems",
+      "category": "Business Applications",
+      "description": "ERP Systems are software systems used by organizations to manage and integrate the important parts of their businesses.",
+      "related_skills": [143, 144, 145],
+      "required_skills": [],
+      "suggested_skills": [146, 147]
+    },
+    {
+      "skill_id": 116,
+      "skill_name": "Business Intelligence (BI) Tools",
+      "category": "Data Analysis",
+      "description": "BI Tools are software applications used to analyze raw data and present actionable information to help executives, managers, and other corporate end users make informed business decisions.",
+      "related_skills": [148, 149, 150],
+      "required_skills": [],
+      "suggested_skills": [151, 152]
+    },
+    {
+      "skill_id": 117,
+      "skill_name": "Data Warehousing",
+      "category": "Data Science",
+      "description": "Data Warehousing involves designing, building, and maintaining systems to store and manage data for reporting and analysis.",
+      "related_skills": [65, 66, 67],
+      "required_skills": [],
+      "suggested_skills": [153, 154]
+    },
+    {
+      "skill_id": 118,
+      "skill_name": "ETL (Extract, Transform, Load)",
+      "category": "Data Science",
+      "description": "ETL (Extract, Transform, Load) is a process used to extract data from one or more sources, transform it into a format that can be analyzed, and load it into a target database or data warehouse.",
+      "related_skills": [65, 66, 67],
+      "required_skills": [],
+      "suggested_skills": [155, 156]
+    },
+    {
+      "skill_id": 119,
+      "skill_name": "Artificial Intelligence Ethics",
+      "category": "AI/ML",
+      "description": "Artificial Intelligence Ethics involves the moral principles and guidelines that govern the development and use of artificial intelligence systems and technologies.",
+      "related_skills": [62, 63, 64],
+      "required_skills": [],
+      "suggested_skills": [157, 158]
+    },
+    {
+      "skill_id": 120,
+      "skill_name": "Robotic Process Automation (RPA)",
+      "category": "Emerging Technologies",
+      "description": "Robotic Process Automation (RPA) involves using software robots (bots) or artificial intelligence (AI) workers to automate routine, repetitive tasks traditionally performed by humans.",
+      "related_skills": [159, 160, 161],
+      "required_skills": [],
+      "suggested_skills": [162, 163]
+    },
+    {
+      "skill_id": 121,
+      "skill_name": "Internet of Things (IoT)",
+      "category": "Emerging Technologies",
+      "description": "Internet of Things (IoT) refers to the network of physical devices, vehicles, home appliances, and other items embedded with electronics, software, sensors, actuators, and connectivity which enables these objects to connect and exchange data.",
+      "related_skills": [164, 165, 166],
+      "required_skills": [],
+      "suggested_skills": [167, 168]
+    },
+    {
+      "skill_id": 122,
+      "skill_name": "Blockchain Technology",
+      "category": "Emerging Technologies",
+      "description": "Blockchain Technology is a decentralized and distributed digital ledger technology that records transactions across multiple computers in a way that is secure, transparent, and resistant to modification.",
+      "related_skills": [169, 170, 171],
+      "required_skills": [],
+      "suggested_skills": [172, 173]
+    },
+    {
+      "skill_id": 123,
+      "skill_name": "Quantum Computing",
+      "category": "Emerging Technologies",
+      "description": "Quantum Computing is an area of computing focused on developing computer technology based on the principles of quantum theory, which explains the behavior of energy and material on the atomic and subatomic levels.",
+      "related_skills": [174, 175, 176],
+      "required_skills": [],
+      "suggested_skills": [177, 178]
+    },
+    {
+      "skill_id": 124,
+      "skill_name": "Cybersecurity Analytics",
+      "category": "Security",
+      "description": "Cybersecurity Analytics involves using data analytics techniques to detect, analyze, and respond to cybersecurity threats and incidents.",
+      "related_skills": [179, 180, 181],
+      "required_skills": [],
+      "suggested_skills": [182, 183]
+    },
+    {
+      "skill_id": 125,
+      "skill_name": "Digital Forensics",
+      "category": "Security",
+      "description": "Digital Forensics involves investigating and analyzing digital devices and data to uncover evidence of cybercrime or other illicit activities.",
+      "related_skills": [179, 180, 181],
+      "required_skills": [],
+      "suggested_skills": [184, 185]
+    },
+    {
+      "skill_id": 126,
+      "skill_name": "Mobile Application Security",
+      "category": "Security",
+      "description": "Mobile Application Security involves securing mobile applications against vulnerabilities and threats that could compromise data and user privacy.",
+      "related_skills": [179, 180, 181],
+      "required_skills": [],
+      "suggested_skills": [186, 187]
+    },
+    {
+      "skill_id": 127,
+      "skill_name": "Virtual Reality (VR) Development",
+      "category": "Emerging Technologies",
+      "description": "Virtual Reality (VR) Development involves creating immersive virtual environments and experiences using VR technology.",
+      "related_skills": [188, 189, 190],
+      "required_skills": [],
+      "suggested_skills": [191, 192]
+    },
+    {
+      "skill_id": 128,
+      "skill_name": "Augmented Reality (AR) Development",
+      "category": "Emerging Technologies",
+      "description": "Augmented Reality (AR) Development involves integrating digital content with the user's real-world environment in real time, typically viewed through a mobile device or AR glasses.",
+      "related_skills": [188, 189, 190],
+      "required_skills": [],
+      "suggested_skills": [193, 194]
+    },
+    {
+      "skill_id": 129,
+      "skill_name": "Natural Language Processing (NLP)",
+      "category": "AI/ML",
+      "description": "Natural Language Processing (NLP) is a subfield of artificial intelligence focused on enabling computers to understand, interpret, and generate human language.",
+      "related_skills": [195, 196, 197],
+      "required_skills": [],
+      "suggested_skills": [198, 199]
+    },
+    {
+      "skill_id": 130,
+      "skill_name": "Computer Vision",
+      "category": "AI/ML",
+      "description": "Computer Vision is a field of artificial intelligence that enables computers to interpret and understand the visual world using digital images and videos.",
+      "related_skills": [195, 196, 197],
+      "required_skills": [],
+      "suggested_skills": [200, 201]
+    },
+    {
+      "skill_id": 131,
+      "skill_name": "Machine Learning Operations (MLOps)",
+      "category": "AI/ML",
+      "description": "Machine Learning Operations (MLOps) is a set of best practices and tools that unify machine learning system development (Dev) and operations (Ops) to accelerate the lifecycle of machine learning models in production.",
+      "related_skills": [195, 196, 197],
+      "required_skills": [],
+      "suggested_skills": [202, 203]
+    },
+    {
+      "skill_id": 132,
+      "skill_name": "Deep Learning",
+      "category": "AI/ML",
+      "description": "Deep Learning is a subset of machine learning focused on artificial neural networks and algorithms inspired by the structure and function of the human brain's neural networks.",
+      "related_skills": [195, 196, 197],
+      "required_skills": [],
+      "suggested_skills": [204, 205]
+    },
+    {
+      "skill_id": 1,
+      "skill_name": "SQL",
+      "category": "Database Management",
+      "description": "SQL (Structured Query Language) is a domain-specific language used in programming and designed for managing data held in a relational database management system (RDBMS).",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 2,
+      "skill_name": "MySQL",
+      "category": "Database Management",
+      "description": "MySQL is an open-source relational database management system (RDBMS).",
+      "related_skills": [1],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 3,
+      "skill_name": "PostgreSQL",
+      "category": "Database Management",
+      "description": "PostgreSQL is a powerful, open-source object-relational database system.",
+      "related_skills": [1],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 4,
+      "skill_name": "MongoDB",
+      "category": "Database Management",
+      "description": "MongoDB is a cross-platform document-oriented NoSQL database program.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 5,
+      "skill_name": "Oracle Database",
+      "category": "Database Management",
+      "description": "Oracle Database is a multi-model database management system produced and marketed by Oracle Corporation.",
+      "related_skills": [1],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 6,
+      "skill_name": "HTML5",
+      "category": "Web Development",
+      "description": "HTML5 is the latest version of Hypertext Markup Language, the standard programming language for describing the contents and appearance of web pages.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 7,
+      "skill_name": "CSS3",
+      "category": "Web Development",
+      "description": "CSS3 is the latest evolution of the Cascading Style Sheets language and aims at extending CSS2.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 8,
+      "skill_name": "JavaScript",
+      "category": "Web Development",
+      "description": "JavaScript is a programming language that is widely used for creating interactive effects within web browsers.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 9,
+      "skill_name": "React.js",
+      "category": "Web Development",
+      "description": "React.js is an open-source JavaScript library for building user interfaces or UI components.",
+      "related_skills": [8],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 10,
+      "skill_name": "Angular",
+      "category": "Web Development",
+      "description": "Angular is a TypeScript-based open-source web application framework led by the Angular Team at Google and by a community of individuals and corporations.",
+      "related_skills": [8],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 11,
+      "skill_name": "Vue.js",
+      "category": "Web Development",
+      "description": "Vue.js is an open-source JavaScript framework for building user interfaces and single-page applications.",
+      "related_skills": [8],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 12,
+      "skill_name": "Node.js",
+      "category": "Web Development",
+      "description": "Node.js is an open-source, cross-platform, JavaScript runtime environment that executes JavaScript code outside a web browser.",
+      "related_skills": [8],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 13,
+      "skill_name": "RESTful API Design",
+      "category": "Backend Development",
+      "description": "RESTful API Design is a set of principles for designing and developing web services that adhere to the REST (Representational State Transfer) architectural style.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 14,
+      "skill_name": "Express.js",
+      "category": "Backend Development",
+      "description": "Express.js is a web application framework for Node.js, designed for building web applications and APIs.",
+      "related_skills": [12, 13],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 15,
+      "skill_name": "Django",
+      "category": "Backend Development",
+      "description": "Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 16,
+      "skill_name": "Flask",
+      "category": "Backend Development",
+      "description": "Flask is a lightweight WSGI web application framework in Python.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 17,
+      "skill_name": "ASP.NET Core",
+      "category": "Backend Development",
+      "description": "ASP.NET Core is an open-source, cross-platform framework for building modern, cloud-based, and internet-connected applications.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 18,
+      "skill_name": "TypeScript",
+      "category": "Frontend Development",
+      "description": "TypeScript is a strongly typed superset of JavaScript that compiles to plain JavaScript.",
+      "related_skills": [8],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 19,
+      "skill_name": "Redux",
+      "category": "Frontend Development",
+      "description": "Redux is a predictable state container for JavaScript apps.",
+      "related_skills": [8],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 20,
+      "skill_name": "Sass/Less",
+      "category": "Frontend Development",
+      "description": "Sass (Syntactically Awesome Style Sheets) and Less are preprocessor scripting languages that are interpreted or compiled into CSS.",
+      "related_skills": [7],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 21,
+      "skill_name": "Responsive Design",
+      "category": "Frontend Development",
+      "description": "Responsive Web Design is an approach to web design that makes web pages render well on a variety of devices and window or screen sizes.",
+      "related_skills": [6, 7, 8],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 22,
+      "skill_name": "Amazon Web Services (AWS)",
+      "category": "Cloud Computing",
+      "description": "Amazon Web Services (AWS) is a comprehensive, evolving cloud computing platform provided by Amazon.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 23,
+      "skill_name": "Microsoft Azure",
+      "category": "Cloud Computing",
+      "description": "Microsoft Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through Microsoft-managed data centers.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 24,
+      "skill_name": "Google Cloud Platform (GCP)",
+      "category": "Cloud Computing",
+      "description": "Google Cloud Platform (GCP) is a suite of cloud computing services provided by Google.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 25,
+      "skill_name": "Git",
+      "category": "Version Control",
+      "description": "Git is a distributed version control system for tracking changes in source code during software development.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 26,
+      "skill_name": "GitHub",
+      "category": "Version Control",
+      "description": "GitHub is a platform for hosting and collaborating on Git repositories.",
+      "related_skills": [25],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 27,
+      "skill_name": "GitLab",
+      "category": "Version Control",
+      "description": "GitLab is a web-based DevOps lifecycle tool that provides a Git repository manager providing wiki, issue-tracking, and CI/CD pipeline features, using an open-source license.",
+      "related_skills": [25],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 28,
+      "skill_name": "Jenkins",
+      "category": "CI/CD",
+      "description": "Jenkins is an open-source automation server that helps automate the parts of software development related to building, testing, and deploying, facilitating continuous integration and continuous delivery.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 29,
+      "skill_name": "CircleCI",
+      "category": "CI/CD",
+      "description": "CircleCI is a modern continuous integration and continuous delivery (CI/CD) platform. It automates the build, test, and deploy process.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 30,
+      "skill_name": "Travis CI",
+      "category": "CI/CD",
+      "description": "Travis CI is a distributed web service for the building and testing of software projects that uses GitHub for hosting.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 31,
+      "skill_name": "Unit Testing",
+      "category": "Testing",
+      "description": "Unit Testing is a software testing method by which individual units or components of a software application are tested to verify that they function as expected.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 32,
+      "skill_name": "Integration Testing",
+      "category": "Testing",
+      "description": "Integration Testing is the phase in software testing in which individual software modules are combined and tested as a group to verify that they function together as expected.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 33,
+      "skill_name": "Test-Driven Development (TDD)",
+      "category": "Testing",
+      "description": "Test-Driven Development (TDD) is a software development process that relies on the repetition of a very short development cycle: first the developer writes an (initially failing) automated test case that defines a desired improvement or new function, then produces the minimum amount of code to pass that test, and finally refactors the new code to acceptable standards.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 34,
+      "skill_name": "Selenium",
+      "category": "Testing",
+      "description": "Selenium is a portable framework for testing web applications. Selenium provides a playback tool for authoring functional tests without the need to learn a test scripting language.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 35,
+      "skill_name": "Docker",
+      "category": "DevOps",
+      "description": "Docker is a platform for developers and sysadmins to build, run, and share applications with containers. The use of containers to deploy applications is called containerization.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 36,
+      "skill_name": "Kubernetes",
+      "category": "DevOps",
+      "description": "Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management of containerized applications.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 37,
+      "skill_name": "Terraform",
+      "category": "DevOps",
+      "description": "Terraform is an open-source infrastructure as code software tool that provides a consistent CLI workflow to manage hundreds of cloud services.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 38,
+      "skill_name": "Ansible",
+      "category": "DevOps",
+      "description": "Ansible is an open-source software provisioning, configuration management, and application-deployment tool enabling infrastructure as code.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 39,
+      "skill_name": "Prometheus",
+      "category": "DevOps",
+      "description": "Prometheus is an open-source systems monitoring and alerting toolkit originally built at SoundCloud.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 40,
+      "skill_name": "Kanban",
+      "category": "Agile Methodologies",
+      "description": "Kanban is a scheduling system for lean manufacturing and just-in-time manufacturing (JIT).",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 41,
+      "skill_name": "Lean",
+      "category": "Agile Methodologies",
+      "description": "Lean is a production practice that considers the expenditure of resources for any goal other than the creation of value for the end customer to be wasteful, and thus a target for elimination.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 42,
+      "skill_name": "Agile Scrum",
+      "category": "Agile Methodologies",
+      "description": "Agile Scrum is an iterative and incremental agile software development framework for managing product development.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 43,
+      "skill_name": "Jira",
+      "category": "Project Management",
+      "description": "Jira is a proprietary issue tracking product developed by Atlassian that allows bug tracking and agile project management.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 44,
+      "skill_name": "Asana",
+      "category": "Project Management",
+      "description": "Asana is a web and mobile application designed to help teams organize, track, and manage their work.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 45,
+      "skill_name": "Trello",
+      "category": "Project Management",
+      "description": "Trello is a web-based Kanban-style list-making application that is a subsidiary of Atlassian.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 46,
+      "skill_name": "iOS Development (Swift)",
+      "category": "Mobile Development",
+      "description": "iOS Development involves creating applications for Apple's iOS mobile operating system using Swift programming language.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 47,
+      "skill_name": "Android Development (Java/Kotlin)",
+      "category": "Mobile Development",
+      "description": "Android Development involves creating applications for Android operating system using Java or Kotlin programming languages.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 48,
+      "skill_name": "Adobe XD",
+      "category": "UI/UX Design",
+      "description": "Adobe XD is a vector-based user experience design tool for web apps and mobile apps.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 49,
+      "skill_name": "Figma",
+      "category": "UI/UX Design",
+      "description": "Figma is a cloud-based design tool that is used to create user interfaces, web apps, and more.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 50,
+      "skill_name": "Sketch",
+      "category": "UI/UX Design",
+      "description": "Sketch is a vector graphics editor for macOS developed by the Dutch company Bohemian Coding.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 51,
+      "skill_name": "Excel",
+      "category": "Data Analysis",
+      "description": "Excel is a spreadsheet program developed by Microsoft for Windows, macOS, Android, and iOS.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 52,
+      "skill_name": "Tableau",
+      "category": "Data Analysis",
+      "description": "Tableau is a business intelligence software that allows anyone to connect to data, visualize and create interactive, shareable dashboards.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 53,
+      "skill_name": "Power BI",
+      "category": "Data Analysis",
+      "description": "Power BI is a business analytics service by Microsoft that aims to provide interactive visualizations and business intelligence capabilities with an interface simple enough for end users to create their own reports and dashboards.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 54,
+      "skill_name": "Data Visualization",
+      "category": "Data Analysis",
+      "description": "Data Visualization is the graphical representation of information and data. By using visual elements like charts, graphs, and maps, data visualization tools provide an accessible way to see and understand trends, outliers, and patterns in data.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 55,
+      "skill_name": "TensorFlow",
+      "category": "Machine Learning",
+      "description": "TensorFlow is an open-source machine learning framework developed by Google for building and training machine learning models.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 56,
+      "skill_name": "PyTorch",
+      "category": "Machine Learning",
+      "description": "PyTorch is an open-source machine learning library based on the Torch library, used for applications such as natural language processing and computer vision.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 57,
+      "skill_name": "Keras",
+      "category": "Machine Learning",
+      "description": "Keras is an open-source software library that provides a Python interface for artificial neural networks. It is capable of running on top of TensorFlow, Microsoft Cognitive Toolkit, R, Theano, or PlaidML.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 58,
+      "skill_name": "Natural Language Processing (NLP)",
+      "category": "Artificial Intelligence",
+      "description": "Natural Language Processing (NLP) is a subfield of artificial intelligence and linguistics concerned with the interactions between computers and human language, in particular how to program computers to process and analyze large amounts of natural language data.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 59,
+      "skill_name": "Computer Vision",
+      "category": "Artificial Intelligence",
+      "description": "Computer Vision is an interdisciplinary field that deals with how computers can gain high-level understanding from digital images or videos.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 60,
+      "skill_name": "Reinforcement Learning",
+      "category": "Artificial Intelligence",
+      "description": "Reinforcement Learning is an area of machine learning concerned with how software agents ought to take actions in an environment in order to maximize some notion of cumulative reward.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 61,
+      "skill_name": "Ethical Hacking",
+      "category": "Cybersecurity",
+      "description": "Ethical Hacking involves testing and probing computer systems for weaknesses or vulnerabilities in a lawful and legitimate manner to assess the security of a target system.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 62,
+      "skill_name": "Security Operations Center (SOC)",
+      "category": "Cybersecurity",
+      "description": "Security Operations Center (SOC) is a centralized unit that deals with security issues on an organizational and technical level.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 63,
+      "skill_name": "Incident Response",
+      "category": "Cybersecurity",
+      "description": "Incident Response is an organized approach to addressing and managing the aftermath of a security breach or cyberattack.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 64,
+      "skill_name": "Cisco Networking",
+      "category": "Networking",
+      "description": "Cisco Networking involves configuring and maintaining networks using Cisco hardware and software solutions.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 65,
+      "skill_name": "Network Administration",
+      "category": "Networking",
+      "description": "Network Administration involves managing and maintaining computer networks and related systems.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 66,
+      "skill_name": "Wireless Networking",
+      "category": "Networking",
+      "description": "Wireless Networking involves setting up and maintaining wireless networks and related technologies.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 67,
+      "skill_name": "Windows Server",
+      "category": "Operating Systems",
+      "description": "Windows Server is a group of operating systems designed by Microsoft that supports enterprise-level management, data storage, applications, and communications.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 68,
+      "skill_name": "Linux Administration",
+      "category": "Operating Systems",
+      "description": "Linux Administration involves managing and maintaining Linux-based operating systems.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 69,
+      "skill_name": "macOS",
+      "category": "Operating Systems",
+      "description": "macOS is the operating system developed by Apple Inc. for its Macintosh line of computers.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 70,
+      "skill_name": "QA Automation",
+      "category": "Quality Assurance",
+      "description": "QA Automation involves automating the testing process to increase test coverage, efficiency, and accuracy.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 71,
+      "skill_name": "Bug Tracking",
+      "category": "Quality Assurance",
+      "description": "Bug Tracking involves managing and tracking software defects or bugs throughout their lifecycle.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 72,
+      "skill_name": "Continuous Testing",
+      "category": "Quality Assurance",
+      "description": "Continuous Testing is a practice of executing automated tests as part of the software delivery pipeline to obtain immediate feedback on the business risks associated with a software release candidate.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 73,
+      "skill_name": "SQL Server",
+      "category": "Database Management",
+      "description": "SQL Server is a relational database management system (RDBMS) developed by Microsoft.",
+      "related_skills": [1],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 74,
+      "skill_name": "NoSQL",
+      "category": "Database Management",
+      "description": "NoSQL encompasses a wide range of database technologies that were developed in response to the demands presented in building modern applications that require flexible, scalable, and high-performance data storage solutions.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 75,
+      "skill_name": "Spring Framework",
+      "category": "Backend Development",
+      "description": "Spring Framework is an application framework and inversion of control container for the Java platform.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skill_id": 76,
+      "skill_name": "Hibernate",
+      "category": "Backend Development",
+      "description": "Hibernate is an object-relational mapping (ORM) tool for the Java programming language.",
+      "related_skills": [],
+      "required_skills": [],
+      "suggested_skills": []
+    },
+    {
+      "skills": [
+        {
+          "skill_id": 77,
+          "skill_name": "Node.js",
+          "category": "Backend Development",
+          "description": "Node.js is an open-source, cross-platform JavaScript runtime environment that executes JavaScript code outside a web browser.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 78,
+          "skill_name": "Express.js",
+          "category": "Backend Development",
+          "description": "Express.js is a web application framework for Node.js, designed for building web applications and APIs.",
+          "related_skills": [77],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 79,
+          "skill_name": "RESTful APIs",
+          "category": "Backend Development",
+          "description": "RESTful APIs (Representational State Transfer) are APIs that adhere to the REST architectural style and allow interaction with web services.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 80,
+          "skill_name": "GraphQL",
+          "category": "Backend Development",
+          "description": "GraphQL is a query language for APIs and a runtime for fulfilling those queries with existing data.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 81,
+          "skill_name": "Microservices Architecture",
+          "category": "Architecture",
+          "description": "Microservices Architecture is an architectural style that structures an application as a collection of loosely coupled services.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 82,
+          "skill_name": "Serverless Architecture",
+          "category": "Architecture",
+          "description": "Serverless Architecture refers to applications that significantly depend on third-party services or custom code that's run in ephemeral containers.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 83,
+          "skill_name": "AWS",
+          "category": "Cloud Computing",
+          "description": "AWS (Amazon Web Services) is a comprehensive, evolving cloud computing platform provided by Amazon.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 84,
+          "skill_name": "Azure",
+          "category": "Cloud Computing",
+          "description": "Azure is a cloud computing service created by Microsoft for building, testing, deploying, and managing applications and services through Microsoft-managed data centers.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 85,
+          "skill_name": "Google Cloud Platform (GCP)",
+          "category": "Cloud Computing",
+          "description": "Google Cloud Platform (GCP) is a suite of cloud computing services that runs on the same infrastructure that Google uses internally for its end-user products, such as Google Search, Gmail, file storage, and YouTube.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 86,
+          "skill_name": "CI/CD Pipeline",
+          "category": "DevOps",
+          "description": "CI/CD (Continuous Integration/Continuous Deployment) Pipeline is a series of processes that build, test, and deploy code changes automatically.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 87,
+          "skill_name": "Agile Kanban",
+          "category": "Agile Methodologies",
+          "description": "Agile Kanban is a visual framework used to implement Agile and Lean software development principles like Iterative and Incremental Development (IID) and Just-In-Time (JIT) production.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 88,
+          "skill_name": "Scrum Master",
+          "category": "Agile Methodologies",
+          "description": "Scrum Master is a facilitative leader who removes obstacles, fosters an environment for Agile teams to thrive, and protects them from outside distractions.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 89,
+          "skill_name": "Project Planning",
+          "category": "Project Management",
+          "description": "Project Planning involves defining project goals, objectives, tasks, resources needed, and timelines.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 90,
+          "skill_name": "Risk Management",
+          "category": "Project Management",
+          "description": "Risk Management involves identifying, assessing, and prioritizing risks followed by coordinated efforts to minimize, monitor, and control the probability or impact of unfortunate events.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 91,
+          "skill_name": "Stakeholder Management",
+          "category": "Project Management",
+          "description": "Stakeholder Management involves identifying stakeholders, understanding their needs and expectations, and managing their engagement throughout the project lifecycle.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 92,
+          "skill_name": "UX Research",
+          "category": "UI/UX Design",
+          "description": "UX Research involves studying users and their behavior using various methods to gather insights that inform design decisions.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 93,
+          "skill_name": "UI Prototyping",
+          "category": "UI/UX Design",
+          "description": "UI Prototyping involves creating interactive prototypes to visualize and test user interface designs.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 94,
+          "skill_name": "Responsive Web Design",
+          "category": "UI/UX Design",
+          "description": "Responsive Web Design is an approach to web design that makes web pages render well on a variety of devices and window or screen sizes.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 95,
+          "skill_name": "Mobile UI Design",
+          "category": "UI/UX Design",
+          "description": "Mobile UI Design focuses on creating interfaces for mobile applications that are easy to use and visually appealing.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 96,
+          "skill_name": "Adobe Illustrator",
+          "category": "Graphic Design",
+          "description": "Adobe Illustrator is a vector graphics editor and design program developed and marketed by Adobe Inc.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 97,
+          "skill_name": "Photoshop",
+          "category": "Graphic Design",
+          "description": "Adobe Photoshop is a raster graphics editor developed and published by Adobe Inc. for Windows and macOS.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 98,
+          "skill_name": "InDesign",
+          "category": "Graphic Design",
+          "description": "Adobe InDesign is a desktop publishing and typesetting software application produced by Adobe Inc. It can be used to create works such as posters, flyers, brochures, magazines, newspapers, presentations, books, and ebooks.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 99,
+          "skill_name": "Video Editing",
+          "category": "Multimedia",
+          "description": "Video Editing is the process of manipulating and rearranging video shots to create a new work.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        },
+        {
+          "skill_id": 100,
+          "skill_name": "Animation",
+          "category": "Multimedia",
+          "description": "Animation involves creating the illusion of motion and shape change by means of the rapid display of a sequence of static images that minimally differ from each other.",
+          "related_skills": [],
+          "required_skills": [],
+          "suggested_skills": []
+        }
+      ]
+    }                
+  ]
+}
+

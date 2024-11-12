@@ -1,0 +1,78 @@
+# Vector Database: PostgreSQL
+## docker-compose up -d
+### After initializiation, pgAdmin 
+### CREATE EXTENSION vector;
+
+version: "3.9"
+
+services:
+
+    php:
+        image: php:8.2-fpm
+        restart: always
+        container_name: php_8_2_container
+        volumes:
+            - php_8_2:/var/www/html
+        ports:
+            - "9000:9003"
+        networks:
+            - php_network
+
+    # postgres:
+    #     image: postgres
+    #     restart: always
+    #     environment:
+    #         POSTGRES_PASSWORD: postgres
+    #         POSTGRES_USER: postgres
+    #     ports: 
+    #         - "5444:5432"
+    #     volumes:
+    #         - postgres:/var/lib/postgresql/data
+
+    # psql:
+    #     image: ankane/pgvector:latest
+    #     restart: always
+    #     environment:
+    #         POSTGRES_DB: development
+    #         POSTGRES_PASSWORD: postgres
+    #         POSTGRES_USER: postgres
+    #     ports: 
+    #         - "5444:5432"
+    #     volumes:
+    #         - postgres:/var/lib/postgresql/data
+
+    psql:
+        image: pgvector/pgvector:latest
+        restart: always
+        environment:
+            POSTGRES_DB: development
+            POSTGRES_PASSWORD: postgres
+            POSTGRES_USER: postgres
+        ports: 
+            - "5444:5432"
+        volumes:
+            - postgres:/var/lib/postgresql/data
+
+    pgadmin:
+        image: dpage/pgadmin4:latest
+        restart: always
+        environment:
+            PGADMIN_DEFAULT_EMAIL: admin@admin.com
+            PGADMIN_DEFAULT_PASSWORD: admin
+            PGADMIN_LISTEN_PORT: 80
+        ports:
+            - 5050:80
+        volumes:
+            - pgadmin:/var/lib/pgadmin
+        depends_on:
+            - psql
+
+volumes:
+  postgres:
+  pgadmin:
+  php_8_2:
+
+
+networks:
+  php_network:
+    driver: bridge
