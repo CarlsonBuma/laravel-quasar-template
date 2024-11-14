@@ -128,7 +128,7 @@ export class ResponseHandler {
     errorHandling(serverResponse, router) {
         
         // Email not verified
-        if(serverResponse.status === 403 && serverResponse.data.status === 'email_not_verified') {
+        if(serverResponse.status === 401 && serverResponse.data.status === 'email_not_verified') {
             store().removeSessionToken();
             store().removeSession();
             router.push({
@@ -141,14 +141,14 @@ export class ResponseHandler {
         }
 
         // No Admin
-        else if (serverResponse.status === 403 && serverResponse.data.status === 'no_admin') {
+        else if (serverResponse.status === 401 && serverResponse.data.status === 'no_admin') {
             store().removeAdmin();
             router.push('/');
             throw serverResponse.data.message;
         }
 
         // No access to Service / Subscription
-        else if(serverResponse.status === 403 && serverResponse.data.status === 'no_access_to_service') {
+        else if(serverResponse.status === 401 && serverResponse.data.status === 'no_access_to_service') {
             store().removeSubscriptionAccess(serverResponse.data.access_token);
             router.push('/services');
             throw serverResponse.data.message 

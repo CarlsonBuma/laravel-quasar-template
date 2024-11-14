@@ -1,7 +1,7 @@
 'use strict';
 import store from "src/stores/user.js";
 
-const accessTokenBusinessCockpit = process.env.APP_ACCESS_BUSINESS_COCKPIT
+const accessTokenBusinessCockpit = process.env.APP_ACCESS_access_cockpit
 const fallBackRoute = 'LandingPage';
 
 const routesEntity = [

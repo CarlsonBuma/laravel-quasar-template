@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\UserAvatar;
-use App\Models\UserEntity;
+use App\Models\Entity;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
             'user_id' => $userID,
         ]);
 
-        UserEntity::create([
+        Entity::create([
             'user_id' => $userID,
         ]);
         
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
                 'name' => 'User' . $x,
                 'email' =>'user' . $x,
                 'email_verified_at' => now(),
-                'password' => Hash::make('user'),
+                'password' => Hash::make('test'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
@@ -54,7 +54,7 @@ class UserSeeder extends Seeder
                 'user_id' => $id,
             ]);
 
-            UserEntity::create([
+            Entity::create([
                 'user_id' => $id,
             ]);
         }

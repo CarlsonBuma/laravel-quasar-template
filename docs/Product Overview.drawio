@@ -153,7 +153,7 @@
             <mxPoint x="900" y="590" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="7OKN_g6K1Okwr2jMo622-25" value="AccessBusinessCockpit" style="aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image;image=img/lib/active_directory/database_cube.svg;fontSize=14;fontStyle=0" parent="1" vertex="1">
+        <mxCell id="7OKN_g6K1Okwr2jMo622-25" value="AppAccessCockpit" style="aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image;image=img/lib/active_directory/database_cube.svg;fontSize=14;fontStyle=0" parent="1" vertex="1">
           <mxGeometry x="693.5" y="250" width="76.5" height="85" as="geometry" />
         </mxCell>
         <mxCell id="7OKN_g6K1Okwr2jMo622-26" value="API-Calls" style="aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image;image=img/lib/active_directory/database_cube.svg;fontSize=14;" parent="1" vertex="1">

@@ -475,7 +475,7 @@
         <mxCell id="9xqgChsdiNvlC2c3Y_gE-18" value="&lt;h1&gt;Definition&lt;/h1&gt;&lt;p&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;* -&amp;gt; Required&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="80" y="-810" width="190" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="Pm_gBeIu3a7H0LE_9hBZ-1" value="Access&lt;br&gt;&quot;business-cockpit&quot;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+        <mxCell id="Pm_gBeIu3a7H0LE_9hBZ-1" value="Access&lt;br&gt;&quot;access-cockpit&quot;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
           <mxGeometry x="-100" y="-35" width="180" height="50" as="geometry" />
         </mxCell>
         <mxCell id="Pm_gBeIu3a7H0LE_9hBZ-7" value="NULL" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
@@ -854,7 +854,7 @@
         <mxCell id="CR3KZccYkwdmARgacye9-56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.499;entryY=0.99;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" parent="CR3KZccYkwdmARgacye9-1" source="CR3KZccYkwdmARgacye9-4" target="CR3KZccYkwdmARgacye9-54" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="CR3KZccYkwdmARgacye9-57" value="Access&lt;br&gt;&quot;business-cockpit&quot;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="CR3KZccYkwdmARgacye9-1" vertex="1">
+        <mxCell id="CR3KZccYkwdmARgacye9-57" value="Access&lt;br&gt;&quot;access-cockpit&quot;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="CR3KZccYkwdmARgacye9-1" vertex="1">
           <mxGeometry x="-110" y="-80" width="180" height="50" as="geometry" />
         </mxCell>
         <mxCell id="CR3KZccYkwdmARgacye9-58" value="Collaboration" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="CR3KZccYkwdmARgacye9-1" vertex="1">

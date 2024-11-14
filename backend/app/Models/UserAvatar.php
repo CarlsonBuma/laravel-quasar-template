@@ -15,17 +15,11 @@ class UserAvatar extends Model
 
     protected $fillable = [
         'user_id',
-        'is_community',
-        'is_available',
-        'date_of_availability',
-        'contact',
-        'contact_is_public',
-        'age',
-        'age_is_public',
-        'country_id',
-        'location_id',
-        'location_is_public',
+        'is_public',         // Flag
         'about',
+        'contact',
+        'location_id',
+        'country_id',
     ];
 
     public function belongs_to_user()

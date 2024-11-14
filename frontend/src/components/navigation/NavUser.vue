@@ -57,7 +57,7 @@
                     label="My avatar" 
                 />
                 <q-fab-action 
-                    v-if="$user.access.tokens[$env.APP_ACCESS_BUSINESS_COCKPIT]"
+                    v-if="$user.access.tokens[$env.APP_ACCESS_access_cockpit]"
                     color="primary" square glossy text-color="white" 
                     @click="$router.push('/my-entity')" 
                     icon="groups_3" 
@@ -97,7 +97,7 @@
                                 <span class="text-overline">My Account</span>
                                 <q-separator class="w-100"/>
                                 <q-list padding >
-                                    <q-item v-if="$user.access.tokens[$env.APP_ACCESS_BUSINESS_COCKPIT]" @click="$router.push('/my-entity')" clickable v-ripple >
+                                    <q-item v-if="$user.access.tokens[$env.APP_ACCESS_access_cockpit]" @click="$router.push('/my-entity')" clickable v-ripple >
                                         <q-item-section avatar>
                                             <q-icon name="groups_3" class="q-mr-sm" />
                                         </q-item-section>

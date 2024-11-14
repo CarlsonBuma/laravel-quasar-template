@@ -70,7 +70,7 @@ class Kernel extends HttpKernel
         'email_verified' => \App\Http\Middleware\EmailVerified::class,
         'is_admin' => \App\Http\Middleware\IsAdmin::class,
 
-        // Subscriptions
-        'access_businesscockpit' => \App\Http\Middleware\AccessBusinessCockpit::class
+        // Access tokens
+        'access_cockpit' => \App\Http\Middleware\AppAccessCockpit::class
     ];
 }

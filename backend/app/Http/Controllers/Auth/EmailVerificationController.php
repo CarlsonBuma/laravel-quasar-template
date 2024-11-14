@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use Exception;
 use App\Models\User;
+use App\Models\UserAvatar;
+use App\Models\Entity;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
@@ -13,6 +15,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rules\Password;
+
 
 class EmailVerificationController extends Controller
 {

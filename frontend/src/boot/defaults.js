@@ -23,8 +23,8 @@ export default boot(({ app, router }) => {
         APP_GOOGLE_API_KEY: process.env.APP_GOOGLE_API_KEY,
         APP_PADDLE_ENVIRONMENT: process.env.APP_PADDLE_ENVIRONMENT,
         APP_PADDLE_PUBLIC_KEY: process.env.APP_PADDLE_PUBLIC_KEY,
-        APP_PADDLE_PRICE_BUSINESS_COCKPIT: process.env.APP_PADDLE_PRICE_BUSINESS_COCKPIT,
-        APP_ACCESS_BUSINESS_COCKPIT: process.env.APP_ACCESS_BUSINESS_COCKPIT
+        APP_PADDLE_PRICE_access_cockpit: process.env.APP_PADDLE_PRICE_access_cockpit,
+        APP_ACCESS_access_cockpit: process.env.APP_ACCESS_access_cockpit
     };
     
     // Defaults

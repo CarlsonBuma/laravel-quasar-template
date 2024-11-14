@@ -137,7 +137,7 @@ module.exports = configure(function (/* ctx */) {
             },
 
             builder: {
-                appId: 'bumatools'
+                appId: 'template'
             }
         },
 

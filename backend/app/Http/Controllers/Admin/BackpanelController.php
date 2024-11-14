@@ -8,17 +8,14 @@ use App\Http\Controllers\Controller;
 class BackpanelController extends Controller
 {
     /**
-     ** Get User Data
-     **     > User Credentials
-     **     > ...
+     * Undocumented function
      *
      * @return void
      */
     public function loadDashboard()
     {
-        $amountUser = User::where('email_verified_at', '!=', null)->count();
         return response()->json([
-            'users' => $amountUser
+            'users' => User::where('email_verified_at', '!=', null)->count()
         ], 200);
     }
 }

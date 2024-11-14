@@ -345,7 +345,7 @@ export default {
         async loadAccess(){
             try {
                 this.loading = true;
-                const response = await this.$axios.get('user-load-access')
+                const response = await this.$axios.get('load-user-access')
                 this.prices = response.data.prices;
                 this.transactions = response.data.transactions;
             } catch (error) {
@@ -359,7 +359,7 @@ export default {
         async cancelSubscription(price) {
             try {
                 this.$toast.load();
-                const response = await this.$axios.post('user-cancel-subscription' , {
+                const response = await this.$axios.post('cancel-user-subscription' , {
                     'price_token': price.price_token,
                 });
                 this.$toast.success(response.data.message);
@@ -377,7 +377,7 @@ export default {
                 
                 if(data?.name === 'checkout.completed') {
                     this.transactionInitializedSuccessfully = true;
-                    await this.$axios.post('user-set-client-access', {
+                    await this.$axios.post('set-user-client-access', {
                         transaction_token: transactionID,
                         customer_token: customerID
                     });
@@ -390,7 +390,7 @@ export default {
                     && data?.name === 'checkout.closed' 
                 ) {
                     this.$toast.load();
-                    const response = await this.$axios.post('user-verify-client-access' , {
+                    const response = await this.$axios.post('verify-user-client-access' , {
                         'transaction_token': transactionID,
                     })
                     this.transactionInitializedSuccessfully = false;

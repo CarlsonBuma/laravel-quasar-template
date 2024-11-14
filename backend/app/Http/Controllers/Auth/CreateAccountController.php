@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Auth;
 use Exception;
 use App\Models\User;
 use App\Models\UserAvatar;
-use App\Models\UserEntity;
+use App\Models\Entity;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+
 
 class CreateAccountController extends Controller
 {
@@ -44,7 +45,7 @@ class CreateAccountController extends Controller
                 'user_id' => $userID,
             ]);
 
-            UserEntity::create([
+            Entity::create([
                 'user_id' => $userID,
             ]);
         } catch (Exception $e) {

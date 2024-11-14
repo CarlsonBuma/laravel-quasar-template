@@ -1,12 +1,13 @@
+######################################
 # Vector Database: PostgreSQL
 ## docker-compose up -d
 ### After initializiation, pgAdmin 
 ### CREATE EXTENSION vector;
+######################################
 
 version: "3.9"
 
 services:
-
     php:
         image: php:8.2-fpm
         restart: always
@@ -17,30 +18,6 @@ services:
             - "9000:9003"
         networks:
             - php_network
-
-    # postgres:
-    #     image: postgres
-    #     restart: always
-    #     environment:
-    #         POSTGRES_PASSWORD: postgres
-    #         POSTGRES_USER: postgres
-    #     ports: 
-    #         - "5444:5432"
-    #     volumes:
-    #         - postgres:/var/lib/postgresql/data
-
-    # psql:
-    #     image: ankane/pgvector:latest
-    #     restart: always
-    #     environment:
-    #         POSTGRES_DB: development
-    #         POSTGRES_PASSWORD: postgres
-    #         POSTGRES_USER: postgres
-    #     ports: 
-    #         - "5444:5432"
-    #     volumes:
-    #         - postgres:/var/lib/postgresql/data
-
     psql:
         image: pgvector/pgvector:latest
         restart: always
@@ -52,7 +29,6 @@ services:
             - "5444:5432"
         volumes:
             - postgres:/var/lib/postgresql/data
-
     pgadmin:
         image: dpage/pgadmin4:latest
         restart: always
@@ -66,6 +42,27 @@ services:
             - pgadmin:/var/lib/pgadmin
         depends_on:
             - psql
+    # postgres:
+    #     image: postgres
+    #     restart: always
+    #     environment:
+    #         POSTGRES_PASSWORD: postgres
+    #         POSTGRES_USER: postgres
+    #     ports: 
+    #         - "5444:5432"
+    #     volumes:
+    #         - postgres:/var/lib/postgresql/data
+    # psql:
+    #     image: ankane/pgvector:latest
+    #     restart: always
+    #     environment:
+    #         POSTGRES_DB: development
+    #         POSTGRES_PASSWORD: postgres
+    #         POSTGRES_USER: postgres
+    #     ports: 
+    #         - "5444:5432"
+    #     volumes:
+    #         - postgres:/var/lib/postgresql/data
 
 volumes:
   postgres:

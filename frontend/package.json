@@ -1,8 +1,8 @@
 {
-    "name": "collabris",
-    "version": "0.1.0",
-    "description": "Companie's collaboration site",
-    "productName": "Collabris",
+    "name": "webapp-template",
+    "version": "1.0.0",
+    "description": "Quasar Framework",
+    "productName": "template",
     "author": "CarlsonBuma <75643791+CarlsonBuma@users.noreply.github.com>",
     "private": true,
     "scripts": {
@@ -18,7 +18,6 @@
         "@paddle/paddle-js": "^1.0.2",
         "@quasar/extras": "^1.0.0",
         "axios": "^1.6.2",
-        "country-list": "^2.3.0",
         "dotenv": "^16.0.1",
         "events": "^3.3.0",
         "pinia": "^2.0.11",

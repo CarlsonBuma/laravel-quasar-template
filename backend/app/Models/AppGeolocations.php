@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\UserEntity;
+use App\Models\Entity;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -24,11 +24,40 @@ class AppGeolocations extends Model
         'zip_code'
     ];
 
-    public function has_user_entities() {
-        return $this->hasMany(UserEntity::class, 'location_id');
+    public function has_entities() {
+        return $this->hasMany(Entity::class, 'location_id');
     }
 
     public function has_user_avatars() {
         return $this->hasMany(UserAvatar::class, 'location_id');
+    }
+
+    /**
+     * Seed database
+     * Add new geolocation entry
+     *  > Google API Location
+     *  > https://developers.google.com/maps/documentation/geocoding/start
+     *
+     * @param array $data
+     * @return int|null
+     */
+    public function add_new_entry(array $data): ?int 
+    {
+        if(isset($data['place_id'])) {
+            return $this->firstOrCreate([
+                'place_id' => $data['place_id']
+            ], [
+                'lng' =>  $data['lng'],
+                'lat' =>  $data['lat'],
+                'address' =>  $data['address'],
+                'country' =>  $data['country'],
+                'country_short' =>  $data['country_short'],
+                'area' =>  $data['area'],
+                'area_short' =>  $data['area_short'],
+                'zip_code' =>  $data['zip_code']
+            ])->id;
+        }
+
+        return null;
     }
 }

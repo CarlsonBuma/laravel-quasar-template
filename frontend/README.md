@@ -1,23 +1,25 @@
-# Setup
+# Quasar CLI - Framework
+Website: https://quasar.dev/introduction-to-quasar
+
 ## Initialization
  - npm install
+    > quasar info         // Current dependencies
+    > quasar dev          // Dev Mode
+    > quasar build        // Production Mode
+    > npm run lint
+    > npm run format
+ - Define .env file
+ - Setup meta-data in package.json
  - Optional: Setup \src\modules\cookieConsent.js
-     - Implement Cookies (eg. Google Tags, Bing UET, etc.)
- - Create Google Cloud Account (Geolocation)
-    - Define API_KEY and activate Services
-    - https://console.cloud.google.com/
- - Setup package.json
- - Edit .env file
-    - incl. Third-Partie Integrations
+    > Implement Cookies (eg. Google Tags, Bing UET, etc.)
 
-## Third-Partie Integrations
+## Additional Microservices
 [X] PaddleJS
     1. Setup Paddle Account
         - https://developer.paddle.com/paddlejs/overview
     2. Setup .env File
-    3. Define Access-Token set by Paddle (.env)
-        - Access is defining accessible UI Features
     4. Implement '@/components/PaddleSubscription.vue'
+    5. Handle UI-Access according Logic
 
 [X] Google Developer Services API
     1. Create Google Developers Account
@@ -31,8 +33,8 @@
         
 [X] Cookie-Consent (GDPR, for Google Analytics, Bing UET, etc.)
     1. Define Cookies in '@modules/cookieConsent.js'
-        - Global: "this.$cc"
         - Dok: https://github.com/eyecatchup/vue-cookieconsent
+        - Global: "this.$cc"
         - Implemented: "App.js" & "quasar.config.js" (as boot-file)
         - Module '@modules/cookieConsent.js"
         - Implementes Cookies: 
@@ -45,6 +47,7 @@
 [X] QR Code
     - https://github.com/scopewu/qrcode.vue
 
-# Deployment
- - See Vue 3
+
+# Live Deployment
+ - See Vue 3 / Quasar Framework
  - Google API, restrict API-Token to current App-Url

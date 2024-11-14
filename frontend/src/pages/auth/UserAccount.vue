@@ -218,7 +218,7 @@ export default {
                 if(src) formData.append("avatar", src);
                 formData.append("delete", deleteAvatar ? '1' : '0');
                 this.$toast.load();
-                const response = await this.$axios.post('/user-change-avatar', formData);
+                const response = await this.$axios.post('/update-user-avatar', formData);
                 this.$toast.success(response.data.message);
                 this.$user.user.img_src = avatar;
             } catch (error) {
@@ -231,7 +231,7 @@ export default {
             try {
                 if(this.$user.user.name.length === 0) throw ('Please enter name.');
                 this.$toast.load();
-                const response = await this.$axios.post('/user-change-name', {
+                const response = await this.$axios.post('/update-user-name', {
                     name: this.$user.user.name
                 });
                 this.$toast.success(response.data.message);
@@ -246,7 +246,7 @@ export default {
                 if(!this.regRulesEmail.test(this.transferEmail)) throw 'Please enter valid email.';
                 if(!this.emailPassword) throw 'Please cofirm by password.';
                 this.$toast.load();
-                const response = await this.$axios.post('user-transfer-account', {
+                const response = await this.$axios.post('transfer-user-account', {
                     'email': this.transferEmail,
                     'password': this.emailPassword,
                 })
@@ -265,7 +265,7 @@ export default {
                 const passwordCheck = passwordRequirements(newPw, confirmed);
                 if(passwordCheck) throw passwordCheck;
                 this.$toast.load();
-                const response = await this.$axios.post('user-change-password', {
+                const response = await this.$axios.post('update-user-password', {
                     'password_current': current,
                     'password': newPw,
                     'password_confirmation': confirmed

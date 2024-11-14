@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\PivotUserLanguages;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -20,8 +19,4 @@ class AppLanguages extends Model
         'name',
         'nativeName',
     ];
-
-    public function has_users_pivot() {
-        return $this->hasMany(PivotUserLanguages::class, 'language_id');
-    }
 }

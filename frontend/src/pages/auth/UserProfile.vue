@@ -37,10 +37,10 @@
             >
                 <template #actions>
                     <div class="flex justify-end items-center w-100">
-                        <q-toggle class="q-mx-md" v-model="avatar.is_community" dense />
+                        <q-toggle class="q-mx-md" v-model="avatar.is_public" dense />
                         <div>
                             <q-btn 
-                                @click="submitPublicity(avatar.is_community)" 
+                                @click="submitPublicity(avatar.is_public)" 
                                 outline 
                                 rounded
                                 size="sm"
@@ -57,7 +57,7 @@
                     <template #left>
                         <q-avatar v-if="$user.user.img_src" square size="170px" >
                             <q-img :src="$user.user.img_src" alt="user-avatar" loading="eager" >
-                                <q-icon v-if="avatar.is_community" class="absolute avatar-site-verified-image" size="32px" name="verified" color="green" />
+                                <q-icon v-if="avatar.is_public" class="absolute avatar-site-verified-image" size="32px" name="verified" color="green" />
                             </q-img>
                         </q-avatar>
                         <q-avatar v-else color="primary" text-color="white" size="180px" square>U</q-avatar>
@@ -267,14 +267,14 @@ export default {
         async loadAttributes() {
             try {
                 this.loading = true;
-                const language = await this.$axios.get('/load-app-languages');
+                const language = await this.$axios.get('/get-app-languages');
                 this.languageOptions = language.data.language;
                 this.languageOptionsFilter = language.data.language;
 
-                const countries = await this.$axios.get('/load-app-countries');
+                const countries = await this.$axios.get('/get-app-countries');
                 this.countryOptions = countries.data.countries;
 
-                const userAvatar = await this.$axios.get('/load-user-avatar-profile');
+                const userAvatar = await this.$axios.get('/load-user-avatar');
                 this.avatar = userAvatar.data.avatar;
             } catch (error) {
                 this.$toast.error(error.response ? error.response : error)

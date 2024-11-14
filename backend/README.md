@@ -1,11 +1,13 @@
-# Setup
+# Laravel 12 - Framework
+Website: https://laravel.com/
+
 ## Initialization
-  - php artisan --version
-  - composer clear cache
   - composer install / update
-  - composer show "pgvector/pgvector" --alL
-  - create .env File
-  - adjust .env File & composer.json
+    > php artisan --version
+    > composer clear cache
+    > composer show "pgvector/pgvector" --alL
+  - define .env File
+  - Setup meta-data in package.json
 
 ### Setup Database (DOCKER)
 As we want to allow AI/Vectors, we need first install the pgvector/pgvector:latest over Docker
@@ -28,7 +30,7 @@ As we want to allow AI/Vectors, we need first install the pgvector/pgvector:late
   - Choose your Mail Driver (according Serverhost)
   - Enter Attributes into .env file
 
-## Third-Partie Integrations
+## Additional Microservices
 [X] Paddle - Payment Gateway
     - https://login.paddle.com/login
     - https://sandbox-login.paddle.com/login
@@ -41,8 +43,8 @@ As we want to allow AI/Vectors, we need first install the pgvector/pgvector:late
     - User Access Management: "Access/UserAccessController"
     - Paddle Handler: "Auth/AccessHandling"
 
- # Deployment
- See Laravel 10 Docs & it's Dependencies
+ # Live Deployment
+ See Laravel 11 Docs & it's Dependencies
   - .env set to production
   - php artisan vendor:publish --tag=passport-config
     - Enter Client Secrets in .env File
@@ -50,27 +52,3 @@ As we want to allow AI/Vectors, we need first install the pgvector/pgvector:late
   - php artisan config:cache
   - php artisan event:cache
   - php artisan route:cache
-
-# Local Development environment 
-Backend (PHP 8.3), by Client Rest-API Calls
-## Docker Environment 
-  - Docker Setup Environment - "docker-compose up -d"
-    - Initiate Docker "root/docker-compose.yml"
-      - Vector Database PostgreSQL: Latest
-      - PG_Admin: Latest
-      - PHP:Latest
-## Local Backend Compiler (PHP)
-  - PHP install newest Compiler
-    - Setup Environment Variables "Path/to/php.exe"
-    - Setup php.ini (Development) file by
-      - Variables
-      - Extensions
-    - PHP - Xdebug
-      - Download php_xdebug
-      - Adjust php.ini file
-          zend_extension="B:\PHP-Composer\php-8.3.9\ext\php_xdebug.dll"
-          xdebug.mode=debug
-          xdebug.start_with_request=yes
-          xdebug.client_port=9003
-          xdebug.client_host=127.0.0.1
-          xdebug.connect_timeout_ms=200

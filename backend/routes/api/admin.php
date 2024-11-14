@@ -12,7 +12,7 @@ Route::middleware(['auth:api', 'email_verified', 'is_admin'])->group(function ()
         ->name('admin.backpanel');
 
     //* Releasemanagement
-    Route::get('/app-get-releases/all', [AppReleasesController::class, 'loadAll'])
+    Route::get('/get-app-releases/all', [AppReleasesController::class, 'loadAllReleases'])
         ->name('get.app.release.details.all');
     Route::post('/create-app-release', [AppReleasesController::class, 'create'])
         ->name('create.app.release');
@@ -23,5 +23,5 @@ Route::middleware(['auth:api', 'email_verified', 'is_admin'])->group(function ()
 });
 
 //* Public Accessible Data
-Route::get('/app-get-releases', [AppReleasesController::class, 'load'])
-    ->name('app.get.release');
+Route::get('/get-app-releases/{index}', [AppReleasesController::class, 'loadIndexedReleases'])
+    ->name('get.app.release');

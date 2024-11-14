@@ -20,11 +20,11 @@ const storeUser = defineStore({
         },
         avatar: {
             id: 0,
-            is_community: false,
+            is_public: false,
         },
         entity: {
             id: 0,
-            is_community: false,
+            is_public: false,
         }
     }),
     

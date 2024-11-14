@@ -3,79 +3,77 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\UserAuthController;
 use App\Http\Controllers\Auth\UserAccountController;
-use App\Http\Controllers\Auth\UserProfileController;
+use App\Http\Controllers\Auth\UserTransferController;
 use App\Http\Controllers\Auth\CreateAccountController;
 use App\Http\Controllers\Auth\PasswordResetController;
-use App\Http\Controllers\Auth\TransferAccountController;
 use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\Auth\AppAccess\UserAccessController;
+use App\Http\Controllers\Auth\AppAccess\UserTransactionController;
+use App\Http\Controllers\Auth\AppAccess\UserSubscriptionController;
 
 
 Route::middleware(['auth:api', 'email_verified'])->group(function () {
 
-    //* User Auth
+    //* App access
+    Route::get('/load-user-access', [UserAccessController::class, 'loadUserAccess'])
+        ->name('load.user.access');
+    Route::get('/check-user-access/{access_token}', [UserAccessController::class, 'checkUserAccess'])
+        ->name('check.user.access');
+    
+    // Process Paddle Client Checkout
+    // User requests access by paddel's provided attribute "$access_token" 
+    // Verify client access, by preventing Client Manipulation by user
+    Route::post('/set-user-client-access', [UserTransactionController::class, 'initializeClientCheckout'])
+        ->name('set.user.client.access');
+    Route::post('/verify-user-client-access', [UserTransactionController::class, 'verifyClientCheckout'])
+        ->name('verify.user.client.access');  
+    
+    // Cancel Paddle subscription
+    // Allows user to cancel it's paddle-subscription
+    Route::post('/cancel-user-subscription', [UserSubscriptionController::class, 'cancelSubscription'])
+        ->name('cancel.user.subscription');
+    
+    //* User Account
     Route::get('/auth', [UserAuthController::class, 'authUser'])
         ->name('auth');
+    Route::post('/update-user-avatar', [UserAccountController::class, 'changeAvatar'])
+        ->name('update.user.avatar');
+    Route::post('/update-user-name', [UserAccountController::class, 'changeName'])
+        ->name('update.user.name');
+    Route::post('/update-user-password', [PasswordResetController::class, 'changePassword'])
+        ->name('update.user.password');
     Route::post('/logout', [UserAuthController::class, 'logoutUser'])
         ->name('logout'); 
-        
-    //* User Account
-    Route::post('/user-change-avatar', [UserAccountController::class, 'changeAvatar'])
-        ->name('user.change.avatar');
-    Route::post('/user-change-name', [UserAccountController::class, 'changeName'])
-        ->name('user.change.name');
-    Route::post('/user-change-password', [UserAccountController::class, 'changePassword'])
-        ->name('user.change.password');
-    
-    //* Transfer Account Request 
-    //* Email will be updated, after Emailverification, email_verified_at = null
-    Route::post('/user-transfer-account', [TransferAccountController::class, 'sendToken'])
-        ->name('user.transfer.account');
 
-    //* Manage Profile
-    Route::get('/load-user-avatar-profile', [UserProfileController::class, 'loadProfile'])
-        ->name('load.user.avatar.profile');
-    Route::post('/update-user-avatar-publicity', [UserProfileController::class, 'updatePublicity'])
-        ->name('update.user.avatar.public.access');
-    Route::post('/update-user-avatar-contact', [UserProfileController::class, 'updateContact'])
-        ->name('update.user.avatar.contact');
-    Route::post('/update-user-avatar-birth', [UserProfileController::class, 'updateBirth'])
-        ->name('update.user.avatar.birth');
-    Route::post('/update-user-avatar-location', [UserProfileController::class, 'updateLocation'])
-        ->name('update.user.avatar.location');
-    Route::post('/update-user-avatar-about', [UserProfileController::class, 'updateAbout'])
-        ->name('update.user.avatar.about');
-    Route::post('/update-user-avatar-country', [UserProfileController::class, 'updateCountry'])
-        ->name('update.user.avatar.country');
-    Route::post('/update-user-avatar-languages', [UserProfileController::class, 'updateLanguages'])
-        ->name('update.user.avatar.languages');
-    
-    //* Delete User
+    // Transfer Account Request 
+    // Email will be updated, after Emailverification, email_verified_at = null
+    Route::post('/transfer-user-account', [UserTransferController::class, 'initializeEmailTransfer'])
+        ->name('transfer.user.account');
+
+    // Delete User
     Route::post('/user-delete-account', [UserAccountController::class, 'deleteAccount'])
         ->name('user.delete.account');
 });
 
 
-
-//* -----------------------
-//* Public Accessible
-//* -----------------------
-
-//* Login
+//* Public account access
 Route::post('/login', [UserAuthController::class, 'loginUser'])
     ->middleware(['throttle:6,1'])    
     ->name('login');
 
-//* Create Account
+// Create Account
 Route::post('/create-account', [CreateAccountController::class, 'register'])
     ->name('create.account');
+
+// Verify Email
 Route::post('/email-verification-request', [EmailVerificationController::class, 'sendToken'])
     ->middleware(['throttle:5,1'])
     ->name('email.verification.request');
 Route::put('/email-verification/{email}/{token}', [EmailVerificationController::class, 'verifyToken'])
-    ->middleware(['throttle:5,1'])
+    ->middleware(['throttle:6,1'])
     ->name('email.verification');
 
-//* Reset Password
+// Reset Password
 Route::post('/password-reset-request', [PasswordResetController::class, 'sendToken'])
     ->middleware(['throttle:6,1'])
     ->name('password.reset.request');
@@ -83,7 +81,7 @@ Route::put('/password-reset/{email}/{token}', [PasswordResetController::class, '
     ->middleware(['throttle:6,1'])
     ->name('password.reset');
 
-//* Transfer Account
-Route::put('/transfer-account/{email}/{token}/{transfer}', [TransferAccountController::class, 'verifyToken'])
+// Transfer Account
+Route::put('/transfer-account/{email}/{token}/{transfer}', [UserTransferController::class, 'verifyEmailTransfer'])
     ->middleware(['throttle:6,1'])
     ->name('transfer.account');

@@ -2,9 +2,16 @@
 
 namespace App\Http\Collections;
 
+
 abstract class GeolocationCollection
 {
+    /**
+     * Default collection
+     *
+     * @var array
+     */
     public static $geoLocation = [
+        '_type' => 'Collection $geolocation',
         'id' => 0,
         'place_id' => '',
         'lat' => 0,
@@ -17,10 +24,18 @@ abstract class GeolocationCollection
         'zip_code' => '',
     ];
 
-    static public function render_geoLoaction(object | null $geolocation, bool $showAddress = false): array
+    /**
+     * Render Geolocation Collection
+     *
+     * @param object|null $geolocation
+     * @param boolean $showAddress
+     * @return array
+     */
+    static public function render_geoLoaction(object $geolocation = null, bool $showAddress): array
     {
         if(!$geolocation) return SELF::$geoLocation;
         return [
+            '_type' => 'Collection $geolocation',
             'id' => $geolocation->id,
             'place_id' => $showAddress ? $geolocation->place_id : SELF::$geoLocation['place_id'],
             'lat' => $showAddress ? $geolocation->lat : SELF::$geoLocation['lat'],

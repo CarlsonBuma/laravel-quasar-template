@@ -9,15 +9,17 @@ use App\Http\Controllers\Controller;
 
 class AppReleasesController extends Controller
 {
-    public function load(Request $request)
+    /**
+     * Undocumented function
+     *
+     * @param integer $index
+     * @return void
+     */
+    public function loadIndexedReleases(int $index = 0)
     {
         $perPage = 12;
-        $data = $request->validate([
-            'index' => ['required', 'numeric'],
-        ]);
-
         $releases = AppReleases::orderBy('created_at', 'desc')
-            ->skip($data['index'])
+            ->skip($index)
             ->take($perPage + 1)
             ->get();
         
@@ -31,35 +33,39 @@ class AppReleasesController extends Controller
         ], 200);
     }
 
-    public function loadAll()
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function loadAllReleases()
     {
-        $releases = AppReleases::orderBy('created_at', 'desc')->get();
         return response()->json([
-            'releases' => $releases,
+            'releases' => AppReleases::orderBy('created_at', 'desc')->get(),
         ], 200);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function create(Request $request)
     {
-        try {
-            $data = $request->validate([
-                'title' => ['required', 'string', 'max:255'],
-                'version' => ['required', 'string', 'max:255'],
-                'description' => ['required', 'string', 'max:1999'],
-                'type' => ['required', 'string', 'max:255'],
-            ]);
+        $data = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'version' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1999'],
+            'type' => ['required', 'string', 'max:255'],
+        ]);
 
-            $entryID = AppReleases::create([
-                'title' => $data['title'],
-                'version' => $data['version'],
-                'description' => $data['description'],
-                'type' => $data['type'],
-            ])->id;
-        } catch (Exception $e) {
-            return response()->json([
-                'message' => $e->getMessage(),
-            ], 422);
-        }
+        $entryID = AppReleases::create([
+            'title' => $data['title'],
+            'version' => $data['version'],
+            'description' => $data['description'],
+            'type' => $data['type'],
+        ])->id;
 
         return response()->json([
             'entry_id' => $entryID,
@@ -67,35 +73,41 @@ class AppReleasesController extends Controller
         ], 200);
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @return void
+     */
     public function update(Request $request)
     {
-        try {
-            $data = $request->validate([
-                'id' => ['required', 'numeric'],
-                'title' => ['required', 'string', 'max:255'],
-                'version' => ['required', 'string', 'max:255'],
-                'description' => ['required', 'string', 'max:1999'],
-                'type' => ['required', 'string', 'max:255'],
-            ]);
+        $data = $request->validate([
+            'id' => ['required', 'numeric'],
+            'title' => ['required', 'string', 'max:255'],
+            'version' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1999'],
+            'type' => ['required', 'string', 'max:255'],
+        ]);
 
-            AppReleases::find($data['id'])->update([
-                'title' => $data['title'],
-                'version' => $data['version'],
-                'description' => $data['description'],
-                'type' => $data['type'],
-            ]);
-        } catch (Exception $e) {
-            return response()->json([
-                'message' => $e->getMessage(),
-            ], 422);
-        }
+        AppReleases::find($data['id'])->update([
+            'title' => $data['title'],
+            'version' => $data['version'],
+            'description' => $data['description'],
+            'type' => $data['type'],
+        ]);
 
         return response()->json([
             'message' => 'Entry has been updated.'
         ], 200);
     }
 
-    public function delete($id)
+    /**
+     * Undocumented function
+     *
+     * @param integer $id
+     * @return void
+     */
+    public function delete(int $id)
     {
         try {
             if(!$id) throw new Exception('ID is required.');

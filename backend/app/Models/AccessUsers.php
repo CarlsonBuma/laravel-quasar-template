@@ -36,6 +36,6 @@ class AccessUsers extends Model
     }
 
     public function belongs_to_entity() {
-        return $this->belongsTo(UserEntity::class, 'entity_id');
+        return $this->belongsTo(Entity::class, 'entity_id');
     }
 }

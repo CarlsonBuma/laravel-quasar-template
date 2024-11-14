@@ -4,6 +4,7 @@ namespace App\Http\Classes;
 
 use Illuminate\Support\Facades\URL;
 
+
 abstract class Modulate
 {
     /**

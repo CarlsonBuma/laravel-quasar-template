@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\UserEntity;
 
 use Exception;
-use App\Models\UserEntity;
+use App\Models\Entity;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
@@ -13,18 +13,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Collections\EntityCollection;
 
+
 class EntityProfileController extends Controller
 {
     /**
-     * Entity Profile
+     * Load entity profile
      *
      * @return void
      */
-    public function loadEntityProfile() 
+    public function loadProfile() 
     {
-        $renderedEntity = EntityCollection::render_entity_impressum(
-            UserEntity::where('user_id', Auth::id())->first(),
-            $isOwner = true
+        $renderedEntity = EntityCollection::render_user_entity(
+            Entity::where('user_id', Auth::id())->first(),
         );
 
         return response()->json([
@@ -35,6 +35,7 @@ class EntityProfileController extends Controller
 
     /**
      * Update publicity
+     *  > Flag: $is_public
      *
      * @param Request $request
      * @return void
@@ -45,8 +46,8 @@ class EntityProfileController extends Controller
             'is_public' => ['required', 'boolean'],
         ]);
         
-        UserEntity::where('user_id', Auth::id())->update([
-            'is_community' => (bool) $data['is_public'],
+        Entity::where('user_id', Auth::id())->update([
+            'is_public' => (bool) $data['is_public'],
         ]);
 
         return response()->json([
@@ -57,7 +58,7 @@ class EntityProfileController extends Controller
     }
     
     /**
-     * Update Image
+     * Update avatar image
      *
      * @param Request $request
      * @return void
@@ -66,12 +67,11 @@ class EntityProfileController extends Controller
     {
         $data = $request->validate([
             'src' => ['nullable', 'mimes:jpg,jpeg,png', 'max:2048'],     // Update Banner if set
-            'avatar_delete' => ['required', 'boolean'],                     // Check if user wants to delete Avatar
+            'avatar_delete' => ['required', 'boolean'],                  // Check if user wants to delete Avatar
         ]);
 
-        $userEntity = UserEntity::where('user_id', Auth::id())->first();
-
         // Process Avatar
+        $userEntity = Entity::where('user_id', Auth::id())->first();
         if(!$userEntity) throw new Exception('Entity does not exist.');
         $currentAvatarImageLink = $userEntity->avatar;
         if($data['avatar_delete']) {
@@ -106,7 +106,7 @@ class EntityProfileController extends Controller
             'slogan' => ['nullable', 'string', 'max:255'],
         ]);
 
-        UserEntity::where('user_id', Auth::id())->update([
+        Entity::where('user_id', Auth::id())->update([
             'name' => $data['name'],
             'slogan' => $data['slogan'],
         ]);
@@ -131,7 +131,7 @@ class EntityProfileController extends Controller
 
         $websiteSanitized = Modulate::sanitizeLink($data['website']);
 
-        UserEntity::where('user_id', Auth::id())->update([
+        Entity::where('user_id', Auth::id())->update([
             'website' => $websiteSanitized,
             'contact' => $data['contact'],
         ]);
@@ -153,7 +153,7 @@ class EntityProfileController extends Controller
             'about' => ['nullable', 'string', 'max:1999'],
         ]);
 
-        UserEntity::where('user_id', Auth::id())->update([
+        Entity::where('user_id', Auth::id())->update([
             'about' => $data['about'],
         ]);
 
@@ -168,13 +168,13 @@ class EntityProfileController extends Controller
      * @param Request $request
      * @return void
      */
-    public function updateBulletpoints(Request $request) 
+    public function updateTags(Request $request) 
     {
         $data = $request->validate([
             'tags' => ['nullable', 'array'],
         ]);
 
-        UserEntity::where('user_id', Auth::id())->update([
+        Entity::where('user_id', Auth::id())->update([
             'tags' => $data['tags'],
         ]);
 
@@ -185,7 +185,6 @@ class EntityProfileController extends Controller
 
     /**
      * Update Geolocation
-     *  > Only if place_id exists
      *
      * @param Request $request
      * @return void
@@ -204,24 +203,9 @@ class EntityProfileController extends Controller
             'zip_code' => ['nullable', 'string', 'max:19'],
         ]);
 
-        $locationID = null;
-        if(isset($data['place_id'])) {
-            $locationID = AppGeolocations::firstOrCreate([
-                'place_id' => $data['place_id']
-            ], [
-                'lng' =>  $data['lng'],
-                'lat' =>  $data['lat'],
-                'address' =>  $data['address'],
-                'country' =>  $data['country'],
-                'country_short' =>  $data['country_short'],
-                'area' =>  $data['area'],
-                'area_short' =>  $data['area_short'],
-                'zip_code' =>  $data['zip_code']
-            ])->id;
-        }
-
-        UserEntity::where('user_id', Auth::id())->update([
-            'location_id' => $locationID,
+        $geolocation = new AppGeolocations();
+        Entity::where('user_id', Auth::id())->update([
+            'location_id' => $geolocation->add_new_entry($data),
         ]);
 
         return response()->json([

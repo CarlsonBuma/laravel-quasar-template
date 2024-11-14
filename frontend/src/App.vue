@@ -104,7 +104,7 @@ export default {
                         response.data.avatar, 
                         response.data.avatar, 
                         response.data.access.is_admin,
-                        response.data.access.business_cockpit
+                        response.data.access.access_cockpit
                     );
                 }
                 

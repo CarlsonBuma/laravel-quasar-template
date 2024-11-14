@@ -7,36 +7,38 @@ use Illuminate\Support\Facades\Storage;
 
 abstract class EntityCollection
 {
+    /**
+     * Default collection
+     *
+     * @var array
+     */
     public static $entity = [
-        '_type' => 'Object $EntityCollection',
+        '_type' => 'Collection $entity',
         'id' => 0,
-        'entity_id' => 0,
-        'is_community' => false,
-        'avatar' => '',
+        'is_public' => false,
         'name' => '',
-        'slogan' => '',
-        'foundation' => '',
+        'avatar' => '',
         'about' => '',
-        'tags' => [],
         'contact' => '',
         'website' => '',
-        'bin' => '',
         'location' => null,
-        'collaborations' => []
+        'country_id' => null,
+        'tags' => [],
     ];
 
     /**
-     * Entity Impressum
-     *  > Accessible if is_community
+     * Users entity collection
+     *  > Accessible if is_public
      *  > Or user is owner
      *
      * @param object|null $entity
      * @param boolean $isOwner
      * @return array
      */
-    static public function render_entity_impressum(object $entity = null, bool $isOwner = false): array
+    static public function render_user_entity(object $entity = null): array
     {
-        if(!$entity || (!$entity->is_community && !$isOwner)) return SELF::$entity;
+        if(!$entity) return SELF::$entity;
+        
         $entityTags = $entity->tags;
         $geoLocation = $entity->location_id
             ? GeolocationCollection::render_geoLoaction($entity->belongs_to_location, $showAddress = true)
@@ -52,60 +54,17 @@ abstract class EntityCollection
             ] : null;
         
         return [
-            '_type' => 'Object $EntityImpressumCollection',
+            '_type' => 'Collection $entity',
             'id' => $entity->id,
-            'is_community' => $entity->is_community,
-            'avatar' => $avatarPath,
+            'is_public' => $entity->is_public,
             'name' => $entity->name,
-            'slogan' => $entity->slogan,
+            'avatar' => $avatarPath,
             'about' => $entity->about,
-            'tags' => $entityTags,
             'contact' => $entity->contact,
             'website' => $entity->website,
-            'country' => $country,
             'location' => $geoLocation,
-        ];
-    }
-
-    /**
-     * Community Entity Collection
-     *  > Accessible if is_community
-     *
-     * @param object|null $entity
-     * @return array
-     */
-    static public function render_community_entity(object $entity = null): array
-    {
-        //* Restriction: Entity must be community
-        if(!$entity || !$entity->is_community) return SELF::$entity;
-        $entityTags = $entity->tags;
-        $geoLocation = $entity->location_id
-            ? GeolocationCollection::render_geoLoaction($entity->belongs_to_location, $showAddress = true)
-            : GeolocationCollection::$geoLocation;
-        $avatarPath = $entity->avatar
-            ? URL::to(Storage::url('entityAvatar')) . '/' . $entity->avatar
-            : '';
-        $country = $entity->country_id
-            ? [
-                'id' => $entity->country_id,
-                'name' => $entity->belongs_to_country->name,
-                'code' => $entity->belongs_to_country->code,
-            ] : null;
-        
-        return [
-            '_type' => 'Object $EntityCommunityCollection',
-            'id' => $entity->id,
-            'entity_id' => $entity->id,             // Obsolete
-            'is_community' => $entity->is_community,
-            'avatar' => $avatarPath,
-            'name' => $entity->name,
-            'slogan' => $entity->slogan,
-            'about' => $entity->about,
+            'country' => $country,
             'tags' => $entityTags,
-            'contact' => $entity->contact,
-            'website' => $entity->website,
-            'country' => $country,
-            'location' => $geoLocation,
         ];
     }
 }

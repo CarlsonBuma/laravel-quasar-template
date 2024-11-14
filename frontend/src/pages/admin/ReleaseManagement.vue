@@ -189,12 +189,10 @@ export default {
     },
 
     methods: {
-        async getReleases(index = null) {
+        async getReleases() {
             try {
                 this.rendering = true;
-                const response = await this.$axios.get("/app-get-releases", { params: { 
-                    index: index 
-                }});
+                const response = await this.$axios.get("/get-app-releases/all");
                 this.releases = response.data.releases
             } catch (error) {
                 this.$toast.error(error.response)

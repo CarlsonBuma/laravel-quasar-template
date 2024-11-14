@@ -1,21 +1,17 @@
 ### V.1.0, by Gigup Solutions
-### Webapp - Collabris 
-by Carlson, -v.1.0, 15.08.2024
+Web App Template
+by Carlson, -v.2.0, 12.11.2024
 
-# Hosting
- * Github:      Code Management
- * Localhost:   Server & Domain
- * Open AI:     https://openai.com/ 
- * Metamask:    https://metamask.io/ 
- * Mail Host:   Hosted Server
- * Paddle:      https://developer.paddle.com/build/overview
- * Google API:  https://developers.google.com
-
-# Docs & Tutorials
-Setup Gitrepo: https://www.youtube.com/watch?v=Jdg9x3BDT38
+# Microservices
+ * Dev Environemnt:     Server::9003, UI::3000
+ * Github:              Code Management
+ * Mail Host:           Hosted Server
+ * Paddle:              https://developer.paddle.com/build/overview
+ * Google API:          https://developers.google.com
 
 ## Security Check
    - go "/frontend": 
+      - npm update
       - npm audit
       - npm audit fix --force
    - go "/backend": 
@@ -23,49 +19,61 @@ Setup Gitrepo: https://www.youtube.com/watch?v=Jdg9x3BDT38
       - composer update
 
 ## Folder Structure
- - backend
-    - see Readme.md
- - documents
- - frontend
-    - see Readme.md
+Root:
+   - /backend
+      - see Readme.md
+   - /documents
+   - /frontend
+      - see Readme.md
+   - Start Environment - "start in terminal":
+      > ./env-start.ps1
+   - Setup Docker Environment - "docker compose up":
+      > ./docker-compose.yml
 
-## System Dependencies
+# System Dependencies
+Tutorial: https://www.youtube.com/watch?v=Jdg9x3BDT38
+Root:
 - Backend (Laravel 11 + Database)
-   - User Auth: Laravel Passport (Oauth 2.0)
-   - DB: PSQL - pgvector/pgvector:latest 
-      - implements Extension "vectors"
-   - Paddle Paymentgateway (See AccessFiles + PaddleJS)
-      - https://developer.paddle.com/build/overview
-- Frontend (Quasar - Vue3 Framework)
-   - Quasar (2.12.0)
-   - Axios (API Request)
-      - Toast Request Handling (src/modules/responseHandling.js)
-   - Pinia (User Store / Session Store)
-   - Cookie Consent (cookieConsent.js)
-      - https://github.com/eyecatchup/vue-cookieconsent
-   - Google API - Geolocation
-      - https://developers.google.com/maps/documentation/geocoding/start
-      - https://developers.google.com/maps/documentation/javascript?hl=de
-      - https://developers.google.com/maps/documentation/geocoding/get-api-key?hl=de
-
-# Development
-## Environment 
- - php 8.3 ("php -v")
-     - Xdebug from Zend Engine v.4.1
-     - composer v.2.4.1
- - node.js 18.7
- - docker 20.10
-     - docker-desktop
-     - pgvector/pgvector, pgadmin4
- - powershell
+   > PHP 8.3 Compiler
+   > User Auth: Laravel Passport (Oauth 2.0)
+   > DB: PSQL - pgvector/pgvector:latest 
+      > implements Extension "vectors"
+   > Paddle Paymentgateway (See AccessFiles + PaddleJS)
+      > https://developer.paddle.com/build/overview
+- Frontend (Quasar CLI - Vue3 Framework)
+   > Quasar "$quasar info"
+   > Cookie Consent (cookieConsent.js)
+      > https://github.com/eyecatchup/vue-cookieconsent
+   > Google API - Geolocation
+      > https://developers.google.com/maps/documentation/geocoding/start
+      > https://developers.google.com/maps/documentation/javascript?hl=de
+      > https://developers.google.com/maps/documentation/geocoding/get-api-key?hl=de
 
 ## Testing Environment
-  - Ngrok (Reverse Proxy) - Webhooks
-    - ngrok http http://127.0.0.1:8000
-    - ngrok http http://localhost:9000/#
+   - Install Ngrok (Reverse Proxy) - Webhooks
+      - ngrok http http://127.0.0.1:8000
+      - ngrok http http://localhost:9000/#
 
-## Files
- - Start Environment - "start in terminal":
-    - ./env-start.ps1
- - Setup Docker Environment - "docker compose up":
-    - ./docker-compose.yml
+## Setup Docker Environment
+   - Docker Setup Environment - "docker-compose up -d"
+   - Initiate Docker "root/docker-compose.yml"
+      - Vector Database PostgreSQL: Latest
+      - PG_Admin: Latest
+      - PHP:Latest
+
+### Local Backend Compiler (PHP)
+Instead of Docker, use a local Backend Compiler
+   - Install newest PHP Compiler
+   - Setup Environment Variables "Path/to/php.exe"
+   - Setup php.ini (Development) file by
+      > Variables
+      > Extensions
+   - PHP - Xdebug
+      > Download php_xdebug
+      > Adjust php.ini file
+         zend_extension="B:\PHP-Composer\php-8.3.9\ext\php_xdebug.dll"
+         xdebug.mode=debug
+         xdebug.start_with_request=yes
+         xdebug.client_port=9003
+         xdebug.client_host=127.0.0.1
+         xdebug.connect_timeout_ms=200

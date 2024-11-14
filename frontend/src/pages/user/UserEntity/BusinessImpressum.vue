@@ -20,12 +20,12 @@
                 <template #actions>
                     <div class="flex justify-end w-100">
                         <q-toggle 
-                            v-model="entity.is_community"
+                            v-model="entity.is_public"
                             class="q-ml-md q-mr-sm" 
                             dense 
                         />
                         <q-btn 
-                            @click="submitPublicity(entity.is_community)" 
+                            @click="submitPublicity(entity.is_public)" 
                             :disabled="!entity.name || !entity.avatar"
                             outline 
                             rounded

@@ -102,7 +102,7 @@ export default {
             try {
                 if(this.rendering === true || this.isLastEntry) return;
                 this.rendering = true;
-                const response = await this.$axios.get("/app-get-releases", { params: { 
+                const response = await this.$axios.get("/get-app-releases", { params: { 
                     index: index 
                 }});
                 this.releases.push(...response.data.releases);

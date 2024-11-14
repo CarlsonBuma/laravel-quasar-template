@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Http\Controllers\Auth\AppAccess;
+
+use App\Models\AccessSubscriptions;
+
+
+class PaddleSubscriptionHandler
+{
+    public $subscription = null;
+
+    /**
+     * Set Subription
+     *
+     * @param object|null $subscription
+     * @return void
+     */
+    function __construct(object $subscription = null)
+    {
+        $this->subscription = $subscription;
+    }
+
+    /**
+     ** Update current Subscription
+     *
+     * @param array $contentData
+     * @return void
+     */
+    public function updateSubscriptionByWebhook(array $contentData): void
+    {
+        $this->subscription = AccessSubscriptions::where([
+            'subscription_token' => $contentData['id'],
+        ])->first();
+
+        if(!$this->subscription) return;
+        $subscriptionStatus = $contentData['status'];
+        $startedAt = $contentData['started_at'];
+        $canceledAt = $contentData['canceled_at'];
+        $pausedAt = $contentData['paused_at'];
+        $this->subscription->update([
+            'started_at' => $startedAt,
+            'canceled_at' => $canceledAt,
+            'paused_at' => $pausedAt,
+            'status' => $subscriptionStatus,
+            'message' => 'webhook.subscription.updated'
+        ]);
+    }
+}

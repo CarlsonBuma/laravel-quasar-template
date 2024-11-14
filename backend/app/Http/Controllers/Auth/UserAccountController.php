@@ -32,30 +32,29 @@ class UserAccountController extends Controller
 
             $data = $request->validate([
                 'avatar' => ['nullable', 'mimes:jpg,jpeg,png', 'max:2048'],
-                'delete' => ['required', 'boolean'],
+                'avatar_delete' => ['required', 'boolean'],
             ]);
 
             // User's Avatar
-            $userID = Auth::id();
-            $currentUser = User::find($userID);
-            $userAvatar = $currentUser->avatar;
-
+            $img_src = null;
+            $user = User::find(Auth::id());
+            $userImgSrc = $user->avatar;
+            
             // Delete Avatar
-            if($data['delete'] && $userAvatar) {
-                Storage::disk('userAvatar')->delete($userAvatar);
-                $currentUser->avatar = null;
-                $currentUser->save();
-            } else if ($data['avatar']) {   
-                // Change Image: Existing vs. non existing
+            if($data['avatar_delete'] && $user->avatar) {
+                Storage::disk('userAvatar')->delete($userImgSrc);
+            } 
+            
+            // Change Image: Existing vs. non existing
+            else if ($data['avatar']) {   
                 $fileExtension = $request->file('avatar')->extension();
-                $imageName = $userID . '-' . Str::random(32) . '.' . $fileExtension;
-                if($userAvatar) Storage::disk('userAvatar')->delete($userAvatar);       
-                Storage::putFileAs('public/userAvatar', $request->file('avatar'), $imageName);
-                
-                // Save in DB
-                $currentUser->avatar = $imageName;
-                $currentUser->save();
+                $img_src = Auth::id() . '-' . Str::random(32) . '.' . $fileExtension;
+                if($userImgSrc) Storage::disk('userAvatar')->delete($userImgSrc);       
+                Storage::putFileAs('public/userAvatar', $request->file('avatar'), $img_src);
             }
+
+            $user->avatar = $img_src;
+            $user->save();
         } catch (Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),
@@ -77,23 +76,13 @@ class UserAccountController extends Controller
      */
     public function changeName(Request $request)
     {
-        try {
-            $data = $request->validate([
-                'name' => ['required', 'string', 'max:255'],
-            ]);
-    
-            $userID = Auth::id();
-            $name = $data['name'];
-            $user = User::find($userID);
-            $user->update([
-                'name' => $name,
-            ]);
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+        ]);
 
-        } catch (Exception $e) {
-            return response()->json([
-                'message' => $e->getMessage(),
-            ], 422);
-        }
+        User::find(Auth::id())->update([
+            'name' => $data['name'],
+        ]);
 
         return response()->json([
             'message' => 'Success! Your username has been changed.',
@@ -111,24 +100,19 @@ class UserAccountController extends Controller
     public function changePassword(Request $request)
     {
         try {
-
             $data = $request->validate([
                 'password_current' => ['required', 'string', 'max:255'],
                 'password' => ['required', 'string', 'max:255', 'confirmed', Password::defaults()],
             ]);
-    
-            $userID = Auth::id();
-            $passwordConfirm = $data['password_current'];
-            $passwordNew = $data['password'];
             
             // Check Current Password
-            $user = User::find($userID);
-            if(!Hash::check($passwordConfirm, $user->password)) 
+            $user = User::find(Auth::id());
+            if(!Hash::check($data['password_current'], $user->password)) 
                 throw new Exception('Ups, the given password is incorrect.');
             
             // Update Password
             $user->update([
-                'password' => Hash::make($passwordNew)
+                'password' => Hash::make($data['password'])
             ]);
 
         } catch (Exception $e) {
@@ -157,10 +141,8 @@ class UserAccountController extends Controller
                 'password' => ['required', 'string', 'max:255'],
             ]);
     
-            $userID = Auth::id();
-            $password = $data['password'];
-            $user = User::find($userID);
-            if(!Hash::check($password, $user->password)) 
+            $user = User::find(Auth::id());
+            if(!Hash::check($data['password'], $user->password)) 
                 throw new Exception('The given password is incorrect.');
 
             // Check if current Subscriptions existing
@@ -178,13 +160,13 @@ class UserAccountController extends Controller
                 ], 422);
             }
 
-            // Remove Images
-            if($userAvatar = $user->avatar) 
-                Storage::disk('userAvatar')->delete($userAvatar);
-            if($userEntityAvatar = $user->has_entity()->first()?->avatar) 
-                Storage::disk('entityAvatar')->delete($userEntityAvatar);
+            // Remove Files
+            if($userImgSrc = $user->avatar) 
+                Storage::disk('userAvatar')->delete($userImgSrc);
+            if($entityImgSrc = $user->has_entity()->first()?->avatar) 
+                Storage::disk('entityAvatar')->delete($entityImgSrc);
 
-            // Delete Userdata
+            // Delete user
             $user->delete();
         } catch (Exception $e) {
             return response()->json([
