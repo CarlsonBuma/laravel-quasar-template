@@ -2,6 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Public\AppController;
+use App\Http\Controllers\Public\ContentController;
+
+//* App content
+Route::get('/get-app-releases', [ContentController::class, 'loadIndexedReleases'])
+    ->name('get.app.release');
 
 //* App attributes
 Route::get('/get-app-languages', [AppController::class, 'loadLanguages'])

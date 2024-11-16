@@ -1,18 +1,25 @@
 <template>
 
-    <div class="">
-        <q-tabs
-            class="text-weight-regular"
-            :class="$q.dark.isActive ? 'text-sm bg-dark text-white' : 'bg-grey-1 text-dark'"
-            active-color="primary"
-            inline-label
-        >
-            <q-route-tab to="/avatar/profile" exact label="My profile" />
-            <q-route-tab to="/account/settings" exact label="Settings" />
-            <q-route-tab to="/account/access" exact label="My access" />
-        </q-tabs>
-        <q-separator />
-    </div>
+    <q-tabs
+        class="text-weight-regular"
+        active-color="primary"
+        inline-label
+    >
+        <q-route-tab to="/dashboard" exact label="Dashboard" />
+        <q-btn-dropdown auto-close stretch flat label="My avatar">
+            <q-list>
+                <q-item clickable @click="$router.push('/avatar/profile')">
+                    <q-item-section>My profile</q-item-section>
+                </q-item>
+                <q-item clickable @click="$router.push('/account/settings')">
+                    <q-item-section>Settings</q-item-section>
+                </q-item>
+                <q-item clickable @click="$router.push('/account/access')">
+                    <q-item-section>My access</q-item-section>
+                </q-item>
+            </q-list>
+        </q-btn-dropdown>
+    </q-tabs>
 
 </template>
 

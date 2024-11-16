@@ -18,7 +18,6 @@
                     v-model="login.email"
                     label="Enter email"
                 />
-
                 <q-input
                     filled
                     type="password"
@@ -77,7 +76,7 @@ export default {
                 this.$emit('authorize', '/');
             } catch (error) {
                 // Wrong Credentials && Email_Not_Verified
-                this.$toast.error(error.response ? error.response : error);
+                this.$toast.error(error.response ?? error);
             } finally {
                 this.login.password = '';
             }

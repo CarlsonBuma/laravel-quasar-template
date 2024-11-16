@@ -1,10 +1,10 @@
 <template>
 
-    <div class="row">
+    <div class="row w-100">
         <div class="col-auto">
             <slot name="left" />
         </div>
-        <div class="col-grow flex items-center text-center">
+        <div class="col-grow flex justify-center q-py-lg q-py-md-none">
             <slot name="right" />
         </div>
     </div>

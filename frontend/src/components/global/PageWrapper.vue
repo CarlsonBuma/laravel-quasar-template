@@ -2,7 +2,7 @@
     
     <q-page id="page-wrapper" :class="{'bg-design': bgDesign}">
 
-        <!-- Leftdrawer -->
+        <!-- Leftdrawer DELETE -->
         <PageDrawer 
             v-if="leftDrawer" 
             :drawerTitle="drawerTitle"
@@ -10,29 +10,23 @@
         />
 
         <!-- Navigation -->
-        <slot name="navigation" />
+        <div class="" :class="$q.dark.isActive ? 'text-sm bg-dark text-white' : 'bg-grey-1 text-dark'">
+            <slot name="navigation" />
+        </div>
         
-        <!-- Refresher -->
+        <!-- Content -->
         <q-pull-to-refresh class="w-100" :disable="!allowRefresh" @refresh="(done) => refresh(done)" >
-            <div class="container" :class="noMargin ? '' : 'q-py-lg'" >
-                
-                <!-- Rendering -->
-                <div v-if="rendering" class="row flex justify-center">
-                    <LoadingData 
-                        text="Processing data..."
-                        :colorIcon="bgDesign ? 'white' : 'primary'"
-                        :colorText="bgDesign ? 'text-white' : 'text-grey'"
-                    />
-                </div>
-
-                <!-- Content -->
-                <div 
-                    v-else 
-                    class="w-100 flex justify-center q-px-none" 
-                    :class="noMargin ? '' : 'q-px-md-md q-py-sm'" 
-                >
-                    <slot />
-                </div> 
+            <div 
+                class="row justify-center" 
+                :class="noMargin ? '' : 'q-px-md-md q-py-sm'" 
+            >
+                <LoadingData 
+                    v-if="rendering"
+                    text="Processing data..."
+                    :colorIcon="bgDesign ? 'white' : 'primary'"
+                    :colorText="bgDesign ? 'text-white' : 'text-grey'"
+                />
+                <slot v-else />
             </div>
         </q-pull-to-refresh>
     </q-page>
@@ -53,18 +47,14 @@ export default {
     ],
 
     props: {
-        // Contentnavigation
         allowRefresh: Boolean,      // Reloading Site
-
-        // Request Handling
-        rendering: Boolean,         // Navigation allowed
-        loading: Boolean,           // Navigation forbidden
+        rendering: Boolean,         // Render content
+        loading: Boolean,           // Loading data
 
         // Drawer
         leftDrawer: Boolean,
         
         // Design
-        overflow: Boolean,
         bgDesign: Boolean,
         noMargin: Boolean,
     },

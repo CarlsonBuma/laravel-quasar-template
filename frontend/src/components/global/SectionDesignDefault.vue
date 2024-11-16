@@ -1,7 +1,7 @@
 <template>
 
     <div class="w-100 flex justify-center q-py-xl">
-        <div class="row justify-center w-content q-py-md-md">
+        <div class="w-content row justify-center q-py-md-md">
             <slot />
         </div>
     </div>

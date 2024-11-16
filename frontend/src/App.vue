@@ -15,7 +15,7 @@
                     'bg-header-bright-mode': !$q.dark.isActive,
                 }"
             >
-                <NavVisitor 
+                <NavHead 
                     :loading="loading"
                     @authUser="(route) => authUser(route)"
                     @logoutUser="logoutUser()"
@@ -58,14 +58,14 @@
 
 <script>
 import { ref } from 'vue';
-import NavVisitor from 'src/components/navigation/NavVisitor.vue';
+import NavHead from 'src/components/navigation/NavHead.vue';
 import NavFoot from 'src/components/navigation/NavFoot.vue';
 import CookieConsentOptions from 'src/boot/cookieConsent.js';
 
 export default {
     name: 'App',
     components: {
-        NavVisitor, NavFoot
+        NavHead, NavFoot
     },
 
     setup() {

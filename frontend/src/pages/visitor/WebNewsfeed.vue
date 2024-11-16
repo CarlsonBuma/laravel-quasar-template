@@ -8,13 +8,16 @@
     <PageWrapper noMargin>
         <SectionDesignClear >
             <div class="w-content-sm w-100 flex justify-center">
+
+                <!-- Title -->
                 <SectionTitle 
                     class="text-center"
                     header="Our latest news, announcements and releases."
                     title="Newsfeed."
                 />
-
                 <q-separator class="w-100 q-mb-lg" />
+
+                <!-- Content - infinite scroll -->
                 <InfiniteScroll 
                     class="w-card-lg"
                     :disable="isLastEntry"
@@ -98,18 +101,25 @@ export default {
     methods: {
         async getReleases(index) {
             try {
+                // Limit to last entry
+                // Only load if there are more entries existing.
                 if(this.rendering === true || this.isLastEntry) return;
+                this.isLastEntry = true;
+                
+                // Request
                 this.rendering = true;
                 const response = await this.$axios.get("/get-app-releases", { params: { 
                     index: index 
                 }});
+
+                // Add releases & check if there are more
                 this.releases.push(...response.data.releases);
                 this.isLastEntry = response.data.is_last_entry;
-                this.rendering = false;
             } catch (error) {
-                console.log('AppReleases', error.response ? error.response.data : error)
-                this.rendering = false;
+                console.log('visitor.newsfeed', error.response ?? error)
                 this.isLastEntry = true;
+            } finally {
+                this.rendering = false;
             }
         },
     }

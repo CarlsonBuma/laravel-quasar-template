@@ -53,6 +53,8 @@
                 label="Member Area"
             />
         </div>
+
+        <!-- User Navigation -->
         <div v-else>
 
             <!-- Small Screen -->
@@ -182,7 +184,7 @@
 
 <script>
 export default {
-    name: 'NavVisitor',
+    name: 'NavHead',
 
     props: {
         loading: Boolean

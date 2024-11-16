@@ -7,12 +7,14 @@
                     <SectionTitle 
                         header="Join our community! Get access to the proivded services."
                         title="Start collaboring within our unique community."
-                        subtitle="
-                            Join our community, and provide your skills and services to our collaborators.
-                            Get access to our provided services and start collaborating within our network.
-                            We provide a plattform for personal skill development, experience exchange and collaboration.
-                        "
-                    />
+                        subtitle="Lorem ipsum etcetera"
+                    >
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore 
+                        et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
+                        Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, 
+                        consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, 
+                        sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+                    </SectionTitle>
                 </template>
                 <template #right>
                     <CardService
@@ -21,7 +23,7 @@
                         iconSize='220px'
                         price='Free'
                         priceTag='forever'
-                        title='Collaborator'
+                        title='Title'
                         description="
                             Join our network and start collaborating within our community.
                             Establish your experience and network with other unique collaborators.
@@ -29,15 +31,7 @@
                         :items="[{
                             icon: 'done_all',
                             title: 'Personal Avatar',
-                            description: 'Get your own unique avatar and provide your experience to our community.',
-                        }, {
-                            icon: 'done_all',
-                            title: 'Skill development',
-                            description: 'Develop your skills by continiuous learning according your goals.',
-                        }, {
-                            icon: 'done_all',
-                            title: 'Access to Network',
-                            description: 'Get in touch with our unique serviceproviders. Connect your avatar with our community.',
+                            description: 'Get your own unique avatar and gain access to our community.',
                         }]"
                     >
                         <template #actions>
@@ -70,15 +64,15 @@
                     iconSize='220px'
                     price='249.00 CHF'
                     priceTag='+12 month'
-                    title='My Business Cockpit'
+                    title='My Cockpit'
                     description="
-                        Welcome to your Business Cockpit. Join our community and start collaborating with our members, partners and investors.
-                        Collabris provides the best experience for a sustainable market establishment for your business.
+                        Welcome to your Cockpit. Join our community and start collaborating with our members.
+                        We provide the best experience for a sustainable establishment for your business.
                     "
                     :items="[{
                         icon: 'done_all',
-                        title: 'Network & Establishment',
-                        description: 'Let our community find your services, with our algorithms and integrated AI (upcomming). Establish your collaborations and enrich your network with our unique collaborators.',
+                        title: 'Your cockpit',
+                        description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore.',
                     }]"
                 >
                     <template #actions>
@@ -109,7 +103,10 @@
                         <q-separator class="q-mb-md"/>
                         <q-card-section class="row align-top justify-center text-center">
                             <p>We are here to support you. Please do not hesitate to contact us via
-                                <span><q-icon name="email" class="q-mr-xs" /><a href="mailto:hello@gigup.ch">hello@collabris.ch</a></span>.
+                                <span>
+                                    <q-icon name="email" class="q-mr-xs" />
+                                    <a :href="'mailto:' + redirects.emailContact">{{ redirects.emailContact }}</a>
+                                </span>.
                             </p>
                         </q-card-section>
                     </CardSimple>
@@ -121,6 +118,7 @@
 </template>
 
 <script>
+import { redirects } from 'boot/globals.js'
 import CardService from 'components/CardService.vue';
 
 export default {
@@ -134,7 +132,9 @@ export default {
     ],
 
     setup() {
-        // Code
+        return {
+            redirects
+        }
     },
 
     data() {

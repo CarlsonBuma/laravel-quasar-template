@@ -2,14 +2,9 @@
 
     <div 
         class="w-100 flex justify-center q-py-xl"
-        :class="{
-            'bg-dark': $q.dark.isActive,
-            'bg-grey-1': !$q.dark.isActive,
-            'text-white': $q.dark.isActive,
-            'text-dark': !$q.dark.isActive,
-        }"
+        :class="$q.dark.isActive ? 'bg-dark text-white' : 'bg-grey-1 text-dark'"
     >
-        <div class="row justify-center w-content q-py-md-md">
+        <div class="w-content row justify-center q-py-md-md">
             <slot />
         </div>
     </div>

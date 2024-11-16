@@ -21,7 +21,3 @@ Route::middleware(['auth:api', 'email_verified', 'is_admin'])->group(function ()
     Route::delete('/delete-app-release/{id}', [AppReleasesController::class, 'delete'])
         ->name('delete-app-release');
 });
-
-//* Public Accessible Data
-Route::get('/get-app-releases/{index}', [AppReleasesController::class, 'loadIndexedReleases'])
-    ->name('get.app.release');

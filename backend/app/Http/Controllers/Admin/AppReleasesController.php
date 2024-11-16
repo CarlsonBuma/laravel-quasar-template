@@ -12,36 +12,12 @@ class AppReleasesController extends Controller
     /**
      * Undocumented function
      *
-     * @param integer $index
-     * @return void
-     */
-    public function loadIndexedReleases(int $index = 0)
-    {
-        $perPage = 12;
-        $releases = AppReleases::orderBy('created_at', 'desc')
-            ->skip($index)
-            ->take($perPage + 1)
-            ->get();
-        
-        // Check last entry
-        if(! $isLastPage = $releases->count() <= $perPage)
-            $releases->pop();
-        
-        return response()->json([
-            'releases' => $releases,
-            'is_last_entry' => $isLastPage
-        ], 200);
-    }
-
-    /**
-     * Undocumented function
-     *
      * @return void
      */
     public function loadAllReleases()
     {
         return response()->json([
-            'releases' => AppReleases::orderBy('created_at', 'desc')->get(),
+            'releases' => AppReleases::orderBy('created_at', 'desc')->get()
         ], 200);
     }
 
@@ -69,7 +45,7 @@ class AppReleasesController extends Controller
 
         return response()->json([
             'entry_id' => $entryID,
-            'message' => 'Entry has been created.'
+            'message' => 'Entry created.'
         ], 200);
     }
 
@@ -97,7 +73,7 @@ class AppReleasesController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Entry has been updated.'
+            'message' => 'Entry updated.'
         ], 200);
     }
 
@@ -119,7 +95,7 @@ class AppReleasesController extends Controller
         }
 
         return response()->json([
-            'message' => 'Entry has been deleted.'
+            'message' => 'Entry deleted.'
         ], 200);
     }
 }
