@@ -87,7 +87,7 @@ export default {
                 // Check Session Storage
                 // Bearer Token - OAuth2
                 this.loading = true;
-                if(!this.$user.checkBearerTokenSet()) throw 'No valid session set.'
+                if(!this.$user.checkBearerTokenSet()) throw 'No client token.'
                 if(!this.$user.access.user && this.$user.checkBearerTokenSet()) {
                     
                     // Authorize User
@@ -110,7 +110,7 @@ export default {
                 else if(route) this.$router.push(route)
             } catch (error) {
                 if(error.response) {
-                    console.log('app.auth', error.response ? error.response : error)
+                    console.log('app.auth', error.response ?? error)
                     this.$toast.error(error.response)
                 }
             } finally {

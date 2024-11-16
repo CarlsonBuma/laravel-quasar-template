@@ -46,7 +46,7 @@
             <q-btn
                 v-if="$allowAuth"
                 :disable="loading"
-                @click="$emit('authUser')" 
+                @click="goMemberArea()" 
                 flat 
                 size="sm"
                 icon="person" 
@@ -205,5 +205,12 @@ export default {
             // Code
         }
     },
+
+    methods: {
+        async goMemberArea() {
+            if(!this.$user.checkBearerTokenSet()) this.$router.push('/login')
+            else this.$emit('authUser')
+        }
+    }
 };
 </script>
