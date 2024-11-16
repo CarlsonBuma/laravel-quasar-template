@@ -17,7 +17,7 @@
 
 <script>
 import { ref } from 'vue'
-import LoadingData from 'components/LoadingData.vue';
+import LoadingData from 'src/components/global/LoadingData.vue';
 
 export default {
     name: 'InfiteScroll',

@@ -7,7 +7,7 @@
         drawerTitle="My Avatar" 
     >
         <template #leftDrawer>
-            <NavUserAvatar />
+            <NavUser />
         </template>
 
         <template #actions>
@@ -73,7 +73,7 @@
                     </q-td>
                     <q-td key="status" :props="props">
                         <q-btn 
-                            v-if="props.row.has_subscription"
+                            v-if="props.row.is_subscription"
                             label="Deactivate"
                             icon="key"
                             size="sm"
@@ -159,11 +159,11 @@
                 </q-tr>
             </template>
         </q-table>
-        <PageNote>
+        <SectionNote>
             *Transactions are payments corresponding to our provided services, you gained access.<br>
             For further informations please check our
             <router-link to="/legal">Terms &amp; Conditions</router-link>.
-        </PageNote>
+        </SectionNote>
         
         <!-- Paddle -->
         <PaddleSubscription 
@@ -178,14 +178,14 @@
 import { ref } from 'vue';
 import { date } from 'quasar';
 import { globalMasks } from 'src/boot/globals.js';
-import NavUserAvatar from 'src/components/navigation/NavUserAvatar.vue';
+import NavUser from 'src/components/navigation/NavUser.vue';
 import PaddleSubscription from 'components/PaddleSubscription.vue';
-import PageNote from 'components/PageNote.vue';
+import SectionNote from 'components/SectionNote.vue';
 
 export default {
     name: 'UserAccess',
     components: {
-        NavUserAvatar,  PaddleSubscription, PageNote
+        NavUser,  PaddleSubscription, SectionNote
     },
 
     setup() {
@@ -363,7 +363,7 @@ export default {
                     'price_token': price.price_token,
                 });
                 this.$toast.success(response.data.message);
-                price.has_subscription = false;
+                price.is_subscription = false;
             } catch (error) {
                 this.$toast.error(error.response ? error.response : error);
                 console.log('subscription-cancel-error', error.response ? error.response : error)
@@ -399,10 +399,15 @@ export default {
                     // Set Access,
                     // no access to subscribe anymore
                     if(response.data.access_token) {
-                        this.$user.setUserAccess(response.data.access_token, response.data.expiration_date);
+                        this.$user.setUserAccess(
+                            response.data.access_token, 
+                            response.data.expiration_date
+                        );
+
+                        // Check if its a subscription
                         this.prices.forEach((price, index) => {
                             if(price.id === response.data.price_id) 
-                                this.prices[index].has_subscription = true;
+                                this.prices[index].is_subscription = true;
                         });
                     }
                 }

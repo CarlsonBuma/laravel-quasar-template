@@ -36,6 +36,55 @@ export class ResponseHandler {
         this.defaultErrorMessage = "Ops, some error occured.";
     }
 
+    /**
+     ** Error Server Responses are managed here
+     ** According to Server Middleware-Definitions
+     *
+     * @param {Object} serverResponse 
+     * @param {Object} router 
+     */
+     errorHandling(serverResponse, router) {
+        
+        // Email not verified
+        if(serverResponse.status === 401 && serverResponse.data.status === 'email_not_verified') {
+            store().removeBearerToken();
+            store().removeSession();
+            router.push({
+                name: 'EmailVerificationRequest', 
+                params: { 
+                    email: serverResponse.data.email,
+                }
+            });
+            throw serverResponse.data.message;
+        }
+
+        // No Admin
+        else if (serverResponse.status === 401 && serverResponse.data.status === 'no_admin') {
+            store().removeAdmin();
+            router.push('/');
+            throw serverResponse.data.message;
+        }
+
+        // No access to Service / Subscription
+        else if(serverResponse.status === 401 && serverResponse.data.status === 'no_access_to_service') {
+            store().removeAccess(serverResponse.data.access_token);
+            router.push('/services');
+            throw serverResponse.data.message 
+                ? serverResponse.data.message 
+                : 'Your subscription is expired.'
+        }
+
+        // No access
+        else if(serverResponse.status === 401) {
+            store().removeBearerToken();
+            store().removeSession();
+            router.push('/');
+            throw serverResponse.data.message 
+                ? serverResponse.data.message 
+                : 'Hmm, some error occured. Please try again.'
+        }
+    }
+
     showNotify(message, type, duration) {
         this.notify = Notify.create({
             position: this.position,
@@ -71,10 +120,10 @@ export class ResponseHandler {
     }
 
     /**
-     ** Show Error by Notification
-     **  > String (as Customerror) vs Object (as Serverresponse)
-     **  > Handle Response Error Status
-
+     * Show Error by Notification
+     *  > String (as Customerror) vs Object (as Serverresponse)
+     *  > Handle Response Error Status
+     *
      * @param {*} responseError String | Object
      * @return { String } 
      */
@@ -110,60 +159,11 @@ export class ResponseHandler {
                 if(this.notify) this.notify();
                 this.showNotify(this.message, 'negative', this.durationError)
             } catch (error) {
-                console.log('responseHandling, toast-notification-error', error)
+                console.log('notification.error', error)
             }
         }
         
         console.log('Error Response:', this.message)
         return this.message;
-    }
-
-    /**
-     ** Error Server Responses are managed here
-     ** According to Server Middleware-Definitions
-     *
-     * @param {Object} serverResponse 
-     * @param {Object} router 
-     */
-    errorHandling(serverResponse, router) {
-        
-        // Email not verified
-        if(serverResponse.status === 401 && serverResponse.data.status === 'email_not_verified') {
-            store().removeSessionToken();
-            store().removeSession();
-            router.push({
-                name: 'EmailVerificationRequest', 
-                params: { 
-                    email: serverResponse.data.email,
-                }
-            });
-            throw serverResponse.data.message;
-        }
-
-        // No Admin
-        else if (serverResponse.status === 401 && serverResponse.data.status === 'no_admin') {
-            store().removeAdmin();
-            router.push('/');
-            throw serverResponse.data.message;
-        }
-
-        // No access to Service / Subscription
-        else if(serverResponse.status === 401 && serverResponse.data.status === 'no_access_to_service') {
-            store().removeSubscriptionAccess(serverResponse.data.access_token);
-            router.push('/services');
-            throw serverResponse.data.message 
-                ? serverResponse.data.message 
-                : 'Your subscription is expired.'
-        }
-
-        // No access
-        else if(serverResponse.status === 401) {
-            store().removeSessionToken();
-            store().removeSession();
-            router.push('/');
-            throw serverResponse.data.message 
-                ? serverResponse.data.message 
-                : 'Hmm, some error occured. Please try again.'
-        }
     }
 }

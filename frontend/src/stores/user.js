@@ -18,26 +18,25 @@ const storeUser = defineStore({
             img_src: '',
             email: ''
         },
-        avatar: {
-            id: 0,
-            is_public: false,
-        },
-        entity: {
-            id: 0,
-            is_public: false,
-        }
     }),
     
     actions: {
 
-        // ************************
-        // User Access
-        // ************************
-        setUser(user, avatar, entity, isAdmin, businessCockpit) {
-            // Static
-            this.user = user;
-            this.avatar = avatar;
-            this.entity = entity;
+        /**
+         * Set user and access
+         * @param {*} userID 
+         * @param {*} userName 
+         * @param {*} userAvatar 
+         * @param {*} userEmail 
+         * @param {*} isAdmin 
+         * @param {*} businessCockpit 
+         */
+        setUser(userID, userName, userAvatar, userEmail, isAdmin, businessCockpit) {
+            
+            this.user.id = userID;
+            this.user.name = userName;
+            this.user.avatar = userAvatar;
+            this.user.email = userEmail;
 
             // Access
             this.access.user = true;
@@ -48,7 +47,13 @@ const storeUser = defineStore({
             );
         },
 
-        setUserAccess(accessToken, expirationDate) {
+        /**
+         * Set app access
+         * @param {*} accessToken 
+         * @param {*} expirationDate 
+         * @returns 
+         */
+        setUserAccess(accessToken = '', expirationDate = '') {
             if(!accessToken || !expirationDate) return;
             this.access.tokens[accessToken] = {
                 expiration_date: expirationDate,
@@ -56,31 +61,49 @@ const storeUser = defineStore({
             }
         },
 
-        removeSubscriptionAccess(accessToken) {
+        /**
+         * Remove app access
+         * @param {*} accessToken 
+         */
+        removeAccess(accessToken) {
             this.access.tokens[accessToken] = null;
         },
 
+        /**
+         * Remove admin
+         */
         removeAdmin() {
             this.access.admin = false;
         },
 
-        // ****************************
-        // User Session
-        // ****************************
-        setSessionToken(sessionToken) {
+        /**
+         * Set bearer token in local storage
+         * After successful login
+         * @param {*} sessionToken 
+         */
+        setBearerToken(sessionToken) {
             LocalStorage.set(process.env.SESSION_NAME, sessionToken)
         },
 
-        checkSessionToken() {
-            return LocalStorage.getItem(process.env.SESSION_NAME)
-                ? true
-                : false
+        /**
+         * Check current session
+         * @returns boolean
+         */
+        checkBearerTokenSet() {
+            return LocalStorage.getItem(process.env.SESSION_NAME) ? true : false
         },
 
-        removeSessionToken() {
+        /**
+         * remove bearer token from local storage
+         */
+        removeBearerToken() {
             LocalStorage.remove(process.env.SESSION_NAME)
         },
 
+        /**
+         * Load bearer token from local storage
+         * Set new user session
+         */
         setSession() {
             const token = LocalStorage.getItem(process.env.SESSION_NAME);
             if(token) {
@@ -89,6 +112,10 @@ const storeUser = defineStore({
             };
         },
 
+        
+        /**
+         * Remoce session
+         */
         removeSession() {
             axios.defaults.headers.common['Authorization'] = '';
             this.access.bearer_token = false

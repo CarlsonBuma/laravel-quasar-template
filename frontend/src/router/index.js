@@ -1,7 +1,8 @@
 'use strict';
 import { route } from 'quasar/wrappers';
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router';
-import routesCommunity from './community';
+import routesVisitors from './visitors';
+import routesAuth from './auth';
 import routesUser from './user';
 import routesEntity from './entity';
 import routesBackpanel from './admin';
@@ -18,7 +19,8 @@ export default route(function (/* { store, ssrContext } */) {
     }];
 
     // Routes
-    routes.push(...routesCommunity);
+    routes.push(...routesVisitors)
+    routes.push(...routesAuth);
     routes.push(...routesUser);
     routes.push(...routesEntity);
     routes.push(...routesBackpanel);

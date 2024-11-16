@@ -8,7 +8,7 @@
     >
 
         <template #leftDrawer>
-            <NavUserAvatar />
+            <NavUser />
         </template>
 
         <div class="row w-100 flex justify-center">
@@ -170,19 +170,18 @@
 
 <script>
 import { ref } from 'vue';
-import { passwordRequirements, regRules } from 'src/boot/globals.js';
-import { redirectLinkCommunityAvatar } from 'src/boot/redirects.js';
-import NavUserAvatar from 'src/components/navigation/NavUserAvatar.vue';
-import FormWrapper from 'components/FormWrapper.vue';
+import { passwordRequirements, regRules, redirects } from 'src/boot/globals.js';
+import NavUser from 'src/components/navigation/NavUser.vue';
+import FormWrapper from 'src/components/global/FormWrapper.vue';
 import PasswordCheck from 'components/PasswordCheck.vue';
 import CardUploadImage from 'components/CardUploadImage.vue';
-import SectionSplitFix from 'components/SectionSplitFix.vue';
+import SectionSplitFix from 'src/components/global/SectionSplitFix.vue';
 import QrcodeVue from 'qrcode.vue'
 
 export default {
     name: 'UserAccountSettings',
     components: {
-        NavUserAvatar, FormWrapper, PasswordCheck, CardUploadImage, SectionSplitFix, QrcodeVue
+        NavUser, FormWrapper, PasswordCheck, CardUploadImage, SectionSplitFix, QrcodeVue
     },
     
     emits: [
@@ -198,7 +197,7 @@ export default {
     },
     data() {
         return {
-            qr_value: process.env.APP_URL + redirectLinkCommunityAvatar + this.$user.avatar.id,
+            qr_value: process.env.APP_URL + redirects.redirectLinkCommunityAvatar + this.$user.avatar.id,
             password: {
                 current: '',
                 new: '',

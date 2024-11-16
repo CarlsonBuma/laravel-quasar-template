@@ -6,9 +6,9 @@ use App\Models\Entity;
 use App\Models\AccessUsers;
 use App\Models\AccessPrices;
 use App\Http\Middleware\AppAccess;
-use App\Models\AccessTransactions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Collections\UserAccessCollaction;
 
 
 class UserAccessController extends Controller
@@ -39,14 +39,12 @@ class UserAccessController extends Controller
         $prices = AccessPrices::where('is_active', true)
             ->get()
             ->map(function($price) {
-                return $this->renderPrice($price);
+                return UserAccessCollaction::renderPrice($price);
             });
-
-        $transactions = $this->renderUserTransactions(Auth::id());
 
         return response()->json([
             'prices' => $prices,
-            'transactions' => $transactions,
+            'transactions' => UserAccessCollaction::renderUserTransactions(Auth::id()),
             'message' => 'Transactions loaded.',
         ], 200);
     }
@@ -105,55 +103,5 @@ class UserAccessController extends Controller
             'status' => $status,
             'message' => 'access.removed',
         ]);
-    }
-
-    /**
-     * Undocumented function
-     *
-     * @param integer $userID
-     * @return object|null
-     */
-    private function renderUserTransactions(int $userID): ?object
-    {
-        return AccessTransactions::where([
-            'access_transactions.user_id' => $userID,
-        ])
-        ->join('access_prices', 'access_prices.id', '=', 'access_transactions.price_id')
-        ->join('access_users', 'access_users.transaction_id', '=', 'access_transactions.id')
-        ->select(
-            'access_prices.name', 'access_prices.price_token',
-            'access_users.expiration_date', 'access_users.is_active', 
-            'access_transactions.transaction_token', 'access_transactions.price_id', 'access_transactions.quantity',
-            'access_transactions.total', 'access_transactions.tax', 'access_transactions.currency_code', 'access_transactions.status',  'access_transactions.created_at'
-        )
-        ->orderBy('access_users.is_active', 'desc')
-        ->orderBy('access_users.expiration_date', 'desc')
-        ->get();
-    }
-
-    /**
-     * Undocumented function
-     *
-     * @param object|null $price
-     * @return array|null
-     */
-    private function renderPrice(object|null $price): ?array 
-    {
-        if(!$price) return null;
-        $subscription = $price->has_subscriptions()->where('canceled_at', null)->first();
-        return [
-            'id' => $price->id,
-            'price_token' => $price->price_token,
-            'name' => $price->name,
-            'type' => $price->type,
-            'price' => $price->price,
-            'currency_code' => $price->currency_code,
-            'billing_interval' => $price->billing_interval,
-            'billing_frequency' => $price->billing_frequency,
-            'trial_interval' => $price->trial_interval,
-            'trial_frequency' => $price->trial_frequency,
-            'duration_months' => $price->duration_months,
-            'has_subscription' => $subscription ? true : false,
-        ];
     }
 }

@@ -52,11 +52,7 @@
             </q-list>
         </q-card-section>
 
-        <q-separator />
-
-        <q-card-actions align="right">
-            <slot name="actions" />
-        </q-card-actions>
+        
     </q-card>
     
 </template>

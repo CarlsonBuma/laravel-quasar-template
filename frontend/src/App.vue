@@ -13,15 +13,15 @@
                 :class="{
                     'bg-dark': $q.dark.isActive,
                     'bg-header-bright-mode': !$q.dark.isActive,
-                }">
-                <NavUser 
+                }"
+            >
+                <NavVisitor 
                     :loading="loading"
                     @authUser="(route) => authUser(route)"
                     @logoutUser="logoutUser()"
                     @expandDrawer="$drawerLeft.value = !$drawerLeft.value"
                 />
-                <NavPage />
-                <q-separator color="white"/>
+                <q-separator color="white" />
             </q-header>
 
             <!-- Content -->
@@ -58,15 +58,14 @@
 
 <script>
 import { ref } from 'vue';
-import NavPage from 'src/components/navigation/NavPage.vue';
-import NavUser from 'src/components/navigation/NavUser.vue';
+import NavVisitor from 'src/components/navigation/NavVisitor.vue';
 import NavFoot from 'src/components/navigation/NavFoot.vue';
 import CookieConsentOptions from 'src/boot/cookieConsent.js';
 
 export default {
     name: 'App',
     components: {
-        NavPage, NavUser, NavFoot
+        NavVisitor, NavFoot
     },
 
     setup() {
@@ -80,8 +79,6 @@ export default {
         const darkMode = false;         // this.$q.dark.isActive;
         this.$q.dark.set(darkMode);
         this.$cc.run(CookieConsentOptions);
-        this.authUser();
-        this.postVisitor();
     },
 
     methods: {
@@ -90,19 +87,18 @@ export default {
                 // Check Session Storage
                 // Bearer Token - OAuth2
                 this.loading = true;
-                if(!this.$user.checkSessionToken()) throw 'No valid session set.'
-                if(!this.$user.access.user && this.$user.checkSessionToken()) {
+                if(!this.$user.checkBearerTokenSet()) throw 'No valid session set.'
+                if(!this.$user.access.user && this.$user.checkBearerTokenSet()) {
                     
-                    // Set Session
-                    this.$user.setSession();
-
                     // Authorize User
+                    this.$user.setSession();
                     this.$toast.load('Authorizing...')
                     const response = await this.$axios.get('/auth');
                     this.$user.setUser(
-                        response.data.user, 
-                        response.data.avatar, 
-                        response.data.avatar, 
+                        response.data.user.id, 
+                        response.data.user.name, 
+                        response.data.user.avatar, 
+                        response.data.user.email, 
                         response.data.access.is_admin,
                         response.data.access.access_cockpit
                     );
@@ -113,24 +109,13 @@ export default {
                 if(route === 'back') this.$router.go(-1);
                 else if(route) this.$router.push(route)
             } catch (error) {
-                this.$router.push('/login');
                 if(error.response) {
-                    console.log('Authenticate', error.response ? error.response : error)
+                    console.log('app.auth', error.response ? error.response : error)
                     this.$toast.error(error.response)
                 }
             } finally {
                 this.$toast.done();
                 this.loading = false;
-            }
-        },
-
-        async postVisitor() {
-            try {
-                await this.$axios.post('/analytics-post-app-visitor', {
-                    tag: 'app-visit'
-                });
-            } catch (error) {
-                console.log('Analytics', error.response)
             }
         },
 
@@ -141,14 +126,14 @@ export default {
                 this.$toast.success(response.data.message);
                 this.removeSession();
             } catch (error) {
-                console.log('auth-error', error.response ?? error)
+                console.log('app.logout', error.response ?? error)
             } finally {
                 this.$toast.done()
             }
         },
 
         removeSession() {
-            this.$user.removeSessionToken();
+            this.$user.removeBearerToken();
             this.$user.removeSession();
             this.$router.push('/');
         },

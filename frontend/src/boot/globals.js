@@ -1,15 +1,5 @@
 'use strict';
 
-/* *******************************
-*   Static Server Requests
-********************************** */
-export const collabrisTeam = {
-    'owner_id': 9
-}
-
-/* ********************************
- *  > Definitions
-*********************************** */
 export const globalMasks = {
     date: {
         default: 'YYYY-MM-DD',
@@ -17,9 +7,15 @@ export const globalMasks = {
     },
 }
 
-/* ********************************
- *  > Requirements
-*********************************** */
+export const redirects = {
+    linkLegal: '/legal',
+    linkGoolgeMaps: 'https://www.google.com/maps/search/?api=1&query=',
+    linkYoutube: 'https://youtube.com',
+    linkLinkedin: 'https://www.linkedin.com/company/123456789',
+    emailContact: 'hello@template.io',
+    emailLegal: 'hello@template.io',
+};
+
 export const regRules = {
     email: /^(?=[a-zA-Z0-9@._%+-]{6,254}$)[a-zA-Z0-9._%+-]{1,64}@(?:[a-zA-Z0-9-]{1,63}\.){1,8}[a-zA-Z]{2,63}$/,
     passwordPattern: {

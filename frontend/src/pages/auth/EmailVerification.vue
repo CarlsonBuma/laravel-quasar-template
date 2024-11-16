@@ -82,7 +82,7 @@
 <script>
 import { passwordRequirements } from 'src/boot/globals.js';
 import CardWrapper from 'components/CardWrapper.vue';
-import FormWrapper from 'components/FormWrapper.vue';
+import FormWrapper from 'src/components/global/FormWrapper.vue';
 import PasswordCheck from 'components/PasswordCheck.vue';
 
 export default {
@@ -120,7 +120,7 @@ export default {
                 this.$toast.success(response.data.message)
                 
                 // Login
-                this.$user.setSessionToken(response.data.token);
+                this.$user.setBearerToken(response.data.token);
                 this.$emit('authorize', '/my-avatar');
             } catch (error) {
                 this.$toast.error(error.response ? error.response : error);

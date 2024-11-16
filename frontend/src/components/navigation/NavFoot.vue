@@ -6,8 +6,8 @@
             <div>
                 <q-tabs label="about" vertical inline-label align="left">
                     <q-route-tab to="/" label="Home" />
-                    <q-route-tab to="/newsfeed" label="Newsfeed" />
                     <q-route-tab to="/about" label="About us" />
+                    <q-route-tab to="/newsfeed" label="Newsfeed" />
                 </q-tabs>
             </div>
         </div>
@@ -31,19 +31,19 @@
         <div class="col-12 col-md-3 q-pa-lg text-center">
             <div class="q-pa-md q-mt-xl">
                 <q-btn 
-                    @click="openURL(redirectLinkLinkedIn)"
+                    @click="openURL(redirects.linkLinkedin)"
                     round 
                     color="black" 
                     icon="thumb_up_alt" 
                     class="q-mr-xs"/>
                 <q-btn 
-                    @click="openURL(redirectLinkYoutube)"
+                    @click="openURL(redirects.linkYoutube)"
                     round 
                     color="black" 
                     icon="play_circle_filled" 
                     class="q-mr-xs"/>
                 <q-btn 
-                    @click="openURL('mailto:' + contactEmail)"
+                    @click="openURL('mailto:' + redirects.emailContact)"
                     round 
                     color="black" 
                     icon="email" 
@@ -70,7 +70,7 @@
 
 <script>
 import { openURL } from 'quasar';
-import { contactEmail, redirectLinkYoutube, redirectLinkLinkedIn } from 'boot/redirects.js'
+import { redirects } from 'boot/globals.js'
 
 export default {
     name: 'NavFoot',
@@ -78,9 +78,7 @@ export default {
     setup () {
         return {
             openURL,
-            contactEmail,
-            redirectLinkYoutube,
-            redirectLinkLinkedIn
+            redirects,
         }
     },
 

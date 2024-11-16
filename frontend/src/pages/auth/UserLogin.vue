@@ -41,7 +41,7 @@
 
 <script>
 import CardWrapper from 'components/CardWrapper.vue';
-import FormWrapper from 'components/FormWrapper.vue';
+import FormWrapper from 'src/components/global/FormWrapper.vue';
 
 export default {
     name: 'UserLogin',
@@ -73,7 +73,7 @@ export default {
                 });
                 
                 // Login
-                this.$user.setSessionToken(response.data.token);
+                this.$user.setBearerToken(response.data.token);
                 this.$emit('authorize', '/');
             } catch (error) {
                 // Wrong Credentials && Email_Not_Verified

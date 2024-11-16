@@ -1,5 +1,5 @@
 main {
-    min-height: calc(100vh - 75px) !important;
+    min-height: calc(100vh - 50px) !important;
 }
 
 #app-header {
@@ -42,28 +42,15 @@ main {
     background: linear-gradient(rgba(#8f00ff, 1) 0%, #444bff);
 }
 
-/*
- * Design
- */
- .design-card {
+.bg-transparent {
+    background-color: transparent;
+}
+
+.design-card {
     border-left: 3px solid $primary;
- }
-
-/*
- * Quasar - Components
- */
-.toaster-container {
-    margin-top: 15px;
 }
 
-.q-fab__actions {
-    margin-top: 13px;
-}
-
-/*
- * Helpers
- */
-
+// Text
 .__text-escape {
     overflow-wrap: break-word;
 }
@@ -116,9 +103,7 @@ main {
     text-overflow: ellipsis;
 }
 
-/*
- * Default Classes
- */
+// Defaults
 .default-link {
     text-decoration: none;
 }
@@ -150,23 +135,10 @@ main {
     border-radius: 3px;
 }
 
+// Components
 .avatar-width {
     width: 100%;
     max-width: 360px;
-}
-
-.avatar-width-sm {
-    width: 100%;
-    max-width: 320px;
-}
-
-.w-100 {
-    width: 100%;
-}
-
-.w-280 {
-    width: 100%;
-    max-width: 280px;
 }
 
 .w-select {
@@ -174,12 +146,13 @@ main {
     max-width: 290px;
 }
 
-.bg-transparent {
-    background-color: transparent;
-}
-
 .w-popup {
     min-width: 260px !important;
+}
+
+// Content
+.w-100 {
+    width: 100%;
 }
 
 .w-content-xs {
@@ -222,6 +195,7 @@ main {
     max-width: 640px;
 }
 
+// Cards
 .w-card-sm {
     width: 100%;
     max-width: 280px;
@@ -245,4 +219,13 @@ main {
 .w-card-xl {
     width: 100%;
     max-width: 540px;
+}
+
+// Quasar custize
+.toaster-container {
+    margin-top: 15px;
+}
+
+.q-fab__actions {
+    margin-top: 13px;
 }

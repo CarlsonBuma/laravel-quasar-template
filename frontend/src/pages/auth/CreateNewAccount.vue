@@ -52,7 +52,7 @@
 import { ref } from 'vue';
 import { regRules } from 'src/boot/globals.js';
 import CardWrapper from 'components/CardWrapper.vue';
-import FormWrapper from 'components/FormWrapper.vue';
+import FormWrapper from 'src/components/global/FormWrapper.vue';
 
 export default {
     name: 'CreateNewAccount',
