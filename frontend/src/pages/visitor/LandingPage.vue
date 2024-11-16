@@ -1,6 +1,6 @@
 <template>
 
-     <PageWrapper noMargin>
+    <PageWrapper noMargin>
         <SectionDesignDefault>
             <SectionSplit>
                 <template #left>

@@ -2,13 +2,6 @@
     
     <q-page id="page-wrapper" :class="{'bg-design': bgDesign}">
 
-        <!-- Leftdrawer DELETE -->
-        <PageDrawer 
-            v-if="leftDrawer" 
-            :drawerTitle="drawerTitle"
-            :drawerIsStatic="drawerIsStatic"
-        />
-
         <!-- Navigation -->
         <div class="" :class="$q.dark.isActive ? 'text-sm bg-dark text-white' : 'bg-grey-1 text-dark'">
             <slot name="navigation" />
@@ -18,7 +11,7 @@
         <q-pull-to-refresh class="w-100" :disable="!allowRefresh" @refresh="(done) => refresh(done)" >
             <div 
                 class="row justify-center" 
-                :class="noMargin ? '' : 'q-px-md-md q-py-sm'" 
+                :class="noMargin ? '' : 'q-px-md-md q-py-xl'" 
             >
                 <LoadingData 
                     v-if="rendering"
@@ -26,7 +19,11 @@
                     :colorIcon="bgDesign ? 'white' : 'primary'"
                     :colorText="bgDesign ? 'text-white' : 'text-grey'"
                 />
-                <slot v-else />
+
+                <!-- Content -->
+                <div class="flex justify-center w-100" v-else >
+                    <slot />
+                </div>
             </div>
         </q-pull-to-refresh>
     </q-page>

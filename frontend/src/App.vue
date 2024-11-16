@@ -19,7 +19,7 @@
                     :loading="loading"
                     @authUser="(route) => authUser(route)"
                     @logoutUser="logoutUser()"
-                    @expandDrawer="$drawerLeft.value = !$drawerLeft.value"
+                    @logoClick="$drawerLeft.value = !$drawerLeft.value"
                 />
                 <q-separator color="white" />
             </q-header>

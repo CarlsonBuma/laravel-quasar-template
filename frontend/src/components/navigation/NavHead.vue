@@ -9,7 +9,7 @@
                 
         <!-- Logo -->
         <q-toolbar-title class="flex no-wrap items-center">
-            <q-avatar @click="$emit('expandDrawer')" icon="school" size="lg" clickable />
+            <q-avatar @click="$emit('logoClick')" icon="school" size="lg" clickable />
             <q-btn-dropdown
                 class="transparent text-subtitle1"
                 size="md"
@@ -191,22 +191,10 @@ export default {
     },
 
     emits: [
-        'expandDrawer',
+        'logoClick',
         'authUser',
         'logoutUser',
     ],
-
-    data() {
-        return {
-            // Data
-        };
-    },
-
-    setup() {
-        return {
-            // Code
-        }
-    },
 
     methods: {
         async goMemberArea() {
