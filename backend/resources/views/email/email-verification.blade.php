@@ -17,11 +17,16 @@
                 <p> Hi {{ $user->name }}, </p>
                 
                 <!-- Text & Link -->
-                <p> We are glad you joined us. Please verify your email by the link below: </p>
-                <a href="{{ $url }}" target="_blank">
-                  {{ $url }}
-                </a>
-                <p>After successfull verification, you are able to login to your account.</p>
+                <p> 
+                  We are glad you joined us. 
+                  Please verify your email by clicking the link below: 
+                </p>
+                
+                <a href="{{ $url }}" target="_blank">{{ $url }}</a>
+                
+                <p>
+                  After successfull verification, you are able to login to your account.
+                </p>
                 
                 <!-- Signature -->
                 <p> Best Regards</p>

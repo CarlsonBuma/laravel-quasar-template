@@ -31,7 +31,7 @@ class AccessSubscriptions extends Model
     ];
 
     public function belongs_to_user() {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Users::class, 'user_id');
     }
 
     public function belongs_to_price() {

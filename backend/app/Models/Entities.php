@@ -2,18 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\User;
+use App\Models\Users;
 use App\Models\AccessUsers;
 use App\Models\AppCountries;
 use App\Models\AppGeolocations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Entity extends Model
+class Entities extends Model
 {
     use HasFactory;
 
-    protected $table = 'public.entity';
+    protected $table = 'public.entities';
 
     protected $fillable = [
         'user_id',          // Owner
@@ -33,7 +33,7 @@ class Entity extends Model
     ];
 
     public function belongs_to_user() {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Users::class, 'user_id');
     }
 
     public function belongs_to_location() {
@@ -44,7 +44,7 @@ class Entity extends Model
         return $this->belongsTo(AppCountries::class, 'country_id');
     }
 
-    public function has_subsciption_access_pivot() {
+    public function has_user_access_pivot() {
         return $this->hasMany(AccessUsers::class, 'entity_id');
     }
 }

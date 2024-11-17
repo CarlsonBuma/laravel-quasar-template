@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth\AppAccess;
 
-use App\Models\Entity;
+use App\Models\Entities;
 use App\Models\AccessUsers;
 use App\Models\AccessPrices;
 use App\Http\Middleware\AppAccess;
@@ -63,7 +63,7 @@ class UserAccessController extends Controller
     public function addUserAccess(object $transaction, string $accessToken, int $quantity, string $expirationDate, string $status = 'access.granted'): void
     {
         if(!$transaction) throw 'error.no.transaction.provided';
-        $userEntity = Entity::where('user_id', $transaction->user_id)->first();
+        $userEntity = Entities::where('user_id', $transaction->user_id)->first();
         AccessUsers::create([
             'transaction_id' => $transaction->id,
             'user_id' => $transaction->user_id,

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Exception;
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
@@ -36,7 +36,7 @@ class UserTransferController extends Controller
             ]);
             
             // Validate
-            $user = User::find(Auth::id());
+            $user = Users::find(Auth::id());
             if(!Hash::check($data['password'], $user->password)) 
                 throw new Exception('Ups, the given password is incorrect.');
 
@@ -55,14 +55,13 @@ class UserTransferController extends Controller
             }
             
             // Process Transfer
-            $userAccount = User::where('id', Auth::id())->first();
             DB::beginTransaction();
 
                 // Start Transfer
                 $token = Str::random(255);
-                $userAccount->email_verified_at = null;
-                $userAccount->token = $token;
-                $userAccount->save();
+                $user->email_verified_at = null;
+                $user->token = $token;
+                $user->save();
 
                 // Send verification Link
                 $verificationLink = Modulate::signedLink('transfer.account', [
@@ -70,10 +69,12 @@ class UserTransferController extends Controller
                     'token' => $token,
                     'transfer' => $data['email']
                 ]);
-
-                // Finish
+                
                 Mail::to($data['email'])->send(new SendEmailVerification($verificationLink, $user)); 
-                $user->token()->delete();
+                
+                // Logout
+                // @intelephense-ignore next-line
+                Auth::user()->token()->delete();
             DB::commit(); 
         } catch (Exception $e) {
             DB::rollBack();
@@ -105,25 +106,29 @@ class UserTransferController extends Controller
             $data = $request->validate([
                 'password' => ['required', 'string', 'max:255', 'confirmed', Password::defaults()],
                 'terms' => ['required', 'boolean'],
+                'privacy' => ['required', 'boolean'],
             ]);
 
-            // Validate
-            if(!$data['terms']) throw new Exception('Please agree with Terms & Conditions.');
-            if (!$request->hasValidSignature()) throw new Exception('Link has been expired.');
+            // Legal
+            if(!$data['terms'] || !$data['privacy']) 
+                throw new Exception('Please accept our terms-of-use.');
             
             // Validate Token
-            $user = User::where([
+            if (!$request->hasValidSignature()) 
+                throw new Exception('Link has been expired.');
+            
+            $user = Users::where([
                 'email' => $email,
                 'email_verified_at' => null,
                 'token' => $token
             ])->first();
 
-            // Validate transfer
+            // Validate transfer email
             if(!$user) throw new Exception('Invalid verification key.');
-            if(User::where('email', $transfer)->first()) {
+            if(Users::where('email', $transfer)->first()) {
                 $user->email_verified_at = now();
                 $user->save();
-                throw new Exception('Email alredy exists.');
+                throw new Exception('We are sorry, email already exists! Please contact previous owner.');
             }
             
             // Set new email

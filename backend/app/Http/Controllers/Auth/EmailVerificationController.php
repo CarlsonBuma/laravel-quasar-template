@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Exception;
-use App\Models\User;
-use App\Models\UserAvatar;
-use App\Models\Entity;
+use App\Models\Users;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
@@ -20,9 +18,9 @@ use Illuminate\Validation\Rules\Password;
 class EmailVerificationController extends Controller
 {
     /**
-     ** Request email verificaton
-     ** > Generate URL, with Token 
-     ** > Send verification link
+     * Request email verificaton
+     * > Generate URL, with Token 
+     * > Send verification link
      *
      * @param Request $request
      * @return void
@@ -34,7 +32,7 @@ class EmailVerificationController extends Controller
                 'email' => ['required', 'string', 'email', 'max:255'],
             ]);
 
-            $user = User::where('email', $data['email'])->first();
+            $user = Users::where('email', $data['email'])->first();
             if ($user && !$user->email_verified_at) {
                 DB::beginTransaction();
                     
@@ -66,9 +64,10 @@ class EmailVerificationController extends Controller
     }
 
     /**
-     ** Verify Email
-     **  > Validate URL & Token
-     **  > Change email & update email_verified_at
+     * Verify Email
+     *  > Validate URL & Token
+     *  > Check if transfer-email is unique
+     *  > Change email & update email_verified_at
      *
      * @param String $id
      * @param String $hash
@@ -87,7 +86,7 @@ class EmailVerificationController extends Controller
             if (!$request->hasValidSignature()) throw new Exception('Link has been expired.');
 
             // Validate Token
-            $user = User::where([
+            $user = Users::where([
                 'email' => $email,
                 'email_verified_at' => null,
                 'token' => $token

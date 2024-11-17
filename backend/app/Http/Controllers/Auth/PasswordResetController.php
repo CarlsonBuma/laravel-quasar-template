@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Exception;
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Password;
+use Illuminate\Validation\Rules\Password;
 
 class PasswordResetController extends Controller
 {
@@ -32,7 +32,7 @@ class PasswordResetController extends Controller
             ]);
 
             // Create Reset Token
-            $user = User::where('email', $data['email'])->first();
+            $user = Users::where('email', $data['email'])->first();
             if ($user) {
                 DB::beginTransaction();
                     $token = Str::random(255);
@@ -81,7 +81,7 @@ class PasswordResetController extends Controller
             if (!$request->hasValidSignature()) throw new Exception('Link has been expired.');
 
             // Check Token
-            $user = User::where([
+            $user = Users::where([
                 'email' => $email,
                 'token' => $token
             ])->first();
@@ -90,6 +90,7 @@ class PasswordResetController extends Controller
             if(!$user) throw new Exception('Invalid verification key.');
             $user->password = Hash::make($password);
             $user->token = null;
+            $user->email_verified_at = $user->email_verified_at ?? now();
             $user->save();
         } catch(Exception $e) {
             return response()->json([

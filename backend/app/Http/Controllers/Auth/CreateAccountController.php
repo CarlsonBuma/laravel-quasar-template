@@ -3,9 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use Exception;
-use App\Models\User;
-use App\Models\UserAvatar;
-use App\Models\Entity;
+use App\Models\Users;
+use App\Models\Entities;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -31,21 +30,21 @@ class CreateAccountController extends Controller
                 'name' => ['required', 'string', 'max:125'],
                 'email' => ['required', 'string', 'email', 'unique:users', 'max:255'],
                 'terms' => ['required', 'boolean'],
+                'privacy' => ['required', 'boolean'],
             ]);
     
-            if(!$data['terms']) throw new Exception('Please accept our terms & conditions.');
+            // Legal
+            if(!$data['terms'] || !$data['privacy']) 
+                throw new Exception('Please accept our terms-of-use.');
 
-            $userID = User::create([
+            // Process
+            $userID = Users::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' =>  Hash::make(Str::random(125))
             ])->id;
 
-            UserAvatar::create([
-                'user_id' => $userID,
-            ]);
-
-            Entity::create([
+            Entities::create([
                 'user_id' => $userID,
             ]);
         } catch (Exception $e) {

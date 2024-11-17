@@ -2,8 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\UserAvatar;
-use App\Models\Entity;
+use App\Models\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -20,11 +19,7 @@ class AppCountries extends Model
         'code'
     ];
 
-    public function has_user_avatars() {
-        return $this->hasMany(UserAvatar::class, 'country_id');
-    }
-
     public function has_entities() {
-        return $this->hasMany(Entity::class, 'country_id');
+        return $this->hasMany(Entities::class, 'country_id');
     }
 }

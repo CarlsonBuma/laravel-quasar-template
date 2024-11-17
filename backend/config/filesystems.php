@@ -44,18 +44,18 @@ return [
             'throw' => false,
         ],
 
-        'userAvatar' => [
+        'user' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/userAvatar'),
-            'url' => env('CLIENT_URL').'/storage/userAvatar',
+            'root' => storage_path('app/public/user'),
+            'url' => env('CLIENT_URL').'/storage/user',
             'visibility' => 'public',
             'throw' => false,
         ],
 
-        'entityAvatar' => [
+        'entity' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/entityAvatar'),
-            'url' => env('CLIENT_URL').'/storage/entityAvatar',
+            'root' => storage_path('app/public/entity'),
+            'url' => env('CLIENT_URL').'/storage/entity',
             'visibility' => 'public',
             'throw' => false,
         ],
@@ -87,6 +87,5 @@ return [
     
     'links' => [
         public_path('storage') => storage_path('app/public'),
-        public_path('avatar') => storage_path('app/avatars'),
     ],
 ];

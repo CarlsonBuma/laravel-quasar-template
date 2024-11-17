@@ -10,7 +10,7 @@
             <FormWrapper
                 buttonText="Transfer Account"
                 buttonIcon="supervisor_account"
-                @submit="makeValidationRequest(password, password_confirm)"
+                @submit="makeValidationRequest(password, password_confirm, agreed)"
             > 
                 <!-- From Email -->  
                 <p>Transfer from:</p>
@@ -90,24 +90,19 @@
                 </div>
 
                 <!-- Terms & Conditions -->
-                <div class="flex items-center q-mt-sm">
-                    <q-checkbox v-model="agreed" disable />I agree with&nbsp;
-                    <span @click="showTerms = true" class="_underline">terms &amp; conditions</span>
+                <div class="q-pa-sm">
+                    <p>Please agree "Terms-of-use":</p>
+                    <div class="flex items-center">
+                        <q-checkbox v-model="agreed.terms"/>I agree with&nbsp;
+                        <router-link to="/legal">Terms &amp; Conditions</router-link>.
+                    </div>
+                    <div class="flex items-center">
+                        <q-checkbox v-model="agreed.privacy" />I agree with&nbsp;
+                        <router-link to="/legal">Data Privacy</router-link>.
+                    </div>
                 </div>
             </FormWrapper>
         </CardWrapper>
-
-        <!-- Terms & Conditions -->
-        <q-dialog v-model="showTerms" full-height full-width>
-            <TermsConditionsRaw
-                class="background-light"
-                withActions
-                :status="agreed" 
-                @close="(terms_agreed) => {
-                    agreed = terms_agreed
-                    showTerms = false
-            }"/>
-        </q-dialog>
     </PageWrapper>
 
 </template>
@@ -116,14 +111,12 @@
 import { ref } from 'vue';
 import { passwordRequirements} from 'src/boot/globals.js';
 import CardWrapper from 'components/CardWrapper.vue';
-import FormWrapper from 'src/components/global/FormWrapper.vue';
 import PasswordCheck from 'components/PasswordCheck.vue';
-import TermsConditionsRaw from 'src/pages/guest/compliance/TermsConditionsRaw.vue';
 
 export default {
     name: 'TransferAccount',
     components: {
-        CardWrapper, FormWrapper, PasswordCheck, TermsConditionsRaw
+        CardWrapper, PasswordCheck
     },
 
     emits: [
@@ -144,17 +137,20 @@ export default {
             transfer: this.$route.params.transfer,
             password: '',
             password_confirm: '',
-            agreed: false
+            agreed: {
+                terms: false,
+                privacy: false,
+            }
         };
     },
     
     methods: {
-        async makeValidationRequest(pw, pw_confirm) {
+        async makeValidationRequest(pw, pw_confirm, agreed) {
             try {
                 // Validate
                 const passwordCheck = passwordRequirements(pw, pw_confirm);
                 if(passwordCheck) throw passwordCheck;
-                if(!this.agreed) throw 'Please agree to our terms & conditions.'
+                if(!agreed.terms || !agreed.privacy) throw 'Please agree to our terms-of-use.'
                 
                 // Transfer
                 // Fullpath includes Token to verify its user
@@ -162,19 +158,19 @@ export default {
                 const response = await this.$axios.put(this.$route.fullPath, {
                     'password': pw,
                     'password_confirmation': pw_confirm,
-                    'terms': this.agreed
+                    'terms': agreed.terms,
+                    'privacy': agreed.privacy
                 });
-                this.$toast.success(response.data.message)
-
+                
                 // Login
+                this.$toast.success(response.data.message)
                 this.$user.setBearerToken(response.data.token);
-                this.$emit('authorize', '/my-avatar');
+                this.$emit('authorize', '/user/dashboard');
             } catch (error) {
-                this.$toast.error(error.response ? error.response : error);
+                this.$toast.error(error.response ?? error);
             } finally {
                 this.password = '';
                 this.password_confirm = '';
-                this.agreed = false;
             }
         }
     }

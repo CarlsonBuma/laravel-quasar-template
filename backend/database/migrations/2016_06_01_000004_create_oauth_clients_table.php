@@ -22,12 +22,6 @@ return new class extends Migration
             $table->boolean('password_client');
             $table->boolean('revoked');
             $table->timestamps();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('public.users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade')
-                ->unique();
         });
     }
 

@@ -32,12 +32,11 @@
 
 <script>
 import CardWrapper from 'components/CardWrapper.vue';
-import FormWrapper from 'src/components/global/FormWrapper.vue';
 
 export default {
     name: 'EmailVerificationRequest',
     components: {
-        CardWrapper, FormWrapper
+        CardWrapper
     },
     
     data() {
@@ -52,7 +51,7 @@ export default {
                 this.$toast.load();
                 const response = await this.$axios.post("/email-verification-request", {
                     'email': email,
-                });;
+                });
                 this.message = this.$toast.success(response.data.message);
                 this.$router.push('/')
             } catch (error) {

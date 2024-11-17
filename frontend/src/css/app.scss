@@ -97,6 +97,10 @@ main {
     white-space: pre-wrap;
 }
 
+._overflow-x {
+    overflow-x: auto;
+}
+
 ._overflow-hidden {
     white-space: nowrap;
     overflow: hidden;

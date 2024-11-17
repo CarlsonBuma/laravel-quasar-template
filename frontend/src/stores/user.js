@@ -15,8 +15,9 @@ const storeUser = defineStore({
         user: {
             id: 0,
             name: 'User',
-            img_src: '',
-            email: ''
+            avatar_src: '',
+            email: '',
+            is_public: false,
         },
     }),
     
@@ -26,17 +27,18 @@ const storeUser = defineStore({
          * Set user and access
          * @param {*} userID 
          * @param {*} userName 
-         * @param {*} userAvatar 
+         * @param {*} userAvatarSrc 
          * @param {*} userEmail 
          * @param {*} isAdmin 
          * @param {*} businessCockpit 
          */
-        setUser(userID, userName, userAvatar, userEmail, isAdmin, businessCockpit) {
+        setUser(userID, userName, userAvatarSrc, userEmail, userIsPublic, isAdmin, businessCockpit) {
             
             this.user.id = userID;
             this.user.name = userName;
-            this.user.avatar = userAvatar;
+            this.user.avatar_src = userAvatarSrc;
             this.user.email = userEmail;
+            this.user.is_public = userIsPublic;
 
             // Access
             this.access.user = true;
@@ -111,7 +113,6 @@ const storeUser = defineStore({
                 this.access.bearer_token = true;
             };
         },
-
         
         /**
          * Remoce session
@@ -123,8 +124,6 @@ const storeUser = defineStore({
             this.access.admin = false;
             this.access.tokens = [];
             this.user = {};
-            this.avatar = {};
-            this.entity = {};
         },
     }
 });

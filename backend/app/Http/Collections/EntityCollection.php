@@ -44,7 +44,7 @@ abstract class EntityCollection
             ? GeolocationCollection::render_geoLoaction($entity->belongs_to_location, $showAddress = true)
             : GeolocationCollection::$geoLocation;
         $avatarPath = $entity->avatar
-            ? URL::to(Storage::url('entityAvatar')) . '/' . $entity->avatar
+            ? URL::to(Storage::url('entity')) . '/' . $entity->avatar
             : '';
         $country = $entity->country_id
             ? [

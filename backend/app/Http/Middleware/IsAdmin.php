@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Models\Admin;
+use App\Models\Admins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +20,8 @@ class IsAdmin
      */
     public function handle(Request $request, Closure $next)
     {   
-        if(Admin::where('user_id', Auth::id())->exists()) 
-                return $next($request); 
+        if(Admins::where('user_id', Auth::id())->exists()) 
+            return $next($request); 
             
         return response()->json([
             'status' => 'no_admin',

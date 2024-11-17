@@ -16,6 +16,7 @@ class AppAccess
      */
     static public function checkUserAccessByToken(int $userID, string $accessToken): ?object
     {
+        if(!$accessToken) return null;
         return AccessUsers::where([
                 'user_id' => $userID,
                 'access_token' => $accessToken,

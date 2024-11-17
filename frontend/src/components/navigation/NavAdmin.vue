@@ -1,31 +1,13 @@
 <template>
 
-    <q-list padding >
-        <q-item 
-            @click="$router.push('/backpanel')"
-            clickable 
-            v-ripple
-        >
-            <q-item-section avatar>
-                <q-icon name="dashboard" />
-            </q-item-section>
-            <q-item-section>
-                Dashboard
-            </q-item-section>
-        </q-item>
-        <q-item 
-            @click="$router.push('/releasemanagement')"
-            clickable 
-            v-ripple
-        >
-            <q-item-section avatar>
-                <q-icon name="new_releases" />
-            </q-item-section>
-            <q-item-section>
-                Newsfeed &amp; Releases
-            </q-item-section>
-        </q-item>
-    </q-list>
+    <q-tabs
+        class="text-weight-regular"
+        active-color="primary"
+        inline-label
+    >
+        <q-route-tab to="/admin/dashboard" exact label="Dashboard" />
+        <q-route-tab to="/admin/newsfeed" exact label="Newsfeed" />
+    </q-tabs>
 
 </template>
 

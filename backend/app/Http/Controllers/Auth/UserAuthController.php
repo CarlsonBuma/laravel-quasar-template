@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Exception;
 use Carbon\Carbon;
-use App\Models\User;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -20,10 +20,10 @@ class UserAuthController extends Controller
      */
     public function authUser()
     {
-        $userID = User::find(Auth::id());
+        $user = Auth::user();
         return response()->json([
-            'user' => UserCollection::render_user($userID),
-            'access' => UserCollection::render_user_access($userID)
+            'user' => UserCollection::render_user($user),
+            'access' => UserCollection::render_user_access($user)
         ], 200);
     }
 
@@ -45,7 +45,7 @@ class UserAuthController extends Controller
             ]);
 
             // Check if Email is verified
-            $user = User::where('email', $credentials['email'])->first();
+            $user = Users::where('email', $credentials['email'])->first();
             if($user && !$user->email_verified_at instanceof Carbon) {
                 return response()->json([
                     'status' => 'email_not_verified',
@@ -59,7 +59,7 @@ class UserAuthController extends Controller
                 'email' => $credentials['email'],
                 'password' => $credentials['password']
             ])) {
-                $token = User::find(Auth::id())->createToken('user')->accessToken;
+                $token = Users::find(Auth::id())->createToken('user')->accessToken;
                 return response()->json([
                     'token' => $token,
                     'message' => 'Session started.'
@@ -83,14 +83,8 @@ class UserAuthController extends Controller
      */
     public function logoutUser()
     {
-        try {
-            $user = User::find(Auth::id());
-            $user->token()->delete();
-        } catch (Exception $e) {
-            return response()->json([
-                'message' => $e->getMessage(),
-            ], 400);
-        }
+        // @intelephense-ignore next-line
+        Auth::user()->token()->delete();
         return response()->json([
             'message' => 'Session removed.'
         ], 200);

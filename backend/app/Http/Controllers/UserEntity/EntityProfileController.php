@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\UserEntity;
 
 use Exception;
-use App\Models\Entity;
+use App\Models\Entities;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
@@ -24,7 +24,7 @@ class EntityProfileController extends Controller
     public function loadProfile() 
     {
         $renderedEntity = EntityCollection::render_user_entity(
-            Entity::where('user_id', Auth::id())->first(),
+            Entities::where('user_id', Auth::id())->first(),
         );
 
         return response()->json([
@@ -46,7 +46,7 @@ class EntityProfileController extends Controller
             'is_public' => ['required', 'boolean'],
         ]);
         
-        Entity::where('user_id', Auth::id())->update([
+        Entities::where('user_id', Auth::id())->update([
             'is_public' => (bool) $data['is_public'],
         ]);
 
@@ -71,17 +71,17 @@ class EntityProfileController extends Controller
         ]);
 
         // Process Avatar
-        $userEntity = Entity::where('user_id', Auth::id())->first();
+        $userEntity = Entities::where('user_id', Auth::id())->first();
         if(!$userEntity) throw new Exception('Entity does not exist.');
         $currentAvatarImageLink = $userEntity->avatar;
         if($data['avatar_delete']) {
-            if($currentAvatarImageLink) Storage::disk('entityAvatar')->delete($currentAvatarImageLink);
+            if($currentAvatarImageLink) Storage::disk('entity')->delete($currentAvatarImageLink);
             $currentAvatarImageLink = null;
         } else if(isset($data['src'])) {
-            if($currentAvatarImageLink) Storage::disk('entityAvatar')->delete($currentAvatarImageLink);  
+            if($currentAvatarImageLink) Storage::disk('entity')->delete($currentAvatarImageLink);  
             $fileExtension = $request->file('src')->extension();
             $currentAvatarImageLink = Auth::id() . '-' . Str::random(45) . '.' . $fileExtension;
-            Storage::putFileAs('public/entityAvatar', $request->file('src'), $currentAvatarImageLink);
+            Storage::putFileAs('public/entity', $request->file('src'), $currentAvatarImageLink);
         }
 
         $userEntity->update([
@@ -106,7 +106,7 @@ class EntityProfileController extends Controller
             'slogan' => ['nullable', 'string', 'max:255'],
         ]);
 
-        Entity::where('user_id', Auth::id())->update([
+        Entities::where('user_id', Auth::id())->update([
             'name' => $data['name'],
             'slogan' => $data['slogan'],
         ]);
@@ -131,7 +131,7 @@ class EntityProfileController extends Controller
 
         $websiteSanitized = Modulate::sanitizeLink($data['website']);
 
-        Entity::where('user_id', Auth::id())->update([
+        Entities::where('user_id', Auth::id())->update([
             'website' => $websiteSanitized,
             'contact' => $data['contact'],
         ]);
@@ -153,7 +153,7 @@ class EntityProfileController extends Controller
             'about' => ['nullable', 'string', 'max:1999'],
         ]);
 
-        Entity::where('user_id', Auth::id())->update([
+        Entities::where('user_id', Auth::id())->update([
             'about' => $data['about'],
         ]);
 
@@ -174,7 +174,7 @@ class EntityProfileController extends Controller
             'tags' => ['nullable', 'array'],
         ]);
 
-        Entity::where('user_id', Auth::id())->update([
+        Entities::where('user_id', Auth::id())->update([
             'tags' => $data['tags'],
         ]);
 
@@ -204,7 +204,7 @@ class EntityProfileController extends Controller
         ]);
 
         $geolocation = new AppGeolocations();
-        Entity::where('user_id', Auth::id())->update([
+        Entities::where('user_id', Auth::id())->update([
             'location_id' => $geolocation->add_new_entry($data),
         ]);
 

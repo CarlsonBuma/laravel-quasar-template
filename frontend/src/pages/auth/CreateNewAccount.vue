@@ -6,7 +6,6 @@
             :goBack="true"
             title="Create account"
             iconHeader="admin_panel_settings"
-            note="*After registration, plese verify your account by the provided link we send you by email. You are able to set your password, after successful verification."
         >
             <!-- Registration -->
             <FormWrapper
@@ -15,32 +14,30 @@
                 @submit="registerUser(user.name, user.email, user.agreed)"
             >
                 <!-- Username -->
-                <q-input
-                    filled
-                    v-model="user.name"
-                    label="Username"
-                >
+                <q-input filled v-model="user.name" label="Username">
                     <template v-slot:prepend>
                         <q-icon name="person" />
                     </template>
                 </q-input>
 
                 <!-- Email -->
-                <q-input
-                    filled
-                    type="email"
-                    v-model="user.email"
-                    label="Email"
-                >
+                <q-input filled type="email" v-model="user.email" label="Email" >
                     <template v-slot:prepend>
                         <q-icon name="mail" />
                     </template>
                 </q-input>
 
                 <!-- Terms & Conditions -->
-                <div class="flex items-center">
-                    <q-checkbox v-model="user.agreed" />I agree with&nbsp;
-                    <router-link to="/legal" target="_blank">Terms &amp; Conditions</router-link>.
+                <div class="q-pa-sm">
+                    <p>Please agree "Terms-of-use":</p>
+                    <div class="flex items-center">
+                        <q-checkbox v-model="user.agreed.terms"/>I agree with&nbsp;
+                        <router-link to="/legal">Terms &amp; Conditions</router-link>.
+                    </div>
+                    <div class="flex items-center">
+                        <q-checkbox v-model="user.agreed.privacy" />I agree with&nbsp;
+                        <router-link to="/legal">Data Privacy</router-link>.
+                    </div>
                 </div>
             </FormWrapper>
         </CardWrapper>
@@ -50,21 +47,17 @@
 
 <script>
 import { ref } from 'vue';
-import { regRules } from 'src/boot/globals.js';
 import CardWrapper from 'components/CardWrapper.vue';
-import FormWrapper from 'src/components/global/FormWrapper.vue';
 
 export default {
     name: 'CreateNewAccount',
     components: {
-         CardWrapper, FormWrapper
+        CardWrapper
     },
 
     setup() {
         return {
-            regRulesEmail: regRules.email,
             loading: ref(false),
-            showTerms: ref(false)
         };
     },
 
@@ -73,7 +66,10 @@ export default {
             user: {
                 name: '',
                 email: '',
-                agreed: false,
+                agreed: {
+                    terms: false,
+                    privacy: false,
+                },
             },
         };
     },
@@ -83,17 +79,19 @@ export default {
             try {
                 // Validate
                 if(!name) throw 'Please enter a name.';
-                else if (!this.regRulesEmail.test(email)) throw 'Invalid email.';
-                else if (!agreed) throw 'Please agree with our Terms & Conditions.';
+                else if (!agreed.terms || !agreed.privacy) throw 'Please agree with our terms-of-use.';
+                
                 // Create User
                 this.$toast.load();
                 const response = await this.$axios.post("/create-account", {
                     'name': name,
                     'email': email,
-                    'terms': agreed,
+                    'terms': agreed.terms,
+                    'privacy': agreed.privacy,
                 });
-                this.$toast.success(response.data.message);
+
                 // Redirect User to Verify Email
+                this.$toast.success(response.data.message);
                 this.$router.push({
                     name: 'EmailVerificationRequest', 
                     params: { 
@@ -104,7 +102,6 @@ export default {
                 this.$toast.error(error.response ? error.response : error);
             } finally {
                 this.$toast.done();
-                this.user.agreed = false;
             }
         },
     }

@@ -14,11 +14,7 @@
                 @submit="setUserPassword(password, password_confirm)"
             >
                 <!-- Email -->
-                <q-input
-                    filled
-                    v-model="email"
-                    readonly
-                >
+                <q-input filled v-model="email" readonly >
                     <template #prepend>
                         <q-icon name="email" />
                     </template>
@@ -82,13 +78,12 @@
 <script>
 import { passwordRequirements } from 'src/boot/globals.js';
 import CardWrapper from 'components/CardWrapper.vue';
-import FormWrapper from 'src/components/global/FormWrapper.vue';
 import PasswordCheck from 'components/PasswordCheck.vue';
 
 export default {
     name: 'PasswordSet',
     components: {
-        CardWrapper, FormWrapper, PasswordCheck
+        CardWrapper, PasswordCheck
     },
 
     data() {
@@ -116,7 +111,7 @@ export default {
 
                 // Login
                 this.$user.setBearerToken(response.data.token);
-                this.$emit('authorize', '/my-avatar');
+                this.$emit('authorize', '/user/dashboard');
             } catch (error) {
                 this.$toast.error(error.response ? error.response : error);
             } finally {

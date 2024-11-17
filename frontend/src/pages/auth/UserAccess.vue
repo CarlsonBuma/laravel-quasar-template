@@ -1,12 +1,7 @@
 <template>
 
-    <PageWrapper 
-        title="My access" 
-        :rendering="loading" 
-        leftDrawer
-        drawerTitle="My Avatar" 
-    >
-        <template #leftDrawer>
+    <PageWrapper :rendering="loading" >
+        <template #navigation>
             <NavUser />
         </template>
 
@@ -178,14 +173,12 @@
 import { ref } from 'vue';
 import { date } from 'quasar';
 import { globalMasks } from 'src/boot/globals.js';
-import NavUser from 'src/components/navigation/NavUser.vue';
 import PaddleSubscription from 'components/PaddleSubscription.vue';
-import SectionNote from 'components/SectionNote.vue';
 
 export default {
     name: 'UserAccess',
     components: {
-        NavUser,  PaddleSubscription, SectionNote
+        PaddleSubscription
     },
 
     setup() {
@@ -315,7 +308,7 @@ export default {
 
         return {
             dateFormat: globalMasks.date.switzerland,
-            loading: ref(false),
+            loading: ref(true),
             showDialog: ref(false),
             openPaymentGateway,
             Paddle,

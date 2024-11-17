@@ -1,58 +1,45 @@
 <template>
 
-    <PageWrapper 
-        title="Newsfeed &amp; Releases" 
-        :rendering="rendering"
-        leftDrawer
-        drawerTitle="Admin Panel"
-    >
-        <template #leftDrawer>
+    <PageWrapper :rendering="rendering">
+        <template #navigation>
             <NavAdmin />
         </template>
 
         <!-- Add Entries -->
-        <div class="row w-100">
-            <div class="col-12 q-mb-sm">
-                <q-markup-table class="w-100">
+        <div class="row w-content">
+            <div class="col-12 q-mb-md _overflow-x">
+                <q-markup-table class="w-100 q-pb-sm" style="min-width: 920px">
                     <thead>
                         <tr>
-                            <th class="text-left">Title</th>
-                            <th class="text-left">Description</th>
-                            <th class="text-left">Version</th>
-                            <th class="text-left">Type</th>
+                            <th class="text-left" style="width: 320px">Title</th>
+                            <th class="text-left" style="width: auto">Description</th>
+                            <th class="text-left" style="width: 120px">Version</th>
+                            <th class="text-left" style="width: 180px">Type</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <q-input v-model="newEntry.title" />
-                            </td>
-                            <td>
-                                <q-input v-model="newEntry.description" autogrow />
-                            </td>
-                            <td>
-                                <q-input v-model="newEntry.version" />
-                            </td>
-                            <td>
-                                <q-select v-model="newEntry.type" :options="releaseOptions"/>
-                            </td>
+                            <td><q-input v-model="newEntry.title" /></td>
+                            <td><q-input v-model="newEntry.description" autogrow /></td>
+                            <td><q-input v-model="newEntry.version" /></td>
+                            <td><q-select v-model="newEntry.type" :options="releaseOptions"/></td>
                         </tr>
                     </tbody>
                 </q-markup-table>
             </div>
             <div class="col-12 flex justify-end q-mb-sm">
-                <q-btn label="Publish new release" color="primary" @click="createNewRelease(newEntry)"/>
+                <q-btn label="Publish" color="primary" @click="createNewRelease(newEntry)"/>
             </div>
         </div>
         
         <!-- Read, Update, Delete Entries -->
-        <q-separator class="w-100 q-ma-md" />
+        <q-separator class="w-content q-ma-md" />
         <q-table
-            title="Published"
+            title="Newsfeed"
             :rows="releases"
             :columns="columns"
             row-key="id"
-            class="w-100 q-mt-sm"
+            class="w-content q-mt-sm"
         >
             <template v-slot:body="props">
                 <q-tr :props="props">
@@ -105,12 +92,11 @@
 
 <script>
 import { ref } from 'vue';
-import NavAdmin from 'src/components/navigation/NavAdmin.vue';
 
 export default {
-    name: 'ReleaseManagement',
+    name: 'AdminNewsfeed',
     components: {
-        NavAdmin
+        // 
     },
 
     setup() {
@@ -166,7 +152,7 @@ export default {
         ];
 
         return {
-            rendering: ref(false),
+            rendering: ref(true),
             releaseOptions,
             columns,
         };

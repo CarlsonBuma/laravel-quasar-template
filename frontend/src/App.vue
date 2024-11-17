@@ -99,6 +99,7 @@ export default {
                         response.data.user.name, 
                         response.data.user.avatar, 
                         response.data.user.email, 
+                        response.data.user.is_public,
                         response.data.access.is_admin,
                         response.data.access.access_cockpit
                     );

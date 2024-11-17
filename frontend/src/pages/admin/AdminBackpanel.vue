@@ -1,12 +1,7 @@
 <template>
 
-    <PageWrapper 
-        title="Backpanel" 
-        :rendering="rendering"
-        leftDrawer
-        drawerTitle="Admin Panel"
-    >
-        <template #leftDrawer>
+    <PageWrapper :rendering="rendering" >
+        <template #navigation>
             <NavAdmin />
         </template>
 
@@ -28,17 +23,16 @@
 
 <script>
 import { ref } from 'vue';
-import NavAdmin from 'src/components/navigation/NavAdmin.vue';
 
 export default {
     name: 'AdminBackpanel',
     components: {
-        NavAdmin
+        // 
     },
 
     setup() {
         return {
-            rendering: ref(false),
+            rendering: ref(true),
             infos: ref({})
         };
     },

@@ -3,9 +3,9 @@ import store from "src/stores/user.js";
 
 const routesUser = [
     {
-        path: "/avatar/profile",
-        name: "UserProfile",
-        component: () => import('src/pages/user/UserProfile.vue'),
+        path: "/user/dashboard",
+        name: "UserDashboard",
+        component: () => import('src/pages/user/UserDashboard.vue'),
         beforeEnter: (to, from, next) => {
             if (!store().access.user) next('/');
             else next();

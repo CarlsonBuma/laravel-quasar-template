@@ -18,11 +18,6 @@ return new class extends Migration
             $table->text('scopes')->nullable();
             $table->boolean('revoked');
             $table->dateTime('expires_at')->nullable();
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('public.users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
         });
     }
 

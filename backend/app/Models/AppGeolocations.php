@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Entity;
+use App\Models\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,11 +25,7 @@ class AppGeolocations extends Model
     ];
 
     public function has_entities() {
-        return $this->hasMany(Entity::class, 'location_id');
-    }
-
-    public function has_user_avatars() {
-        return $this->hasMany(UserAvatar::class, 'location_id');
+        return $this->hasMany(Entities::class, 'location_id');
     }
 
     /**

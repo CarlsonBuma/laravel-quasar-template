@@ -24,6 +24,7 @@ As we want to allow AI/Vectors, we need first install the pgvector/pgvector:late
   - php artisan db:seed --class=UserSeeder
 
 ### Storage (some image must exist to link correctly!)
+  - add 'storage/app/public'
   - php artisan storage:link
 
 ### Setup Mail Driver
@@ -34,7 +35,7 @@ As we want to allow AI/Vectors, we need first install the pgvector/pgvector:late
 [X] Paddle - Payment Gateway
     - https://login.paddle.com/login
     - https://sandbox-login.paddle.com/login
-  1. Setup .env File to connect with Paddle
+  1. Setup .env File to talk with Paddle
   2. Define custom-data, according to Paddles in product-price ("custom_data")
     - access_token: "define-token"
     - duration_months: int

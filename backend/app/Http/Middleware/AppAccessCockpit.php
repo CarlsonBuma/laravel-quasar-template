@@ -15,7 +15,7 @@ class AppAccessCockpit
      * We will receive an access-token, sent by Paddle. Users are able
      * navigating between additionals features accessible by this token.
      * 
-     * Make sure to set "custom_data" in product-price in Paddle, to 
+     * Make sure set custom_data 'access_token' in product-price in Paddle, to 
      * handle the issues access-token, with our accessToken 'access-cockpit'
      *  > https://vendors.paddle.com/
      * 
@@ -24,8 +24,15 @@ class AppAccessCockpit
      *
      * @var string
      */
-    static public $accessToken = 'access-cockpit';
+    static public $accessToken = '';
 
+    
+    /**
+     * Initialize
+     */
+    public function __construct() { 
+        self::$accessToken = env('APP_ACCESS_COCKPIT');
+    }
 
     /**
      * Middleware

@@ -1,29 +1,47 @@
 <template>
 
-    <PageWrapper 
-        title="Settings" 
-        :rendering="loading" 
-        drawerTitle="My Avatar"  
-        leftDrawer
-    >
-
-        <template #leftDrawer>
+    <PageWrapper>
+        <template #navigation>
             <NavUser />
         </template>
 
         <div class="row w-100 flex justify-center">
             <div class="avatar-width">
+
+                <!-- Public -->
+                <CardSimple 
+                    title="Join our community" 
+                    tooltip="By joining our community, other collaborators are able to find your avatar."
+                    tooltipIconColor="primary"
+                >
+                    <template #actions>
+                        <div class="flex justify-end items-center w-100">
+                            <q-toggle class="q-mx-md" v-model="$user.user.is_public" dense />
+                            <div>
+                                <q-btn 
+                                    @click="submitPublicity($user.user.is_public)" 
+                                    outline 
+                                    rounded
+                                    size="sm"
+                                    color="primary" 
+                                    label="Update" 
+                                />
+                            </div>
+                        </div>
+                    </template>
+                </CardSimple>
+                
                 <!-- Image -->
                 <CardUploadImage 
                     allowUpdate
-                    :userAvatar="$user.user.img_src"
+                    :userAvatar="$user.user.avatar_src"
                     @update="(src, avatar, deleteAvatar) => saveAvatar(src, avatar, deleteAvatar)"
                     @upload="(src, avatar) => {
-                        $user.user.img_src = avatar;
+                        $user.user.avatar_src = avatar;
                     }"
                 />
 
-                <!-- ID -->
+                <!-- User -->
                 <CardSimple>
                     <SectionSplitFix class="q-pt-xs q-px-xs q-pb-none">
                         <template #left>
@@ -39,8 +57,9 @@
                     </SectionSplitFix>
                 </CardSimple>
             </div>
-
             <div class="avatar-width">
+
+                <!-- Username -->
                 <CardSimple title="Change username">
                     <q-card-section >
                         <FormWrapper
@@ -114,22 +133,22 @@
                         <FormWrapper
                             buttonText="Change owner"
                             buttonIcon="people_alt"
-                            @submit="submitEmail()"
+                            @submit="submitEmail(this.transferEmail, this.emailPassword)"
                         >
                             <q-input
                                 filled
                                 disable
+                                type="email"
                                 v-model="$user.user.email"
                                 label="Current owner"
                             />
-
                             <q-input
                                 filled
+                                type="email"
                                 v-model="transferEmail"
                                 label="Transfer account to"
                                 placeholder="Enter email"
                             />
-
                             <q-input
                                 filled
                                 type="password"
@@ -169,35 +188,24 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import { passwordRequirements, regRules, redirects } from 'src/boot/globals.js';
-import NavUser from 'src/components/navigation/NavUser.vue';
-import FormWrapper from 'src/components/global/FormWrapper.vue';
+import { passwordRequirements } from 'src/boot/globals.js';
 import PasswordCheck from 'components/PasswordCheck.vue';
 import CardUploadImage from 'components/CardUploadImage.vue';
-import SectionSplitFix from 'src/components/global/SectionSplitFix.vue';
 import QrcodeVue from 'qrcode.vue'
 
 export default {
     name: 'UserAccountSettings',
     components: {
-        NavUser, FormWrapper, PasswordCheck, CardUploadImage, SectionSplitFix, QrcodeVue
+        PasswordCheck, CardUploadImage, QrcodeVue
     },
     
     emits: [
         'removeSession'
     ],
 
-    setup() {
-        return {
-            errorMessage: '',
-            loading: ref(false),
-            regRulesEmail: regRules.email,
-        };
-    },
     data() {
         return {
-            qr_value: process.env.APP_URL + redirects.redirectLinkCommunityAvatar + this.$user.avatar.id,
+            qr_value: process.env.APP_URL,
             password: {
                 current: '',
                 new: '',
@@ -210,19 +218,31 @@ export default {
     },
 
     methods: {
+        async submitPublicity(isPublic) {
+            try {
+                this.$toast.load();
+                const response = await this.$axios.post('/update-user-publicity', {
+                    is_public: isPublic
+                });
+
+                this.$toast.success(response.data.message);
+            } catch (error) {
+                this.$toast.error(error.response ?? error)
+            }
+        },
+
         async saveAvatar(src, avatar, deleteAvatar) {
             if(!src && !deleteAvatar ) return;
             try {
                 const formData = new FormData;
                 if(src) formData.append("avatar", src);
-                formData.append("delete", deleteAvatar ? '1' : '0');
+                formData.append("avatar_delete", deleteAvatar ? '1' : '0');
                 this.$toast.load();
                 const response = await this.$axios.post('/update-user-avatar', formData);
                 this.$toast.success(response.data.message);
-                this.$user.user.img_src = avatar;
+                this.$user.user.avatar_src = avatar;
             } catch (error) {
-                const errorMessage = error.response ? error.response : error;
-                this.$toast.error(errorMessage);
+                this.$toast.error(error.response ?? error);
             }
         },
 
@@ -235,26 +255,7 @@ export default {
                 });
                 this.$toast.success(response.data.message);
             } catch (error) {
-                const errorMessage = error.response ? error.response : error;
-                this.$toast.error(errorMessage);
-            }
-        },
-        
-        async submitEmail() {
-            try {
-                if(!this.regRulesEmail.test(this.transferEmail)) throw 'Please enter valid email.';
-                if(!this.emailPassword) throw 'Please cofirm by password.';
-                this.$toast.load();
-                const response = await this.$axios.post('transfer-user-account', {
-                    'email': this.transferEmail,
-                    'password': this.emailPassword,
-                })
-                this.$toast.success(response.data.message);
-                this.$emit('removeSession');
-            } catch (error) {
-                this.$toast.error(error.response ? error.response : error);
-            } finally {
-                this.emailPassword = '';
+                this.$toast.error(error.response ?? error);
             }
         },
 
@@ -263,20 +264,40 @@ export default {
                 if(!current) throw 'Please enter new password.';
                 const passwordCheck = passwordRequirements(newPw, confirmed);
                 if(passwordCheck) throw passwordCheck;
+                
+                // Request
                 this.$toast.load();
                 const response = await this.$axios.post('update-user-password', {
                     'password_current': current,
                     'password': newPw,
                     'password_confirmation': confirmed
                 });
+                
                 this.$toast.success(response.data.message)
             } catch (error) {
-                const errorMessage = error.response ? error.response : error;
-                this.$toast.error(errorMessage);
+                this.$toast.error(error.response ?? error);
             } finally {
                 this.password.current = '';
                 this.password.new = '';
                 this.password.confirm = '';
+            }
+        },
+
+        async submitEmail(transferMail, password) {
+            try {
+                if(!transferMail) throw 'Email field is required.';
+                if(!password) throw 'Please cofirm by password.';
+                this.$toast.load();
+                const response = await this.$axios.post('transfer-user-account', {
+                    'email': transferMail,
+                    'password': password,
+                })
+                this.$toast.success(response.data.message);
+                this.$emit('removeSession');
+            } catch (error) {
+                this.$toast.error(error.response ?? error);
+            } finally {
+                this.emailPassword = '';
             }
         },
         
@@ -290,9 +311,9 @@ export default {
                 this.$toast.success(response.data.message);
                 this.$emit('removeSession');
             } catch (error) {
+                this.$toast.error(error.response ?? error);
+            } finally {
                 this.deletePassword = '';
-                const errorMessage = error.response ? error.response : error;
-                this.$toast.error(errorMessage);
             }
         },
 

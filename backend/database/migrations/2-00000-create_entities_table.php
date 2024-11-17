@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('entity', function (Blueprint $table) {
+        Schema::create('entities', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();    // Owner
             $table->boolean('is_public')->default(false);
@@ -41,6 +41,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('entity');
+        Schema::dropIfExists('entities');
     }
 };

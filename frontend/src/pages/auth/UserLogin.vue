@@ -12,18 +12,8 @@
                 buttonIcon="verified_user"
                 @submit="loginUser(login.email, login.password)"
             >
-                <q-input
-                    filled
-                    type="email"
-                    v-model="login.email"
-                    label="Enter email"
-                />
-                <q-input
-                    filled
-                    type="password"
-                    v-model="login.password"
-                    label="Enter password"
-                />
+                <q-input v-model="login.email" type="email" label="Enter email" />
+                <q-input v-model="login.password" type="password" label="Enter password" />
             </FormWrapper>
 
             <!-- Auth -->
@@ -73,7 +63,7 @@ export default {
                 
                 // Login
                 this.$user.setBearerToken(response.data.token);
-                this.$emit('authorize', '/');
+                this.$emit('authorize', '/user/dashboard');
             } catch (error) {
                 // Wrong Credentials && Email_Not_Verified
                 this.$toast.error(error.response ?? error);

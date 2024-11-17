@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('token')->nullable();
             $table->timestamp('email_verified_at')->nullable();     // Flag
+            $table->boolean('is_public')->default(false);           // Flag
             $table->timestamp('archived')->nullable();              // Flag
             $table->timestamps();
         });

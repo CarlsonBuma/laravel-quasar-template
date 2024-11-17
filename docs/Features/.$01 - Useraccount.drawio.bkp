@@ -58,7 +58,7 @@
         <mxCell id="n4Qi0mfz-kGRpUW987u9-2" value="- titel: string&lt;br&gt;- version: string&lt;br&gt;- description: text&lt;br&gt;- type: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="n4Qi0mfz-kGRpUW987u9-1" vertex="1">
           <mxGeometry y="30" width="140" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="IQ_1w8GRNhxzr8pyk5GO-1" value="user_entity" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+        <mxCell id="IQ_1w8GRNhxzr8pyk5GO-1" value="entity" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="1750" y="1325" width="200" height="220" as="geometry" />
         </mxCell>
         <mxCell id="IQ_1w8GRNhxzr8pyk5GO-2" value="- user_id: FK (C,C)&lt;br&gt;- is_public: bool (false)&lt;br&gt;- avatar: unique, nullable, string&lt;br&gt;- name: unique, string&lt;br&gt;- slogan: nullable, string&lt;br&gt;- about: nullable, text&lt;br&gt;- tags: nullable, string&lt;br&gt;- contact: nullable, text&lt;br&gt;- website: nullable, string&lt;br&gt;- bin: nullable, string&lt;br&gt;- location_id: FK (C,N)&lt;br&gt;- country_id: FK (C, N)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="IQ_1w8GRNhxzr8pyk5GO-1" vertex="1">
@@ -147,7 +147,7 @@
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-5" value="- Create UserAvatar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="_ZzYiV3CQgJYt5CbaP2R-2">
           <mxGeometry y="120" width="170" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="_ZzYiV3CQgJYt5CbaP2R-6" value="- Create Entity" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="_ZzYiV3CQgJYt5CbaP2R-2">
+        <mxCell id="_ZzYiV3CQgJYt5CbaP2R-6" value="- Create Entities" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="_ZzYiV3CQgJYt5CbaP2R-2">
           <mxGeometry y="150" width="170" height="30" as="geometry" />
         </mxCell>
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-7" value="E-Mail verification" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">

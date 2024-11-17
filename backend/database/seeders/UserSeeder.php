@@ -2,8 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\UserAvatar;
-use App\Models\Entity;
+use App\Models\Entities;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -14,21 +13,17 @@ class UserSeeder extends Seeder
     {
         $userTable = DB::table('users');
 
-        // Admin
+        // Admins
         $userID = $userTable->insertGetId([
             'name' => 'Owner',
-            'email' =>'admin',
+            'email' =>'admin@admin.com',
             'email_verified_at' => now(),
             'password' => Hash::make('admin'),
             'created_at' => now(),
             'updated_at' => now(),
         ]);
 
-        UserAvatar::create([
-            'user_id' => $userID,
-        ]);
-
-        Entity::create([
+        Entities::create([
             'user_id' => $userID,
         ]);
         
@@ -43,18 +38,14 @@ class UserSeeder extends Seeder
         for($x = 0; $x < 20; $x++) {
             $id = $userTable->insertGetId([
                 'name' => 'User' . $x,
-                'email' =>'user' . $x,
+                'email' =>'user' . $x .'@admin.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('test'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
 
-            UserAvatar::create([
-                'user_id' => $id,
-            ]);
-
-            Entity::create([
+            Entities::create([
                 'user_id' => $id,
             ]);
         }

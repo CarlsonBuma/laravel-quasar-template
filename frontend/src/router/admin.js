@@ -3,7 +3,7 @@ import store from "src/stores/user.js";
 
 const routesBackpanel = [
     {
-        path: '/backpanel',
+        path: '/admin/dashboard',
         name: 'AdminBackpanel',
         component: () => import('src/pages/admin/AdminBackpanel.vue'),
         beforeEnter: (to, from, next) => {
@@ -11,9 +11,9 @@ const routesBackpanel = [
             else next();
         }
     }, {
-        path: '/releasemanagement',
-        name: 'ReleaseManagement',
-        component: () => import('src/pages/admin/ReleaseManagement.vue'),
+        path: '/admin/newsfeed',
+        name: 'AdminNewsfeed',
+        component: () => import('src/pages/admin/AdminNewsfeed.vue'),
         beforeEnter: (to, from, next) => {
             if (!store().access.admin) next('/');
             else next();

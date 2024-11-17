@@ -82,13 +82,12 @@
 <script>
 import { passwordRequirements } from 'src/boot/globals.js';
 import CardWrapper from 'components/CardWrapper.vue';
-import FormWrapper from 'src/components/global/FormWrapper.vue';
 import PasswordCheck from 'components/PasswordCheck.vue';
 
 export default {
     name: 'EmailVerification',
     components: {
-        CardWrapper, FormWrapper, PasswordCheck
+        CardWrapper, PasswordCheck
     },
 
     emits: [
@@ -117,11 +116,11 @@ export default {
                     'password': pw,
                     'password_confirmation': pw_confirm,
                 });
-                this.$toast.success(response.data.message)
                 
                 // Login
+                this.$toast.success(response.data.message)
                 this.$user.setBearerToken(response.data.token);
-                this.$emit('authorize', '/my-avatar');
+                this.$emit('authorize', '/user/dashboard');
             } catch (error) {
                 this.$toast.error(error.response ? error.response : error);
             } finally {

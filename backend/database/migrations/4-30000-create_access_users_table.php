@@ -25,7 +25,7 @@ return new class extends Migration
                 ->onDelete('cascade');
             $table->foreign('entity_id')
                 ->references('id')
-                ->on('public.user_entity')
+                ->on('public.entities')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
             $table->foreign('transaction_id')

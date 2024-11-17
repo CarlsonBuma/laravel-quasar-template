@@ -14,6 +14,12 @@ use App\Http\Controllers\Auth\AppAccess\UserSubscriptionController;
 
 Route::middleware(['auth:api', 'email_verified'])->group(function () {
 
+    //* Auth
+    Route::get('/auth', [UserAuthController::class, 'authUser'])
+        ->name('auth');
+    Route::post('/logout', [UserAuthController::class, 'logoutUser'])
+        ->name('logout');
+
     //* App access
     Route::get('/load-user-access', [UserAccessController::class, 'loadUserAccess'])
         ->name('load.user.access');
@@ -34,16 +40,14 @@ Route::middleware(['auth:api', 'email_verified'])->group(function () {
         ->name('cancel.user.subscription');
     
     //* User Account
-    Route::get('/auth', [UserAuthController::class, 'authUser'])
-        ->name('auth');
+    Route::post('/update-user-publicity', [UserAccountController::class, 'updatePublicity'])
+        ->name('update.user.publicity');
     Route::post('/update-user-avatar', [UserAccountController::class, 'changeAvatar'])
         ->name('update.user.avatar');
     Route::post('/update-user-name', [UserAccountController::class, 'changeName'])
         ->name('update.user.name');
-    Route::post('/update-user-password', [PasswordResetController::class, 'changePassword'])
-        ->name('update.user.password');
-    Route::post('/logout', [UserAuthController::class, 'logoutUser'])
-        ->name('logout'); 
+    Route::post('/update-user-password', [UserAccountController::class, 'changePassword'])
+        ->name('update.user.password'); 
 
     // Transfer Account Request 
     // Email will be updated, after Emailverification, email_verified_at = null
@@ -67,7 +71,7 @@ Route::post('/create-account', [CreateAccountController::class, 'register'])
 
 // Verify Email
 Route::post('/email-verification-request', [EmailVerificationController::class, 'sendToken'])
-    ->middleware(['throttle:5,1'])
+    ->middleware(['throttle:2,1'])
     ->name('email.verification.request');
 Route::put('/email-verification/{email}/{token}', [EmailVerificationController::class, 'verifyToken'])
     ->middleware(['throttle:6,1'])
@@ -75,7 +79,7 @@ Route::put('/email-verification/{email}/{token}', [EmailVerificationController::
 
 // Reset Password
 Route::post('/password-reset-request', [PasswordResetController::class, 'sendToken'])
-    ->middleware(['throttle:6,1'])
+    ->middleware(['throttle:2,1'])
     ->name('password.reset.request');
 Route::put('/password-reset/{email}/{token}', [PasswordResetController::class, 'verifyToken'])
     ->middleware(['throttle:6,1'])

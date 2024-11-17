@@ -28,7 +28,7 @@ class AccessUsers extends Model
     ];
 
     public function belongs_to_user() {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Users::class, 'user_id');
     }
 
     public function belongs_to_transaction() {
@@ -36,6 +36,6 @@ class AccessUsers extends Model
     }
 
     public function belongs_to_entity() {
-        return $this->belongsTo(Entity::class, 'entity_id');
+        return $this->belongsTo(Entities::class, 'entity_id');
     }
 }

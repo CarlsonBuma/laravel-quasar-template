@@ -23,9 +23,10 @@ abstract class UserCollection
             'id' => $user->id,
             'name' => $user->name,
             'avatar' => $user->avatar
-                ? URL::to(Storage::url('userAvatar')) . '/' . $user->avatar
+                ? URL::to(Storage::url('user')) . '/' . $user->avatar
                 : '',
-            'email' => $user->email
+            'email' => $user->email,
+            'is_public' => $user->is_public
         ];
     }
 
@@ -47,7 +48,7 @@ abstract class UserCollection
         
         return [
             '_type' => 'Collection $access',
-            'is_admin' => $user->is_admin->exists(),
+            'is_admin' => $user->is_admin,
             'access_cockpit' => [
                 'access_token' => $entityAccess?->access_token,
                 'expiration_date' => $entityAccess?->expiration_date,
