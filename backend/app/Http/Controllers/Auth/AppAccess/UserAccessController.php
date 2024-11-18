@@ -3,16 +3,36 @@
 namespace App\Http\Controllers\Auth\AppAccess;
 
 use App\Models\Entities;
-use App\Models\AccessUsers;
-use App\Models\AccessPrices;
+use App\Models\UserAccess;
+use App\Models\PaddlePrices;
 use App\Http\Middleware\AppAccess;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Collections\UserAccessCollaction;
+use App\Http\Collections\UserAccessCollection;
 
 
 class UserAccessController extends Controller
 {
+    /**
+     * Undocumented function
+     *
+     * @return void
+     */
+    public function loadUserAccess()
+    {
+        $prices = PaddlePrices::where('is_active', true)
+            ->get()
+            ->map(function($price) {
+                return UserAccessCollection::renderPrice($price);
+            });
+
+        return response()->json([
+            'prices' => $prices,
+            'transactions' => UserAccessCollection::renderUserTransactions(Auth::id()),
+            'message' => 'Transactions loaded.',
+        ], 200);
+    }
+
     /**
      * Undocumented function
      *
@@ -26,26 +46,6 @@ class UserAccessController extends Controller
             'access' => $subscriptionAccess,
             'access_token' => $access_token,
             'message' => 'Latest access token.',
-        ], 200);
-    }
-
-    /**
-     * Undocumented function
-     *
-     * @return void
-     */
-    public function loadUserAccess()
-    {
-        $prices = AccessPrices::where('is_active', true)
-            ->get()
-            ->map(function($price) {
-                return UserAccessCollaction::renderPrice($price);
-            });
-
-        return response()->json([
-            'prices' => $prices,
-            'transactions' => UserAccessCollaction::renderUserTransactions(Auth::id()),
-            'message' => 'Transactions loaded.',
         ], 200);
     }
 
@@ -64,7 +64,7 @@ class UserAccessController extends Controller
     {
         if(!$transaction) throw 'error.no.transaction.provided';
         $userEntity = Entities::where('user_id', $transaction->user_id)->first();
-        AccessUsers::create([
+        UserAccess::create([
             'transaction_id' => $transaction->id,
             'user_id' => $transaction->user_id,
             'entity_id' => $userEntity?->id, 
@@ -92,7 +92,7 @@ class UserAccessController extends Controller
     public function removeUserAccess(object $transaction, string $status = 'access.removed'): void
     {
         if(!$transaction) return;
-        AccessUsers::where([
+        UserAccess::where([
             'user_id' => $transaction->user_id,
             'transaction_id' => $transaction->id,
         ])->update([

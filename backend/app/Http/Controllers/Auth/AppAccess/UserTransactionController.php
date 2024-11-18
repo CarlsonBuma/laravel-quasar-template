@@ -6,7 +6,7 @@ use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use App\Http\Middleware\AppAccess;
-use App\Models\AccessTransactions;
+use App\Models\PaddleTransactions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Exception\GuzzleException;
@@ -62,7 +62,7 @@ class UserTransactionController extends Controller
         ]);
 
         $PaddleTransaction = new PaddleTransactionHandler(
-            AccessTransactions::where([
+            PaddleTransactions::where([
                 'user_id' => Auth::id(),
                 'transaction_token' => $data['transaction_token']
             ])->first()

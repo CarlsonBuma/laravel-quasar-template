@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Auth\AppAccess;
 
 use Exception;
 use GuzzleHttp\Client;
-use App\Models\AccessPrices;
+use App\Models\PaddlePrices;
 use Illuminate\Http\Request;
-use App\Models\AccessSubscriptions;
+use App\Models\PaddleSubscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Exception\GuzzleException;
@@ -30,11 +30,11 @@ class UserSubscriptionController extends Controller
 
         try {
             // Verify Price
-            $price = AccessPrices::where('price_token', $data['price_token'])->first();
+            $price = PaddlePrices::where('price_token', $data['price_token'])->first();
             if(!$price) throw new Exception('Invalid request.');
             
             // Process all active subscriptions
-            $subscriptions = AccessSubscriptions::where([
+            $subscriptions = PaddleSubscriptions::where([
                 'price_id' => $price->id,
                 'user_id' => Auth::id(),
                 'canceled_at' => null,

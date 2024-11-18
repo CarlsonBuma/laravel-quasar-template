@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Exception;
-use App\Models\Users;
+use App\Models\User;
 use App\Models\Entities;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -38,7 +38,7 @@ class CreateAccountController extends Controller
                 throw new Exception('Please accept our terms-of-use.');
 
             // Process
-            $userID = Users::create([
+            $userID = User::create([
                 'name' => $data['name'],
                 'email' => $data['email'],
                 'password' =>  Hash::make(Str::random(125))

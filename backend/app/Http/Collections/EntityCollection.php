@@ -27,7 +27,7 @@ abstract class EntityCollection
     ];
 
     /**
-     * Users entity collection
+     * User entity collection
      *  > Accessible if is_public
      *  > Or user is owner
      *

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Exception;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
@@ -32,7 +32,7 @@ class EmailVerificationController extends Controller
                 'email' => ['required', 'string', 'email', 'max:255'],
             ]);
 
-            $user = Users::where('email', $data['email'])->first();
+            $user = User::where('email', $data['email'])->first();
             if ($user && !$user->email_verified_at) {
                 DB::beginTransaction();
                     
@@ -86,7 +86,7 @@ class EmailVerificationController extends Controller
             if (!$request->hasValidSignature()) throw new Exception('Link has been expired.');
 
             // Validate Token
-            $user = Users::where([
+            $user = User::where([
                 'email' => $email,
                 'email_verified_at' => null,
                 'token' => $token

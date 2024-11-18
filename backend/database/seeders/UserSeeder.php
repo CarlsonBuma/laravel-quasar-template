@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        // Normal Users
+        // Normal User
         for($x = 0; $x < 20; $x++) {
             $id = $userTable->insertGetId([
                 'name' => 'User' . $x,

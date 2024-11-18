@@ -4,18 +4,18 @@ namespace App\Models;
 
 use App\Models\Admins;
 use App\Models\Entities;
-use App\Models\AccessTransactions;
+use App\Models\PaddleTransactions;
 use Laravel\Passport\HasApiTokens;
-use App\Models\AccessSubscriptions;
+use App\Models\PaddleSubscriptions;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Users extends Authenticatable
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'public.users';
+    protected $table = 'public.user';
 
     protected $fillable = [
         'name',
@@ -49,14 +49,14 @@ class Users extends Authenticatable
 
     //* Payments
     public function has_subsciptions() {
-        return $this->hasMany(AccessSubscriptions::class, 'user_id');
+        return $this->hasMany(PaddleSubscriptions::class, 'user_id');
     }
 
     public function has_transactions() {
-        return $this->hasMany(AccessTransactions::class, 'user_id');
+        return $this->hasMany(PaddleTransactions::class, 'user_id');
     }
 
     public function has_user_access_pivot() {
-        return $this->hasMany(AccessUsers::class, 'user_id');
+        return $this->hasMany(UserAccess::class, 'user_id');
     }
 }

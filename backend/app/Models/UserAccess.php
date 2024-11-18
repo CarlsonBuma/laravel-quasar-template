@@ -3,14 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\AccessTransactions;
+use App\Models\PaddleTransactions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class AccessUsers extends Model
+class UserAccess extends Model
 {
     use HasFactory;
 
-    protected $table = 'public.access_users';
+    protected $table = 'public.user_access';
 
     protected $fillable = [
         'user_id',
@@ -28,11 +28,11 @@ class AccessUsers extends Model
     ];
 
     public function belongs_to_user() {
-        return $this->belongsTo(Users::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function belongs_to_transaction() {
-        return $this->belongsTo(AccessTransactions::class, 'transaction_id');
+        return $this->belongsTo(PaddleTransactions::class, 'transaction_id');
     }
 
     public function belongs_to_entity() {

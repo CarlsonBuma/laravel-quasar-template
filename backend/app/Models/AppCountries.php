@@ -6,6 +6,9 @@ use App\Models\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * DB seeder
+ */
 class AppCountries extends Model
 {
     use HasFactory;

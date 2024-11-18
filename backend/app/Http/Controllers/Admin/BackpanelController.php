@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Users;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class BackpanelController extends Controller
@@ -15,7 +15,7 @@ class BackpanelController extends Controller
     public function loadDashboard()
     {
         return response()->json([
-            'users' => Users::where('email_verified_at', '!=', null)->count()
+            'users' => User::where('email_verified_at', '!=', null)->count()
         ], 200);
     }
 }

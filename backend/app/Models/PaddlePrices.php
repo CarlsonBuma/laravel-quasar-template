@@ -3,16 +3,19 @@
 namespace App\Models;
 
 
-use App\Models\AccessTransactions;
-use App\Models\AccessSubscriptions;
+use App\Models\PaddleTransactions;
+use App\Models\PaddleSubscriptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class AccessPrices extends Model
+/**
+ * Seed by Paddle Webhook
+ */
+class PaddlePrices extends Model
 {
     use HasFactory;
 
-    protected $table = 'public.access_prices';
+    protected $table = 'public.paddle_prices';
 
     protected $fillable = [
         'price_token',
@@ -35,10 +38,10 @@ class AccessPrices extends Model
     ];
 
     public function has_subscriptions() {
-        return $this->hasMany(AccessSubscriptions::class, 'price_id');
+        return $this->hasMany(PaddleSubscriptions::class, 'price_id');
     }
 
     public function has_transactions() {
-        return $this->hasMany(AccessTransactions::class, 'price_id');
+        return $this->hasMany(PaddleTransactions::class, 'price_id');
     }
 }

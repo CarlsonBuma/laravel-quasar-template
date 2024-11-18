@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('access_prices', function (Blueprint $table) {
+        Schema::create('paddle_prices', function (Blueprint $table) {
             $table->id();
             $table->string('price_token', 255)->unique();
             $table->string('product_token', 255)->nullable();
@@ -38,6 +38,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('access_prices');
+        Schema::dropIfExists('paddle_prices');
     }
 };

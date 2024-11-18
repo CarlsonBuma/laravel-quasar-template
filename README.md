@@ -49,10 +49,20 @@ Root:
       > https://developers.google.com/maps/documentation/javascript?hl=de
       > https://developers.google.com/maps/documentation/geocoding/get-api-key?hl=de
 
-## Testing Environment
-   - Install Ngrok (Reverse Proxy) - Webhooks
+## Setup Payment Gateway by Paddle
+Handle Webhooks
+   1. Install Ngrok (Reverse Proxy) - Webhooks
       - ngrok http http://127.0.0.1:8000
       - ngrok http http://localhost:9000/#
+   2. Login to Paddle Sandbox
+      - Notifications: Setup Webhook URL
+      - Paste Webhook Secret Key in .env file
+   3. Define Prices
+      - 'One-Time Purchase' vs. 'Subscription'
+      - add custom attributes to price
+         - 'access_token' (string): Allows to set flags according user-access
+         - 'duration_months' (int): Default Expiration (by 'One-Time Purchase')
+            - Overwritten by paddles 'ends_at' (by 'Subscription')
 
 ## Setup Docker Environment
    - Docker Setup Environment - "docker-compose up -d"

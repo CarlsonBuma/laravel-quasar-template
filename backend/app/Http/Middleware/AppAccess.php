@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\AccessUsers;
+use App\Models\UserAccess;
 
 
 class AppAccess
@@ -17,7 +17,7 @@ class AppAccess
     static public function checkUserAccessByToken(int $userID, string $accessToken): ?object
     {
         if(!$accessToken) return null;
-        return AccessUsers::where([
+        return UserAccess::where([
                 'user_id' => $userID,
                 'access_token' => $accessToken,
                 'is_active' => true
@@ -36,7 +36,7 @@ class AppAccess
      */
     static public function checkUserAccessByTransactionID(int $userID, int $transactionID): ?object
     {
-        return AccessUsers::where([
+        return UserAccess::where([
                 'user_id' => $userID,
                 'transaction_id' => $transactionID,
                 'is_active' => true,

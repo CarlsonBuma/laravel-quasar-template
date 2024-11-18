@@ -20,6 +20,11 @@ return new class extends Migration
             $table->boolean('revoked');
             $table->timestamps();
             $table->dateTime('expires_at')->nullable();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('public.users')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
         });
     }
 

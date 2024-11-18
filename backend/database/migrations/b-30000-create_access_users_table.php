@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('access_users', function (Blueprint $table) {
+        Schema::create('user_access', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('transaction_id')->nullable();
@@ -30,14 +30,14 @@ return new class extends Migration
                 ->onDelete('set null');
             $table->foreign('transaction_id')
                 ->references('id')
-                ->on('public.access_transactions')
+                ->on('public.paddle_transactions')
                 ->onUpdate('cascade')
-                ->onDelete('cascade');
+                ->onDelete('set null');
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('access_users');
+        Schema::dropIfExists('user_access');
     }
 };

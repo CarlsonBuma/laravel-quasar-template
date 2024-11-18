@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Users;
-use App\Models\AccessUsers;
+use App\Models\User;
+use App\Models\UserAccess;
 use App\Models\AppCountries;
 use App\Models\AppGeolocations;
 use Illuminate\Database\Eloquent\Model;
@@ -33,7 +33,7 @@ class Entities extends Model
     ];
 
     public function belongs_to_user() {
-        return $this->belongsTo(Users::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function belongs_to_location() {
@@ -45,6 +45,6 @@ class Entities extends Model
     }
 
     public function has_user_access_pivot() {
-        return $this->hasMany(AccessUsers::class, 'entity_id');
+        return $this->hasMany(UserAccess::class, 'entity_id');
     }
 }

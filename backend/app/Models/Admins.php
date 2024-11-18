@@ -17,6 +17,6 @@ class Admins extends Model
     ];
 
     public function belongs_to_user() {
-        return $this->belongsTo(Users::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

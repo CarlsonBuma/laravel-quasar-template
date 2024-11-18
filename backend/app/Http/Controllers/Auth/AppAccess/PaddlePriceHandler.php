@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth\AppAccess;
 
-use App\Models\AccessPrices;
+use App\Models\PaddlePrices;
 
 
 class PaddlePriceHandler
@@ -28,7 +28,7 @@ class PaddlePriceHandler
      */
     public function updatePriceByWebhook(array $contentData): void
     {
-        $this->price = AccessPrices::updateOrCreate([
+        $this->price = PaddlePrices::updateOrCreate([
             'price_token' => $contentData['id'],
         ], [
             'product_token' => $contentData['product_id'],

@@ -12,14 +12,14 @@ class AppAccessCockpit
 {
     /**
      * As soon a user is making subscription trough our payment-gateway
-     * We will receive an access-token, sent by Paddle. Users are able
+     * We will receive an access-token, sent by Paddle. User are able
      * navigating between additionals features accessible by this token.
      * 
      * Make sure set custom_data 'access_token' in product-price in Paddle, to 
      * handle the issues access-token, with our accessToken 'access-cockpit'
      *  > https://vendors.paddle.com/
      * 
-     * Users are paying for getting this access-token 'access-cockpit'
+     * User are paying for getting this access-token 'access-cockpit'
      *  *Logic see: App\Http\Controllers\User\ControllerPayments;
      *
      * @var string

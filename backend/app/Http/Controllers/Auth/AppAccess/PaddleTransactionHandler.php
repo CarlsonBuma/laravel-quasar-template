@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth\AppAccess;
 
 use Carbon\Carbon;
-use App\Models\AccessPrices;
-use App\Models\AccessTransactions;
+use App\Models\PaddlePrices;
+use App\Models\PaddleTransactions;
 use App\Http\Middleware\AppAccess;
-use App\Models\AccessSubscriptions;
+use App\Models\PaddleSubscriptions;
 
 
 class PaddleTransactionHandler
@@ -74,7 +74,7 @@ class PaddleTransactionHandler
         $this->status = $contentData['status'];
 
         // Access Attributes
-        $this->price = AccessPrices::where('price_token', $this->price_token)->first();
+        $this->price = PaddlePrices::where('price_token', $this->price_token)->first();
         $this->price_id = $this->price?->id;
         $this->access_token = $this->price->access_token 
             ?? $item['price']['custom_data']['access_token']
@@ -95,7 +95,7 @@ class PaddleTransactionHandler
      */
     public function initializeClientTransactionByUserSubscription(): void
     {
-        $this->subscription = AccessSubscriptions::where('subscription_token', $this->subscription_token)->first();
+        $this->subscription = PaddleSubscriptions::where('subscription_token', $this->subscription_token)->first();
         if(!$this->subscription) return;
         $this->user_id = $this->subscription->user_id;
         $this->initializeClientTransaction($this->user_id, $this->transaction_token);
@@ -110,7 +110,7 @@ class PaddleTransactionHandler
      */
     public function initializeClientTransaction(int $userID, string $transactionToken): void
     {
-        $this->transaction = AccessTransactions::firstOrCreate([
+        $this->transaction = PaddleTransactions::firstOrCreate([
             'user_id' => $userID,
             'transaction_token' => $transactionToken
         ], [
@@ -128,7 +128,7 @@ class PaddleTransactionHandler
     public function setSubscription(): void
     {
         if(!$this->subscription_token || !$this->user_id) return;
-        $this->subscription = AccessSubscriptions::firstOrCreate([
+        $this->subscription = PaddleSubscriptions::firstOrCreate([
             'user_id' => $this->user_id,
             'subscription_token' => $this->subscription_token,
         ], [

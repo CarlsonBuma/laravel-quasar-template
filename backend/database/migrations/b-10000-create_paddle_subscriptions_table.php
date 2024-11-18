@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('access_subscriptions', function (Blueprint $table) {
+        Schema::create('paddle_subscriptions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('price_id')->nullable();
@@ -28,7 +28,7 @@ return new class extends Migration
                 ->onDelete('set null');
             $table->foreign('price_id')
                 ->references('id')
-                ->on('public.access_prices')
+                ->on('public.paddle_prices')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
 
@@ -38,6 +38,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('access_subscriptions');
+        Schema::dropIfExists('paddle_subscriptions');
     }
 };

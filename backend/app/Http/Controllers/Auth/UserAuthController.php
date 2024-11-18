@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Exception;
 use Carbon\Carbon;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +45,7 @@ class UserAuthController extends Controller
             ]);
 
             // Check if Email is verified
-            $user = Users::where('email', $credentials['email'])->first();
+            $user = User::where('email', $credentials['email'])->first();
             if($user && !$user->email_verified_at instanceof Carbon) {
                 return response()->json([
                     'status' => 'email_not_verified',
@@ -59,7 +59,7 @@ class UserAuthController extends Controller
                 'email' => $credentials['email'],
                 'password' => $credentials['password']
             ])) {
-                $token = Users::find(Auth::id())->createToken('user')->accessToken;
+                $token = User::find(Auth::id())->createToken('user')->accessToken;
                 return response()->json([
                     'token' => $token,
                     'message' => 'Session started.'

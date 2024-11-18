@@ -20,7 +20,7 @@
             flat
             :rows="prices"
             :columns="columns_subscriptions"
-            title="Provided services"
+            title="Products"
             row-key="id"
             class="table-width q-mb-md"
             :sort-method="customSort"

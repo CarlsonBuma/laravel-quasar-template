@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use Exception;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Models\AccessSubscriptions;
+use App\Models\PaddleSubscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +28,7 @@ class UserAccountController extends Controller
             'is_public' => ['required', 'boolean'],
         ]);
 
-        Users::find(Auth::id())->update([
+        User::find(Auth::id())->update([
             'is_public' => (bool) $data['is_public'],
         ]);
 
@@ -61,7 +61,7 @@ class UserAccountController extends Controller
 
             // User's Avatar
             $img_src = null;
-            $user = Users::find(Auth::id());
+            $user = User::find(Auth::id());
             $userImgSrc = $user->avatar;
             
             // Delete Avatar
@@ -104,7 +104,7 @@ class UserAccountController extends Controller
             'name' => ['required', 'string', 'max:255'],
         ]);
 
-        Users::find(Auth::id())->update([
+        User::find(Auth::id())->update([
             'name' => $data['name'],
         ]);
 
@@ -130,7 +130,7 @@ class UserAccountController extends Controller
             ]);
             
             // Check Current Password
-            $user = Users::find(Auth::id());
+            $user = User::find(Auth::id());
             if(!Hash::check($data['password_current'], $user->password)) 
                 throw new Exception('Ups, the given password is incorrect.');
             
@@ -165,7 +165,7 @@ class UserAccountController extends Controller
                 'password' => ['required', 'string', 'max:255'],
             ]);
     
-            $user = Users::find(Auth::id());
+            $user = User::find(Auth::id());
             if(!Hash::check($data['password'], $user->password)) 
                 throw new Exception('The given password is incorrect.');
 
@@ -173,7 +173,7 @@ class UserAccountController extends Controller
             // User must have canceled all its subscription
             // Before he can delete its account
             if(
-                AccessSubscriptions::where([
+                PaddleSubscriptions::where([
                     'user_id' => Auth::id(),
                     'canceled_at' => null,
                 ])->first()

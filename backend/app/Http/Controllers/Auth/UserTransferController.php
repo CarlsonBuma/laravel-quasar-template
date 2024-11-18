@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use Exception;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
 use Illuminate\Support\Facades\DB;
 use App\Mail\SendEmailVerification;
-use App\Models\AccessSubscriptions;
+use App\Models\PaddleSubscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -36,7 +36,7 @@ class UserTransferController extends Controller
             ]);
             
             // Validate
-            $user = Users::find(Auth::id());
+            $user = User::find(Auth::id());
             if(!Hash::check($data['password'], $user->password)) 
                 throw new Exception('Ups, the given password is incorrect.');
 
@@ -44,7 +44,7 @@ class UserTransferController extends Controller
             // User must have canceled all its subscription
             // Before he can delete its account
             if(
-                AccessSubscriptions::where([
+                PaddleSubscriptions::where([
                     'user_id' => Auth::id(),
                     'canceled_at' => null,
                 ])->first()
@@ -117,7 +117,7 @@ class UserTransferController extends Controller
             if (!$request->hasValidSignature()) 
                 throw new Exception('Link has been expired.');
             
-            $user = Users::where([
+            $user = User::where([
                 'email' => $email,
                 'email_verified_at' => null,
                 'token' => $token
@@ -125,7 +125,7 @@ class UserTransferController extends Controller
 
             // Validate transfer email
             if(!$user) throw new Exception('Invalid verification key.');
-            if(Users::where('email', $transfer)->first()) {
+            if(User::where('email', $transfer)->first()) {
                 $user->email_verified_at = now();
                 $user->save();
                 throw new Exception('We are sorry, email already exists! Please contact previous owner.');

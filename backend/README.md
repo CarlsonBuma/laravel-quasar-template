@@ -35,14 +35,27 @@ As we want to allow AI/Vectors, we need first install the pgvector/pgvector:late
 [X] Paddle - Payment Gateway
     - https://login.paddle.com/login
     - https://sandbox-login.paddle.com/login
-  1. Setup .env File to talk with Paddle
-  2. Define custom-data, according to Paddles in product-price ("custom_data")
-    - access_token: "define-token"
-    - duration_months: int
-  3. Adjust Files according your needs
-    - Webhook Listener: "Listeners/PaddleEventListerner"
-    - User Access Management: "Access/UserAccessController"
-    - Paddle Handler: "Auth/AccessHandling"
+
+### Setup Payment Gateway by Paddle
+Handle Webhooks
+   0. "composer require laravel/cashier-paddle"
+   1. Install Ngrok (Reverse Proxy) - Webhooks
+      - ngrok http http://127.0.0.1:8000
+      - Check Webhooks: Ngrok Web Interface
+   2. Login to Paddle Sandbox
+      - Notifications: Setup Webhook URL
+      - Paste Webhook Secret Key in .env file
+   3. Define Prices
+      - 'One-Time Purchase' vs. 'Subscription'
+      - add custom attributes to price
+         - 'access_token' (string): Allows to set flags according user app-access
+         - 'duration_months' (int): Default Expiration (by 'One-Time Purchase')
+            - Overwritten by paddles 'ends_at' (by 'Subscription')
+      - Price seeding by Webhook ("Listeners/PaddleEventListener", @created, @updated')
+    4. Adjust Files according your needs
+      - Webhook Listener: "/Listeners/PaddleEventListerner"
+      - UserAccess: "/Auth/AppAccess/UserAccessController"
+      - Paddle Webhook Handler: "/Auth/AppAccess/"
 
  # Live Deployment
  See Laravel 11 Docs & it's Dependencies

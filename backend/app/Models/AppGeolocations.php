@@ -6,6 +6,9 @@ use App\Models\Entities;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * Seed by new geolocation requests
+ */
 class AppGeolocations extends Model
 {
     use HasFactory;

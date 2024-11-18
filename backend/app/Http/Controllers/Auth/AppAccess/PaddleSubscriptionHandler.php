@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth\AppAccess;
 
-use App\Models\AccessSubscriptions;
+use App\Models\PaddleSubscriptions;
 
 
 class PaddleSubscriptionHandler
@@ -28,7 +28,7 @@ class PaddleSubscriptionHandler
      */
     public function updateSubscriptionByWebhook(array $contentData): void
     {
-        $this->subscription = AccessSubscriptions::where([
+        $this->subscription = PaddleSubscriptions::where([
             'subscription_token' => $contentData['id'],
         ])->first();
 

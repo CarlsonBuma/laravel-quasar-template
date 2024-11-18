@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use Exception;
-use App\Models\AccessTransactions;
+use App\Models\PaddleTransactions;
 use App\Http\Controllers\Controller;
 use Laravel\Paddle\Events\WebhookReceived;
 use App\Http\Controllers\Auth\AppAccess\PaddlePriceHandler;
@@ -66,7 +66,7 @@ class PaddleEventListener extends Controller
     {
         try {
             $PaddleTransaction = new PaddleTransactionHandler(
-                AccessTransactions::where([
+                PaddleTransactions::where([
                     'transaction_token' => $contentData['id']
                 ])->first()
             );
@@ -152,7 +152,7 @@ class PaddleEventListener extends Controller
     private function removeUserAcccess(array $contentData)
     {
         $PaddleTransaction = new PaddleTransactionHandler(
-            AccessTransactions::where('transaction_token', $contentData['id'])->first()
+            PaddleTransactions::where('transaction_token', $contentData['id'])->first()
         );
 
         $UserAccess = new UserAccessController();

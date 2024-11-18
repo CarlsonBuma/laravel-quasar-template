@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use Exception;
-use App\Models\Users;
+use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
@@ -32,7 +32,7 @@ class PasswordResetController extends Controller
             ]);
 
             // Create Reset Token
-            $user = Users::where('email', $data['email'])->first();
+            $user = User::where('email', $data['email'])->first();
             if ($user) {
                 DB::beginTransaction();
                     $token = Str::random(255);
@@ -81,7 +81,7 @@ class PasswordResetController extends Controller
             if (!$request->hasValidSignature()) throw new Exception('Link has been expired.');
 
             // Check Token
-            $user = Users::where([
+            $user = User::where([
                 'email' => $email,
                 'token' => $token
             ])->first();
