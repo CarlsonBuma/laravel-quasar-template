@@ -79,7 +79,9 @@ class PaddleTransactionHandler
         $this->access_token = $this->price->access_token 
             ?? $item['price']['custom_data']['access_token']
                 ?? $this->access_token;
-        $defaultPeriod = $item['price']['custom_data']['duration_months'] ?? 0;
+
+        // Access Period, according to paddle-price
+        $defaultPeriod = (int) $item['price']['custom_data']['duration_months'] ?? 0;
         $this->expiration_date = $contentData['current_billing_period']['ends_at'] 
             ?? $contentData['billing_period']['ends_at']
                 ?? $this->calculateLatestUserExpirationDate($defaultPeriod);
@@ -89,35 +91,21 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Validate User, by subscriptionToken
-     *  > Add new user transaction by subscription
-     *
-     * @param string $subscriptionToken
-     * @return void
-     */
-    public function createUserTransactionBySubscription(string $subscriptionToken): void
-    {
-        $this->subscription = PaddleSubscriptions::where('subscription_token', $subscriptionToken)->first();
-        if(!$this->subscription) return;
-        $this->user_id = $this->subscription->user_id;
-        $this->createUserTransaction($this->user_id, $this->transaction_token);
-    }
-
-    /**
      * Create User Transaction
      *
      * @param integer $userID
      * @param string $transactionToken
+     * @param string $message
      * @return void
      */
-    public function createUserTransaction(int $userID, string $transactionToken): void
+    public function initializeUserTransaction(int $userID, string $transactionToken, string $message = 'transaction.initialized'): void
     {
         $this->transaction = PaddleTransactions::firstOrCreate([
             'user_id' => $userID,
             'transaction_token' => $transactionToken
         ], [
             'status' => 'initialized',
-            'message' => 'transaction.initialized',
+            'message' => $message,
         ]);
     }
 
@@ -125,9 +113,10 @@ class PaddleTransactionHandler
      * Check if Transaction belongs to a Subscription
      *  > There might be already a subscription existing
      *
+     * @param [type] $message
      * @return void
      */
-    public function createSubscriptionByTransaction(): void
+    public function initializeSubscriptionByTransaction($message = 'subscription.initialized'): void
     {
         if(!$this->subscription_token || !$this->user_id) return;
         $this->subscription = PaddleSubscriptions::firstOrCreate([
@@ -137,16 +126,37 @@ class PaddleTransactionHandler
             'price_id' => $this->price_id,
             'started_at' => now(),
             'status' => 'active',
-            'message' => 'subscription.verified'
+            'message' => $message
         ]);
     }
 
     /**
-     * Complete Transaction
+     * Validate User, by subscription token
+     *  > Add new user transaction created by subscription
      *
+     * @param string $subscriptionToken
+     * @param string $message
      * @return void
      */
-    public function completeTransaction(): void
+    public function initializeUserTransactionBySubscription(string $subscriptionToken, $message): void
+    {
+        $this->subscription = PaddleSubscriptions::where('subscription_token', $subscriptionToken)->first();
+        if(!$this->subscription) return;
+        $this->user_id = $this->subscription->user_id;
+        $this->initializeUserTransaction(
+            $this->user_id, 
+            $this->transaction_token, 
+            $message
+        );
+    }
+
+    /**
+     * Complete transaction
+     *
+     * @param string $message
+     * @return void
+     */
+    public function completeTransaction(string $message): void
     {
         if(!$this->transaction) return;
         $this->transaction->update([
@@ -159,7 +169,7 @@ class PaddleTransactionHandler
             'currency_code' => $this->currencyCode,
             'is_verified' => true,
             'status' => $this->status,
-            'message' => 'transaction.completed'
+            'message' => $message
         ]);
     }
 

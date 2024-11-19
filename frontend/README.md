@@ -13,15 +13,19 @@ Website: https://quasar.dev/introduction-to-quasar
  - Optional: Setup \src\modules\cookieConsent.js
     > Implement Cookies (eg. Google Tags, Bing UET, etc.)
 
-## Additional Microservices
-[X] PaddleJS
+# Additional Microservices
+## PaddleJS
     1. Setup Paddle Account
         - https://developer.paddle.com/paddlejs/overview
     2. Setup .env File
     4. Implement '@/components/PaddleSubscription.vue'
-    5. Handle UI-Access according Logic
+    5. Handle PaddleJS according Logic
+        - Prices and Tokens will be provided by our server
+        - or define them manually in UI
+    6. Initialize Client Checkout
+        - see backend/"UserCheckoutController"
 
-[X] Google Developer Services API
+## Google Developer Services API
     1. Create Google Developers Account
         - Google Maps: Geolocation
             - https://developers.google.com/maps/documentation/geocoding/start 

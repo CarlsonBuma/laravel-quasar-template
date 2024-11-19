@@ -104,6 +104,8 @@ export default {
                         response.data.access.access_cockpit
                     );
                 }
+
+                console.log(this.$user)
                 
                 // Redirect if requested
                 this.$toast.success('Session started.')
@@ -113,6 +115,7 @@ export default {
                 if(error.response) {
                     console.log('app.auth', error.response ?? error)
                     this.$toast.error(error.response)
+                    this.$router.push('/login')
                 }
             } finally {
                 this.$toast.done();

@@ -22,11 +22,12 @@ use App\Http\Controllers\Auth\AppAccess\PaddleTransactionHandler;
  * https://developer.paddle.com/api-reference/overview
  * 
  */
-class UserTransactionController extends Controller
+class UserCheckoutController extends Controller
 {
     /**
-     ** Initialize User's Client Checkout
-     *  Transaction_Token is required to validate purchase
+     * Initialize User's Client Checkout
+     *  > Starting Point of whole user-access
+     *  > Transaction_Token is required to validate purchase
      *
      * @param Request $request
      * @return void
@@ -39,11 +40,15 @@ class UserTransactionController extends Controller
         ]);
 
         $PaddleTransaction = new PaddleTransactionHandler();
-        $PaddleTransaction->createUserTransaction(Auth::id(), $data['transaction_token']);
+        $PaddleTransaction->initializeUserTransaction(
+            Auth::id(), 
+            $data['transaction_token'],
+            'client.checkout.initialized'
+        );
 
         return response()->json([
             'transaction' => $PaddleTransaction->transaction,
-            'message' => 'Transaction initialized.',
+            'message' => 'Checkout initialized.',
         ], 200);
     }
 
@@ -95,8 +100,8 @@ class UserTransactionController extends Controller
             
             // Complete user transaction
             $PaddleTransaction->setTransactionAttributes($response['data']);
-            $PaddleTransaction->createSubscriptionByTransaction();
-            $PaddleTransaction->completeTransaction();
+            $PaddleTransaction->initializeSubscriptionByTransaction('checkout.subscription.verified');
+            $PaddleTransaction->completeTransaction('checkout.transaction.verified');
             
             // Set User Access
             if($PaddleTransaction->status === 'completed' || $PaddleTransaction->status === 'paid') {
@@ -105,14 +110,12 @@ class UserTransactionController extends Controller
                     $PaddleTransaction->transaction,
                     $PaddleTransaction->access_token,
                     $PaddleTransaction->quantity,
-                    $PaddleTransaction->access_token,
                     $PaddleTransaction->expiration_date,
-                    $PaddleTransaction->status
                 );
             }
         } catch (Exception $e) {
             $PaddleTransaction->transaction?->update([
-                'message' => 'client.verification.error' . $e->getMessage()
+                'message' => 'transaction.checkout.verification.error' . $e->getMessage()
             ]);
 
             return response()->json([
@@ -124,7 +127,7 @@ class UserTransactionController extends Controller
             'access_token' => $PaddleTransaction?->access_token,
             'expiration_date' => $PaddleTransaction?->expiration_date,
             'price_id' => $PaddleTransaction->price_id,
-            'message' => 'Transaction validated.',
+            'message' => 'Transaction verified.',
         ], 200);
     }
 
@@ -145,14 +148,14 @@ class UserTransactionController extends Controller
         // Error by Request
         catch (GuzzleException $e) {
             $transaction->update([
-                'message' => 'transaction.request.error: ' . $e->getMessage(),
+                'message' => 'transaction.verification.request.error: ' . $e->getMessage(),
             ]);
         } 
         
         // Error by Response
         catch (Exception $e) {
             $transaction->update([
-                'message' => 'transaction.response.error: ' . $e->getMessage(),
+                'message' => 'transaction.verification.response.error: ' . $e->getMessage(),
             ]);
         }
 

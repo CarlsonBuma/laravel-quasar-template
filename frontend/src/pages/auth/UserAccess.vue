@@ -52,8 +52,10 @@
                     <q-td key="billing_period" :props="props">
                         {{ 
                             props.row.billing_frequency 
-                                ? props.row.billing_frequency + ' ' + props.row.billing_interval 
-                                : props.row.duration_months + ' month' 
+                                ? props.row.billing_frequency + 'x ' + props.row.billing_interval 
+                                : props.row.duration_months 
+                                    ? props.row.duration_months + ' month' 
+                                    : 'none'
                         }}
                     </q-td>
                     <q-td key="trial_mode" :props="props">
@@ -67,18 +69,19 @@
                         {{ props.row.currency_code + ' ' + props.row.price }}
                     </q-td>
                     <q-td key="status" :props="props">
+                        
+                        <!-- Cancel subscriptions -->
                         <q-btn 
-                            v-if="props.row.is_subscription"
+                            v-if="props.row.has_active_subscription"
                             label="Deactivate"
                             icon="key"
                             size="sm"
                             color="purple"
                             outline
-                            @click="props.row.type === 'subscription'
-                                ? confirmCancelSubscription(props.row)
-                                : null
-                            "
+                            @click="confirmCancelSubscription(props.row)"
                         />
+
+                        <!-- Get Access -->
                         <q-btn 
                             v-else
                             label="Get access"
@@ -86,6 +89,7 @@
                             size="sm"
                             color="primary"
                             outline
+                            :disable="props.row.has_access"
                             @click="openPaymentGateway(props.row.price_token)"
                         />
                     </q-td>
@@ -182,9 +186,15 @@ export default {
     },
 
     setup() {
-        const Paddle = ref(null);
-        const filterInput = ref('');
 
+        // Defaults
+        const dateFormat = globalMasks.date.switzerland
+        const loading = ref(true);
+        const showDialog = ref(false);
+
+        // Paddle Checkout
+        const transactionInitializedSuccessfully = ref(false);
+        const Paddle = ref(null);
         const openPaymentGateway = (priceToken) => {
             Paddle.value?.Checkout.open({
                 settings: {
@@ -199,6 +209,8 @@ export default {
             });
         };
 
+        // Table handling
+        const filterInput = ref('');
         const customSort = (rows, sortBy, descending) => {
             const data = [...rows]
             if (sortBy) {
@@ -307,9 +319,10 @@ export default {
         ];
 
         return {
-            dateFormat: globalMasks.date.switzerland,
-            loading: ref(true),
-            showDialog: ref(false),
+            dateFormat,
+            loading,
+            transactionInitializedSuccessfully,
+            showDialog,
             openPaymentGateway,
             Paddle,
             filterInput,
@@ -322,7 +335,6 @@ export default {
 
     data() {
         return {
-            transactionInitializedSuccessfully: false,
             prices: [],
             subscriptions: [],
             transactions: [],
@@ -342,32 +354,22 @@ export default {
                 this.prices = response.data.prices;
                 this.transactions = response.data.transactions;
             } catch (error) {
-                this.$toast.error(error.response ? error.response : error);
-                console.log('load-access-error', error.response ? error.response : error)
+                this.$toast.error(error.response ?? error);
+                console.log('user.access.error', error.response ?? error)
             } finally {
                 this.loading = false;
             }
         }, 
 
-        async cancelSubscription(price) {
-            try {
-                this.$toast.load();
-                const response = await this.$axios.post('cancel-user-subscription' , {
-                    'price_token': price.price_token,
-                });
-                this.$toast.success(response.data.message);
-                price.is_subscription = false;
-            } catch (error) {
-                this.$toast.error(error.response ? error.response : error);
-                console.log('subscription-cancel-error', error.response ? error.response : error)
-            }
-        },
-
         async paddleEventHandling(data) {
             try {
+
+                // Transaction data
                 const transactionID = data.data?.transaction_id;
                 const customerID = data.data?.customer?.id;
                 
+                // Client checkout completed
+                // Initialize client checkout
                 if(data?.name === 'checkout.completed') {
                     this.transactionInitializedSuccessfully = true;
                     await this.$axios.post('set-user-client-access', {
@@ -377,18 +379,19 @@ export default {
                     return;
                 }
 
-                // Validation, when transaction completed
-                else if (
-                    this.transactionInitializedSuccessfully 
-                    && data?.name === 'checkout.closed' 
-                ) {
+                // Request server validation
+                // when client transaction is completed successfully
+                else if (this.transactionInitializedSuccessfully && data?.name === 'checkout.closed') {
                     this.$toast.load();
                     const response = await this.$axios.post('verify-user-client-access' , {
                         'transaction_token': transactionID,
                     })
+
+                    // Process validation
                     this.transactionInitializedSuccessfully = false;
                     this.$toast.success(response.data.message);
 
+                    console.log(response.data, this.$user.access)
                     // Set Access,
                     // no access to subscribe anymore
                     if(response.data.access_token) {
@@ -400,14 +403,27 @@ export default {
                         // Check if its a subscription
                         this.prices.forEach((price, index) => {
                             if(price.id === response.data.price_id) 
-                                this.prices[index].is_subscription = true;
+                                this.prices[index].has_active_subscription = true;
                         });
                     }
                 }
             } catch (error) {
-                const errorMessage = error.response ? error.response.data : error;
-                this.$toast.error(errorMessage)
-                console.log('subscription-checkout', errorMessage)
+                this.$toast.error(error.response ?? error)
+                console.log('user.checkout.error', error.response ?? error)
+            }
+        },
+
+        async cancelSubscription(price) {
+            try {
+                this.$toast.load();
+                const response = await this.$axios.post('cancel-user-subscription' , {
+                    'price_token': price.price_token,
+                });
+                this.$toast.success(response.data.message);
+                price.has_active_subscription = false;
+            } catch (error) {
+                this.$toast.error(error.response ?? error);
+                console.log('subscription.cancel.error', error.response ?? error)
             }
         },
 

@@ -169,21 +169,6 @@ class UserAccountController extends Controller
             if(!Hash::check($data['password'], $user->password)) 
                 throw new Exception('The given password is incorrect.');
 
-            // Check if current Subscriptions existing
-            // User must have canceled all its subscription
-            // Before he can delete its account
-            if(
-                PaddleSubscriptions::where([
-                    'user_id' => Auth::id(),
-                    'canceled_at' => null,
-                ])->first()
-            ) {
-                return response()->json([
-                    'message' => 'There are active subscriptions assigned to your account! 
-                        Please cancel them first: "My avatar" > "My access".',
-                ], 422);
-            }
-
             // Remove Files
             if($userImgSrc = $user->avatar) 
                 Storage::disk('user')->delete($userImgSrc);

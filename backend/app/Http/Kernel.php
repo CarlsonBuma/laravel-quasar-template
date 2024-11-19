@@ -66,12 +66,13 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
     
-        // Custom
+        // Access
         'email_verified' => \App\Http\Middleware\EmailVerified::class,
         'is_admin' => \App\Http\Middleware\IsAdmin::class,
+        'access_cockpit' => \App\Http\Middleware\AppAccessCockpit::class,
 
-        // Access management
+        // Paddle Management
         'paddle_webhook_verification' => \App\Http\Middleware\PaddleWebhookVerification::class,
-        'access_cockpit' => \App\Http\Middleware\AppAccessCockpit::class
+        'paddle_no_active_subscriptions' => \App\Http\Middleware\PaddleNoActiveSubscriptions::class,
     ];
 }

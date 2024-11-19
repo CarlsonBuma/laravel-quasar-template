@@ -37,24 +37,8 @@ export default {
             }
         });
 
-        // Open Paddle Checkout
-        const paddleOpenCheckout = async () => {
-            await PaddleCheckout.value?.Checkout.open({
-                settings: {
-                    showAddDiscounts: false,
-                    allowLogout: false,
-                    // successUrl: 'URL'
-                },
-                items: [{ 
-                    priceId: props['priceID'], 
-                    quantity: 1 
-                }],
-            });
-        }
-
         return {
             PaddleCheckout,
-            paddleOpenCheckout,
         };
     },
 

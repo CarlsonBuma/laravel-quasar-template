@@ -7,36 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\AppAccess;
 
-
 class AppAccessCockpit
 {
     /**
-     * As soon a user is making subscription trough our payment-gateway
-     * We will receive an access-token, sent by Paddle. User are able
-     * navigating between additionals features accessible by this token.
-     * 
-     * Make sure set custom_data 'access_token' in product-price in Paddle, to 
-     * handle the issues access-token, with our accessToken 'access-cockpit'
+     * Access to Feature "Cockpit", according to issued price access-token by paddle
+     *  > Make sure set custom_data 'access_token' in product-price in Paddle
+     *  > Current price access-token must be defined in .env file "APP_ACCESS_COCKPIT"
+     *  > Watch-out: UI will handle Feature-Access-Token "Cockpit" as $Flag accordingly
      *  > https://vendors.paddle.com/
-     * 
-     * User are paying for getting this access-token 'access-cockpit'
-     *  *Logic see: App\Http\Controllers\User\ControllerPayments;
-     *
-     * @var string
-     */
-    static public $accessToken = '';
-
-    
-    /**
-     * Initialize
-     */
-    public function __construct() { 
-        self::$accessToken = env('APP_ACCESS_COCKPIT');
-    }
-
-    /**
-     * Middleware
-     * Access to features, according to user-issued access-token
      *
      * @param Request $request
      * @param Closure $next
@@ -44,13 +22,24 @@ class AppAccessCockpit
      */
     public function handle(Request $request, Closure $next)
     {   
-        if(Auth::id() && AppAccess::checkUserAccessByToken(Auth::id(), SELF::$accessToken)) 
-            return $next($request);
+        $accessToken = SELF::getAccessToken();
+        if(AppAccess::checkUserAccessByToken(Auth::id(), $accessToken)) 
+            return $next($request);   
 
         return response()->json([
-            'access_token' => SELF::$accessToken,
+            'access_token' => $accessToken,
             'status' => 'no_access_to_service',
             'message' => 'No access to current service.'
         ], 401);  
+    }
+
+    /**
+     * Get access token
+     *
+     * @return string
+     */
+    static public function getAccessToken(): string
+    {
+        return env('APP_ACCESS_COCKPIT');
     }
 }

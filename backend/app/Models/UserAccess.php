@@ -15,7 +15,6 @@ class UserAccess extends Model
     protected $fillable = [
         'user_id',
         'transaction_id',
-        'entity_id',
         'is_active',
         'access_token',
         'quantity',

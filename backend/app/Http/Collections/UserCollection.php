@@ -43,12 +43,12 @@ abstract class UserCollection
 
         $entityAccess = AppAccess::checkUserAccessByToken(
             $user->id, 
-            AppAccessCockpit::$accessToken
+            AppAccessCockpit::getAccessToken()
         );
         
         return [
             '_type' => 'Collection $access',
-            'is_admin' => $user->is_admin,
+            'is_admin' => $user->is_admin->exists(),
             'access_cockpit' => [
                 'access_token' => $entityAccess?->access_token,
                 'expiration_date' => $entityAccess?->expiration_date,

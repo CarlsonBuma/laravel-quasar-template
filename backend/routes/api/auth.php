@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth\CreateAccountController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\AppAccess\UserAccessController;
-use App\Http\Controllers\Auth\AppAccess\UserTransactionController;
+use App\Http\Controllers\Auth\AppAccess\UserCheckoutController;
 use App\Http\Controllers\Auth\AppAccess\UserSubscriptionController;
 
 
@@ -29,9 +29,9 @@ Route::middleware(['auth:api', 'email_verified'])->group(function () {
     // Process Paddle Client Checkout
     // User requests access by paddel's provided attribute "$access_token" 
     // Verify client access, by preventing Client Manipulation by user
-    Route::post('/set-user-client-access', [UserTransactionController::class, 'initializeClientCheckoutTransaction'])
+    Route::post('/set-user-client-access', [UserCheckoutController::class, 'initializeClientCheckoutTransaction'])
         ->name('set.user.client.access');
-    Route::post('/verify-user-client-access', [UserTransactionController::class, 'verifyClientCheckoutTransaction'])
+    Route::post('/verify-user-client-access', [UserCheckoutController::class, 'verifyClientCheckoutTransaction'])
         ->name('verify.user.client.access');  
     
     // Cancel Paddle subscription
@@ -52,10 +52,12 @@ Route::middleware(['auth:api', 'email_verified'])->group(function () {
     // Transfer Account Request 
     // Email will be updated, after Emailverification, email_verified_at = null
     Route::post('/transfer-user-account', [UserTransferController::class, 'initializeEmailTransfer'])
+        ->middleware('paddle_no_active_subscriptions')
         ->name('transfer.user.account');
 
     // Delete User
     Route::post('/user-delete-account', [UserAccountController::class, 'deleteAccount'])
+        ->middleware('paddle_no_active_subscriptions')
         ->name('user.delete.account');
 });
 

@@ -60,8 +60,9 @@ Setup Paddle Webhook Handling
         - subscription.updated
         - price.created
         - transaction.payment_failed
+          - Remove User Access
       - Paddle Webhook Handling: "/Auth/AppAccess/*"
-      - UserAccess: "/Auth/AppAccess/UserAccessController"
+      - User Access Management: "/Auth/AppAccess/UserAccessController"
 
  # Live Deployment
  See Laravel 11 Docs & it's Dependencies

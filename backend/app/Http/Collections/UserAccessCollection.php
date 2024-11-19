@@ -2,20 +2,23 @@
 
 namespace App\Http\Collections;
 
+use App\Http\Middleware\AppAccess;
 use App\Models\PaddleTransactions;
+use App\Models\PaddleSubscriptions;
 use Illuminate\Database\Eloquent\Collection;
 
 abstract class UserAccessCollection
 {
     /**
-     * Undocumented function
+     * Get price
+     *  > Check for active user subscriptions in current price
      *
-     * @param object|null $price
+     * @param object $price
+     * @param integer $userID
      * @return array
      */
-    static public function renderPrice(object $price = null): array
+    static public function renderPrice(object $price, int $userID): array
     {
-        if(!$price) return [];
         return [
             'id' => $price->id,
             'price_token' => $price->price_token,
@@ -28,7 +31,13 @@ abstract class UserAccessCollection
             'trial_interval' => $price->trial_interval,
             'trial_frequency' => $price->trial_frequency,
             'duration_months' => $price->duration_months,
-            'is_subscription' => $price->has_subscriptions->exists(),
+            'has_access' => AppAccess::checkUserAccessByToken($userID, $price->price_token),
+            'is_subscription' => $price->trial_interval && $price->trial_frequency,
+            'has_active_subscription' => PaddleSubscriptions::where([
+                    'user_id' => $userID,
+                    'price_id' => $price->id,
+                    'canceled_at' => null,
+                ])->exists()
         ];
     }
 

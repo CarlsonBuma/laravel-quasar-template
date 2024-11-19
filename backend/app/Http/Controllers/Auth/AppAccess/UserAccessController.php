@@ -23,7 +23,7 @@ class UserAccessController extends Controller
         $prices = PaddlePrices::where('is_active', true)
             ->get()
             ->map(function($price) {
-                return UserAccessCollection::renderPrice($price);
+                return UserAccessCollection::renderPrice($price, Auth::id());
             });
 
         return response()->json([
@@ -60,14 +60,11 @@ class UserAccessController extends Controller
      * @param string $status
      * @return void
      */
-    public function addUserAccess(object $transaction, string $accessToken, int $quantity, string $expirationDate, string $status = 'access.granted'): void
+    public function addUserAccess(object $transaction, string $accessToken, int $quantity, string $expirationDate): void
     {
-        if(!$transaction) throw 'error.no.transaction.provided';
-        $userEntity = Entities::where('user_id', $transaction->user_id)->first();
         UserAccess::create([
             'transaction_id' => $transaction->id,
             'user_id' => $transaction->user_id,
-            'entity_id' => $userEntity?->id, 
             'access_token' => $accessToken,
             'quantity' => $quantity,
             'expiration_date' => $expirationDate,
@@ -77,8 +74,8 @@ class UserAccessController extends Controller
         $transaction->update([
             'access_added' => true,
             'is_verified' => true,
-            'status' => $status,
-            'message' => 'access.granted'
+            'status' => 'completed',
+            'message' => 'user.access.granted'
         ]);
     }
 
@@ -89,9 +86,8 @@ class UserAccessController extends Controller
      * @param string $status
      * @return void
      */
-    public function removeUserAccess(object $transaction, string $status = 'access.removed'): void
+    public function removeUserAccess(object $transaction, string $status = 'undefined'): void
     {
-        if(!$transaction) return;
         UserAccess::where([
             'user_id' => $transaction->user_id,
             'transaction_id' => $transaction->id,
@@ -101,7 +97,7 @@ class UserAccessController extends Controller
 
         $transaction->update([
             'status' => $status,
-            'message' => 'access.removed',
+            'message' => 'user.access.removed',
         ]);
     }
 }

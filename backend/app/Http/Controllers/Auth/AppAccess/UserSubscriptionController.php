@@ -46,14 +46,14 @@ class UserSubscriptionController extends Controller
                 if($this->requestCancelSubscription($subscription)) {
                     $subscription->update([
                         'canceled_at' => now(),
-                        'status' => 'subscription.canceled',
+                        'status' => 'canceled',
                         'message' => 'client.subscription.canceled'
                     ]);
                 }
             }
         } catch (Exception $e) {
             $PaddleSubscription->subscription?->update([
-                'message' => 'cancelation.error' . $e->getMessage()
+                'message' => 'client.subscription.cancel.error' . $e->getMessage()
             ]);
 
             return response()->json([
@@ -67,13 +67,7 @@ class UserSubscriptionController extends Controller
     }
 
     /**
-     ** Request cancel Subscription
-     *
-     * @param string $subscriptionToken
-     * @return bool
-     */
-    /**
-     ** Request cancel Subscription
+     * Request cancel Subscription
      *  Incl. Duplicates (why-so-ever)
      *
      * @param object|null $subscription
@@ -91,14 +85,14 @@ class UserSubscriptionController extends Controller
         // Error by Request
         catch (GuzzleException $e) {
             $subscription->update([
-                'message' => 'subscription.request.error: ' . $e->getMessage(),
+                'message' => 'subscripiton.cancel.request.error: ' . $e->getMessage(),
             ]);
         } 
         
         // Error by Response
         catch (Exception $e) {
             $subscription?->update([
-                'message' => 'subscription.response.error: ' . $e->getMessage(),
+                'message' => 'subscription.cancel.response.error: ' . $e->getMessage(),
             ]);
         }
 

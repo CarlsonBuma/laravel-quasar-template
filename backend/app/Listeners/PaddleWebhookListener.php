@@ -32,11 +32,13 @@ class PaddleWebhookListener extends Controller
     {
         try {
 
+            // Prepare
             $payload = $request->json()->all();
             $contentData = $payload['data'];
             if(!isset($contentData)) return;
             $paddleStatus = $payload['event_type'] ?? null;
 
+            // Features
             if ($paddleStatus === 'transaction.completed') {
                 $this->initiateWebhookAccess($contentData);
             } 
@@ -75,23 +77,27 @@ class PaddleWebhookListener extends Controller
             );
 
             // Already verified
-            if($PaddleTransaction?->transaction?->access_added) 
+            if($PaddleTransaction->transaction?->access_added) 
                 return;
 
             // If no transaction is found
             // Webhook is initialized via subscription by some user
             $PaddleTransaction->setTransactionAttributes($contentData);
-            if(!$PaddleTransaction->transaction && $PaddleTransaction->subscription_token) 
-                $PaddleTransaction->createUserTransactionBySubscription($PaddleTransaction->subscription_token);
+            if(!$PaddleTransaction->transaction && $PaddleTransaction->subscription_token) {
+                $PaddleTransaction->initializeUserTransactionBySubscription(
+                    $PaddleTransaction->subscription_token,
+                    'webhook.subscription.transaction.verified'
+                );
+            }
 
             // If transaction is found
             // Entry has been initialized recently through Client and not verified by server yet
             if(!$PaddleTransaction->transaction) return;
             else if($PaddleTransaction->transaction && $PaddleTransaction->subscription_token)
-                $PaddleTransaction->createSubscriptionByTransaction();
+                $PaddleTransaction->initializeSubscriptionByTransaction('webhook.subscription.verified');
 
             // Process Webhook
-            $PaddleTransaction->completeTransaction();
+            $PaddleTransaction->completeTransaction('webhook.transaction.verified');
 
             // Add Access
             $UserAccess = new UserAccessController();
@@ -99,13 +105,12 @@ class PaddleWebhookListener extends Controller
                 $PaddleTransaction->transaction,
                 $PaddleTransaction->access_token,
                 $PaddleTransaction->quantity,
-                $PaddleTransaction->access_token,
-                $PaddleTransaction->expiration_date,
-                $PaddleTransaction->status
+                $PaddleTransaction->expiration_date
             );
         } catch (Exception $e) {
             $PaddleTransaction->transaction?->update([
-                'message' => 'paddle.webhook.error: ' . $e->getMessage()
+                'status' => 'failed',
+                'message' => 'webhook.access.error: ' . $e->getMessage()
             ]);
         }
     }
@@ -123,7 +128,8 @@ class PaddleWebhookListener extends Controller
             $PaddleSubscription->updateSubscriptionByWebhook($contentData);
         } catch (Exception $e) {
             $PaddleSubscription->subscription?->update([
-                'message' => 'paddle.webhook.error: ' . $e->getMessage()
+                'status' => 'failed',
+                'message' => 'webhook.subscription.error: ' . $e->getMessage()
             ]);
         }
     }
@@ -141,7 +147,8 @@ class PaddleWebhookListener extends Controller
             $PaddlePrice->updatePriceByWebhook($contentData);
         } catch (Exception $e) {
             $PaddlePrice->price?->update([
-                'message' => 'paddle.webhook.error: ' . $e->getMessage()
+                'status' => 'failed',
+                'message' => 'webhook.price.error: ' . $e->getMessage()
             ]);
         }
     }

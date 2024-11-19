@@ -74,6 +74,14 @@ export class ResponseHandler {
                 : 'Your subscription is expired.'
         }
 
+        // Ongoing subscriptions
+        else if(serverResponse.status === 422 && serverResponse.data.status === 'active_subscriptions') {
+            router.push('/account/access');
+            throw serverResponse.data.message 
+                ? serverResponse.data.message 
+                : 'Please cancel active subscriptions.'
+        }
+
         // No access
         else if(serverResponse.status === 401) {
             store().removeBearerToken();

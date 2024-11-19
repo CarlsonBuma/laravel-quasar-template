@@ -39,20 +39,6 @@ class UserTransferController extends Controller
             $user = User::find(Auth::id());
             if(!Hash::check($data['password'], $user->password)) 
                 throw new Exception('Ups, the given password is incorrect.');
-
-            // Check if current Subscriptions existing
-            // User must have canceled all its subscription
-            // Before he can delete its account
-            if(
-                PaddleSubscriptions::where([
-                    'user_id' => Auth::id(),
-                    'canceled_at' => null,
-                ])->first()
-            ) {
-                return response()->json([
-                    'message' => 'Active subscriptions ongoing.',
-                ], 422);
-            }
             
             // Process Transfer
             DB::beginTransaction();
