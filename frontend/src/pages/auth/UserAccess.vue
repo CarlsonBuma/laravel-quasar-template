@@ -87,9 +87,9 @@
                             label="Get access"
                             icon="generating_tokens"
                             size="sm"
-                            color="primary"
+                            :color="props.row.has_access ? 'green' : 'primary'"
                             outline
-                            :disable="props.row.has_access"
+                            :disable="props.row.has_access ? true : false"
                             @click="openPaymentGateway(props.row.price_token)"
                         />
                     </q-td>
@@ -391,7 +391,6 @@ export default {
                     this.transactionInitializedSuccessfully = false;
                     this.$toast.success(response.data.message);
 
-                    console.log(response.data, this.$user.access)
                     // Set Access,
                     // no access to subscribe anymore
                     if(response.data.access_token) {

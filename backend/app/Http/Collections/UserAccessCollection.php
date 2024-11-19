@@ -31,7 +31,8 @@ abstract class UserAccessCollection
             'trial_interval' => $price->trial_interval,
             'trial_frequency' => $price->trial_frequency,
             'duration_months' => $price->duration_months,
-            'has_access' => AppAccess::checkUserAccessByToken($userID, $price->price_token),
+            'access_token' => $price->access_token,
+            'has_access' => AppAccess::checkUserAccessByToken($userID, $price->access_token),
             'is_subscription' => $price->trial_interval && $price->trial_frequency,
             'has_active_subscription' => PaddleSubscriptions::where([
                     'user_id' => $userID,
