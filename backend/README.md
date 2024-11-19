@@ -7,6 +7,7 @@ Website: https://laravel.com/
     > composer clear cache
     > composer show "pgvector/pgvector" --alL
   - define .env File
+    - php artisan key:generate
   - Setup meta-data in package.json
 
 ### Setup Database (DOCKER)
@@ -31,14 +32,13 @@ As we want to allow AI/Vectors, we need first install the pgvector/pgvector:late
   - Choose your Mail Driver (according Serverhost)
   - Enter Attributes into .env file
 
-## Additional Microservices
+# Additional Microservices
 [X] Paddle - Payment Gateway
     - https://login.paddle.com/login
     - https://sandbox-login.paddle.com/login
 
-### Setup Payment Gateway by Paddle
-Handle Webhooks
-   0. "composer require laravel/cashier-paddle"
+## Setup Payment Gateway by Paddle
+Setup Paddle Webhook Handling
    1. Install Ngrok (Reverse Proxy) - Webhooks
       - ngrok http http://127.0.0.1:8000
       - Check Webhooks: Ngrok Web Interface
@@ -52,10 +52,16 @@ Handle Webhooks
          - 'duration_months' (int): Default Expiration (by 'One-Time Purchase')
             - Overwritten by paddles 'ends_at' (by 'Subscription')
       - Price seeding by Webhook ("Listeners/PaddleEventListener", @created, @updated')
-    4. Adjust Files according your needs
-      - Webhook Listener: "/Listeners/PaddleEventListerner"
+    4. Adjust Files according your logic
+      - Middleware: "/Middleware/PaddleWebhookVerification"
+      - Webhook Listener: "/Listeners/PaddleWebhookListener"
+        - transaction.completed
+          - Add User Access
+        - subscription.updated
+        - price.created
+        - transaction.payment_failed
+      - Paddle Webhook Handling: "/Auth/AppAccess/*"
       - UserAccess: "/Auth/AppAccess/UserAccessController"
-      - Paddle Webhook Handler: "/Auth/AppAccess/"
 
  # Live Deployment
  See Laravel 11 Docs & it's Dependencies

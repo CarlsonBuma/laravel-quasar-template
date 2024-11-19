@@ -31,7 +31,7 @@ class UserTransactionController extends Controller
      * @param Request $request
      * @return void
      */
-    public function initializeClientCheckout(Request $request) 
+    public function initializeClientCheckoutTransaction(Request $request) 
     {
         $data = $request->validate([
             'transaction_token' => ['required', 'string'],
@@ -39,7 +39,7 @@ class UserTransactionController extends Controller
         ]);
 
         $PaddleTransaction = new PaddleTransactionHandler();
-        $PaddleTransaction->initializeClientTransaction(Auth::id(), $data['transaction_token']);
+        $PaddleTransaction->createUserTransaction(Auth::id(), $data['transaction_token']);
 
         return response()->json([
             'transaction' => $PaddleTransaction->transaction,
@@ -55,7 +55,7 @@ class UserTransactionController extends Controller
      * @param Request $request
      * @return void
      */
-    public function verifyClientCheckout(Request $request)
+    public function verifyClientCheckoutTransaction(Request $request)
     {
         $data = $request->validate([
             'transaction_token' => ['required', 'string'],
@@ -75,8 +75,8 @@ class UserTransactionController extends Controller
             ], 422);
         } 
         
-        // Check if transaction has been verified already, by Providers Webhook
-        else if(
+        // Check if transaction has been verified already by Providers Webhook
+        if(
             $PaddleTransaction->transaction 
             && $userAccess = AppAccess::checkUserAccessByTransactionID(Auth::id(), $PaddleTransaction->transaction->id)
         ) {
@@ -92,13 +92,14 @@ class UserTransactionController extends Controller
             // Validate by Request
             $response = $this->validateTransactionByRequest($PaddleTransaction->transaction);
             if(!$response) throw new Exception('Invalid request.');
+            
+            // Complete user transaction
             $PaddleTransaction->setTransactionAttributes($response['data']);
-            $PaddleTransaction->setSubscription();
+            $PaddleTransaction->createSubscriptionByTransaction();
             $PaddleTransaction->completeTransaction();
             
             // Set User Access
             if($PaddleTransaction->status === 'completed' || $PaddleTransaction->status === 'paid') {
-                // Add Access
                 $UserAccess = new UserAccessController();
                 $UserAccess->addUserAccess(
                     $PaddleTransaction->transaction,

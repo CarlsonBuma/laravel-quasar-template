@@ -1,8 +1,9 @@
 <?php
  
-namespace App\Listeners;
+ namespace App\Listeners;
 
 use Exception;
+use Illuminate\Http\Request;
 use App\Models\PaddleTransactions;
 use App\Http\Controllers\Controller;
 use Laravel\Paddle\Events\WebhookReceived;
@@ -12,7 +13,7 @@ use App\Http\Controllers\Auth\AppAccess\PaddleTransactionHandler;
 use App\Http\Controllers\Auth\AppAccess\PaddleSubscriptionHandler;
 
 
-class PaddleEventListener extends Controller
+class PaddleWebhookListener extends Controller
 {
     /**
      ** Setup Webhook Gateway:
@@ -27,12 +28,14 @@ class PaddleEventListener extends Controller
      * @param WebhookReceived $event
      * @return void
      */
-    public function handle(WebhookReceived $event): void
+    public function handleWebhook(Request $request): void
     {
         try {
-            $contentData = $event->payload['data'];
+
+            $payload = $request->json()->all();
+            $contentData = $payload['data'];
             if(!isset($contentData)) return;
-            $paddleStatus = $event->payload['event_type'] ?? null;
+            $paddleStatus = $payload['event_type'] ?? null;
 
             if ($paddleStatus === 'transaction.completed') {
                 $this->initiateWebhookAccess($contentData);
@@ -72,20 +75,20 @@ class PaddleEventListener extends Controller
             );
 
             // Already verified
-            if($PaddleTransaction->transaction && $PaddleTransaction->transaction->access_added) 
+            if($PaddleTransaction?->transaction?->access_added) 
                 return;
 
             // If no transaction is found
             // Webhook is initialized via subscription by some user
             $PaddleTransaction->setTransactionAttributes($contentData);
             if(!$PaddleTransaction->transaction && $PaddleTransaction->subscription_token) 
-                $PaddleTransaction->initializeClientTransactionByUserSubscription();
+                $PaddleTransaction->createUserTransactionBySubscription($PaddleTransaction->subscription_token);
 
             // If transaction is found
-            // Entry has been initialized recently through Client
+            // Entry has been initialized recently through Client and not verified by server yet
             if(!$PaddleTransaction->transaction) return;
             else if($PaddleTransaction->transaction && $PaddleTransaction->subscription_token)
-                $PaddleTransaction->setSubscription();
+                $PaddleTransaction->createSubscriptionByTransaction();
 
             // Process Webhook
             $PaddleTransaction->completeTransaction();

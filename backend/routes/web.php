@@ -1,5 +1,6 @@
 <?php
 
+use App\Listeners\PaddleWebhookListener;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::post('/access/webhook', [PaddleWebhookListener::class, 'handleWebhook'])
+    ->middleware('paddle_webhook_verification')
+    ->name('access.webhook');
+    
 Route::view('/{any}', 'welcome')
     ->where('any', '.*')
     ->name('default');

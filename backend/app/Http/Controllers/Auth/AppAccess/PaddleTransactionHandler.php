@@ -89,26 +89,28 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Initialize Transaction via Subscription Webhook
+     * Validate User, by subscriptionToken
+     *  > Add new user transaction by subscription
      *
+     * @param string $subscriptionToken
      * @return void
      */
-    public function initializeClientTransactionByUserSubscription(): void
+    public function createUserTransactionBySubscription(string $subscriptionToken): void
     {
-        $this->subscription = PaddleSubscriptions::where('subscription_token', $this->subscription_token)->first();
+        $this->subscription = PaddleSubscriptions::where('subscription_token', $subscriptionToken)->first();
         if(!$this->subscription) return;
         $this->user_id = $this->subscription->user_id;
-        $this->initializeClientTransaction($this->user_id, $this->transaction_token);
+        $this->createUserTransaction($this->user_id, $this->transaction_token);
     }
 
     /**
-     * Create User Transaction via Client
+     * Create User Transaction
      *
      * @param integer $userID
      * @param string $transactionToken
      * @return void
      */
-    public function initializeClientTransaction(int $userID, string $transactionToken): void
+    public function createUserTransaction(int $userID, string $transactionToken): void
     {
         $this->transaction = PaddleTransactions::firstOrCreate([
             'user_id' => $userID,
@@ -120,12 +122,12 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Check if Transaction belongs to Subscription
-     * There might be already a subscription existing
+     * Check if Transaction belongs to a Subscription
+     *  > There might be already a subscription existing
      *
      * @return void
      */
-    public function setSubscription(): void
+    public function createSubscriptionByTransaction(): void
     {
         if(!$this->subscription_token || !$this->user_id) return;
         $this->subscription = PaddleSubscriptions::firstOrCreate([
@@ -162,7 +164,7 @@ class PaddleTransactionHandler
     }
 
     /**
-     ** User-access: Calculate expiration date
+     * User-access: Calculate expiration date
      *  > We get expiration_date by Provider
      *  > We need to extend current access
      *

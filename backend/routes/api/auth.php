@@ -29,9 +29,9 @@ Route::middleware(['auth:api', 'email_verified'])->group(function () {
     // Process Paddle Client Checkout
     // User requests access by paddel's provided attribute "$access_token" 
     // Verify client access, by preventing Client Manipulation by user
-    Route::post('/set-user-client-access', [UserTransactionController::class, 'initializeClientCheckout'])
+    Route::post('/set-user-client-access', [UserTransactionController::class, 'initializeClientCheckoutTransaction'])
         ->name('set.user.client.access');
-    Route::post('/verify-user-client-access', [UserTransactionController::class, 'verifyClientCheckout'])
+    Route::post('/verify-user-client-access', [UserTransactionController::class, 'verifyClientCheckoutTransaction'])
         ->name('verify.user.client.access');  
     
     // Cancel Paddle subscription
