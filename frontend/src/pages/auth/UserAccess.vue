@@ -159,7 +159,7 @@
             </template>
         </q-table>
         <SectionNote>
-            *Transactions are payments corresponding to our provided services, you gained access.<br>
+            *Transactions are payments corresponding to our provided products, you gained access.<br>
             For further informations please check our
             <router-link to="/legal">Terms &amp; Conditions</router-link>.
         </SectionNote>
