@@ -8,9 +8,6 @@ use App\Http\Controllers\Auth\CreateAccountController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\UserAccessController;
-use App\Http\Controllers\Auth\AppAccess\UserCheckoutController;
-use App\Http\Controllers\Auth\AppAccess\UserSubscriptionController;
-
 
 Route::middleware(['auth:api', 'email_verified'])->group(function () {
 
@@ -29,14 +26,14 @@ Route::middleware(['auth:api', 'email_verified'])->group(function () {
     // Process Paddle Client Checkout
     // User requests access by paddel's provided attribute "$access_token" 
     // Verify client access, by preventing Client Manipulation by user
-    Route::post('/set-user-client-access', [UserCheckoutController::class, 'initializeClientCheckoutTransaction'])
+    Route::post('/set-user-client-access', [UserAccessController::class, 'initializeClientCheckoutTransaction'])
         ->name('set.user.client.access');
-    Route::post('/verify-user-client-access', [UserCheckoutController::class, 'verifyClientCheckoutTransaction'])
+    Route::post('/verify-user-client-access', [UserAccessController::class, 'verifyClientCheckoutTransaction'])
         ->name('verify.user.client.access');  
     
     // Cancel Paddle subscription
     // Allows user to cancel it's paddle-subscription
-    Route::post('/cancel-user-subscription', [UserSubscriptionController::class, 'cancelSubscription'])
+    Route::post('/cancel-user-subscription', [UserAccessController::class, 'cancelSubscription'])
         ->name('cancel.user.subscription');
     
     //* User Account
