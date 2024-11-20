@@ -23,7 +23,7 @@ class PaddleWebhookListener extends Controller
      * https://developer.paddle.com/webhooks/overview
      * 
      ** Webhook:
-     * https://{URL}/paddle/webhook
+     * https://{URL}/access/webhook
      *
      * @param WebhookReceived $event
      * @return void

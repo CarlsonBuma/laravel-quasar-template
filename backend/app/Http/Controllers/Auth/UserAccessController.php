@@ -16,14 +16,7 @@ use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
 use App\Http\Controllers\Auth\AppAccess\PaddleTransactionHandler;
 use App\Http\Controllers\Auth\AppAccess\PaddleSubscriptionHandler;
 
-/**
- ** Setup Payment Gateway
- * https://sandbox-vendors.paddle.com/
- * 
- ** Documentation
- * https://developer.paddle.com/api-reference/overview
- * 
- */
+
 class UserAccessController extends Controller
 {
     /**
@@ -63,9 +56,11 @@ class UserAccessController extends Controller
     }
 
     /**
-     * Initialize User's Client Checkout
-     *  > Starting Point of whole user-access
-     *  > Transaction_Token is required to validate purchase
+     ** Initialize User's Client Checkout
+     *  > Starting Point of whole user-access process
+     *  > Transaction_Token is required to validate further requests
+     *      > A transaction could be a 'one-time-purchases' 
+     *      > or the first payment in a ongoing 'subscription'
      *
      * @param Request $request
      * @return void
@@ -91,9 +86,16 @@ class UserAccessController extends Controller
     }
 
     /**
-     ** Verify checkout
-     *  > Request transaction via Provider API
-     *  > Add access, if successfull
+     ** Verify user checkout
+     *  > Check if transaction has been already verified by webhook
+     *      > See "Listeners/PaddleWebhookListener"
+     *  > Verify transaction via Paddle Provider Request
+     *      > https://developer.paddle.com/api-reference/transactions/get-transaction 
+     *  > Set Subscription Token, if price is type 'subscription'
+     *      > Required, to verify future transactions assigned to user-subscription
+     *      > as those are not assigned to users anymore, instead to subscription-token
+     *          > User subscriptions & access will be handeled via our webhooks!
+     *  > Set user access
      *
      * @param Request $request
      * @return void
@@ -118,7 +120,8 @@ class UserAccessController extends Controller
             ], 422);
         } 
         
-        // Check if transaction has been verified already by Providers Webhook
+        // Check if transaction has been verified already by webhook
+        // while client closed checkout
         if(
             $PaddleTransaction->transaction 
             && $userAccess = AppAccessHandler::checkUserAccessByTransactionID(Auth::id(), $PaddleTransaction->transaction->id)
@@ -169,8 +172,9 @@ class UserAccessController extends Controller
     }
 
     /**
-     ** Cancel all Subscriptions belonging to the provided Price
-     *  Cancelation must be send via our Payment Provider thorugh API call
+     **Cancel all Subscriptions belonging to the provided Price
+     *  > Cancelation must be send to our Payment Provider via API call
+     *  > https://developer.paddle.com/api-reference/subscriptions/cancel-subscription
      * 
      * @param Request $request
      * @return void
@@ -220,7 +224,7 @@ class UserAccessController extends Controller
     }
 
     /**
-     ** Verify Transaction via API Request
+     * Verify Transaction via API Request
      *
      * @return array|null
      */
@@ -251,8 +255,7 @@ class UserAccessController extends Controller
     }
 
     /**
-     ** Verify Transaction-Token
-     ** by Paddle API Request
+     * Verify Transaction-Token, by Paddle API Request
      *
      * @param string $transactionToken
      * @return object $clientResponse
@@ -273,7 +276,7 @@ class UserAccessController extends Controller
 
     /**
      * Request cancel Subscription
-     *  Incl. Duplicates (why-so-ever)
+     *  > Incl. Duplicates (why-so-ever)
      *
      * @param object|null $subscription
      * @return boolean
@@ -305,7 +308,7 @@ class UserAccessController extends Controller
     }
 
     /**
-     **Client Request Provider
+     * Client Request Provider
      * Cancel User Subscription by subscription_id
      *
      * @param string $subscriptionToken
