@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Auth\AppAccess;
 use Exception;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-use App\Http\Middleware\AppAccess;
+use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
 use App\Models\PaddleTransactions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Exception\GuzzleException;
-use App\Http\Controllers\Auth\AppAccess\UserAccessController;
 use App\Http\Controllers\Auth\AppAccess\PaddleTransactionHandler;
 
 
@@ -83,7 +82,7 @@ class UserCheckoutController extends Controller
         // Check if transaction has been verified already by Providers Webhook
         if(
             $PaddleTransaction->transaction 
-            && $userAccess = AppAccess::checkUserAccessByTransactionID(Auth::id(), $PaddleTransaction->transaction->id)
+            && $userAccess = AppAccessHandler::checkUserAccessByTransactionID(Auth::id(), $PaddleTransaction->transaction->id)
         ) {
             return response()->json([
                 'access_token' => $userAccess->access_token,
@@ -105,8 +104,7 @@ class UserCheckoutController extends Controller
             
             // Set User Access
             if($PaddleTransaction->status === 'completed' || $PaddleTransaction->status === 'paid') {
-                $UserAccess = new UserAccessController();
-                $UserAccess->addUserAccess(
+                AppAccessHandler::addUserAccessByTransaction(
                     $PaddleTransaction->transaction,
                     $PaddleTransaction->access_token,
                     $PaddleTransaction->quantity,

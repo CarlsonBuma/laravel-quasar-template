@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\PaddleTransactions;
 use App\Http\Controllers\Controller;
 use Laravel\Paddle\Events\WebhookReceived;
+use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
 use App\Http\Controllers\Auth\AppAccess\PaddlePriceHandler;
-use App\Http\Controllers\Auth\AppAccess\UserAccessController;
 use App\Http\Controllers\Auth\AppAccess\PaddleTransactionHandler;
 use App\Http\Controllers\Auth\AppAccess\PaddleSubscriptionHandler;
 
@@ -43,7 +43,7 @@ class PaddleWebhookListener extends Controller
                 $this->initiateWebhookAccess($contentData);
             } 
 
-            else if ($paddleStatus === 'subscription.updated') {
+            else if ($paddleStatus === 'subscription.updated' || $paddleStatus === 'subscription.canceled') {
                 $this->updateSubscription($contentData);
             }
 
@@ -51,7 +51,7 @@ class PaddleWebhookListener extends Controller
                 $this->updatePrice($contentData);
             }
 
-            else if ($paddleStatus === 'transaction.payment_failed' || $paddleStatus === 'transaction.canceled') {
+            else if ($paddleStatus === 'transaction.payment_failed' || $paddleStatus === 'transaction.canceled' || $paddleStatus === 'transaction.past_due') {
                 $this->removeUserAcccess($contentData);
             }
         } catch (Exception $e) {
@@ -100,12 +100,11 @@ class PaddleWebhookListener extends Controller
             $PaddleTransaction->completeTransaction('webhook.transaction.verified');
 
             // Add Access
-            $UserAccess = new UserAccessController();
-            $UserAccess->addUserAccess(
+            AppAccessHandler::addUserAccessByTransaction(
                 $PaddleTransaction->transaction,
                 $PaddleTransaction->access_token,
                 $PaddleTransaction->quantity,
-                $PaddleTransaction->expiration_date
+                $PaddleTransaction->expiration_date,
             );
         } catch (Exception $e) {
             $PaddleTransaction->transaction?->update([
@@ -165,8 +164,7 @@ class PaddleWebhookListener extends Controller
             PaddleTransactions::where('transaction_token', $contentData['id'])->first()
         );
 
-        $UserAccess = new UserAccessController();
-        $UserAccess->removeUserAccess(
+        AppAccessHandler::removeUserAccess(
             $PaddleTransaction->transaction,
             $PaddleTransaction->status
         );

@@ -2,7 +2,7 @@
 
 namespace App\Http\Collections;
 
-use App\Http\Middleware\AppAccess;
+use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
 use App\Models\PaddleTransactions;
 use App\Models\PaddleSubscriptions;
 use Illuminate\Database\Eloquent\Collection;
@@ -32,7 +32,7 @@ abstract class UserAccessCollection
             'trial_frequency' => $price->trial_frequency,
             'duration_months' => $price->duration_months,
             'access_token' => $price->access_token,
-            'has_access' => AppAccess::checkUserAccessByToken($userID, $price->access_token),
+            'has_access' => AppAccessHandler::checkUserAccessByToken($userID, $price->access_token),
             'is_subscription' => $price->trial_interval && $price->trial_frequency,
             'has_active_subscription' => PaddleSubscriptions::where([
                     'user_id' => $userID,

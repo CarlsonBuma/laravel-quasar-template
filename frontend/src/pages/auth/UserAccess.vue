@@ -74,7 +74,7 @@
                         <q-btn 
                             v-if="props.row.has_active_subscription"
                             label="Deactivate"
-                            icon="key"
+                            icon="generating_tokens"
                             size="sm"
                             color="purple"
                             outline
@@ -84,12 +84,16 @@
                         <!-- Get Access -->
                         <q-btn 
                             v-else
-                            label="Get access"
+                            
                             icon="generating_tokens"
                             size="sm"
-                            :color="props.row.has_access ? 'green' : 'primary'"
+                            :label="props.row.has_access && !props.row.is_subscription 
+                                ? 'Active'
+                                : 'Get access'"
+                            :color="props.row.has_access && !props.row.is_subscription 
+                                ? 'green' 
+                                : 'primary'"
                             outline
-                            :disable="props.row.has_access ? true : false"
                             @click="openPaymentGateway(props.row.price_token)"
                         />
                     </q-td>
@@ -353,6 +357,7 @@ export default {
                 const response = await this.$axios.get('load-user-access')
                 this.prices = response.data.prices;
                 this.transactions = response.data.transactions;
+                console.log(this.prices)
             } catch (error) {
                 this.$toast.error(error.response ?? error);
                 console.log('user.access.error', error.response ?? error)
@@ -401,7 +406,7 @@ export default {
 
                         // Check if its a subscription
                         this.prices.forEach((price, index) => {
-                            if(price.id === response.data.price_id) 
+                            if(price.id === response.data.price_id && price.is_subscription) 
                                 this.prices[index].has_active_subscription = true;
                         });
                     }

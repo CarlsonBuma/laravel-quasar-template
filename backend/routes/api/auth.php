@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\UserTransferController;
 use App\Http\Controllers\Auth\CreateAccountController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\EmailVerificationController;
-use App\Http\Controllers\Auth\AppAccess\UserAccessController;
+use App\Http\Controllers\Auth\UserAccessController;
 use App\Http\Controllers\Auth\AppAccess\UserCheckoutController;
 use App\Http\Controllers\Auth\AppAccess\UserSubscriptionController;
 

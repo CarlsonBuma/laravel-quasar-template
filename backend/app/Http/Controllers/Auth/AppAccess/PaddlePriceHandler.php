@@ -44,9 +44,17 @@ class PaddlePriceHandler
             'trial_frequency' => $contentData['trial_period']['frequency'] ?? null,
             'access_token' => $contentData['custom_data']['access_token'] ?? 'default-access',
             'duration_months' => $contentData['custom_data']['duration_months'] ?? 0,
-            'is_active' => $contentData['status'] === 'active' ? true : false,
             'status' => $contentData['status'],
             'message' => 'webhook.price.updated',
         ]);
+
+        // Set price manually to active
+        // Webhook 'price.updated' is sending multiple server requests,
+        // after price has been 'archived' / 'unarchived' via Paddle Cockpit
+        // sometimes $status === archived, sometimes not... -BUG?
+        // if($contentData['status'] === 'archived') {
+        //     $this->price->is_active = false;
+        //     $this->price->save();
+        // }
     }
 }

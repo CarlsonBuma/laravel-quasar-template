@@ -2,7 +2,7 @@
 
 namespace App\Http\Collections;
 
-use App\Http\Middleware\AppAccess;
+use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Middleware\AppAccessCockpit;
@@ -41,7 +41,7 @@ abstract class UserCollection
     {
         if(!$user) return [];
 
-        $entityAccess = AppAccess::checkUserAccessByToken(
+        $entityAccess = AppAccessHandler::checkUserAccessByToken(
             $user->id, 
             AppAccessCockpit::getAccessToken()
         );
