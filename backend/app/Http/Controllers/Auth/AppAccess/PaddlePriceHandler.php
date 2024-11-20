@@ -10,24 +10,21 @@ class PaddlePriceHandler
     public $price = null;
 
     /**
-     * Set Price
-     *
-     * @param object|null $price
-     * @return void
-     */
-    function __construct(object $price = null) 
-    {
-        $this->price = $price;
-    }
-
-    /**
-     * Update / Create Price
+     * Update / Create Price by Webhook
+     *  > Restrict prices to assigned PADDLE_PRODUCT - if required
+     *      > Set product_key in .env file
+     *  > If no product_key is set, all prices within Paddle will be stored
      *
      * @param array $contentData
      * @return void
      */
     public function updatePriceByWebhook(array $contentData): void
     {
+        if(
+            env('PADDLE_PRODUCT_KEY') 
+            && env('PADDLE_PRODUCT_KEY') !== $contentData['product_id']
+        ) return;
+
         $this->price = PaddlePrices::updateOrCreate([
             'price_token' => $contentData['id'],
         ], [
