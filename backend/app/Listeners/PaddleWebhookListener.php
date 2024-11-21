@@ -16,14 +16,17 @@ use App\Http\Controllers\Auth\AppAccess\PaddleSubscriptionHandler;
 class PaddleWebhookListener extends Controller
 {
     /**
+     ** Setup Paddle Price in Cockpit
+     * Prices defines user-access, which are set within Paddle Cockpit
+     * Make sure, you define price and 'custom_data' accordingly
+     *  > 'access_token': Defines app / features access
+     *  > 'duration_months': Defines period of current access
+     *      > overwritten, by subscription.billing_period.ends_at
+     * 
      ** Setup Webhook Gateway:
      * https://sandbox-vendors.paddle.com/notifications
-     * 
-     ** Documentation:
-     * https://developer.paddle.com/webhooks/overview
-     * 
-     ** Webhook:
-     * https://{URL}/access/webhook
+     *  > Endpoint: https://{URL}/access/webhook
+     *  > Docs: https://developer.paddle.com/webhooks/overview
      *
      * @param WebhookReceived $event
      * @return void
@@ -38,10 +41,14 @@ class PaddleWebhookListener extends Controller
             if(!isset($contentData)) return;
             $paddleStatus = $payload['event_type'] ?? null;
 
-            // Features
+            // Handle accoring webhook type
             if ($paddleStatus === 'transaction.completed') {
-                $this->initiateWebhookAccess($contentData);
+                $this->initiateUserAccess($contentData);
             } 
+
+            else if ($paddleStatus === 'transaction.payment_failed' || $paddleStatus === 'transaction.canceled') {
+                $this->cancelUserTransaction($contentData);
+            }
 
             else if ($paddleStatus === 'subscription.updated' || $paddleStatus === 'subscription.canceled') {
                 $this->updateSubscription($contentData);
@@ -51,23 +58,21 @@ class PaddleWebhookListener extends Controller
                 $this->updatePrice($contentData);
             }
 
-            else if ($paddleStatus === 'transaction.payment_failed' || $paddleStatus === 'transaction.canceled' || $paddleStatus === 'transaction.past_due') {
-                $this->removeUserAcccess($contentData);
-            }
         } catch (Exception $e) {
             return;
         }
     }
 
     /**
-     * Initizalize User Access via Webhook, after new payment completet!
-     *      > Transaction Token: payment by user-client
-     *      > Subscription Token: payment by user-subscription
+     * Initizalize User Access via Webhook, after transaction.completed
+     * Transactions correlate to 
+     *  > Payment initialized recently by user client checkout
+     *  > New transaction fired by users active subscriptions
      *
      * @param array $contentData
      * @return void
      */
-    private function initiateWebhookAccess(array $contentData)
+    private function initiateUserAccess(array $contentData)
     {
         try {
             $PaddleTransaction = new PaddleTransactionHandler(
@@ -106,6 +111,9 @@ class PaddleWebhookListener extends Controller
                 $PaddleTransaction->quantity,
                 $PaddleTransaction->expiration_date,
             );
+
+            // Close transaction, after access granted
+            $PaddleTransaction->closeTransaction();
         } catch (Exception $e) {
             $PaddleTransaction->transaction?->update([
                 'status' => 'failed',
@@ -115,7 +123,28 @@ class PaddleWebhookListener extends Controller
     }
 
     /**
-     * Update Subscription Credentials, by Webhook
+     * Remove user-access, if transactions failed
+     *  > Status 'past_due' is not considered yet!
+     *
+     * @param array $contentData
+     * @return void
+     */
+    private function cancelUserTransaction(array $contentData)
+    {
+        $PaddleTransaction = new PaddleTransactionHandler(
+            PaddleTransactions::where('transaction_token', $contentData['id'])->first()
+        );
+
+        AppAccessHandler::removeUserAccess($PaddleTransaction->transaction);
+
+        $PaddleTransaction->transaction->update([
+            'status' => $PaddleTransaction->status,
+            'message' => 'user.access.removed',
+        ]);
+    }
+
+    /**
+     * Update subscription changes within Paddle Cockpit
      *
      * @param array $contentData
      * @return void
@@ -134,7 +163,7 @@ class PaddleWebhookListener extends Controller
     }
 
     /**
-     * Update Price, by Webhook
+     * Update price changes within Paddle Cockpit
      *
      * @param array $contentData
      * @return void
@@ -150,23 +179,5 @@ class PaddleWebhookListener extends Controller
                 'message' => 'webhook.price.error: ' . $e->getMessage()
             ]);
         }
-    }
-
-    /**
-     * Remove User Access, transaction_Token by Webhook
-     *
-     * @param array $contentData
-     * @return void
-     */
-    private function removeUserAcccess(array $contentData)
-    {
-        $PaddleTransaction = new PaddleTransactionHandler(
-            PaddleTransactions::where('transaction_token', $contentData['id'])->first()
-        );
-
-        AppAccessHandler::removeUserAccess(
-            $PaddleTransaction->transaction,
-            $PaddleTransaction->status
-        );
     }
 }

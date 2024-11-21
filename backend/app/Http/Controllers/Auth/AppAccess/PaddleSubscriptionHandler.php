@@ -10,7 +10,7 @@ class PaddleSubscriptionHandler
     public $subscription = null;
 
     /**
-     * Set Subription
+     * Set subription
      *
      * @param object|null $subscription
      * @return void
@@ -21,7 +21,8 @@ class PaddleSubscriptionHandler
     }
 
     /**
-     ** Update current Subscription
+     * Update current Subscription
+     * https://developer.paddle.com/webhooks/overview
      *
      * @param array $contentData
      * @return void

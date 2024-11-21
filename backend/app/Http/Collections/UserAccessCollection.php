@@ -20,6 +20,7 @@ abstract class UserAccessCollection
     static public function renderPrice(object $price, int $userID): array
     {
         return [
+            '_type' => 'Collection $price',
             'id' => $price->id,
             'price_token' => $price->price_token,
             'name' => $price->name,

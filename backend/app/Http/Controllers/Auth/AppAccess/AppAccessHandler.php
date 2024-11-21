@@ -8,7 +8,7 @@ use App\Models\UserAccess;
 class AppAccessHandler
 {
     /**
-     * Get latest active subscription of User
+     * Get latest access, by '$accessToken'
      *
      * @param integer $userID
      * @param string $accessToken
@@ -28,7 +28,7 @@ class AppAccessHandler
     }
 
     /**
-     * Get latest active subscription of User
+     * Get latest access, by '$transactionID'
      *
      * @param integer $userID
      * @param integer $transactionID
@@ -47,14 +47,15 @@ class AppAccessHandler
     }
 
     /**
-     * Add user-app-access
-     *  > by provided Flag: $access_token
+     * Add user app-access, by provided '$access_token'
+     *  > Flag $access_token: Defines access to app-features
+     *  > Flag $quantity: Undefined (add logic)
+     *  > Flag $expiration_date: End of access
      *
      * @param object $transaction
      * @param string $accessToken
      * @param integer $quantity
      * @param string $expirationDate
-     * @param string $status
      * @return void
      */
     static public function addUserAccessByTransaction(object $transaction, string $accessToken, int $quantity, string $expirationDate): void
@@ -67,34 +68,21 @@ class AppAccessHandler
             'expiration_date' => $expirationDate,
             'is_active' => true,
         ]);
-
-        $transaction->update([
-            'access_added' => true,
-            'is_verified' => true,
-            'status' => 'completed',
-            'message' => 'user.access.granted'
-        ]);
     }
 
     /**
-     * Remove user-app-access
+     * Remove user app-access
      *
      * @param object $transaction
-     * @param string $status
      * @return void
      */
-    static public function removeUserAccess(object $transaction, string $status = 'undefined'): void
+    static public function removeUserAccess(object $transaction): void
     {
         UserAccess::where([
             'user_id' => $transaction->user_id,
             'transaction_id' => $transaction->id,
         ])->update([
             'is_active' => false
-        ]);
-
-        $transaction->update([
-            'status' => $status,
-            'message' => 'user.access.removed',
         ]);
     }
 }

@@ -84,16 +84,15 @@
                         <!-- Get Access -->
                         <q-btn 
                             v-else
-                            
                             icon="generating_tokens"
                             size="sm"
+                            outline
                             :label="props.row.has_access && !props.row.is_subscription 
                                 ? 'Active'
                                 : 'Get access'"
                             :color="props.row.has_access && !props.row.is_subscription 
                                 ? 'green' 
                                 : 'primary'"
-                            outline
                             @click="openPaymentGateway(props.row.price_token)"
                         />
                     </q-td>

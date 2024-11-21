@@ -53,9 +53,14 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Set Attributes
-     *  > https://developer.paddle.com/webhooks/overview
-     *  > According API Response
+     * Sets attributes, according providers webhook
+     * https://developer.paddle.com/webhooks/overview
+     * 
+     **Note: Prices defines transaction-data, which are set within Paddle Cockpit
+     * Make sure, you define price and 'custom_data' accordingly
+     *  > 'access_token': Defines app / features access
+     *  > 'duration_months': Defines period of current access
+     *      > overwritten, by subscription.billing_period.ends_at
      *
      * @param array $contentData
      * @return void
@@ -81,7 +86,7 @@ class PaddleTransactionHandler
                 ?? $this->access_token;
 
         // Access Period, according to paddle-price
-        $defaultPeriod = (int) $item['price']['custom_data']['duration_months'] ?? 0;
+        $defaultPeriod = $item['price']['custom_data']['duration_months'] ?? 0;
         $this->expiration_date = $contentData['current_billing_period']['ends_at'] 
             ?? $contentData['billing_period']['ends_at']
                 ?? $this->calculateLatestUserExpirationDate($defaultPeriod);
@@ -91,7 +96,7 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Create User Transaction
+     * Create intital user transaction
      *
      * @param integer $userID
      * @param string $transactionToken
@@ -110,8 +115,8 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Check if Transaction belongs to a Subscription
-     *  > There might be already a subscription existing
+     * Set subscription if initial transaction is type "subscription"
+     *  > There might be already a subscription existing (why-so-ever)
      *
      * @param [type] $message
      * @return void
@@ -132,7 +137,9 @@ class PaddleTransactionHandler
 
     /**
      * Validate User, by subscription token
-     *  > Add new user transaction created by subscription
+     *  > Add new user transaction submitted by '$subscription_token' via webhook
+     *  > Happens only, if user subscribes to price of type 'subscription'
+     *  > Get associated user from '$subscription_token'
      *
      * @param string $subscriptionToken
      * @param string $message
@@ -170,6 +177,21 @@ class PaddleTransactionHandler
             'is_verified' => true,
             'status' => $this->status,
             'message' => $message
+        ]);
+    }
+
+    /**
+     * Close transaction, after user-access granted
+     *
+     * @return void
+     */
+    public function closeTransaction(): void
+    {
+        $this->transaction->update([
+            'access_added' => true,
+            'is_verified' => true,
+            'status' => 'completed',
+            'message' => 'user.access.granted'
         ]);
     }
 

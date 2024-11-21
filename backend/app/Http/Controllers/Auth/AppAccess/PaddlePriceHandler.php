@@ -10,21 +10,28 @@ class PaddlePriceHandler
     public $price = null;
 
     /**
-     * Update / Create Price by Webhook
-     *  > Restrict prices to assigned PADDLE_PRODUCT - if required
-     *      > Set product_key in .env file
-     *  > If no product_key is set, all prices within Paddle will be stored
-     *
+     * Update / create price by webhook
+     * https://developer.paddle.com/webhooks/overview
+     * 
+     **Note: Prices are set within Paddle Cockpit
+     * Make sure, you define price and 'custom_data' accordingly
+     *  > 'access_token': Defines app / features access
+     *  > 'duration_months': Defines period of current access
+     *      > overwritten, by subscription.billing_period.ends_at
+     * 
      * @param array $contentData
      * @return void
      */
     public function updatePriceByWebhook(array $contentData): void
     {
-        if(
+        // Restrict prices to assigned PADDLE_PRODUCT (see .env) - if needed
+        // If no product_key is set, all prices within Paddle will be stored
+        if( 
             env('PADDLE_PRODUCT_KEY') 
             && env('PADDLE_PRODUCT_KEY') !== $contentData['product_id']
         ) return;
 
+        // Set Price via webhook
         $this->price = PaddlePrices::updateOrCreate([
             'price_token' => $contentData['id'],
         ], [
@@ -44,14 +51,5 @@ class PaddlePriceHandler
             'status' => $contentData['status'],
             'message' => 'webhook.price.updated',
         ]);
-
-        // Set price manually to active
-        // Webhook 'price.updated' is sending multiple server requests,
-        // after price has been 'archived' / 'unarchived' via Paddle Cockpit
-        // sometimes $status === archived, sometimes not... -BUG?
-        // if($contentData['status'] === 'archived') {
-        //     $this->price->is_active = false;
-        //     $this->price->save();
-        // }
     }
 }
