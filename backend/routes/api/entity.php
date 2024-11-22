@@ -13,7 +13,7 @@ Route::middleware(['auth:api', 'email_verified', 'access_cockpit'])->group(funct
         ->name('update.entity.public.access');
     Route::post('/update-entity-avatar', [EntityProfileController::class, 'updateAvatar'])
         ->name('update.entity.avatar');
-    Route::post('/update-entity-credits', [EntityProfileController::class, 'updateCredentials'])
+    Route::post('/update-entity-credits', [EntityProfileController::class, 'updateName'])
         ->name('update.entity.credits');
     Route::post('/update-entity-impressum', [EntityProfileController::class, 'updateImpressum'])
         ->name('update.entity.impressum');

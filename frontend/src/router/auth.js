@@ -20,7 +20,7 @@ const routesAuth = [
         },
     }, 
     
-    // Public
+    // Public access
     {
         path: "/create-account",
         name: "CreateNewAccount",

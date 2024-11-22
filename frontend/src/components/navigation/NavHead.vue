@@ -115,7 +115,7 @@
                                             <q-icon name="groups_3" class="q-mr-sm" />
                                         </q-item-section>
                                         <q-item-section>
-                                            <q-item-label>Business Cockpit</q-item-label>
+                                            <q-item-label>My Cockpit</q-item-label>
                                         </q-item-section>
                                     </q-item>
                                     <q-item @click="$router.push('/user/dashboard')" clickable v-ripple >

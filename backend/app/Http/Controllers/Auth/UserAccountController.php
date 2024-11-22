@@ -15,37 +15,13 @@ use Illuminate\Validation\Rules\Password;
 class UserAccountController extends Controller
 {
     /**
-     * Allow public access
-     *  > Flag: $public_access
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function updatePublicity(Request $request)
-    {
-        $data = $request->validate([
-            'is_public' => ['required', 'boolean'],
-        ]);
-
-        User::find(Auth::id())->update([
-            'is_public' => (bool) $data['is_public'],
-        ]);
-
-        return response()->json([
-            'message' => (bool) $data['is_public'] 
-                ? 'Your avatar is public.' 
-                : 'Your avatar is private.'
-        ], 200);
-    }
-
-    /**
-     ** Change Avatar
-     **  > Update Avatar
-     **      > Delete Old Avatar
-     **      > Add new Avatar
-     **      > Link new Avatar with DB
-     **  > Delete Avatar
-     **      > Delete Old Avatar 
+     * Change Avatar
+     *  > Update Avatar
+     *      > Delete Old Avatar
+     *      > Add new Avatar
+     *      > Link new Avatar with DB
+     *  > Delete Avatar
+     *      > Delete Old Avatar 
      *
      * @param Request $request
      * @return void
@@ -92,7 +68,7 @@ class UserAccountController extends Controller
     }
 
     /**
-     ** Change Username
+     * Change Username
      *
      * @param Request $request
      * @return void
@@ -113,9 +89,9 @@ class UserAccountController extends Controller
     }
 
     /**
-     ** Update Password
-     **  > Check Password requirements
-     **  > Confirm old Password
+     * Update Password
+     *  > Check Password requirements
+     *  > Confirm old Password
      *
      * @param Request $request
      * @return void
@@ -150,9 +126,9 @@ class UserAccountController extends Controller
     }
 
     /**
-     ** Delete User Account
-     **  > Remove Avatar
-     **  > Logout User
+     * Delete User Account
+     *  > Remove Avatar
+     *  > Logout User
      *
      * @param Request $request
      * @return void

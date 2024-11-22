@@ -23,7 +23,7 @@ export const regRules = {
         capital_letter: /[A-Z]/,            // Capital Letter
         number: /\d/                        // Number
     },
-    sanitizeLink: /^https?:\/\/|www\./
+    sanitizeLink: /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)(:[0-9]{1,5})?(\/.*)?$/i
 };
 
 export const passwordRequirements = (password, password_confirm) => {

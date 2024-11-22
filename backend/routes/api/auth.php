@@ -38,8 +38,6 @@ Route::middleware(['auth:api', 'email_verified'])->group(function () {
         ->name('cancel.user.subscription');
     
     //* User Account
-    Route::post('/update-user-publicity', [UserAccountController::class, 'updatePublicity'])
-        ->name('update.user.publicity');
     Route::post('/update-user-avatar', [UserAccountController::class, 'changeAvatar'])
         ->name('update.user.avatar');
     Route::post('/update-user-name', [UserAccountController::class, 'changeName'])

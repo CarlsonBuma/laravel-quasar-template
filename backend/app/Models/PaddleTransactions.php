@@ -52,7 +52,7 @@ class PaddleTransactions extends Model
         return $this->belongsTo(PaddlePrices::class, 'price_id');
     }
 
-    public function has_user_access_pivot() {
+    public function has_access() {
         return $this->hasMany(UserAccess::class, 'transaction_id');
     }
 }

@@ -10,9 +10,8 @@
                 fit="fill" 
                 loading="eager"
             >
-                <div v-if="name" class="absolute-bottom">
-                    <div class="flex justify-center text-h6">{{ name }}</div>
-                    <div class="flex justify-center text-caption">{{ slogan }}</div>
+                <div v-if="name" class="absolute-bottom text-center">
+                    <span class="w-100 text-h6">{{ name }}</span>
                 </div>
             </q-img>
             
@@ -81,18 +80,13 @@ export default {
         'update'
     ],
 
-    setup() {
+    setup(props) {
         return {
+            avatar: ref(props.userAvatar),
             imageSize: 2000000,
             upload_image_src: null,
             removeAvatar: ref(false),
         };
-    },
-
-    data() {
-        return {
-            avatar: this.userAvatar,
-        }
     },
 
     methods: {

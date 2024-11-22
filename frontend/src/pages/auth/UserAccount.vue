@@ -8,30 +8,7 @@
         <div class="row w-100 flex justify-center">
             <div class="avatar-width">
 
-                <!-- Public -->
-                <CardSimple 
-                    title="Join our community" 
-                    tooltip="By joining our community, other collaborators are able to find your avatar."
-                    tooltipIconColor="primary"
-                >
-                    <template #actions>
-                        <div class="flex justify-end items-center w-100">
-                            <q-toggle class="q-mx-md" v-model="$user.user.is_public" dense />
-                            <div>
-                                <q-btn 
-                                    @click="submitPublicity($user.user.is_public)" 
-                                    outline 
-                                    rounded
-                                    size="sm"
-                                    color="primary" 
-                                    label="Update" 
-                                />
-                            </div>
-                        </div>
-                    </template>
-                </CardSimple>
-                
-                <!-- Image -->
+                <!-- Avatar -->
                 <CardUploadImage 
                     allowUpdate
                     :userAvatar="$user.user.avatar_src"
@@ -218,18 +195,6 @@ export default {
     },
 
     methods: {
-        async submitPublicity(isPublic) {
-            try {
-                this.$toast.load();
-                const response = await this.$axios.post('/update-user-publicity', {
-                    is_public: isPublic
-                });
-
-                this.$toast.success(response.data.message);
-            } catch (error) {
-                this.$toast.error(error.response ?? error)
-            }
-        },
 
         async saveAvatar(src, avatar, deleteAvatar) {
             if(!src && !deleteAvatar ) return;

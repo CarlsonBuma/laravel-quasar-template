@@ -24,7 +24,6 @@ class User extends Authenticatable
         'password',
         'token',
         'email_verified_at',    // Flag
-        'is_public',            // Flag
         'archived'              // Flag
     ];
 
@@ -42,12 +41,6 @@ class User extends Authenticatable
         return $this->hasOne(Entities::class, 'user_id');
     }
 
-    //* Access
-    public function is_admin() {
-        return $this->hasOne(Admins::class, 'user_id');
-    }
-
-    //* Payments
     public function has_subsciptions() {
         return $this->hasMany(PaddleSubscriptions::class, 'user_id');
     }
@@ -56,7 +49,11 @@ class User extends Authenticatable
         return $this->hasMany(PaddleTransactions::class, 'user_id');
     }
 
-    public function has_user_access_pivot() {
+    public function has_access() {
         return $this->hasMany(UserAccess::class, 'user_id');
+    }
+
+    public function is_admin() {
+        return $this->hasOne(Admins::class, 'user_id');
     }
 }

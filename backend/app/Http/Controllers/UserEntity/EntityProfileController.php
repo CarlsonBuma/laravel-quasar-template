@@ -52,8 +52,8 @@ class EntityProfileController extends Controller
 
         return response()->json([
             'message' => (bool) $data['is_public'] 
-                ? 'Your entity is now public available.' 
-                : 'Your entity is set to private.'
+                ? 'Entity published.' 
+                : 'Entity set to private.'
         ], 200);
     }
     
@@ -89,7 +89,7 @@ class EntityProfileController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Avatar has been updated.',
+            'message' => 'Avatar updated.',
         ], 200);
     }
 
@@ -99,45 +99,18 @@ class EntityProfileController extends Controller
      * @param Request $request
      * @return void
      */
-    public function updateCredentials(Request $request) 
+    public function updateName(Request $request) 
     {
         $data = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'slogan' => ['nullable', 'string', 'max:255'],
         ]);
 
         Entities::where('user_id', Auth::id())->update([
             'name' => $data['name'],
-            'slogan' => $data['slogan'],
         ]);
 
         return response()->json([
-            'message' => 'Credentials has been updated.',
-        ], 200);
-    }
-
-    /**
-     * Update impressumg
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function updateImpressum(Request $request) 
-    {
-        $data = $request->validate([
-            'website' => ['nullable', 'string', 'max:255'],
-            'contact' => ['nullable', 'string', 'max:999'],
-        ]);
-
-        $websiteSanitized = Modulate::sanitizeLink($data['website']);
-
-        Entities::where('user_id', Auth::id())->update([
-            'website' => $websiteSanitized,
-            'contact' => $data['contact'],
-        ]);
-
-        return response()->json([
-            'message' => 'Impressum has been updated.',
+            'message' => 'Name updated.',
         ], 200);
     }
 
@@ -163,6 +136,36 @@ class EntityProfileController extends Controller
     }
 
     /**
+     * Update impressumg
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function updateImpressum(Request $request) 
+    {
+        $data = $request->validate([
+            'website' => ['nullable', 'string', 'max:255'],
+            'contact' => ['nullable', 'string', 'max:999'],
+        ]);
+
+        $websiteSanitized = Modulate::sanitizeLink($data['website']);
+        Entities::where('user_id', Auth::id())->update([
+            'website' => $websiteSanitized,
+            'contact' => $data['contact'],
+        ]);
+
+        if($data['website'] && !$websiteSanitized) {
+            return response()->json([
+                'message' => 'Invalid link.',
+            ], 422);
+        }
+
+        return response()->json([
+            'message' => 'Impressum updated.',
+        ], 200);
+    }
+
+    /**
      * Update tags
      *
      * @param Request $request
@@ -179,7 +182,7 @@ class EntityProfileController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Bulletpoints has been updated.',
+            'message' => 'Bulletpoints updated.',
         ], 200);
     }
 
@@ -209,7 +212,7 @@ class EntityProfileController extends Controller
         ]);
 
         return response()->json([
-            'message' => 'Location has been updated.',
+            'message' => 'Location updated.',
         ], 200);
     }
 }

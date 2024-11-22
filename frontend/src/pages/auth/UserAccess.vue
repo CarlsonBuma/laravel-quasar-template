@@ -100,10 +100,10 @@ export default {
             }
         }, 
 
+        // Client checkout completed
+        // Initialize client checkout
         async paddleEventHandling(data) {
             try {
-                // Client checkout completed
-                // Initialize client checkout
                 if(data?.name === 'checkout.completed') {
                     const transactionID = data.data?.transaction_id;
                     const customerID = data.data?.customer?.id;
@@ -121,9 +121,9 @@ export default {
             }
         },
 
+        // Set interval a 5sec
+        // Verify transaction and set user-access
         checkTransactionWebhookVerificationInterval(transactionID) {
-            
-            // Set interval a 5sec
             const intervalId = setInterval(async () => {
                 try {
                     // Request
@@ -156,6 +156,8 @@ export default {
             }, 5000);
         },
 
+        // Cancel user subscription
+        // if price-type === 'subscription'
         async cancelSubscription(price) {
             try {
                 this.$toast.load();

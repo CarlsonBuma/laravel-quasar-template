@@ -1,20 +1,16 @@
 <template>
 
-    <PageWrapper 
-        title="Impressum" 
-        :rendering="loading" 
-        leftDrawer
-        drawerTitle="Business Cockpit" 
-    >
-        <template #leftDrawer>
+    <PageWrapper :rendering="loading" >
+        <template #navigation>
             <NavEntity />
         </template>
 
         <div class="avatar-width">
+            
             <!-- Make public -->
             <CardSimple 
                 title="Join our community" 
-                tooltip="By joining our community, other collaborators are able to find your services."
+                tooltip="Publish your entity."
                 tooltipIconColor="primary"
             >
                 <template #actions>
@@ -25,60 +21,57 @@
                             dense 
                         />
                         <q-btn 
-                            @click="submitPublicity(entity.is_public)" 
+                            @click="updatePublicity(entity.is_public)" 
                             :disabled="!entity.name || !entity.avatar"
                             outline 
                             rounded
                             size="sm"
                             color="primary" 
                             label="Update" 
-                        />
+                        >
+                            <q-tooltip v-if="!entity.name || !entity.avatar">
+                                Entity name &amp; avatar are required.
+                            </q-tooltip>
+                        </q-btn>
                     </div>
                 </template>
             </CardSimple>
 
+            <!-- Avatar -->
             <CardUploadImage 
                 :userAvatar="entity.avatar" 
                 :name="entity.name" 
                 :slogan="entity.slogan"
                 allowUpdate
-                @update="(src, avatar, deleteAvatar) => saveAvatar(src, deleteAvatar)"
+                @update="(src, avatar, deleteAvatar) => udpateAvatar(src, deleteAvatar)"
                 @upload="(src, avatar) => {
                     entity.avatar = avatar;
                 }"
             />
 
-            <CardSimple title="Bulletpoints">            
+            <!-- Name -->
+            <CardSimple title="Entity name">           
                 <q-card-section>
                     <FormWrapper
-                        buttonText="Update bulletpoints"
+                        buttonText="Update name"
                         buttonIcon="update"
-                        @submit="submitBulletpoints(entity.tags)"
+                        @submit="updateName(entity.name)"
                     >
-                        <q-select
-                            label="Enter bulletpoints..."
-                            v-model="entity.tags"
-                            use-input
-                            use-chips
-                            multiple
-                            max-values="9"
-                            counter
-                            hide-dropdown-icon
-                            input-debounce="0"
-                            new-value-mode="add-unique"
-                        />
+                        <q-input v-model="entity.name" label="Entity name"/>
                     </FormWrapper>
                 </q-card-section>
             </CardSimple>
         </div>
 
         <div class="w-card-lg">
+
+            <!-- About -->
             <CardSimple title="About us">            
                 <q-card-section>
                     <FormWrapper
                         buttonText="Update about"
                         buttonIcon="update"
-                        @submit="submitAbout(entity.about)"
+                        @submit="updateAbout(entity.about)"
                     >
                         <q-input
                             class="q-mt-md"
@@ -93,15 +86,19 @@
                 </q-card-section>
             </CardSimple>
 
+            <!-- Impressum -->
             <CardSimple title="Impressum">        
                 <q-card-section>
                     <FormWrapper
                         buttonText="Update Impressum"
                         buttonIcon="update"
-                        @submit="submitEntityProfile(entity.website, entity.contact)"
+                        @submit="updateImpressum(entity.website, entity.contact)"
                     >
-                        <q-input v-model="entity.website" label="Website" placeholder="www.website.io" />
-                        <!-- <q-input v-model="entity.bin" label="Business Identification Number (BIN)" placeholder="Business ID" /> -->
+                        <q-input 
+                            v-model="entity.website" 
+                            label="Website" 
+                            placeholder="www.website.io"
+                        />
                         <q-input
                             v-model="entity.contact"
                             maxlength="199"
@@ -115,26 +112,15 @@
             </CardSimple>
         </div>
 
+        <!-- SEO -->
         <div class="avatar-width">
-            <CardSimple title="Entity details">           
-                <q-card-section>
-                    <FormWrapper
-                        buttonText="Update Credentials"
-                        buttonIcon="update"
-                        @submit="submitEntityCredits(entity.name, entity.slogan)"
-                    >
-                        <q-input v-model="entity.name" label="Entity name"/>
-                        <q-input class="q-mt-md" v-model="entity.slogan" label="Entity slogan"/>
-                    </FormWrapper>
-                </q-card-section>
-            </CardSimple>
-
+            <!-- Geolocation -->
             <CardSimple title="Location">
                 <q-card-section>
                     <FormWrapper
                         buttonText="Update Location"
                         buttonIcon="update"
-                        @submit="submitLocation(entity.location)"
+                        @submit="updateLocation(entity.location)"
                     >
                         <GoogleLocation 
                             :location="entity.location"
@@ -154,6 +140,30 @@
                     </FormWrapper>
                 </q-card-section>
             </CardSimple>
+
+            <!-- Bulletpoints -->
+            <CardSimple title="Bulletpoints">            
+                <q-card-section>
+                    <FormWrapper
+                        buttonText="Update bulletpoints"
+                        buttonIcon="update"
+                        @submit="updateBulletpoints(entity.tags)"
+                    >
+                        <q-select
+                            label="Enter bulletpoints..."
+                            v-model="entity.tags"
+                            use-input
+                            use-chips
+                            multiple
+                            max-values="9"
+                            counter
+                            hide-dropdown-icon
+                            input-debounce="0"
+                            new-value-mode="add-unique"
+                        />
+                    </FormWrapper>
+                </q-card-section>
+            </CardSimple>
         </div>
     </PageWrapper>
 
@@ -161,6 +171,7 @@
 
 <script>
 import { ref } from 'vue'
+import { regRules } from 'src/boot/globals';
 import NavEntity from 'src/components/navigation/NavEntity.vue';
 import FormWrapper from 'src/components/global/FormWrapper.vue';
 import GoogleLocation from 'src/components/GoogleLocation.vue';
@@ -175,6 +186,7 @@ export default {
     setup() {
         return {
             loading: ref(true),
+            regRules
         };
     },
 
@@ -201,7 +213,7 @@ export default {
             }
         },
 
-        async submitPublicity(entity_isPublic) {
+        async updatePublicity(entity_isPublic) {
             try {
                 this.$toast.load();
                 const response = await this.$axios.post('/update-entity-public-access', {
@@ -209,44 +221,39 @@ export default {
                 });
                 this.$toast.success(response.data.message);
             } catch (error) {
-                this.$toast.error(error.response ? error.response : error)
+                this.$toast.error(error.response ?? error)
             } finally {
                 this.$toast.done();
             }
         },
 
-        async saveAvatar(src, deleteAvatar) {
-            if(!src && !deleteAvatar ) return;
+        async udpateAvatar(src, deleteAvatar) {
             try {
-                // Prepare
-                this.$toast.load();
+                if(!src && !deleteAvatar) return;
                 const formData = new FormData;
                 if(src) formData.append("src", src);
                 formData.append("avatar_delete", deleteAvatar ? '1' : '0');
-
-                const response = this.$axios.post('/update-entity-avatar', formData);
+                this.$toast.load();
+                const response = await this.$axios.post('/update-entity-avatar', formData);
                 this.$toast.success(response.data.message);
             } catch (error) {
-                const errorMessage = error.response ? error.response : error;
-                this.$toast.error(errorMessage);
+                this.$toast.error(error.response ?? error);
             }
         },
 
-        async submitEntityCredits(name, slogan) {
+        async updateName(name) {
             try {
                 this.$toast.load();
                 const response = await this.$axios.post('/update-entity-credits', {
                     name: name,
-                    slogan: slogan,
                 });
                 this.$toast.success(response.data.message);
             } catch (error) {
-                const errorMessage = error.response ? error.response : error;
-                this.$toast.error(errorMessage);
+                this.$toast.error(error.response ?? error);
             }
         },
 
-        async submitAbout(about) {
+        async updateAbout(about) {
             try {
                 this.$toast.load();
                 const response = await this.$axios.post('/update-entity-about', {
@@ -254,11 +261,11 @@ export default {
                 });
                 this.$toast.success(response.data.message);
             } catch (error) {
-                this.$toast.error(error.response ? error.response : error)
+                this.$toast.error(error.response ?? error)
             }
         },
 
-        async submitLocation(location) {
+        async updateLocation(location) {
             try {
                 if(!location.place_id) throw 'Please enter address.';
                 this.$toast.load();
@@ -275,11 +282,11 @@ export default {
                 });
                 this.$toast.success(response.data.message);
             } catch (error) {
-                this.$toast.error(error.response ? error.response : error)
+                this.$toast.error(error.response ?? error)
             }
         },
 
-        async submitBulletpoints(tags) {
+        async updateBulletpoints(tags) {
             try {
                 this.$toast.load();
                 const response = await this.$axios.post('/update-entity-bulletpoints', {
@@ -287,12 +294,13 @@ export default {
                 });
                 this.$toast.success(response.data.message);
             } catch (error) {
-                this.$toast.error(error.response ? error.response : error)
+                this.$toast.error(error.response ?? error)
             }
         },
 
-        async submitEntityProfile(website, contact) {
+        async updateImpressum(website, contact) {
             try {
+                if(!this.regRules.sanitizeLink.test(website)) throw 'Invalid link.'
                 this.$toast.load();
                 const response = await this.$axios.post('/update-entity-impressum', {
                     website: website,
@@ -300,7 +308,7 @@ export default {
                 });
                 this.$toast.success(response.data.message);
             } catch (error) {
-                this.$toast.error(error.response ? error.response : error)
+                this.$toast.error(error.response ?? error)
             }
         },
     },

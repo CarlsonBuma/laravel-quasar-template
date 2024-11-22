@@ -44,7 +44,7 @@ class Entities extends Model
         return $this->belongsTo(AppCountries::class, 'country_id');
     }
 
-    public function has_user_access_pivot() {
+    public function has_access() {
         return $this->hasMany(UserAccess::class, 'entity_id');
     }
 }

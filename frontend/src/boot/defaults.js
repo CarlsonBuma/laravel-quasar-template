@@ -25,6 +25,7 @@ import SectionDesignColored from 'src/components/global/SectionDesignColored.vue
 
 // Navigations
 import NavUser from 'src/components/navigation/NavUser.vue';
+import NavEntity from 'src/components/navigation/NavEntity.vue';
 import NavAdmin from 'src/components/navigation/NavAdmin.vue';
 
 
@@ -68,7 +69,10 @@ export default boot(({ app, router }) => {
     app.component('SectionDesignDefault', SectionDesignDefault)
     app.component('SectionDesignClear', SectionDesignClear)
     app.component('SectionDesignColored', SectionDesignColored)
+
+    // Navigation
     app.component('NavUser', NavUser)
+    app.component('NavEntity', NavEntity)
     app.component('NavAdmin', NavAdmin)
 
 });

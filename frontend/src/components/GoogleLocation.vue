@@ -61,12 +61,14 @@ export default {
         'fetched'
     ],
 
-    setup() {
+    setup(props) {
         return {
+            requestLimits: 4,
+            currentRequests: ref(0),
             dialogEvent: ref(false),
             fetching: ref(false),
             googleMapsAPI: 'https://maps.googleapis.com/maps/api/geocode/json?address=',
-            google_maps_coordinates: ref('')
+            google_maps_coordinates: ref(props.location.address ?? '')
         };
     },
 
@@ -88,11 +90,13 @@ export default {
 
         async requestGoogleAPI(google_maps_address) {
             try {
+                if(this.currentRequests > this.requestLimits) throw 'Limit of ' + this.requestLimits + ' requests.'
                 if(!this.$env.APP_GOOGLE_API_KEY) throw 'To use geolocation, please add a Google_API_KEY, by creating an account for Developers.'
                 if(!google_maps_address) return;
                 if(this.fetching) return;
 
                 // https://maps.googleapis.com/maps/api/geocode/json?address="some address"&key=YOUR_API_KEY&attribute=
+                this.currentRequests++;
                 const api_address = this.googleMapsAPI 
                     + encodeURIComponent(google_maps_address) 
                     + '&key=' + this.$env.APP_GOOGLE_API_KEY
@@ -127,7 +131,7 @@ export default {
                 this.$emit('fetched', this.place_id, this.lng, this.lat, this.address, this.area, this.area_short, this.country, this.country_short, this.zip_code)
                 this.$toast.success('Location set.');
             } catch ( error ) {
-                this.$toast.error('We could not validate this address.')
+                this.$toast.error(error)
             } finally {
                 this.fetching = false;
             }
