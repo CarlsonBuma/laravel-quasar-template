@@ -29,7 +29,6 @@ Route::middleware(['auth:api', 'email_verified'])->group(function () {
     Route::post('/set-user-client-access', [UserAccessController::class, 'initializeClientCheckoutTransaction'])
         ->name('set.user.client.access');
     Route::post('/verify-user-client-access', [UserAccessController::class, 'verifyUserTransaction'])
-        ->middleware(['throttle:6,1']) 
         ->name('verify.user.client.access');  
     
     // Cancel Paddle subscription

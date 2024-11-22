@@ -5,167 +5,22 @@
             <NavUser />
         </template>
 
-        <template #actions>
-            <q-btn 
-                @click="$router.push('/pricing')" 
-                outline 
-                color="primary" 
-                icon="auto_awesome"
-                label="See services" 
-            />
-        </template>
-
         <!-- Price -->
-        <q-table
-            flat
-            :rows="prices"
-            :columns="columns_subscriptions"
-            title="Products"
-            row-key="id"
-            class="table-width q-mb-md"
-            :sort-method="customSort"
-            :pagination="{
-                rowsPerPage: 5
-            }"
-        >
-            <template v-slot:header-cell="props">
-                <q-th :props="props">
-                    {{ props.col.label }}
-                    <q-icon v-if="props.col.note" name="help_outline" size="14px" color="primary" >
-                        <q-tooltip>
-                            <p class="q-ma-none tooltip-width">{{ props.col.note }}</p>
-                        </q-tooltip> 
-                    </q-icon>
-                </q-th>
-            </template>
-            <template v-slot:body="props">
-                <q-tr :props="props">
-                    <q-td key="id" :props="props">
-                        {{ props.rowIndex + 1 }}
-                    </q-td>
-                    <q-td key="name" :props="props">
-                        {{ props.row.name }}
-                    </q-td>
-                    <q-td key="billing_type" :props="props">
-                        {{ props.row.type }}
-                    </q-td>
-                    <q-td key="billing_period" :props="props">
-                        {{ 
-                            props.row.billing_frequency 
-                                ? props.row.billing_frequency + 'x ' + props.row.billing_interval 
-                                : props.row.duration_months 
-                                    ? props.row.duration_months + ' month' 
-                                    : 'none'
-                        }}
-                    </q-td>
-                    <q-td key="trial_mode" :props="props">
-                        {{ 
-                            props.row.trial_frequency 
-                                ? props.row.trial_frequency + ' ' + props.row.trial_interval + 's'
-                                : 'none' 
-                        }}
-                    </q-td>
-                    <q-td key="price" :props="props">
-                        {{ props.row.currency_code + ' ' + props.row.price }}
-                    </q-td>
-                    <q-td key="status" :props="props">
-                        
-                        <!-- Cancel subscriptions -->
-                        <q-btn 
-                            v-if="props.row.has_active_subscription"
-                            label="Deactivate"
-                            icon="generating_tokens"
-                            size="sm"
-                            color="purple"
-                            outline
-                            @click="confirmCancelSubscription(props.row)"
-                        />
-
-                        <!-- Get Access -->
-                        <q-btn 
-                            v-else
-                            icon="generating_tokens"
-                            size="sm"
-                            outline
-                            :label="props.row.has_access && !props.row.is_subscription 
-                                ? 'Active'
-                                : 'Get access'"
-                            :color="props.row.has_access && !props.row.is_subscription 
-                                ? 'green' 
-                                : 'primary'"
-                            @click="openPaymentGateway(props.row.price_token)"
-                        />
-                    </q-td>
-                </q-tr>
-            </template>
-        </q-table>
+        <PricesTable 
+            :prices="prices"
+            @action="(price) => openPaymentGateway(price.price_token)"
+            @cancel="(price) => confirmCancelSubscription(price)"
+        />
 
         <!-- Transactions -->
-        <q-table
-            flat
-            :rows="transactions"
-            :columns="columns_transactions"
-            title="Transactions"
-            row-key="id"
-            class="table-width"
-            :sort-method="customSort"
-            :filter="filterInput"
-            :pagination="{
-                rowsPerPage: 7
-            }"
-        >
-            <template v-slot:top-right>
-                <q-input borderless dense debounce="300" v-model="filterInput" placeholder="Search">
-                    <template v-slot:append>
-                        <q-icon name="search" />
-                    </template>
-                </q-input>
-            </template>
-            <template v-slot:body="props">
-                <q-tr :props="props">
-                    <q-td key="id" :props="props">
-                        {{ props.rowIndex + 1 }}
-                    </q-td>
-                    <q-td key="name" :props="props">
-                        {{ props.row.name }}
-                    </q-td>
-                    <q-td key="status" :props="props">
-                        {{ props.row.status }}
-                    </q-td>
-                    <q-td key="quantity" :props="props">
-                        {{ props.row.quantity }}<br>
-                    </q-td>
-                    <q-td key="price" :props="props">
-                        {{ props.row.currency_code + ' ' + props.row.total }}<br>
-                    </q-td>
-                    <q-td key="tax" :props="props">
-                        {{ props.row.tax }}
-                    </q-td>
-                    <q-td key="created_at" :props="props">
-                        {{ date.formatDate(props.row.created_at, dateFormat) }}
-                    </q-td>
-                    <q-td key="expiration_date" :props="props">
-                        {{ date.formatDate(props.row.expiration_date, dateFormat) }}
-                    </q-td>
-                    <q-td key="active" :props="props">
-                        <q-icon 
-                            name="verified" 
-                            :color="props.row.is_active 
-                                && date.formatDate(props.row.expiration_date, 'YYYY-MM-DD') 
-                                    > date.formatDate(new Date(), 'YYYY-MM-DD')  
-                                ? 'green' 
-                                : 'grey'
-                            "
-                        />
-                    </q-td>
-                </q-tr>
-            </template>
-        </q-table>
-        <SectionNote>
-            *Transactions are payments corresponding to our provided products, you gained access.<br>
-            For further informations please check our
-            <router-link to="/legal">Terms &amp; Conditions</router-link>.
-        </SectionNote>
+        <div class="row w-100 justify-center">
+            <TransactionsTable :transactions="transactions"/>
+            <SectionNote>
+                *Transactions are payments corresponding to our provided products, you gained access.<br>
+                For further informations please check our
+                <router-link to="/legal">Terms &amp; Conditions</router-link>.
+            </SectionNote>
+        </div>
         
         <!-- Paddle -->
         <PaddleSubscription 
@@ -178,25 +33,23 @@
 
 <script>
 import { ref } from 'vue';
-import { date } from 'quasar';
-import { globalMasks } from 'src/boot/globals.js';
 import PaddleSubscription from 'components/PaddleSubscription.vue';
+import PricesTable from './components/PricesTable.vue';
+import TransactionsTable from './components/TransactionsTable.vue';
 
 export default {
     name: 'UserAccess',
     components: {
-        PaddleSubscription
+        PaddleSubscription, TransactionsTable, PricesTable
     },
 
     setup() {
 
         // Defaults
-        const dateFormat = globalMasks.date.switzerland
         const loading = ref(true);
         const showDialog = ref(false);
 
         // Paddle Checkout
-        const transactionInitializedSuccessfully = ref(false);
         const Paddle = ref(null);
         const openPaymentGateway = (priceToken) => {
             Paddle.value?.Checkout.open({
@@ -212,134 +65,17 @@ export default {
             });
         };
 
-        // Table handling
-        const filterInput = ref('');
-        const customSort = (rows, sortBy, descending) => {
-            const data = [...rows]
-            if (sortBy) {
-                data.sort((a, b) => {
-                    const x = descending ? b : a
-                    const y = descending ? a : b
-                    if (sortBy === 'name' || sortBy === 'expiration_date')
-                        return x[sortBy] > y[sortBy] ? 1 : x[sortBy] < y[sortBy] ? -1 : 0
-                    else if(sortBy === 'price')
-                        return parseFloat(x[sortBy]) - parseFloat(y[sortBy]);
-                })
-            }
-            return data
-        };
-
-        const columns_subscriptions = [
-            {
-                name: 'id',
-                label: 'ID',
-                field: 'id',
-                align: 'left',
-            }, {
-                name: 'name',
-                label: 'Product',
-                field: 'name',
-                align: 'left',
-                sortable: true
-            }, {
-                name: 'billing_type',
-                label: 'Billing type',
-                field: 'billing_type',
-                align: 'left',
-                note: 'Depending on type, transactions will be generated automatically or manually (one-time). You are able to cancel subscriptions any time.'
-            }, {
-                name: 'billing_period',
-                label: 'Access period',
-                field: 'billing_period',
-                align: 'left',
-                note: 'Amount of time, you will gain access to the provided service per transaction.'
-            }, {
-                name: 'trial_mode',
-                label: 'Trial mode',
-                field: 'trial_mode',
-                align: 'left',
-            }, {
-                name: 'price',
-                label: 'Price',
-                field: 'price',
-                align: 'left',
-                sortable: true
-            }, {
-                name: 'status',
-                label: 'Status',
-                field: 'status',
-            },
-        ];
-
-        const columns_transactions = [
-            {
-                name: 'id',
-                label: 'ID',
-                field: 'id',
-                align: 'left',
-            }, {
-                name: 'name',
-                label: 'Product',
-                field: 'name',
-                align: 'left',
-                sortable: true
-            }, {
-                name: 'status',
-                label: 'Status',
-                field: 'status',
-                align: 'left',
-            }, {
-                name: 'quantity',
-                label: 'Quantity',
-                field: 'quantity',
-                align: 'left',
-            }, {
-                name: 'price',
-                label: 'Total (incl. Tax)',
-                field: 'price',
-                align: 'left',
-            }, {
-                name: 'tax',
-                label: 'Tax',
-                field: 'tax',
-                align: 'left',
-            }, {
-                name: 'created_at',
-                label: 'Billed at',
-                field: 'created_at',
-                align: 'left',
-            }, {
-                name: 'expiration_date',
-                label: 'Expiration',
-                field: 'expiration_date',
-                align: 'left',
-                sortable: true
-            }, {
-                name: 'active',
-                label: 'Access',
-                field: 'active',
-            },
-        ];
-
         return {
-            dateFormat,
             loading,
-            transactionInitializedSuccessfully,
             showDialog,
             openPaymentGateway,
-            Paddle,
-            filterInput,
-            columns_subscriptions,
-            columns_transactions,
-            customSort,
-            date
+            Paddle
         };
     },
 
     data() {
         return {
             prices: [],
-            subscriptions: [],
             transactions: [],
         }
     },
@@ -356,7 +92,6 @@ export default {
                 const response = await this.$axios.get('load-user-access')
                 this.prices = response.data.prices;
                 this.transactions = response.data.transactions;
-                console.log(this.prices)
             } catch (error) {
                 this.$toast.error(error.response ?? error);
                 console.log('user.access.error', error.response ?? error)
@@ -367,36 +102,36 @@ export default {
 
         async paddleEventHandling(data) {
             try {
-
-                // Transaction data
-                const transactionID = data.data?.transaction_id;
-                const customerID = data.data?.customer?.id;
-                
                 // Client checkout completed
                 // Initialize client checkout
                 if(data?.name === 'checkout.completed') {
-                    this.transactionInitializedSuccessfully = true;
+                    const transactionID = data.data?.transaction_id;
+                    const customerID = data.data?.customer?.id;
                     await this.$axios.post('set-user-client-access', {
                         transaction_token: transactionID,
                         customer_token: customerID
                     });
-                    return;
+
+                    // Verify transaction by webhook interval
+                    this.checkTransactionWebhookVerificationInterval(transactionID)
                 }
+            } catch (error) {
+                this.$toast.error(error.response ?? error)
+                console.log('user.checkout.error', error.response ?? error)
+            }
+        },
 
-                // Request server validation
-                // when client transaction is completed successfully
-                else if (this.transactionInitializedSuccessfully && data?.name === 'checkout.closed') {
-                    this.$toast.load();
-                    const response = await this.$axios.post('verify-user-client-access' , {
+        checkTransactionWebhookVerificationInterval(transactionID) {
+            
+            // Set interval a 5sec
+            const intervalId = setInterval(async () => {
+                try {
+                    // Request
+                    const response = await this.$axios.post('verify-user-client-access', {
                         'transaction_token': transactionID,
-                    })
+                    });
 
-                    // Process validation
-                    this.transactionInitializedSuccessfully = false;
-                    this.$toast.success(response.data.message);
-
-                    // Set Access,
-                    // no access to subscribe anymore
+                    // Check new access set
                     if(response.data.access_token) {
                         this.$user.setUserAccess(
                             response.data.access_token, 
@@ -408,12 +143,17 @@ export default {
                             if(price.id === response.data.price_id && price.is_subscription) 
                                 this.prices[index].has_active_subscription = true;
                         });
+
+                        // Clear interval
+                        this.$toast.success(response.data.message);
+                        clearInterval(intervalId);
                     }
+                } catch (error) {
+                    clearInterval(intervalId);
+                    this.$toast.error(error.response ?? error)
+                    console.log('user.transaction.verification.error', error.response ?? error);
                 }
-            } catch (error) {
-                this.$toast.error(error.response ?? error)
-                console.log('user.checkout.error', error.response ?? error)
-            }
+            }, 5000);
         },
 
         async cancelSubscription(price) {

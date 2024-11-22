@@ -119,7 +119,7 @@ class UserAccessController extends Controller
                 'access_token' => $userAccess->access_token,
                 'expiration_date' => $userAccess->expiration_date,
                 'price_id' => $userTransaction->price_id,
-                'message' => 'Transaction validated.',
+                'message' => 'Access granted.',
             ], 200);
         }
 
