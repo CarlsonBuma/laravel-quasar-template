@@ -20,18 +20,11 @@
 
                 <!-- User -->
                 <CardSimple>
-                    <SectionSplitFix class="q-pt-xs q-px-xs q-pb-none">
-                        <template #left>
-                            <qrcode-vue :value="qr_value" :size="120" level="H" />
-                        </template>
-                        <template #right >
-                            <div class="q-pa-md text-left">
-                                <span class="text-caption"><b>ID:</b>&nbsp;#{{ $user.user.id }}</span><br>
-                                <span class="text-caption"><b>Username:</b>&nbsp;{{ $user.user.name }}</span><br>
-                                <span class="text-caption"><b>Email:</b>&nbsp;{{ $user.user.email }}</span>
-                            </div>
-                        </template>
-                    </SectionSplitFix>
+                    <q-card-section>
+                        <span class="text-caption"><b>ID:</b>&nbsp;#{{ $user.user.id }}</span><br>
+                        <span class="text-caption"><b>Username:</b>&nbsp;{{ $user.user.name }}</span><br>
+                        <span class="text-caption"><b>Email:</b>&nbsp;{{ $user.user.email }}</span>
+                    </q-card-section>
                 </CardSimple>
             </div>
             <div class="avatar-width">
@@ -168,12 +161,11 @@
 import { passwordRequirements } from 'src/boot/globals.js';
 import PasswordCheck from 'components/PasswordCheck.vue';
 import CardUploadImage from 'components/CardUploadImage.vue';
-import QrcodeVue from 'qrcode.vue'
 
 export default {
     name: 'UserAccountSettings',
     components: {
-        PasswordCheck, CardUploadImage, QrcodeVue
+        PasswordCheck, CardUploadImage
     },
     
     emits: [

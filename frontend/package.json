@@ -21,7 +21,6 @@
         "dotenv": "^16.0.1",
         "events": "^3.3.0",
         "pinia": "^2.0.11",
-        "qrcode.vue": "^3.4.1",
         "quasar": "^2.6.0",
         "vue": "^3.0.0",
         "vue-cookieconsent": "^0.0.11",
