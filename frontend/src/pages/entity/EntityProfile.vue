@@ -6,7 +6,6 @@
         </template>
 
         <div class="avatar-width">
-            
             <!-- Make public -->
             <CardSimple 
                 title="Join our community" 
@@ -115,7 +114,7 @@
         <!-- SEO -->
         <div class="avatar-width">
             <!-- Geolocation -->
-            <CardSimple title="Location">
+            <CardSimple v-if="entity.location" title="Location">
                 <q-card-section>
                     <FormWrapper
                         buttonText="Update Location"

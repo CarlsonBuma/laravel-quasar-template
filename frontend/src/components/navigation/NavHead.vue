@@ -63,14 +63,14 @@
                     color="primary" square glossy text-color="white"
                     @click="$router.push('/user/dashboard')" 
                     icon="contacts" 
-                    label="My avatar" 
+                    label="My Avatar" 
                 />
                 <q-fab-action 
                     v-if="$user.access.tokens[$env.APP_ACCESS_COCKPIT]"
                     color="primary" square glossy text-color="white" 
                     @click="$router.push('/entity/dashboard')" 
                     icon="groups_3" 
-                    label="Business Cockpit" 
+                    label="My Cockpit" 
                 />
                 <q-fab-action 
                     color="primary" square glossy text-color="white"

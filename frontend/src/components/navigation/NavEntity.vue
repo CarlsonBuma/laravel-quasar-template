@@ -1,6 +1,6 @@
 <template>
     <q-toolbar>
-        <span>{{ title ?? 'My Cockpit' }}</span>
+        <span class="gt-xs">{{ title ?? 'My Cockpit' }}</span>
         <q-space />
         <q-tabs class="text-weight-regular" active-color="primary" shrink stretch>
             <q-route-tab to="/entity/dashboard" label="My Cockpit" />

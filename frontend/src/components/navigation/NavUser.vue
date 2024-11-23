@@ -1,7 +1,7 @@
 <template>
 
     <q-toolbar>
-        <span>{{ title ?? 'My Avatar' }}</span>
+        <span class="gt-xs">{{ title ?? 'My Avatar' }}</span>
         <q-space />
         <q-tabs class="text-weight-regular" active-color="primary" shrink stretch>
             <q-route-tab to="/user/dashboard" exact label="Dashboard" />
