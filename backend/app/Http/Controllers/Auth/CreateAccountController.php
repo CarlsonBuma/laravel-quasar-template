@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Exception;
 use App\Models\User;
-use App\Models\Entities;
+use App\Models\UserEntity;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,11 +13,9 @@ use Illuminate\Support\Facades\Hash;
 class CreateAccountController extends Controller
 {
     /**
-     ** Registration / Create Account
-     **  > Creates new User
-     **  > Create User Avatar
-     **  > Verified: Null
-     **  > Verification Request must be executed manually by user
+     * Registration / Create Account
+     *  > Creates new User
+     *  > Create user entity
      *
      * @param Request $request
      * @return void
@@ -43,7 +41,7 @@ class CreateAccountController extends Controller
                 'password' =>  Hash::make(Str::random(125))
             ])->id;
 
-            Entities::create([
+            UserEntity::create([
                 'user_id' => $userID,
             ]);
         } catch (Exception $e) {

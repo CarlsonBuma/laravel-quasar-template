@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\UserEntity;
 
 use Exception;
-use App\Models\Entities;
+use App\Models\UserEntity;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
@@ -24,7 +24,7 @@ class EntityProfileController extends Controller
     public function loadProfile() 
     {
         $renderedEntity = EntityCollection::render_user_entity(
-            Entities::where('user_id', Auth::id())->first(),
+            UserEntity::where('user_id', Auth::id())->first(),
         );
 
         return response()->json([
@@ -46,7 +46,7 @@ class EntityProfileController extends Controller
             'is_public' => ['required', 'boolean'],
         ]);
         
-        Entities::where('user_id', Auth::id())->update([
+        UserEntity::where('user_id', Auth::id())->update([
             'is_public' => (bool) $data['is_public'],
         ]);
 
@@ -71,7 +71,7 @@ class EntityProfileController extends Controller
         ]);
 
         // Process Avatar
-        $userEntity = Entities::where('user_id', Auth::id())->first();
+        $userEntity = UserEntity::where('user_id', Auth::id())->first();
         if(!$userEntity) throw new Exception('Entity does not exist.');
         $currentAvatarImageLink = $userEntity->avatar;
         if($data['avatar_delete']) {
@@ -84,6 +84,7 @@ class EntityProfileController extends Controller
             Storage::putFileAs('public/entity', $request->file('src'), $currentAvatarImageLink);
         }
 
+        // Add Link to image
         $userEntity->update([
             'avatar' => $currentAvatarImageLink,
         ]);
@@ -105,7 +106,7 @@ class EntityProfileController extends Controller
             'name' => ['required', 'string', 'max:255'],
         ]);
 
-        Entities::where('user_id', Auth::id())->update([
+        UserEntity::where('user_id', Auth::id())->update([
             'name' => $data['name'],
         ]);
 
@@ -126,7 +127,7 @@ class EntityProfileController extends Controller
             'about' => ['nullable', 'string', 'max:1999'],
         ]);
 
-        Entities::where('user_id', Auth::id())->update([
+        UserEntity::where('user_id', Auth::id())->update([
             'about' => $data['about'],
         ]);
 
@@ -149,7 +150,7 @@ class EntityProfileController extends Controller
         ]);
 
         $websiteSanitized = Modulate::sanitizeLink($data['website']);
-        Entities::where('user_id', Auth::id())->update([
+        UserEntity::where('user_id', Auth::id())->update([
             'website' => $websiteSanitized,
             'contact' => $data['contact'],
         ]);
@@ -177,7 +178,7 @@ class EntityProfileController extends Controller
             'tags' => ['nullable', 'array'],
         ]);
 
-        Entities::where('user_id', Auth::id())->update([
+        UserEntity::where('user_id', Auth::id())->update([
             'tags' => $data['tags'],
         ]);
 
@@ -207,7 +208,7 @@ class EntityProfileController extends Controller
         ]);
 
         $geolocation = new AppGeolocations();
-        Entities::where('user_id', Auth::id())->update([
+        UserEntity::where('user_id', Auth::id())->update([
             'location_id' => $geolocation->add_new_entry($data),
         ]);
 

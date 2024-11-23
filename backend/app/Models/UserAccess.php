@@ -23,7 +23,6 @@ class UserAccess extends Model
 
     protected $casts = [
         'expiration_date' => 'date:Y-m-d',
-        'created_at' => 'date:Y-m-d',
     ];
 
     public function belongs_to_user() {
@@ -32,9 +31,5 @@ class UserAccess extends Model
 
     public function belongs_to_transaction() {
         return $this->belongsTo(PaddleTransactions::class, 'transaction_id');
-    }
-
-    public function belongs_to_entity() {
-        return $this->belongsTo(Entities::class, 'entity_id');
     }
 }

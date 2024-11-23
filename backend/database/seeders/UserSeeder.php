@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Entities;
+use App\Models\UserEntity;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        Entities::create([
+        UserEntity::create([
             'user_id' => $userID,
         ]);
         
@@ -38,14 +38,14 @@ class UserSeeder extends Seeder
         for($x = 0; $x < 20; $x++) {
             $id = $userTable->insertGetId([
                 'name' => 'User' . $x,
-                'email' =>'user' . $x .'@admin.com',
+                'email' =>'user' . $x .'@user.com',
                 'email_verified_at' => now(),
                 'password' => Hash::make('test'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
 
-            Entities::create([
+            UserEntity::create([
                 'user_id' => $id,
             ]);
         }

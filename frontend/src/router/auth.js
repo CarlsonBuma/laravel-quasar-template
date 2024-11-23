@@ -2,6 +2,8 @@
 import store from "src/stores/user.js";
 
 const routesAuth = [
+    
+    // User account
     {
         path: "/account/access",
         name: "UserAccess",

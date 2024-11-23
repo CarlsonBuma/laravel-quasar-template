@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\Models\Admins;
-use App\Models\Entities;
+use App\Models\UserEntity;
 use App\Models\PaddleTransactions;
 use Laravel\Passport\HasApiTokens;
 use App\Models\PaddleSubscriptions;
@@ -38,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function has_entity() {
-        return $this->hasOne(Entities::class, 'user_id');
+        return $this->hasOne(UserEntity::class, 'user_id');
     }
 
     public function has_subsciptions() {

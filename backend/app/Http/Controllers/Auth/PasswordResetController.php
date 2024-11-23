@@ -17,9 +17,9 @@ use Illuminate\Validation\Rules\Password;
 class PasswordResetController extends Controller
 {
     /**
-     ** Send Reset Email
-     **  > Generate URL, with Token 
-     **  > Send verification link to new email
+     * Send Reset Email
+     *  > Generate URL, with Token 
+     *  > Send verification link to new email
      *
      * @param Request $request
      * @return void
@@ -61,10 +61,10 @@ class PasswordResetController extends Controller
     }
 
     /**
-     ** Create new User Passwort
-     **  > Check Password Requirements
-     **  > Validate URL & Token
-     **  > Update current Password (hashed)
+     * Create new user passwort
+     *  > Validate URL & Token
+     *  > Update current password (hashed)
+     *  > Login
      *
      * @param Request $request
      * @return void

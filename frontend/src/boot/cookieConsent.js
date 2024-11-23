@@ -1,36 +1,22 @@
 'use strict';
 import 'vue-cookieconsent/vendor/cookieconsent.css';
 
-/* *************************************************************
+/** 
  * GDPR: Cookie Consent
  *  > https://github.com/eyecatchup/vue-cookieconsent
  *  > https://github.com/orestbida/cookieconsent
- *      > Enter Consent-Options
- *          > Enter Analytics Scripts in "onAccept()"
+ *      > Define Consent-Options
+ *      > Enter Analytics Scripts in "onAccept()"
  *      > Init consentOptions in App.js
- *  CHECK: Console > Anwendung > Cookies
- * ************************************************************
- * ************************************************************
- * RunCookies: Implement Optional Cookies in Client
- *  > According Providers, such as Google Tags, Bing UET, etc.
-************************************************************* */
-const runCookies = () => {
-    // (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    // new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    // j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    // 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    // })(window,document,'script','dataLayer','GTM-ID');
-}
-
+ */
 const consentOptions = {
     autorun: true,
     current_lang: 'en',
     autoclear_cookies: true,                   // default: false
     page_scripts: true,                        // default: false
-
+    auto_language: 'browser',                  // default: null; could also be 'browser' or 'document'
     // mode: 'opt-in'                          // default: 'opt-in'; value: 'opt-in' or 'opt-out'
     // delay: 0,                               // default: 0
-    // auto_language: null                     // default: null; could also be 'browser' or 'document'
     // autorun: true,                          // default: true
     // force_consent: false,                   // default: false
     // hide_from_bots: false,                  // default: false
@@ -54,13 +40,17 @@ const consentOptions = {
 
     /** Process consent on accept */
     onAccept: function (cookie) {
-        let allowAnalytics = false;
+        let allowOptionalAnalytics = false;
         cookie.level.forEach((level) => {
-            if(level === 'analytics') allowAnalytics = true;
+            if(level === 'analytics') 
+                allowOptionalAnalytics = true;
         });
 
-        if(!allowAnalytics) return;
-        runCookies();
+        if(!allowOptionalAnalytics) return;
+        
+        //****************************
+        // Add analytic scripts here
+        //****************************
     },
 
     /** Edit Content here */

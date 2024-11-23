@@ -104,8 +104,6 @@ export default {
                         response.data.access.access_cockpit
                     );
                 }
-
-                console.log(this.$user)
                 
                 // Redirect if requested
                 this.$toast.success('Session started.')

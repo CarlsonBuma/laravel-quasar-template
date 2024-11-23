@@ -10,12 +10,12 @@ class PaddlePriceHandler
     public $price = null;
 
     /**
-     * Update / create price by webhook
+     * Update / create price by webhook (see "/Listeners/PaddleWebhookListener")
      * https://developer.paddle.com/webhooks/overview
      * 
      **Note: Prices are set within Paddle Cockpit
      * Make sure, you define price and 'custom_data' accordingly
-     *  > 'access_token': Defines app / features access
+     *  > 'access_token' (required): Defines app / features access
      *  > 'duration_months': Defines period of current access
      *      > overwritten, by subscription.billing_period.ends_at
      * 

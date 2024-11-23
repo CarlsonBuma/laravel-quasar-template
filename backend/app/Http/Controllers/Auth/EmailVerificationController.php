@@ -68,6 +68,7 @@ class EmailVerificationController extends Controller
      *  > Validate URL & Token
      *  > Check if transfer-email is unique
      *  > Change email & update email_verified_at
+     *  > Login
      *
      * @param String $id
      * @param String $hash

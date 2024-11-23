@@ -14,7 +14,7 @@ use App\Http\Collections\UserCollection;
 class UserAuthController extends Controller
 {
     /**
-     * Authenticate user
+     * Default data for our Client-UI-Handling
      *
      * @return void
      */
@@ -77,7 +77,7 @@ class UserAuthController extends Controller
     }
 
     /**
-     * Remove Session
+     * Remove Session / Logout user
      *
      * @return void
      */

@@ -8,7 +8,6 @@ use App\Models\PaddleTransactions;
 use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
 use App\Models\PaddleSubscriptions;
 
-
 class PaddleTransactionHandler
 {
     // Access
@@ -58,7 +57,7 @@ class PaddleTransactionHandler
      * 
      **Note: Prices defines transaction-data, which are set within Paddle Cockpit
      * Make sure, you define price and 'custom_data' accordingly
-     *  > 'access_token': Defines app / features access
+     *  > 'access_token' (required): Defines app / features access
      *  > 'duration_months': Defines period of current access
      *      > overwritten, by subscription.billing_period.ends_at
      *
@@ -116,7 +115,6 @@ class PaddleTransactionHandler
 
     /**
      * Set subscription if initial transaction is type "subscription"
-     *  > There might be already a subscription existing (why-so-ever)
      *
      * @param [type] $message
      * @return void
@@ -198,7 +196,6 @@ class PaddleTransactionHandler
     /**
      * User-access: Calculate expiration date
      *  > We get expiration_date by Provider
-     *  > We need to extend current access
      *
      * @param integer $accessPeriod
      * @return string

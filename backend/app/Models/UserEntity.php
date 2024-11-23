@@ -9,11 +9,11 @@ use App\Models\AppGeolocations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Entities extends Model
+class UserEntity extends Model
 {
     use HasFactory;
 
-    protected $table = 'public.entities';
+    protected $table = 'public.user_entities';
 
     protected $fillable = [
         'user_id',          // Owner

@@ -25,6 +25,7 @@ const storeUser = defineStore({
 
         /**
          * Set user and access
+         * 
          * @param {*} userID 
          * @param {*} userName 
          * @param {*} userAvatarSrc 
@@ -43,7 +44,7 @@ const storeUser = defineStore({
             // Access
             this.access.user = true;
             this.access.admin = isAdmin
-            this.setUserAccess(
+            this.setAppAccess(
                 businessCockpit.access_token, 
                 businessCockpit.expiration_date
             );
@@ -51,11 +52,12 @@ const storeUser = defineStore({
 
         /**
          * Set app access
+         * 
          * @param {*} accessToken 
          * @param {*} expirationDate 
          * @returns 
          */
-        setUserAccess(accessToken = '', expirationDate = '') {
+        setAppAccess(accessToken = '', expirationDate = '') {
             if(!accessToken || !expirationDate) return;
             this.access.tokens[accessToken] = {
                 expiration_date: expirationDate,
@@ -65,9 +67,10 @@ const storeUser = defineStore({
 
         /**
          * Remove app access
-         * @param {*} accessToken 
+         * 
+         * @param {string} accessToken 
          */
-        removeAccess(accessToken) {
+        removeAppAccess(accessToken) {
             this.access.tokens[accessToken] = null;
         },
 
@@ -81,7 +84,8 @@ const storeUser = defineStore({
         /**
          * Set bearer token in local storage
          * After successful login
-         * @param {*} sessionToken 
+         * 
+         * @param {string} sessionToken 
          */
         setBearerToken(sessionToken) {
             LocalStorage.set(process.env.SESSION_NAME, sessionToken)
@@ -89,6 +93,7 @@ const storeUser = defineStore({
 
         /**
          * Check current session
+         * 
          * @returns boolean
          */
         checkBearerTokenSet() {
@@ -115,7 +120,7 @@ const storeUser = defineStore({
         },
         
         /**
-         * Remoce session
+         * Remove session
          */
         removeSession() {
             axios.defaults.headers.common['Authorization'] = '';

@@ -3,13 +3,13 @@
     <q-infinite-scroll 
         :disable="disable"
         @load="(index, done) => onLoadRef(index, done)" 
-        :offset="1220"
+        :offset="scrollOffset"
     >
         <slot />
 
         <!-- Loading -->
-        <div class="row justify-center">
-            <LoadingData v-if="loading" text="Loading data..." />
+        <div v-if="loading" class="row justify-center">
+            <LoadingData text="Loading data..." />
         </div>
     </q-infinite-scroll>
     
@@ -35,12 +35,14 @@ export default {
     },
 
     setup (props, context) {
+        const scrollOffset = 1220;      // Trigger load event
         const scrollTargetRef = ref(null)
         const onLoadRef =  (index, done) => {
             context.emit('load')
             done();
         }
         return {
+            scrollOffset,
             scrollTargetRef,
             onLoadRef
         };

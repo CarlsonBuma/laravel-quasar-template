@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Exception;
 use Illuminate\Http\Request;
 
 
@@ -57,7 +58,7 @@ class PaddleWebhookVerification
             if(hash_equals($calculatedSignature, $receivedSignature)) {
                 return $next($request);
             }
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return response()->json([
                 'message' => 'Webhook verification error.',
             ], 500);

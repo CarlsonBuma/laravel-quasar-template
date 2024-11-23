@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
 use Illuminate\Support\Facades\DB;
 use App\Mail\SendEmailVerification;
-use App\Models\PaddleSubscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,10 +18,11 @@ use Illuminate\Validation\Rules\Password;
 class UserTransferController extends Controller
 {
     /**
-     ** Transfer Account to new Emailadress
+     * Transfer Account to new Emailadress
      *  > Before changing email, new user has to verify his new email adress
      *  > Old user is still able to undone its transfer, by verifying its old email again
-     *  > Check if active Subscriptions are assigend to account
+     *      > See "/EmailVerificationController"
+     *  > Check if active Subscriptions are assigend to account (Middleware)
      *
      * @param Request $request
      * @return void
@@ -75,7 +75,7 @@ class UserTransferController extends Controller
     }
 
     /**
-     ** Verify Email transfer
+     * Verify Email transfer
      *  > Validate URL & Token
      *  > New Email must be unique
      *  > Change email & update email_verified_at
@@ -109,9 +109,9 @@ class UserTransferController extends Controller
                 'token' => $token
             ])->first();
 
-            // Validate transfer email
+            // Validate new email
             if(!$user) throw new Exception('Invalid verification key.');
-            if(User::where('email', $transfer)->first()) {
+            if(User::where('email', $transfer)->exists()) {
                 $user->email_verified_at = now();
                 $user->save();
                 throw new Exception('We are sorry, email already exists! Please contact previous owner.');

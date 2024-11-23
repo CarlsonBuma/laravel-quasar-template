@@ -2,21 +2,21 @@
 import { Loading, QSpinnerGears, Notify } from 'quasar';
 import store from "src/stores/user.js";
 
-/* ***********************************************
+/**
  * Request Handling
- *  > Constructor
- *      > Default Attributes
- *      > Custom ErrorHandling
- *  > Loading, waiting for response
- *  > Success, response is successful
- *  > Error Handling, there was an error
- ************************************************ */
+ *  > loading(): waiting for response
+ *  > done(): close waiting notification
+ *  > success(): response is successful
+ *  > error(): there was an error
+ *      > UI Error vs. Server Error 
+ *      > errorHandling(): process accordingly     
+ */
 export class ResponseHandler {
 
     /**
-     ** Hanlding Server Response
-     **     > Default Attributes
-     **     > ErrorHandling 
+     * Hanlding Server Response
+     *  > Default Attributes
+     *  > ErrorHandling 
      * @param {Object} router 
      * @param {Object} app 
      */
@@ -37,8 +37,8 @@ export class ResponseHandler {
     }
 
     /**
-     ** Error Server Responses are managed here
-     ** According to Server Middleware-Definitions
+     * Error Server Responses are managed here
+     * According to Server Middleware-Definitions
      *
      * @param {Object} serverResponse 
      * @param {Object} router 
@@ -67,8 +67,8 @@ export class ResponseHandler {
 
         // No access to Service / Subscription
         else if(serverResponse.status === 401 && serverResponse.data.status === 'no_access_to_service') {
-            store().removeAccess(serverResponse.data.access_token);
-            router.push('/services');
+            store().removeAppAccess(serverResponse.data.access_token);
+            router.push('/');
             throw serverResponse.data.message 
                 ? serverResponse.data.message 
                 : 'Your subscription is expired.'
@@ -128,9 +128,10 @@ export class ResponseHandler {
     }
 
     /**
-     * Show Error by Notification
-     *  > String (as Customerror) vs Object (as Serverresponse)
-     *  > Handle Response Error Status
+     * Handle error
+     *  > String (UI error) 
+     *  > Object (Serverresponse)
+     *      > Handle Response Error Status
      *
      * @param {*} responseError String | Object
      * @return { String } 
@@ -140,10 +141,11 @@ export class ResponseHandler {
             this.loading = false;
             this.done();
 
-            // String
+            // UI error
             if (typeof responseError === 'string') 
                 this.message = responseError
-            // Error response by processing request
+            
+            // Error by response
             else if (typeof responseError === 'object') {
                 // Error response by server
                 if(responseError.data) {
@@ -154,24 +156,24 @@ export class ResponseHandler {
                             ? responseError.status
                             : this.defaultErrorMessage;
                 } 
+                
                 // Error response by client
                 else if (responseError.message) {
                     this.message = responseError.message;
                 }
             }
         } catch (error) {
-            // Only Client or Custom Message
-            this.message = error.message ? error.message : error;
-        } finally {                                                 // Show Notification
+            this.message = error.message ?? error;
+        } finally {
             try {
                 if(this.notify) this.notify();
                 this.showNotify(this.message, 'negative', this.durationError)
             } catch (error) {
-                console.log('notification.error', error)
+                console.log('response.handling.error', error)
             }
         }
         
-        console.log('Error Response:', this.message)
+        console.log('response.error', this.message)
         return this.message;
     }
 }

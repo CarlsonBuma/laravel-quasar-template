@@ -33,7 +33,7 @@ export default {
                     context.emit('loaded', PaddleCheckout.value)
                 }
             } catch (error) {
-                console.error('Error initializing Paddle:', error);
+                console.error('error.initializing.paddle', error);
             }
         });
 

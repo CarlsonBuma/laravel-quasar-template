@@ -56,14 +56,11 @@ class UserAccessController extends Controller
     }
 
     /**
-     ** Initialize user's client checkout
+     * Initialize user's client checkout
      *  > Starting Point of whole user-access process
-     *  > "$transaction_token" is required for further validation of client's checkout
-     *      > Transaction types: "one-time purchases" or "subscription"-start
-     * 
-     * Next step: 
-     * Wait for verifying client transaction, by webhook
-     *  > See WebhookListeners: "/Listeners/PaddleWebhookListener"
+     *      > "$transaction_token" is assigned to user, for further webhook verifications
+     *      > Further verification, will be handled by "/Listeners/PaddleWebhookListener" 
+     *  > Transaction types: "one-time purchases" or "subscription"-start
      *
      * @param Request $request
      * @return void
@@ -89,8 +86,8 @@ class UserAccessController extends Controller
     }
 
     /**
-     * Verify user transaction
-     *  > Check if transaction has been already verified by webhook
+     * Verify user transaction by "$transaction_token"
+     *  > Check if transaction has been already verified by webhook successfully
      *
      * @param Request $request
      * @return void

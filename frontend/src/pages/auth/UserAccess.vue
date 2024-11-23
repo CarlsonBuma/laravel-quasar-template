@@ -133,7 +133,7 @@ export default {
 
                     // Check new access set
                     if(response.data.access_token) {
-                        this.$user.setUserAccess(
+                        this.$user.setAppAccess(
                             response.data.access_token, 
                             response.data.expiration_date
                         );
