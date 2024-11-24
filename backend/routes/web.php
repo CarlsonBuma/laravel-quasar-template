@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('/access/webhook', [PaddleWebhookListener::class, 'handleWebhook'])
-    ->middleware('paddle_webhook_verification')
+    ->middleware('paddle_webhook_verified')
     ->name('access.webhook');
     
 Route::view('/{any}', 'welcome')

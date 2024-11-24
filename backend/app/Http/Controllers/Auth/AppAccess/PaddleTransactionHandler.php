@@ -119,7 +119,7 @@ class PaddleTransactionHandler
      * @param [type] $message
      * @return void
      */
-    public function initializeSubscriptionByTransaction($message = 'subscription.initialized'): void
+    public function createSubscriptionByTransaction($message = 'subscription.initialized'): void
     {
         if(!$this->subscription_token || !$this->user_id) return;
         $this->subscription = PaddleSubscriptions::firstOrCreate([

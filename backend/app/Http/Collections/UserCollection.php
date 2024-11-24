@@ -25,7 +25,6 @@ abstract class UserCollection
                 ? URL::to(Storage::url('user')) . '/' . $user->avatar
                 : '',
             'email' => $user->email,
-            'is_public' => $user->is_public
         ];
     }
 

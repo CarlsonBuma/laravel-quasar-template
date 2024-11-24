@@ -99,7 +99,7 @@ class PaddleWebhookListener extends Controller
             // Entry has been initialized recently through Client and not verified by server yet
             if(!$PaddleTransaction->transaction) return;
             else if($PaddleTransaction->transaction && $PaddleTransaction->subscription_token)
-                $PaddleTransaction->initializeSubscriptionByTransaction('webhook.subscription.verified');
+                $PaddleTransaction->createSubscriptionByTransaction('webhook.subscription.verified');
 
             // Process Webhook
             $PaddleTransaction->completeTransaction('webhook.transaction.verified');

@@ -10,12 +10,12 @@ return new class extends Migration
     {
         Schema::create('paddle_transactions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('subscription_id')->nullable();
             $table->string('transaction_token', 255)->unique();
-            $table->string('customer_token', 255)->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
 
             // Billing details
+            $table->string('customer_token', 255)->nullable();
+            $table->unsignedBigInteger('subscription_id')->nullable();
             $table->unsignedBigInteger('price_id')->nullable();
             $table->unsignedBigInteger('quantity')->default(1);
             $table->decimal('total', 10, 2)->default(0.00);

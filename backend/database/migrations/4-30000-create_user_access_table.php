@@ -12,10 +12,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('transaction_id')->nullable();
-            $table->boolean('is_active')->default(false);
             $table->string('access_token')->nullable();
             $table->unsignedBigInteger('quantity')->default(1);
             $table->date('expiration_date')->nullable();
+            $table->boolean('is_active')->default(false);
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')

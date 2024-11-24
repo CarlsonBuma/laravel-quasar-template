@@ -10,9 +10,11 @@ return new class extends Migration
     {
         Schema::create('paddle_subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('price_id')->nullable();
             $table->string('subscription_token', 255)->unique();
+            $table->unsignedBigInteger('user_id')->nullable();
+            
+            // Subscription details
+            $table->unsignedBigInteger('price_id')->nullable();
             $table->date('started_at')->nullable();
             $table->date('canceled_at')->nullable();
             $table->date('paused_at')->nullable();

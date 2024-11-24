@@ -26,10 +26,10 @@ Route::middleware(['auth:api', 'email_verified'])->group(function () {
     // Process Paddle Client Checkout
     // User requests access by paddel's provided attribute "$access_token" 
     // Verify client access, by preventing Client Manipulation by user
-    Route::post('/set-user-client-access', [UserAccessController::class, 'initializeClientCheckoutTransaction'])
-        ->name('set.user.client.access');
-    Route::post('/verify-user-client-access', [UserAccessController::class, 'verifyUserTransaction'])
-        ->name('verify.user.client.access');  
+    Route::post('/initialize-user-checkout', [UserAccessController::class, 'initializeClientCheckoutTransaction'])
+        ->name('initialize.user.checkout');
+    Route::post('/verify-user-checkout', [UserAccessController::class, 'verifyUserTransaction'])
+        ->name('verify.user.checkout');  
     
     // Cancel Paddle subscription
     // Allows user to cancel it's paddle-subscription
@@ -69,21 +69,21 @@ Route::post('/create-account', [CreateAccountController::class, 'register'])
 
 // Verify Email
 Route::post('/email-verification-request', [EmailVerificationController::class, 'sendToken'])
-    ->middleware(['throttle:2,1'])
+    ->middleware(['throttle:3,1'])
     ->name('email.verification.request');
 Route::put('/email-verification/{email}/{token}', [EmailVerificationController::class, 'verifyToken'])
-    ->middleware(['throttle:6,1'])
+    ->middleware(['throttle:5,1'])
     ->name('email.verification');
 
 // Reset Password
 Route::post('/password-reset-request', [PasswordResetController::class, 'sendToken'])
-    ->middleware(['throttle:2,1'])
+    ->middleware(['throttle:3,1'])
     ->name('password.reset.request');
 Route::put('/password-reset/{email}/{token}', [PasswordResetController::class, 'verifyToken'])
-    ->middleware(['throttle:6,1'])
+    ->middleware(['throttle:5,1'])
     ->name('password.reset');
 
 // Transfer Account
 Route::put('/transfer-account/{email}/{token}/{transfer}', [UserTransferController::class, 'verifyEmailTransfer'])
-    ->middleware(['throttle:6,1'])
+    ->middleware(['throttle:5,1'])
     ->name('transfer.account');

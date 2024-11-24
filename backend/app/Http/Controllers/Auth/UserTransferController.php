@@ -131,7 +131,7 @@ class UserTransferController extends Controller
 
         return response()->json([
             'token' => $user->createToken('user')->accessToken,
-            'message' => 'Account transfered to new email.',
+            'message' => 'New email verified.',
         ], 200);
     }
 }

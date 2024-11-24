@@ -72,7 +72,7 @@ class Kernel extends HttpKernel
         'access_cockpit' => \App\Http\Middleware\AppAccessCockpit::class,
 
         // Paddle Management
-        'paddle_webhook_verification' => \App\Http\Middleware\PaddleWebhookVerification::class,
+        'paddle_webhook_verified' => \App\Http\Middleware\PaddleWebhookVerification::class,
         'paddle_no_active_subscriptions' => \App\Http\Middleware\PaddleNoActiveSubscriptions::class,
     ];
 }

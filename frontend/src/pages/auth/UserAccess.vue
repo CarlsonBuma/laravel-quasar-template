@@ -107,7 +107,7 @@ export default {
                 if(data?.name === 'checkout.completed') {
                     const transactionID = data.data?.transaction_id;
                     const customerID = data.data?.customer?.id;
-                    await this.$axios.post('set-user-client-access', {
+                    await this.$axios.post('initialize-user-checkout', {
                         transaction_token: transactionID,
                         customer_token: customerID
                     });
@@ -127,7 +127,7 @@ export default {
             const intervalId = setInterval(async () => {
                 try {
                     // Request
-                    const response = await this.$axios.post('verify-user-client-access', {
+                    const response = await this.$axios.post('verify-user-checkout', {
                         'transaction_token': transactionID,
                     });
 
