@@ -8,6 +8,23 @@ use App\Models\UserAccess;
 class AppAccessHandler
 {
     /**
+     * Check current access
+     *
+     * @param integer $accessID
+     * @return object|null
+     */
+    static public function checkAccessByID(int $accessID): ?object
+    {
+        return UserAccess::where([
+                'id' => $accessID,
+                'is_active' => true
+            ])->where('quantity', '>=', 1)
+            ->whereDate('expiration_date', '>=', date('Y-m-d'))
+            ->latest('expiration_date')
+            ->first();
+    }
+
+    /**
      * Get latest access, by '$accessToken'
      *
      * @param integer $userID

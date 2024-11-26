@@ -18,7 +18,7 @@ Website: https://quasar.dev/introduction-to-quasar
     1. Setup Paddle Account
         - https://developer.paddle.com/paddlejs/overview
     2. Setup .env File
-    4. Implement '@/components/PaddleSubscription.vue'
+    4. Implement '@/components/PaddlePriceJS.vue'
     5. Handle PaddleJS according Logic
         - Prices and Tokens will be provided by our server
         - or define them manually in UI

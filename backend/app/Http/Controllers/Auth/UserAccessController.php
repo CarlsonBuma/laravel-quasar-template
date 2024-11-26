@@ -11,7 +11,7 @@ use App\Models\PaddleSubscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Exception\GuzzleException;
-use App\Http\Collections\UserAccessCollection;
+use App\Http\Collections\AccessCollection;
 use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
 use App\Http\Controllers\Auth\AppAccess\PaddleTransactionHandler;
 use App\Http\Controllers\Auth\AppAccess\PaddleSubscriptionHandler;
@@ -29,15 +29,24 @@ class UserAccessController extends Controller
         $prices = PaddlePrices::where('is_active', true)
             ->get()
             ->map(function($price) {
-                return UserAccessCollection::renderPrice($price, Auth::id());
+                return AccessCollection::renderUserPrice($price, Auth::id());
+            });
+
+        $userTransactions = PaddleTransactions::where('user_id', Auth::id())
+            ->orderBy('updated_at', 'desc')
+            ->get()
+            ->map(function($transaction) {
+                return AccessCollection::renderUserTransactions($transaction);
             });
 
         return response()->json([
             'prices' => $prices,
-            'transactions' => UserAccessCollection::renderUserTransactions(Auth::id()),
+            'transactions' => $userTransactions,
             'message' => 'Transactions loaded.',
         ], 200);
     }
+
+    
 
     /**
      * Check user access by "$access_token"

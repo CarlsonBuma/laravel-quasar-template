@@ -23,7 +23,7 @@
         </div>
         
         <!-- Paddle -->
-        <PaddleSubscription 
+        <PaddlePriceJS 
             @paddleEvents="(data) => paddleEventHandling(data)"
             @loaded="(PaddleCheckout) => this.Paddle = PaddleCheckout"
         />
@@ -33,14 +33,14 @@
 
 <script>
 import { ref } from 'vue';
-import PaddleSubscription from 'components/PaddleSubscription.vue';
+import PaddlePriceJS from 'components/PaddlePriceJS.vue';
 import PricesTable from './components/PricesTable.vue';
 import TransactionsTable from './components/TransactionsTable.vue';
 
 export default {
     name: 'UserAccess',
     components: {
-        PaddleSubscription, TransactionsTable, PricesTable
+        PaddlePriceJS, TransactionsTable, PricesTable
     },
 
     setup() {
@@ -48,6 +48,8 @@ export default {
         // Defaults
         const loading = ref(true);
         const showDialog = ref(false);
+        const intervalRequests = ref(0);
+        const intervalRequestLimit = 9;
 
         // Paddle Checkout
         const Paddle = ref(null);
@@ -68,6 +70,8 @@ export default {
         return {
             loading,
             showDialog,
+            intervalRequests,
+            intervalRequestLimit,
             openPaymentGateway,
             Paddle
         };
@@ -127,6 +131,7 @@ export default {
             const intervalId = setInterval(async () => {
                 try {
                     // Request
+                    this.intervalRequests++;
                     const response = await this.$axios.post('verify-user-checkout', {
                         'transaction_token': transactionID,
                     });
@@ -148,6 +153,12 @@ export default {
                         this.$toast.success(response.data.message);
                         clearInterval(intervalId);
                     }
+
+                    // Max amount of request
+                    if(this.intervalRequests > this.intervalRequestLimit) 
+                        clearInterval(intervalId)
+
+                    console.log('interval')
                 } catch (error) {
                     clearInterval(intervalId);
                     this.$toast.error(error.response ?? error)

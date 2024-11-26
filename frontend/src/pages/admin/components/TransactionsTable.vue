@@ -1,0 +1,118 @@
+<template>
+    
+    <q-table
+        flat
+        :rows="entries"
+        :columns="columnsTransaction"
+        :title="title"
+        row-key="id"
+        :pagination="{
+            rowsPerPage: 7
+        }"
+    >
+        <template v-slot:body="props">
+            <q-tr :props="props">
+                <q-td key="id" :props="props">
+                    {{ props.rowIndex + 1 }}
+                </q-td>
+                <q-td key="name" :props="props">
+                    {{ props.row.price?.name ?? 'No price assigned.' }}<br>
+                    <span class="text-caption">{{ props.row.price?.access_token }}</span>
+                </q-td>
+                <q-td key="quantity" :props="props">
+                    {{ props.row.quantity }}
+                </q-td>
+                <q-td key="price" :props="props">
+                    {{ props.row.currency_code + ' ' + props.row.total }}
+                </q-td>
+                <q-td key="tax" :props="props">
+                    {{ props.row.tax }}
+                </q-td>
+                <q-td key="active" :props="props">
+                    <q-icon name="verified" :color="props.row.access ? 'green' : 'grey'" />
+                </q-td>
+                <q-td key="status" :props="props">
+                    {{ props.row.status }}<br>
+                    <span class="text-caption">{{ props.row.message }}</span>
+                </q-td>
+                <q-td key="expiration_date" :props="props">
+                    {{ props.row.access?.expiration_date ?? '-' }}
+                </q-td>
+                <q-td key="updated_at" :props="props">
+                    {{ props.row.updated_at }}
+                </q-td>
+            </q-tr>
+        </template>
+    </q-table>
+
+</template>
+
+<script>
+import { date } from 'quasar';
+
+export default {
+    name: 'TransactionsTable',
+
+    props: {
+        title: String,
+        entries: Array
+    },
+
+    setup() {
+        const columnsTransaction = [
+            {
+                name: 'id',
+                label: 'ID',
+                field: 'id',
+                align: 'left',
+            }, {
+                name: 'name',
+                label: 'Product',
+                field: 'name',
+                align: 'left',
+                sortable: false
+            }, {
+                name: 'quantity',
+                label: 'Quantity',
+                field: 'quantity',
+                align: 'left',
+            }, {
+                name: 'price',
+                label: 'Total (incl. Tax)',
+                field: 'price',
+                align: 'left',
+            }, {
+                name: 'tax',
+                label: 'Tax',
+                field: 'tax',
+                align: 'left',
+            }, {
+                name: 'active',
+                label: 'has access',
+                field: 'active',
+            }, {
+                name: 'status',
+                label: 'Status',
+                field: 'status',
+                align: 'left',
+            }, {
+                name: 'expiration_date',
+                label: 'Expiration date',
+                field: 'expiration_date',
+                align: 'left',
+                sortable: false
+            }, {
+                name: 'updated_at',
+                label: 'Latest update',
+                field: 'updated_at',
+                align: 'left',
+            },
+        ];
+
+        return {
+            date,
+            columnsTransaction
+        };
+    },
+};
+</script>

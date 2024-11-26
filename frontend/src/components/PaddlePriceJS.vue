@@ -7,7 +7,7 @@ import { ref, onMounted } from 'vue';
 import { initializePaddle } from '@paddle/paddle-js';
 
 export default {
-    name: 'PaddleSubscription',
+    name: 'PaddlePriceJS',
 
     emits: [
         'paddleEvents',

@@ -11,9 +11,17 @@ const routesBackpanel = [
             else next();
         }
     }, {
+        path: '/admin/access',
+        name: 'AccessManagement',
+        component: () => import('src/pages/admin/AccessManagement.vue'),
+        beforeEnter: (to, from, next) => {
+            if (!store().access.admin) next('/');
+            else next();
+        }
+    }, {
         path: '/admin/newsfeed',
-        name: 'AdminNewsfeed',
-        component: () => import('src/pages/admin/AdminNewsfeed.vue'),
+        name: 'NewsfeedManagement',
+        component: () => import('src/pages/admin/NewsfeedManagement.vue'),
         beforeEnter: (to, from, next) => {
             if (!store().access.admin) next('/');
             else next();
