@@ -52,8 +52,4 @@ class User extends Authenticatable
     public function has_access() {
         return $this->hasMany(UserAccess::class, 'user_id');
     }
-
-    public function is_admin() {
-        return $this->hasOne(Admins::class, 'user_id');
-    }
 }

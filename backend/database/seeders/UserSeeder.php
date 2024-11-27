@@ -2,10 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\UserAccess;
 use App\Models\UserEntity;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Middleware\AppAccessAdmin;
+use App\Http\Controllers\Access\AccessHandler;
+use App\Http\Middleware\AppAccessCockpit;
 
 class UserSeeder extends Seeder
 {
@@ -13,7 +17,6 @@ class UserSeeder extends Seeder
     {
         $userTable = DB::table('users');
 
-        // Admins
         $userID = $userTable->insertGetId([
             'name' => 'Owner',
             'email' =>'admin@admin.com',
@@ -26,13 +29,25 @@ class UserSeeder extends Seeder
         UserEntity::create([
             'user_id' => $userID,
         ]);
-        
-        DB::table('admins')->insert([
-            'user_id' => $userID,
-            'role' =>'Owner',
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+
+        // Grant access
+        AccessHandler::addUserAccess(
+            $userID,
+            null,
+            AppAccessAdmin::getAccessToken(),
+            1000,
+            '2050-31-12',
+            'created.by.seeder'
+        );
+
+        AccessHandler::addUserAccess(
+            $userID,
+            null,
+            AppAccessCockpit::getAccessToken(),
+            1000,
+            '2050-31-12',
+            'created.by.seeder'
+        );
 
         // Normal User
         for($x = 0; $x < 20; $x++) {

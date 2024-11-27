@@ -105,11 +105,13 @@ class PaddleWebhookListener extends Controller
             $PaddleTransaction->completeTransaction('webhook.transaction.verified');
 
             // Add Access
-            AccessHandler::addUserAccessByTransaction(
-                $PaddleTransaction->transaction,
+            AccessHandler::addUserAccess(
+                $PaddleTransaction->transaction->user_id,
+                $PaddleTransaction->transaction->id,
                 $PaddleTransaction->access_token,
                 $PaddleTransaction->quantity,
                 $PaddleTransaction->expiration_date,
+                'created.by.webhook'
             );
 
             // Close transaction, after access granted

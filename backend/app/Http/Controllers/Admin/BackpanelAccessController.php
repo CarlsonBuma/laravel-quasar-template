@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\UserAccess;
 use App\Models\PaddlePrices;
 use Illuminate\Http\Request;
+use App\Models\PaddleTransactions;
 use App\Http\Controllers\Controller;
 use App\Http\Collections\AccessCollection;
-use App\Models\PaddleTransactions;
-use App\Models\UserAccess;
+use App\Http\Controllers\Access\AccessHandler;
 
 class BackpanelAccessController extends Controller
 {
@@ -106,15 +107,14 @@ class BackpanelAccessController extends Controller
         ]);
 
         if($user = User::where('email', $data['email'])->first()) {
-            $access = UserAccess::create([
-                'user_id' => $user->id,
-                'is_active' => true,
-                'access_token' => $data['access_token'],
-                'quantity' => $data['quantity'] ?? 0,
-                'expiration_date' => $data['expiration_date'],
-                'status' => 'completed',
-                'message' => 'created.by.admin'
-            ]);
+            $access = AccessHandler::addUserAccess(
+                $user->id,
+                null,
+                $data['access_token'],
+                $data['quantity'] ?? 0,
+                $data['expiration_date'],
+                'created.by.webhook'
+            );
             
             return response()->json([
                 'access' => AccessCollection::renderUserAccess($access),

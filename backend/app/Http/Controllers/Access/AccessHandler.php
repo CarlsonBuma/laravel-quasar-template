@@ -8,6 +8,34 @@ use App\Models\UserAccess;
 class AccessHandler
 {
     /**
+     * Add user app-access, by provided '$access_token'
+     *  > Flag $access_token: Defines access to app-features
+     *  > Flag $quantity: Undefined (add logic)
+     *  > Flag $expiration_date: End of access
+     *
+     * @param integer $userID
+     * @param integer|null $transactionID
+     * @param string $accessToken
+     * @param integer $quantity
+     * @param string $expirationDate
+     * @param string $message
+     * @return object
+     */
+    static public function addUserAccess(int $userID, int $transactionID = null, string $accessToken, int $quantity, string $expirationDate, string $message): object
+    {
+        return UserAccess::create([
+            'user_id' => $userID,
+            'transaction_id' => $transactionID,
+            'access_token' => $accessToken,
+            'quantity' => $quantity,
+            'expiration_date' => $expirationDate,
+            'is_active' => true,
+            'status' => 'access.granted',
+            'message' => $message
+        ]);
+    }
+    
+    /**
      * Check current access
      *
      * @param integer $accessID
@@ -83,30 +111,6 @@ class AccessHandler
             ->whereDate('expiration_date', '>=', date('Y-m-d'))
             ->latest('expiration_date')
             ->first();
-    }
-
-    /**
-     * Add user app-access, by provided '$access_token'
-     *  > Flag $access_token: Defines access to app-features
-     *  > Flag $quantity: Undefined (add logic)
-     *  > Flag $expiration_date: End of access
-     *
-     * @param object $transaction
-     * @param string $accessToken
-     * @param integer $quantity
-     * @param string $expirationDate
-     * @return void
-     */
-    static public function addUserAccessByTransaction(object $transaction, string $accessToken, int $quantity, string $expirationDate): void
-    {
-        UserAccess::create([
-            'transaction_id' => $transaction->id,
-            'user_id' => $transaction->user_id,
-            'access_token' => $accessToken,
-            'quantity' => $quantity,
-            'expiration_date' => $expirationDate,
-            'is_active' => true,
-        ]);
     }
 
     /**
