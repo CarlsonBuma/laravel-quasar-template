@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Collections\UserCollection;
-use App\Http\Controllers\Access\UserAccessHandler;
+use App\Http\Controllers\Access\AccessHandler;
 
 class UserAuthController extends Controller
 {
@@ -21,7 +21,7 @@ class UserAuthController extends Controller
     public function authUser()
     {
         $user = Auth::user();
-        $userAccess = UserAccessHandler::getLatestActiveAccesses($user->id);
+        $userAccess = AccessHandler::getLatestUserAccesses($user->id);
         $userAccess = $userAccess->map(function($access) {
             return UserCollection::render_user_access($access);
         });

@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Access\UserAccessHandler;
+use App\Http\Controllers\Access\AccessHandler;
 
 class AppAccessCockpit
 {
@@ -23,7 +23,7 @@ class AppAccessCockpit
     public function handle(Request $request, Closure $next)
     {   
         $accessToken = SELF::getAccessToken();
-        if(UserAccessHandler::checkUserAccessByToken(Auth::id(), $accessToken)) 
+        if(AccessHandler::checkUserAccessByToken(Auth::id(), $accessToken)) 
             return $next($request);   
 
         return response()->json([

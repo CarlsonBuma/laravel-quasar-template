@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Access;
 
 use Exception;
 use GuzzleHttp\Client;
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Exception\GuzzleException;
 use App\Http\Collections\AccessCollection;
 use App\Http\Collections\UserCollection;
-use App\Http\Controllers\Access\UserAccessHandler;
+use App\Http\Controllers\Access\AccessHandler;
 use App\Http\Controllers\Access\PaddleTransactionHandler;
 use App\Http\Controllers\Access\PaddleSubscriptionHandler;
 
@@ -55,7 +55,7 @@ class UserAccessController extends Controller
      */
     public function checkUserAccess(string $access_token)
     {
-        $userAccess = UserAccessHandler::checkUserAccessByToken(Auth::id(), $access_token);
+        $userAccess = AccessHandler::checkUserAccessByToken(Auth::id(), $access_token);
         return response()->json([
             'access' => $userAccess,
             'access_token' => $access_token,
@@ -119,7 +119,7 @@ class UserAccessController extends Controller
         }
         
         // Check if transaction has been verified by webhook
-        if($userAccess = UserAccessHandler::checkUserAccessByTransactionID(Auth::id(), $userTransaction->id)) {
+        if($userAccess = AccessHandler::checkUserAccessByTransactionID(Auth::id(), $userTransaction->id)) {
             return response()->json([
                 'access' => UserCollection::render_user_access($userAccess),
                 'price_id' => $userTransaction->price_id,

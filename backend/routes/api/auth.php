@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\UserTransferController;
 use App\Http\Controllers\Auth\CreateAccountController;
 use App\Http\Controllers\Auth\PasswordResetController;
 use App\Http\Controllers\Auth\EmailVerificationController;
-use App\Http\Controllers\Auth\UserAccessController;
+use App\Http\Controllers\Access\UserAccessController;
 
 Route::middleware(['auth:api', 'email_verified'])->group(function () {
 

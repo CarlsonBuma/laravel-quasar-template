@@ -4,7 +4,7 @@ namespace App\Http\Collections;
 
 use Carbon\Carbon;
 use App\Models\PaddleSubscriptions;
-use App\Http\Controllers\Access\UserAccessHandler;
+use App\Http\Controllers\Access\AccessHandler;
 
 abstract class AccessCollection
 {   
@@ -26,7 +26,7 @@ abstract class AccessCollection
             'status' => $access->status,
             'message' => $access->message,
             'price' => $access->belongs_to_transaction?->belongs_to_price,
-            'access' => UserAccessHandler::checkAccessByID($access->id),
+            'access' => AccessHandler::checkAccessByID($access->id),
         ];
     }
 
@@ -54,7 +54,7 @@ abstract class AccessCollection
             'trial_frequency' => $price->trial_frequency,
             'duration_months' => $price->duration_months,
             'access_token' => $price->access_token,
-            'has_access' => UserAccessHandler::checkUserAccessByToken($userID, $price->access_token),
+            'has_access' => AccessHandler::checkUserAccessByToken($userID, $price->access_token),
             'status' => $price->status,
             'message' => $price->message,
             'is_subscription' => $price->trial_interval && $price->trial_frequency,
@@ -91,7 +91,7 @@ abstract class AccessCollection
             'created_at' => Carbon::parse($transaction->created_at)->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::parse($transaction->updated_at)->format('Y-m-d H:i:s'),
             'price' => $price ? SELF::renderUserPrice($price, $transaction->user_id) : null,
-            'access' => $price ? UserAccessHandler::checkUserAccessByToken($transaction->user_id, $price->access_token) : null
+            'access' => $price ? AccessHandler::checkUserAccessByToken($transaction->user_id, $price->access_token) : null
         ];
     }
 }
