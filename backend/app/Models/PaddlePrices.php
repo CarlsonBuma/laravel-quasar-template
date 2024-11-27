@@ -18,6 +18,7 @@ class PaddlePrices extends Model
     protected $table = 'public.paddle_prices';
 
     protected $fillable = [
+        'is_active',
         'price_token',
         'product_token',
         'name',
@@ -31,9 +32,8 @@ class PaddlePrices extends Model
         'trial_interval',
         'trial_frequency',
         'access_token',
-        'duration_months',
-        'is_active',
-        'status',
+        'duration_months',       
+        'status',           // Active vs. archived
         'message',
     ];
 

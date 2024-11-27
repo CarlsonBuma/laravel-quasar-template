@@ -99,10 +99,17 @@ export default {
                         response.data.user.name, 
                         response.data.user.avatar, 
                         response.data.user.email, 
-                        response.data.user.is_public,
-                        response.data.access.is_admin,
-                        response.data.access.access_cockpit
                     );
+
+                    console.log(response.data)
+
+                    response.data.access.forEach(access => {
+                        this.$user.setAppAccess(
+                            access.access_token, 
+                            access.quantity, 
+                            access.expiration_date
+                        )
+                    })
                 }
                 
                 // Redirect if requested

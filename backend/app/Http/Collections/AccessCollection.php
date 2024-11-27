@@ -4,7 +4,7 @@ namespace App\Http\Collections;
 
 use Carbon\Carbon;
 use App\Models\PaddleSubscriptions;
-use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
+use App\Http\Controllers\Access\UserAccessHandler;
 
 abstract class AccessCollection
 {   
@@ -23,8 +23,10 @@ abstract class AccessCollection
             'access_token' => $access->access_token,
             'quantity' => $access->quantity,
             'expiration_date' => Carbon::parse($access->expiration_date)->format('Y-m-d'),
-            'price' => $access->belongs_to_transaction->belongs_to_price,
-            'access' => AppAccessHandler::checkAccessByID($access->id),
+            'status' => $access->status,
+            'message' => $access->message,
+            'price' => $access->belongs_to_transaction?->belongs_to_price,
+            'access' => UserAccessHandler::checkAccessByID($access->id),
         ];
     }
 
@@ -52,7 +54,9 @@ abstract class AccessCollection
             'trial_frequency' => $price->trial_frequency,
             'duration_months' => $price->duration_months,
             'access_token' => $price->access_token,
-            'has_access' => AppAccessHandler::checkUserAccessByToken($userID, $price->access_token),
+            'has_access' => UserAccessHandler::checkUserAccessByToken($userID, $price->access_token),
+            'status' => $price->status,
+            'message' => $price->message,
             'is_subscription' => $price->trial_interval && $price->trial_frequency,
             'has_active_subscription' => PaddleSubscriptions::where([
                     'user_id' => $userID,
@@ -87,7 +91,7 @@ abstract class AccessCollection
             'created_at' => Carbon::parse($transaction->created_at)->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::parse($transaction->updated_at)->format('Y-m-d H:i:s'),
             'price' => $price ? SELF::renderUserPrice($price, $transaction->user_id) : null,
-            'access' => $price ? AppAccessHandler::checkUserAccessByToken($transaction->user_id, $price->access_token) : null
+            'access' => $price ? UserAccessHandler::checkUserAccessByToken($transaction->user_id, $price->access_token) : null
         ];
     }
 }

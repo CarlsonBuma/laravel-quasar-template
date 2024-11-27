@@ -5,7 +5,7 @@ use App\Http\Controllers\Admin\BackpanelController;
 use App\Http\Controllers\Admin\AppReleasesController;
 use App\Http\Controllers\Admin\BackpanelAccessController;
 
-Route::middleware(['auth:api', 'email_verified', 'is_admin'])->group(function () {
+Route::middleware(['auth:api', 'email_verified', 'access_admin'])->group(function () {
     
     //* Dashboard
     Route::get('/admin-backpanel', [BackpanelController::class, 'loadDashboard'])
@@ -20,6 +20,8 @@ Route::middleware(['auth:api', 'email_verified', 'is_admin'])->group(function ()
         ->name('get.app.user.access');
     Route::post('/update-app-user-access', [BackpanelAccessController::class, 'updateUserAccess'])
         ->name('update.app.user.access');
+    Route::post('/create-app-user-access', [BackpanelAccessController::class, 'createUserAccess'])
+        ->name('create.app.user.access');
 
     //* Releasemanagement
     Route::get('/get-app-releases/all', [AppReleasesController::class, 'loadAllReleases'])

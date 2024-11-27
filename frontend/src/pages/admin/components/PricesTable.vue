@@ -39,7 +39,7 @@
                 <q-td key="billing_period" :props="props">
                     {{ 
                         props.row.billing_frequency 
-                            ? props.row.billing_frequency + 'x ' + props.row.billing_interval 
+                            ? props.row.billing_frequency + ' per ' + props.row.billing_interval 
                             : props.row.duration_months 
                                 ? props.row.duration_months + ' month' 
                                 : 'none'
@@ -56,6 +56,9 @@
                     {{ props.row.currency_code + ' ' + props.row.price }}
                 </q-td>
                 <q-td key="status" :props="props">
+                    {{ props.row.status }}
+                </q-td>
+                <q-td key="actions" :props="props">
                     <q-btn 
                         icon="update"
                         size="sm"
@@ -98,23 +101,24 @@ export default {
                 label: 'Product',
                 field: 'name',
                 align: 'left',
-                sortable: true
+                sortable: false
             }, {
                 name: 'is_active',
-                label: 'Public',
+                label: 'is public',
                 field: 'is_active',
+                note: 'Users can gain access to the app by purchasing access tokens through Paddle Prices.'
             }, {
                 name: 'billing_type',
                 label: 'Billing type',
                 field: 'billing_type',
                 align: 'left',
-                note: 'Depending on type, transactions will be generated automatically or manually (one-time). You are able to cancel subscriptions any time.'
+                note: 'One-time purchases are charged a single time. Subscriptions allow for periodic renewal of access, with the option to cancel at any time.'
             }, {
                 name: 'billing_period',
                 label: 'Access period',
                 field: 'billing_period',
                 align: 'left',
-                note: 'Amount of time, you will gain access to the provided service per transaction.'
+                note: 'Duration of access to the provided featurs per transaction.'
             }, {
                 name: 'trial_mode',
                 label: 'Trial mode',
@@ -125,11 +129,16 @@ export default {
                 label: 'Price',
                 field: 'price',
                 align: 'left',
-                sortable: true
+                sortable: false
             }, {
                 name: 'status',
-                label: 'Status',
+                label: 'Paddle status',
                 field: 'status',
+                note: 'Whether this entity can be used in Paddle. If its archived, price is no longer available.'
+            },  {
+                name: 'actions',
+                label: 'Actions',
+                field: 'actions',
             },
         ];
 

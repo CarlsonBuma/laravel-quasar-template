@@ -2,7 +2,7 @@
     
     <q-table
         flat
-        :rows="entries"
+        :rows="transactions"
         :columns="columnsTransaction"
         :title="title"
         row-key="id"
@@ -55,7 +55,7 @@ export default {
 
     props: {
         title: String,
-        entries: Array
+        transactions: Array
     },
 
     setup() {

@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('quantity')->default(1);
             $table->date('expiration_date')->nullable();
             $table->boolean('is_active')->default(false);
+            $table->string('status')->nullable();
+            $table->string('message')->nullable();
             $table->timestamps();
             $table->foreign('user_id')
                 ->references('id')

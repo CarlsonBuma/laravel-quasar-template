@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Auth\AppAccess;
+namespace App\Http\Controllers\Access;
 
 use Carbon\Carbon;
 use App\Models\PaddlePrices;
 use App\Models\PaddleTransactions;
-use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
+use App\Http\Controllers\Access\UserAccessHandler;
 use App\Models\PaddleSubscriptions;
 
 class PaddleTransactionHandler
@@ -203,7 +203,7 @@ class PaddleTransactionHandler
     private function calculateLatestUserExpirationDate(int $accessPeriod): string
     {
         $expirationDate = Carbon::now()->addMonths($accessPeriod * $this->quantity);
-        $currentAccess = AppAccessHandler::checkUserAccessByToken($this->transaction->user_id, $this->access_token);
+        $currentAccess = UserAccessHandler::checkUserAccessByToken($this->transaction->user_id, $this->access_token);
 
         // Current access is active
         // Add month to current expiration Date

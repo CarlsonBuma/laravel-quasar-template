@@ -96,6 +96,43 @@ class BackpanelAccessController extends Controller
      * @param string $email
      * @return void
      */
+    public function createUserAccess(Request $request)
+    {
+        $data = $request->validate([
+            'email' => ['required', 'string'],
+            'access_token' => ['required', 'string'],
+            'quantity' => ['nullable', 'numeric'],
+            'expiration_date' => ['required', 'string'],
+        ]);
+
+        if($user = User::where('email', $data['email'])->first()) {
+            $access = UserAccess::create([
+                'user_id' => $user->id,
+                'is_active' => true,
+                'access_token' => $data['access_token'],
+                'quantity' => $data['quantity'] ?? 0,
+                'expiration_date' => $data['expiration_date'],
+                'status' => 'completed',
+                'message' => 'created.by.admin'
+            ]);
+            
+            return response()->json([
+                'access' => AccessCollection::renderUserAccess($access),
+                'message' => 'Access created.',
+            ], 200);
+        }
+
+        return response()->json([
+            'message' => 'No user found.',
+        ], 422);
+    }
+
+    /**
+     * Find and load user-access
+     *
+     * @param string $email
+     * @return void
+     */
     public function updateUserAccess(Request $request)
     {
         $data = $request->validate([

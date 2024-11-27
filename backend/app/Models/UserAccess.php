@@ -19,6 +19,8 @@ class UserAccess extends Model
         'access_token',
         'quantity',
         'expiration_date',
+        'status',
+        'message',
     ];
 
     protected $casts = [

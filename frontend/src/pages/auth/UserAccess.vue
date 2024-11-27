@@ -130,6 +130,10 @@ export default {
         checkTransactionWebhookVerificationInterval(transactionID) {
             const intervalId = setInterval(async () => {
                 try {
+                    // Max amount of request
+                    if(this.intervalRequests > this.intervalRequestLimit) 
+                        throw 'Verification in progress. May this takes a few minutes.'
+
                     // Request
                     this.intervalRequests++;
                     const response = await this.$axios.post('verify-user-checkout', {
@@ -137,10 +141,12 @@ export default {
                     });
 
                     // Check new access set
-                    if(response.data.access_token) {
+                    const access = response.data.access
+                    if(access?.access_token) {
                         this.$user.setAppAccess(
-                            response.data.access_token, 
-                            response.data.expiration_date
+                            access.access_token, 
+                            access.quantity, 
+                            access.expiration_date
                         );
 
                         // Check if its a subscription
@@ -153,14 +159,9 @@ export default {
                         this.$toast.success(response.data.message);
                         clearInterval(intervalId);
                     }
-
-                    // Max amount of request
-                    if(this.intervalRequests > this.intervalRequestLimit) 
-                        clearInterval(intervalId)
-
-                    console.log('interval')
                 } catch (error) {
                     clearInterval(intervalId);
+                    this.intervalRequests = 0;
                     this.$toast.error(error.response ?? error)
                     console.log('user.transaction.verification.error', error.response ?? error);
                 }

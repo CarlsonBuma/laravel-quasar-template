@@ -12,9 +12,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Exception\GuzzleException;
 use App\Http\Collections\AccessCollection;
-use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
-use App\Http\Controllers\Auth\AppAccess\PaddleTransactionHandler;
-use App\Http\Controllers\Auth\AppAccess\PaddleSubscriptionHandler;
+use App\Http\Collections\UserCollection;
+use App\Http\Controllers\Access\UserAccessHandler;
+use App\Http\Controllers\Access\PaddleTransactionHandler;
+use App\Http\Controllers\Access\PaddleSubscriptionHandler;
 
 
 class UserAccessController extends Controller
@@ -46,8 +47,6 @@ class UserAccessController extends Controller
         ], 200);
     }
 
-    
-
     /**
      * Check user access by "$access_token"
      *
@@ -56,7 +55,7 @@ class UserAccessController extends Controller
      */
     public function checkUserAccess(string $access_token)
     {
-        $userAccess = AppAccessHandler::checkUserAccessByToken(Auth::id(), $access_token);
+        $userAccess = UserAccessHandler::checkUserAccessByToken(Auth::id(), $access_token);
         return response()->json([
             'access' => $userAccess,
             'access_token' => $access_token,
@@ -120,10 +119,9 @@ class UserAccessController extends Controller
         }
         
         // Check if transaction has been verified by webhook
-        if($userAccess = AppAccessHandler::checkUserAccessByTransactionID(Auth::id(), $userTransaction->id)) {
+        if($userAccess = UserAccessHandler::checkUserAccessByTransactionID(Auth::id(), $userTransaction->id)) {
             return response()->json([
-                'access_token' => $userAccess->access_token,
-                'expiration_date' => $userAccess->expiration_date,
+                'access' => UserCollection::render_user_access($userAccess),
                 'price_id' => $userTransaction->price_id,
                 'message' => 'Access granted.',
             ], 200);

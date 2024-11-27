@@ -17,7 +17,6 @@ const storeUser = defineStore({
             name: 'User',
             avatar_src: '',
             email: '',
-            is_public: false,
         },
     }),
     
@@ -25,50 +24,31 @@ const storeUser = defineStore({
 
         /**
          * Set user and access
-         * 
-         * @param {*} userID 
-         * @param {*} userName 
-         * @param {*} userAvatarSrc 
-         * @param {*} userEmail 
-         * @param {*} isAdmin 
-         * @param {*} businessCockpit 
          */
-        setUser(userID, userName, userAvatarSrc, userEmail, userIsPublic, isAdmin, businessCockpit) {
-            
+        setUser(userID, userName, userAvatarSrc, userEmail) {
             this.user.id = userID;
             this.user.name = userName;
             this.user.avatar_src = userAvatarSrc;
             this.user.email = userEmail;
-            this.user.is_public = userIsPublic;
 
             // Access
             this.access.user = true;
-            this.access.admin = isAdmin
-            this.setAppAccess(
-                businessCockpit.access_token, 
-                businessCockpit.expiration_date
-            );
         },
 
         /**
          * Set app access
-         * 
-         * @param {*} accessToken 
-         * @param {*} expirationDate 
-         * @returns 
          */
-        setAppAccess(accessToken = '', expirationDate = '') {
-            if(!accessToken || !expirationDate) return;
+        setAppAccess(accessToken = '', quantity = 0, expirationDate = '') {
+            if(!accessToken || !quantity || !expirationDate) return;
             this.access.tokens[accessToken] = {
                 expiration_date: expirationDate,
+                quantity: quantity,
                 access_token: accessToken
             }
         },
 
         /**
          * Remove app access
-         * 
-         * @param {string} accessToken 
          */
         removeAppAccess(accessToken) {
             this.access.tokens[accessToken] = null;
@@ -83,9 +63,7 @@ const storeUser = defineStore({
 
         /**
          * Set bearer token in local storage
-         * After successful login
-         * 
-         * @param {string} sessionToken 
+         * After successful login 
          */
         setBearerToken(sessionToken) {
             LocalStorage.set(process.env.SESSION_NAME, sessionToken)
@@ -93,8 +71,6 @@ const storeUser = defineStore({
 
         /**
          * Check current session
-         * 
-         * @returns boolean
          */
         checkBearerTokenSet() {
             return LocalStorage.getItem(process.env.SESSION_NAME) ? true : false

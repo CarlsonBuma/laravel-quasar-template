@@ -2,10 +2,9 @@
 
 namespace App\Http\Collections;
 
-use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Middleware\AppAccessCockpit;
 
 abstract class UserCollection
 {
@@ -29,22 +28,19 @@ abstract class UserCollection
     }
 
     /**
-     * Render user and its access-tokens
-     *  > According to Logic
+     * Render user and its access tokens
+     ** Defines what app features, user can access within UI
+     * Access tokens are defined according backend logic
      *
      * @param object $user
      * @return array
      */
-    static public function render_user_access(object $user): array
+    static public function render_user_access(object $access): array
     {
-        $entityAccess = AppAccessHandler::checkUserAccessByToken($user->id, AppAccessCockpit::getAccessToken());
         return [
-            '_type' => 'Collection $access',
-            'is_admin' => $user->is_admin->exists(),
-            'access_cockpit' => [
-                'access_token' => $entityAccess?->access_token,
-                'expiration_date' => $entityAccess?->expiration_date,
-            ],
+            'access_token' => $access->access_token,
+            'quantity' => $access->quantity,
+            'expiration_date' => Carbon::parse($access->expiration_date)->format('Y-m-d')
         ];
     }
 }

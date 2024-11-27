@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth\AppAccess;
+namespace App\Http\Controllers\Access;
 
 use App\Models\PaddleSubscriptions;
 

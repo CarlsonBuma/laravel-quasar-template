@@ -2,21 +2,33 @@
     
     <q-table
         flat
-        :rows="entries"
+        row-key="id"
+        :rows="access"
         :columns="columnsTransaction"
         :title="title"
-        row-key="id"
         :pagination="{
             rowsPerPage: 7
         }"
     >
-        <!-- Search user -->
         <template v-slot:top-right>
-            <q-input borderless dense debounce="300" v-model="searchString" placeholder="Search access by email...">
+             <!-- Search user -->
+            <q-input 
+                class="w-input" 
+                label="Search by email"
+                v-model="searchString" 
+                @keyup.enter="$emit('search', searchString)"
+            >
                 <template v-slot:append>
-                    <q-btn icon="search" color="primary" @click="$emit('search', searchString)"/>
+                    <q-btn 
+                        icon="search" 
+                        color="primary" 
+                        @click="$emit('search', searchString)"
+                    />
                 </template>
             </q-input>
+
+            <!-- Add access -->
+            <q-btn icon="add" color="primary" :disable="!searchString" outline @click="$emit('add', searchString)"/>
         </template>
 
         <template v-slot:body="props">
@@ -25,7 +37,7 @@
                     {{ props.rowIndex + 1 }}
                 </q-td>
                 <q-td key="token" :props="props">
-                    {{ props.row.price.name ?? 'No price defined.' }}
+                    {{ props.row.price?.name ?? 'No price defined.' }}
                 </q-td>
                 <q-td key="token" :props="props">
                     {{ props.row.access_token }}
@@ -59,10 +71,11 @@ export default {
 
     props: {
         title: String,
-        entries: Array
+        access: Array
     },
 
     emits: [
+        'add',
         'search',
         'update'
     ],

@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\PaddleTransactions;
 use App\Http\Controllers\Controller;
 use Laravel\Paddle\Events\WebhookReceived;
-use App\Http\Controllers\Auth\AppAccess\AppAccessHandler;
-use App\Http\Controllers\Auth\AppAccess\PaddlePriceHandler;
-use App\Http\Controllers\Auth\AppAccess\PaddleTransactionHandler;
-use App\Http\Controllers\Auth\AppAccess\PaddleSubscriptionHandler;
+use App\Http\Controllers\Access\UserAccessHandler;
+use App\Http\Controllers\Access\PaddlePriceHandler;
+use App\Http\Controllers\Access\PaddleTransactionHandler;
+use App\Http\Controllers\Access\PaddleSubscriptionHandler;
 
 
 class PaddleWebhookListener extends Controller
@@ -105,7 +105,7 @@ class PaddleWebhookListener extends Controller
             $PaddleTransaction->completeTransaction('webhook.transaction.verified');
 
             // Add Access
-            AppAccessHandler::addUserAccessByTransaction(
+            UserAccessHandler::addUserAccessByTransaction(
                 $PaddleTransaction->transaction,
                 $PaddleTransaction->access_token,
                 $PaddleTransaction->quantity,
@@ -135,7 +135,7 @@ class PaddleWebhookListener extends Controller
             PaddleTransactions::where('transaction_token', $contentData['id'])->first()
         );
 
-        AppAccessHandler::removeUserAccess($PaddleTransaction->transaction);
+        UserAccessHandler::cancelUserAccessByTransaction($PaddleTransaction->transaction);
 
         $PaddleTransaction->transaction->update([
             'status' => $PaddleTransaction->status,

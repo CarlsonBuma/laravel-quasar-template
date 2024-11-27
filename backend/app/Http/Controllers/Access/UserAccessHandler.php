@@ -1,12 +1,34 @@
 <?php
 
-namespace App\Http\Controllers\Auth\AppAccess;
+namespace App\Http\Controllers\Access;
 
 use App\Models\UserAccess;
 
 
-class AppAccessHandler
+class UserAccessHandler
 {
+    /**
+     * Get all active accesses, unified by access_token
+     *  > Entry with latest expiration_date
+     *
+     * @param integer $userID
+     * @return object
+     */
+    static public function getLatestActiveAccesses(int $userID): object
+    {
+        return UserAccess::select('user_access.*')
+            ->where([
+                'user_id' => $userID,
+                'is_active' => true,
+            ])
+            ->where('quantity', '>=', 1)
+            ->whereDate('expiration_date', '>=', date('Y-m-d'))
+            ->orderBy('access_token')
+            ->orderBy('expiration_date', 'desc')
+            ->distinct('access_token')
+            ->get();
+    }
+
     /**
      * Check current access
      *
@@ -93,7 +115,7 @@ class AppAccessHandler
      * @param object $transaction
      * @return void
      */
-    static public function removeUserAccess(object $transaction): void
+    static public function cancelUserAccessByTransaction(object $transaction): void
     {
         UserAccess::where([
             'user_id' => $transaction->user_id,

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Access\UserAccessHandler;
 
-class AppAccessCockpit
+class AppAccessAdmin
 {
     /**
      * Access to Feature "Cockpit", according to issued price access-token by paddle
@@ -40,6 +40,6 @@ class AppAccessCockpit
      */
     static public function getAccessToken(): string
     {
-        return env('APP_ACCESS_COCKPIT');
+        return env('APP_ACCESS_ADMIN');
     }
 }
