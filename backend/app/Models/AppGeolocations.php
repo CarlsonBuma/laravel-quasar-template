@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\UserEntity;
+use App\Models\UserCockpit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,8 +27,8 @@ class AppGeolocations extends Model
         'zip_code'
     ];
 
-    public function has_entities() {
-        return $this->hasMany(UserEntity::class, 'location_id');
+    public function has_cockpits() {
+        return $this->hasMany(UserCockpit::class, 'location_id');
     }
 
     /**

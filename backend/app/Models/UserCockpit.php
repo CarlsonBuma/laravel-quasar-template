@@ -3,17 +3,16 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\UserAccess;
 use App\Models\AppCountries;
 use App\Models\AppGeolocations;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class UserEntity extends Model
+class UserCockpit extends Model
 {
     use HasFactory;
 
-    protected $table = 'public.user_entities';
+    protected $table = 'public.user_cockpit';
 
     protected $fillable = [
         'user_id',          // Owner
@@ -42,9 +41,5 @@ class UserEntity extends Model
 
     public function belongs_to_country() {
         return $this->belongsTo(AppCountries::class, 'country_id');
-    }
-
-    public function has_access() {
-        return $this->hasMany(UserAccess::class, 'entity_id');
     }
 }

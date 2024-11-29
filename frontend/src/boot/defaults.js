@@ -25,7 +25,7 @@ import SectionDesignColored from 'src/components/global/SectionDesignColored.vue
 
 // Navigations
 import NavUser from 'src/components/navigation/NavUser.vue';
-import NavEntity from 'src/components/navigation/NavEntity.vue';
+import NavCockpit from 'src/components/navigation/NavCockpit.vue';
 import NavAdmin from 'src/components/navigation/NavAdmin.vue';
 
 
@@ -38,9 +38,16 @@ export default boot(({ app, router }) => {
         APP_NAME: process.env.APP_NAME,
         APP_SLOGAN: process.env.APP_SLOGAN,
         APP_API_URL: process.env.APP_API_URL,
+
+        // Google Geolocation
         APP_GOOGLE_API_KEY: process.env.APP_GOOGLE_API_KEY,
+
+        // Checkout - initialize user access
         APP_PADDLE_ENVIRONMENT: process.env.APP_PADDLE_ENVIRONMENT,
         APP_PADDLE_PUBLIC_KEY: process.env.APP_PADDLE_PUBLIC_KEY,
+
+        // App access
+        APP_ACCESS_ADMIN: process.env.APP_ACCESS_ADMIN,
         APP_ACCESS_COCKPIT: process.env.APP_ACCESS_COCKPIT
     };
     
@@ -72,7 +79,7 @@ export default boot(({ app, router }) => {
 
     // Navigation
     app.component('NavUser', NavUser)
-    app.component('NavEntity', NavEntity)
+    app.component('NavCockpit', NavCockpit)
     app.component('NavAdmin', NavAdmin)
 
 });

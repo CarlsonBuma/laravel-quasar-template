@@ -145,8 +145,8 @@ export default {
                     if(access?.access_token) {
                         this.$user.setAppAccess(
                             access.access_token, 
-                            access.quantity, 
-                            access.expiration_date
+                            access.expiration_date,
+                            access.quantity 
                         );
 
                         // Check if its a subscription

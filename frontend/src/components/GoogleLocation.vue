@@ -63,7 +63,7 @@ export default {
 
     setup(props) {
         return {
-            requestLimits: 4,
+            requestLimits: 5,
             currentRequests: ref(0),
             dialogEvent: ref(false),
             fetching: ref(false),
@@ -90,7 +90,7 @@ export default {
 
         async requestGoogleAPI(google_maps_address) {
             try {
-                if(this.currentRequests > this.requestLimits) throw 'Limit of ' + this.requestLimits + ' requests.'
+                if(this.currentRequests >= this.requestLimits) throw 'Limit of ' + this.requestLimits + ' requests.'
                 if(!this.$env.APP_GOOGLE_API_KEY) throw 'To use geolocation, please add a Google_API_KEY, by creating an account for Developers.'
                 if(!google_maps_address) return;
                 if(this.fetching) return;

@@ -2,7 +2,7 @@
 
     <PageWrapper >
         <template #navigation>
-            <NavEntity />
+            <NavCockpit />
         </template>
 
         <!-- Content -->
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-    name: 'EntityDashboad',
+    name: 'CockpitDashboad',
     components: {
         // Components
     },

@@ -1,13 +1,14 @@
 'use strict';
 import store from "src/stores/user.js";
 
+const fallBackRouteBackpanel = '/';
 const routesBackpanel = [
     {
         path: '/admin/dashboard',
         name: 'AdminBackpanel',
         component: () => import('src/pages/admin/AdminBackpanel.vue'),
         beforeEnter: (to, from, next) => {
-            if (!store().access.admin) next('/');
+            if (!store().access.tokens[process.env.APP_ACCESS_ADMIN]) next(fallBackRouteBackpanel);
             else next();
         }
     }, {
@@ -15,7 +16,7 @@ const routesBackpanel = [
         name: 'AccessManagement',
         component: () => import('src/pages/admin/AccessManagement.vue'),
         beforeEnter: (to, from, next) => {
-            if (!store().access.admin) next('/');
+            if (!store().access.tokens[process.env.APP_ACCESS_ADMIN]) next(fallBackRouteBackpanel);
             else next();
         }
     }, {
@@ -23,7 +24,7 @@ const routesBackpanel = [
         name: 'NewsfeedManagement',
         component: () => import('src/pages/admin/NewsfeedManagement.vue'),
         beforeEnter: (to, from, next) => {
-            if (!store().access.admin) next('/');
+            if (!store().access.tokens[process.env.APP_ACCESS_ADMIN]) next(fallBackRouteBackpanel);
             else next();
         }
     },

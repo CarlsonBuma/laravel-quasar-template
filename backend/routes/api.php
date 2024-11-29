@@ -18,7 +18,7 @@ Route::get('/get-app-countries', [AppController::class, 'loadCountries'])
 if(env('ALLOW_USER_AUTH', false)) {
     require __DIR__.'/api/auth.php';
     require __DIR__.'/api/user.php';
+    require __DIR__.'/api/cockpit.php';
     require __DIR__.'/api/admin.php';
-    require __DIR__.'/api/entity.php';
 } 
     

@@ -4,7 +4,7 @@ import { createRouter, createMemoryHistory, createWebHistory, createWebHashHisto
 import routesVisitors from './visitors';
 import routesAuth from './auth';
 import routesUser from './user';
-import routesEntity from './entity';
+import routesCockpit from './cockpit';
 import routesBackpanel from './admin';
 
 export default route(function (/* { store, ssrContext } */) {
@@ -22,7 +22,7 @@ export default route(function (/* { store, ssrContext } */) {
     routes.push(...routesVisitors)
     routes.push(...routesAuth);
     routes.push(...routesUser);
-    routes.push(...routesEntity);
+    routes.push(...routesCockpit);
     routes.push(...routesBackpanel);
 
     // Init Router

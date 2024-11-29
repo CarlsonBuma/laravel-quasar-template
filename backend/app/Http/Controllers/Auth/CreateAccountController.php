@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Exception;
 use App\Models\User;
-use App\Models\UserEntity;
+use App\Models\UserCockpit;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,7 +15,7 @@ class CreateAccountController extends Controller
     /**
      * Registration / Create Account
      *  > Creates new User
-     *  > Create user entity
+     *  > Create user cockpit
      *
      * @param Request $request
      * @return void
@@ -41,7 +41,7 @@ class CreateAccountController extends Controller
                 'password' =>  Hash::make(Str::random(125))
             ])->id;
 
-            UserEntity::create([
+            UserCockpit::create([
                 'user_id' => $userID,
             ]);
         } catch (Exception $e) {

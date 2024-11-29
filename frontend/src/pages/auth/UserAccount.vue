@@ -274,13 +274,13 @@ export default {
             }
         },
 
-        deleteAccountConfirm(entity) {
+        deleteAccountConfirm() {
             this.$q.dialog({
                 title: 'Confirm delete',
                 message: 'Sure you want to delete your account? Your data will be deleted permanently.',
                 cancel: true,
             }).onOk(() => {
-                this.deleteAccount(entity)
+                this.deleteAccount()
             })
         }
     }

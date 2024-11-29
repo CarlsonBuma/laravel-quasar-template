@@ -147,8 +147,8 @@ class UserAccountController extends Controller
             // Remove Files
             if($userImgSrc = $user->avatar) 
                 Storage::disk('user')->delete($userImgSrc);
-            if($entityImgSrc = $user->has_entity()->first()?->avatar) 
-                Storage::disk('entity')->delete($entityImgSrc);
+            if($cockpitImgSrc = $user->has_cockpit()->first()?->avatar) 
+                Storage::disk('cockpit')->delete($cockpitImgSrc);
 
             // Delete user
             $user->delete();

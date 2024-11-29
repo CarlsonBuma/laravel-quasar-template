@@ -101,6 +101,11 @@ main {
     overflow-x: auto;
 }
 
+._flex-no-wrap {
+    flex-wrap: nowrap !important; 
+    overflow-x: auto;
+}
+
 ._overflow-hidden {
     white-space: nowrap;
     overflow: hidden;
@@ -200,6 +205,11 @@ main {
 }
 
 // Cards
+.w-card-xs {
+    width: 100%;
+    max-width: 220px;
+}
+
 .w-card-sm {
     width: 100%;
     max-width: 280px;

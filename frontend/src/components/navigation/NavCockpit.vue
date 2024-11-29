@@ -1,10 +1,10 @@
 <template>
     <q-toolbar>
-        <span class="gt-xs">{{ title ?? 'My Cockpit' }}</span>
+        <span class="gt-xs">{{ title ?? 'My cockpit' }}</span>
         <q-space />
         <q-tabs class="text-weight-regular" active-color="primary" shrink stretch>
-            <q-route-tab to="/entity/dashboard" label="My Cockpit" />
-            <q-route-tab to="/entity/profile" label="Profile" />
+            <q-route-tab to="/cockpit/dashboard" label="My cockpit" />
+            <q-route-tab to="/cockpit/profile" label="My rofile" />
         </q-tabs>
     </q-toolbar>
 
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    name: 'NavEntity',
+    name: 'NavCockpit',
     props: {
         title: String,
     },

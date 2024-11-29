@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\UserEntity;
+namespace App\Http\Controllers\UserCockpit;
 
 use Exception;
-use App\Models\UserEntity;
+use App\Models\UserCockpit;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Classes\Modulate;
@@ -11,25 +11,25 @@ use App\Models\AppGeolocations;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use App\Http\Collections\EntityCollection;
+use App\Http\Collections\CockpitCollection;
 
 
-class EntityProfileController extends Controller
+class CockpitController extends Controller
 {
     /**
-     * Load entity profile
+     * Load cockpit profile
      *
      * @return void
      */
     public function loadProfile() 
     {
-        $renderedEntity = EntityCollection::render_user_entity(
-            UserEntity::where('user_id', Auth::id())->first(),
+        $renderedCockpit = CockpitCollection::render_user_cockpit(
+            UserCockpit::where('user_id', Auth::id())->first(),
         );
 
         return response()->json([
-            'entity' => $renderedEntity,
-            'message' => 'User entity loaded.',
+            'cockpit' => $renderedCockpit,
+            'message' => 'User cockpit loaded.',
         ], 200);
     }
 
@@ -46,14 +46,14 @@ class EntityProfileController extends Controller
             'is_public' => ['required', 'boolean'],
         ]);
         
-        UserEntity::where('user_id', Auth::id())->update([
+        UserCockpit::where('user_id', Auth::id())->update([
             'is_public' => (bool) $data['is_public'],
         ]);
 
         return response()->json([
             'message' => (bool) $data['is_public'] 
-                ? 'Entity published.' 
-                : 'Entity set to private.'
+                ? 'Cockpit published.' 
+                : 'Cockpit set to private.'
         ], 200);
     }
     
@@ -71,21 +71,21 @@ class EntityProfileController extends Controller
         ]);
 
         // Process Avatar
-        $userEntity = UserEntity::where('user_id', Auth::id())->first();
-        if(!$userEntity) throw new Exception('Entity does not exist.');
-        $currentAvatarImageLink = $userEntity->avatar;
+        $UserCockpit = UserCockpit::where('user_id', Auth::id())->first();
+        if(!$UserCockpit) throw new Exception('Cockpit does not exist.');
+        $currentAvatarImageLink = $UserCockpit->avatar;
         if($data['avatar_delete']) {
-            if($currentAvatarImageLink) Storage::disk('entity')->delete($currentAvatarImageLink);
+            if($currentAvatarImageLink) Storage::disk('cockpit')->delete($currentAvatarImageLink);
             $currentAvatarImageLink = null;
         } else if(isset($data['src'])) {
-            if($currentAvatarImageLink) Storage::disk('entity')->delete($currentAvatarImageLink);  
+            if($currentAvatarImageLink) Storage::disk('cockpit')->delete($currentAvatarImageLink);  
             $fileExtension = $request->file('src')->extension();
             $currentAvatarImageLink = Auth::id() . '-' . Str::random(45) . '.' . $fileExtension;
-            Storage::putFileAs('public/entity', $request->file('src'), $currentAvatarImageLink);
+            Storage::putFileAs('public/cockpit', $request->file('src'), $currentAvatarImageLink);
         }
 
         // Add Link to image
-        $userEntity->update([
+        $UserCockpit->update([
             'avatar' => $currentAvatarImageLink,
         ]);
 
@@ -106,7 +106,7 @@ class EntityProfileController extends Controller
             'name' => ['required', 'string', 'max:255'],
         ]);
 
-        UserEntity::where('user_id', Auth::id())->update([
+        UserCockpit::where('user_id', Auth::id())->update([
             'name' => $data['name'],
         ]);
 
@@ -127,7 +127,7 @@ class EntityProfileController extends Controller
             'about' => ['nullable', 'string', 'max:1999'],
         ]);
 
-        UserEntity::where('user_id', Auth::id())->update([
+        UserCockpit::where('user_id', Auth::id())->update([
             'about' => $data['about'],
         ]);
 
@@ -150,7 +150,7 @@ class EntityProfileController extends Controller
         ]);
 
         $websiteSanitized = Modulate::sanitizeLink($data['website']);
-        UserEntity::where('user_id', Auth::id())->update([
+        UserCockpit::where('user_id', Auth::id())->update([
             'website' => $websiteSanitized,
             'contact' => $data['contact'],
         ]);
@@ -178,7 +178,7 @@ class EntityProfileController extends Controller
             'tags' => ['nullable', 'array'],
         ]);
 
-        UserEntity::where('user_id', Auth::id())->update([
+        UserCockpit::where('user_id', Auth::id())->update([
             'tags' => $data['tags'],
         ]);
 
@@ -208,7 +208,7 @@ class EntityProfileController extends Controller
         ]);
 
         $geolocation = new AppGeolocations();
-        UserEntity::where('user_id', Auth::id())->update([
+        UserCockpit::where('user_id', Auth::id())->update([
             'location_id' => $geolocation->add_new_entry($data),
         ]);
 

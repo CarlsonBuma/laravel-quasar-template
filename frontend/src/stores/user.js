@@ -9,8 +9,7 @@ const storeUser = defineStore({
         access: {
             bearer_token: false,    // Bearer to authorize user
             user: false,            // Access to memberarea
-            admin: false,           // Access to adminarea 
-            tokens: [],             // ['access-token': 'expiration_date']
+            tokens: {},             // ['access-token', 'quantity', 'expiration_date']
         },
         user: {
             id: 0,
@@ -23,23 +22,10 @@ const storeUser = defineStore({
     actions: {
 
         /**
-         * Set user and access
-         */
-        setUser(userID, userName, userAvatarSrc, userEmail) {
-            this.user.id = userID;
-            this.user.name = userName;
-            this.user.avatar_src = userAvatarSrc;
-            this.user.email = userEmail;
-
-            // Access
-            this.access.user = true;
-        },
-
-        /**
          * Set app access
          */
-        setAppAccess(accessToken = '', quantity = 0, expirationDate = '') {
-            if(!accessToken || !quantity || !expirationDate) return;
+        setAppAccess(accessToken = '', expirationDate = '', quantity = 0) {
+            if(!accessToken || !expirationDate) return;
             this.access.tokens[accessToken] = {
                 expiration_date: expirationDate,
                 quantity: quantity,
@@ -55,10 +41,14 @@ const storeUser = defineStore({
         },
 
         /**
-         * Remove admin
+         * Set user and access
          */
-        removeAdmin() {
-            this.access.admin = false;
+        setUser(userID, userName, userAvatarSrc, userEmail) {
+            this.access.user = true;
+            this.user.id = userID;
+            this.user.name = userName;
+            this.user.avatar_src = userAvatarSrc;
+            this.user.email = userEmail;
         },
 
         /**
@@ -102,8 +92,7 @@ const storeUser = defineStore({
             axios.defaults.headers.common['Authorization'] = '';
             this.access.bearer_token = false
             this.access.user = false;
-            this.access.admin = false;
-            this.access.tokens = [];
+            this.access.tokens = null;
             this.user = {};
         },
     }

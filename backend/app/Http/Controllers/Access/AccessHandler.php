@@ -46,8 +46,7 @@ class AccessHandler
         return UserAccess::where([
                 'id' => $accessID,
                 'is_active' => true
-            ])->where('quantity', '>=', 1)
-            ->whereDate('expiration_date', '>=', date('Y-m-d'))
+            ])->whereDate('expiration_date', '>=', date('Y-m-d'))
             ->latest('expiration_date')
             ->first();
     }
@@ -65,9 +64,7 @@ class AccessHandler
             ->where([
                 'user_id' => $userID,
                 'is_active' => true,
-            ])
-            ->where('quantity', '>=', 1)
-            ->whereDate('expiration_date', '>=', date('Y-m-d'))
+            ])->whereDate('expiration_date', '>=', date('Y-m-d'))
             ->orderBy('access_token')
             ->orderBy('expiration_date', 'desc')
             ->distinct('access_token')
@@ -88,8 +85,7 @@ class AccessHandler
                 'user_id' => $userID,
                 'access_token' => $accessToken,
                 'is_active' => true
-            ])->where('quantity', '>=', 1)
-            ->whereDate('expiration_date', '>=', date('Y-m-d'))
+            ])->whereDate('expiration_date', '>=', date('Y-m-d'))
             ->latest('expiration_date')
             ->first();
     }
@@ -107,8 +103,7 @@ class AccessHandler
                 'user_id' => $userID,
                 'transaction_id' => $transactionID,
                 'is_active' => true,
-            ])->where('quantity', '>=', 1)
-            ->whereDate('expiration_date', '>=', date('Y-m-d'))
+            ])->whereDate('expiration_date', '>=', date('Y-m-d'))
             ->latest('expiration_date')
             ->first();
     }

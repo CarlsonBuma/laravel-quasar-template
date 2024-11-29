@@ -52,10 +52,10 @@ return [
             'throw' => false,
         ],
 
-        'entity' => [
+        'cockpit' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/entity'),
-            'url' => env('CLIENT_URL').'/storage/entity',
+            'root' => storage_path('app/public/cockpit'),
+            'url' => env('CLIENT_URL').'/storage/cockpit',
             'visibility' => 'public',
             'throw' => false,
         ],

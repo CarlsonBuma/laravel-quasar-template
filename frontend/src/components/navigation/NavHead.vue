@@ -68,7 +68,7 @@
                 <q-fab-action 
                     v-if="$user.access.tokens[$env.APP_ACCESS_COCKPIT]"
                     color="primary" square glossy text-color="white" 
-                    @click="$router.push('/entity/dashboard')" 
+                    @click="$router.push('/cockpit/dashboard')" 
                     icon="groups_3" 
                     label="My Cockpit" 
                 />
@@ -79,7 +79,7 @@
                     label="Logout" 
                 />
                 <q-fab-action 
-                    v-if="$user.access.admin" 
+                    v-if="$user.access.tokens[$env.APP_ACCESS_ADMIN]" 
                     color="primary" 
                     square glossy text-color="white" 
                     @click="$router.push('/admin/dashboard')" 
@@ -108,7 +108,7 @@
                                 <q-list padding >
                                     <q-item 
                                         v-if="$user.access.tokens[$env.APP_ACCESS_COCKPIT]" 
-                                        @click="$router.push('/entity/dashboard')" 
+                                        @click="$router.push('/cockpit/dashboard')" 
                                         clickable v-ripple 
                                     >
                                         <q-item-section avatar>
@@ -158,7 +158,7 @@
                                 </div>
                                 <div class="w-100">
                                     <q-btn
-                                        v-if="$user.access.admin"
+                                        v-if="$user.access.tokens[$env.APP_ACCESS_ADMIN]"
                                         @click="$router.push('/admin/dashboard')"
                                         label="Backpanel"
                                         class="q-mt-sm"

@@ -2,34 +2,34 @@
 
     <PageWrapper :rendering="loading" >
         <template #navigation>
-            <NavEntity />
+            <NavCockpit />
         </template>
 
         <div class="avatar-width">
             <!-- Make public -->
             <CardSimple 
                 title="Join our community" 
-                tooltip="Publish your entity."
+                tooltip="Publish your cockpit."
                 tooltipIconColor="primary"
             >
                 <template #actions>
                     <div class="flex justify-end w-100">
                         <q-toggle 
-                            v-model="entity.is_public"
+                            v-model="cockpit.is_public"
                             class="q-ml-md q-mr-sm" 
                             dense 
                         />
                         <q-btn 
-                            @click="updatePublicity(entity.is_public)" 
-                            :disabled="!entity.name || !entity.avatar"
+                            @click="updatePublicity(cockpit.is_public)" 
+                            :disabled="!cockpit.name || !cockpit.avatar"
                             outline 
                             rounded
                             size="sm"
                             color="primary" 
                             label="Update" 
                         >
-                            <q-tooltip v-if="!entity.name || !entity.avatar">
-                                Entity name &amp; avatar are required.
+                            <q-tooltip v-if="!cockpit.name || !cockpit.avatar">
+                                Cockpit name &amp; avatar are required.
                             </q-tooltip>
                         </q-btn>
                     </div>
@@ -38,25 +38,25 @@
 
             <!-- Avatar -->
             <CardUploadImage 
-                :userAvatar="entity.avatar" 
-                :name="entity.name" 
-                :slogan="entity.slogan"
+                :userAvatar="cockpit.avatar" 
+                :name="cockpit.name" 
+                :slogan="cockpit.slogan"
                 allowUpdate
                 @update="(src, avatar, deleteAvatar) => udpateAvatar(src, deleteAvatar)"
                 @upload="(src, avatar) => {
-                    entity.avatar = avatar;
+                    cockpit.avatar = avatar;
                 }"
             />
 
             <!-- Name -->
-            <CardSimple title="Entity name">           
+            <CardSimple title="Cockpit name">           
                 <q-card-section>
                     <FormWrapper
                         buttonText="Update name"
                         buttonIcon="update"
-                        @submit="updateName(entity.name)"
+                        @submit="updateName(cockpit.name)"
                     >
-                        <q-input v-model="entity.name" label="Entity name"/>
+                        <q-input v-model="cockpit.name" label="Cockpit name"/>
                     </FormWrapper>
                 </q-card-section>
             </CardSimple>
@@ -70,12 +70,12 @@
                     <FormWrapper
                         buttonText="Update about"
                         buttonIcon="update"
-                        @submit="updateAbout(entity.about)"
+                        @submit="updateAbout(cockpit.about)"
                     >
                         <q-input
                             class="q-mt-md"
                             label="About us"
-                            v-model="entity.about"
+                            v-model="cockpit.about"
                             maxlength="999"
                             type="textarea"
                             placeholder="Tell us about your business..."
@@ -91,15 +91,15 @@
                     <FormWrapper
                         buttonText="Update Impressum"
                         buttonIcon="update"
-                        @submit="updateImpressum(entity.website, entity.contact)"
+                        @submit="updateImpressum(cockpit.website, cockpit.contact)"
                     >
                         <q-input 
-                            v-model="entity.website" 
+                            v-model="cockpit.website" 
                             label="Website" 
                             placeholder="www.website.io"
                         />
                         <q-input
-                            v-model="entity.contact"
+                            v-model="cockpit.contact"
                             maxlength="199"
                             label="Contact details"
                             type="textarea"
@@ -114,26 +114,26 @@
         <!-- SEO -->
         <div class="avatar-width">
             <!-- Geolocation -->
-            <CardSimple v-if="entity.location" title="Location">
+            <CardSimple v-if="cockpit.location" title="Location">
                 <q-card-section>
                     <FormWrapper
                         buttonText="Update Location"
                         buttonIcon="update"
-                        @submit="updateLocation(entity.location)"
+                        @submit="updateLocation(cockpit.location)"
                     >
                         <GoogleLocation 
-                            :location="entity.location"
-                            @reset="() => entity.location = {}"
+                            :location="cockpit.location"
+                            @reset="() => cockpit.location = {}"
                             @fetched="(place_id, lng, lat, address, area, area_short, country, country_short, zip_code) => {
-                                entity.location.place_id = place_id
-                                entity.location.lng = lng
-                                entity.location.lat = lat
-                                entity.location.address = address
-                                entity.location.area = area
-                                entity.location.area_short = area_short
-                                entity.location.country = country
-                                entity.location.country_short = country_short
-                                entity.location.zip_code = zip_code
+                                cockpit.location.place_id = place_id
+                                cockpit.location.lng = lng
+                                cockpit.location.lat = lat
+                                cockpit.location.address = address
+                                cockpit.location.area = area
+                                cockpit.location.area_short = area_short
+                                cockpit.location.country = country
+                                cockpit.location.country_short = country_short
+                                cockpit.location.zip_code = zip_code
                             }"
                         />
                     </FormWrapper>
@@ -146,11 +146,11 @@
                     <FormWrapper
                         buttonText="Update bulletpoints"
                         buttonIcon="update"
-                        @submit="updateBulletpoints(entity.tags)"
+                        @submit="updateBulletpoints(cockpit.tags)"
                     >
                         <q-select
                             label="Enter bulletpoints..."
-                            v-model="entity.tags"
+                            v-model="cockpit.tags"
                             use-input
                             use-chips
                             multiple
@@ -171,15 +171,15 @@
 <script>
 import { ref } from 'vue'
 import { regRules } from 'src/boot/globals';
-import NavEntity from 'src/components/navigation/NavEntity.vue';
+import NavCockpit from 'src/components/navigation/NavCockpit.vue';
 import FormWrapper from 'src/components/global/FormWrapper.vue';
 import GoogleLocation from 'src/components/GoogleLocation.vue';
 import CardUploadImage from 'components/CardUploadImage.vue';
 
 export default {
-    name: 'EntityProfile',
+    name: 'CockpitProfile',
     components: {
-        NavEntity, FormWrapper, GoogleLocation, CardUploadImage
+        NavCockpit, FormWrapper, GoogleLocation, CardUploadImage
     },
 
     setup() {
@@ -191,7 +191,7 @@ export default {
 
     data() {
         return {
-            entity: {}
+            cockpit: {}
         }
     },
 
@@ -203,8 +203,8 @@ export default {
         async loadAttributes() {
             try {
                 this.loading = true;
-                const entityResponse = await this.$axios.get('/load-entity-profile');
-                this.entity = entityResponse.data.entity;
+                const cockpitResponse = await this.$axios.get('/load-cockpit-profile');
+                this.cockpit = cockpitResponse.data.cockpit;
             } catch (error) {
                 this.$toast.error(error.response ? error.response : error)
             } finally {
@@ -212,11 +212,11 @@ export default {
             }
         },
 
-        async updatePublicity(entity_isPublic) {
+        async updatePublicity(cockpit_isPublic) {
             try {
                 this.$toast.load();
-                const response = await this.$axios.post('/update-entity-public-access', {
-                    is_public: entity_isPublic
+                const response = await this.$axios.post('/update-cockpit-public-access', {
+                    is_public: cockpit_isPublic
                 });
                 this.$toast.success(response.data.message);
             } catch (error) {
@@ -233,7 +233,7 @@ export default {
                 if(src) formData.append("src", src);
                 formData.append("avatar_delete", deleteAvatar ? '1' : '0');
                 this.$toast.load();
-                const response = await this.$axios.post('/update-entity-avatar', formData);
+                const response = await this.$axios.post('/update-cockpit-avatar', formData);
                 this.$toast.success(response.data.message);
             } catch (error) {
                 this.$toast.error(error.response ?? error);
@@ -243,7 +243,7 @@ export default {
         async updateName(name) {
             try {
                 this.$toast.load();
-                const response = await this.$axios.post('/update-entity-credits', {
+                const response = await this.$axios.post('/update-cockpit-credits', {
                     name: name,
                 });
                 this.$toast.success(response.data.message);
@@ -255,7 +255,7 @@ export default {
         async updateAbout(about) {
             try {
                 this.$toast.load();
-                const response = await this.$axios.post('/update-entity-about', {
+                const response = await this.$axios.post('/update-cockpit-about', {
                     about: about,
                 });
                 this.$toast.success(response.data.message);
@@ -268,7 +268,7 @@ export default {
             try {
                 if(!location.place_id) throw 'Please enter address.';
                 this.$toast.load();
-                const response = await this.$axios.post('/update-entity-location', {
+                const response = await this.$axios.post('/update-cockpit-location', {
                     place_id: location.place_id,
                     lng: location.lng,
                     lat: location.lat,
@@ -288,7 +288,7 @@ export default {
         async updateBulletpoints(tags) {
             try {
                 this.$toast.load();
-                const response = await this.$axios.post('/update-entity-bulletpoints', {
+                const response = await this.$axios.post('/update-cockpit-bulletpoints', {
                     tags: tags,
                 });
                 this.$toast.success(response.data.message);
@@ -301,7 +301,7 @@ export default {
             try {
                 if(!this.regRules.sanitizeLink.test(website)) throw 'Invalid link.'
                 this.$toast.load();
-                const response = await this.$axios.post('/update-entity-impressum', {
+                const response = await this.$axios.post('/update-cockpit-impressum', {
                     website: website,
                     contact: contact,
                 });

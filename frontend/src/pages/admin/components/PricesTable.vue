@@ -134,7 +134,7 @@ export default {
                 name: 'status',
                 label: 'Paddle status',
                 field: 'status',
-                note: 'Whether this entity can be used in Paddle. If its archived, price is no longer available.'
+                note: 'Whether this token can be used in Paddle. If its archived, price is no longer available.'
             },  {
                 name: 'actions',
                 label: 'Actions',

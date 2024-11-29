@@ -101,15 +101,15 @@ export default {
                         response.data.user.email, 
                     );
 
-                    console.log(response.data)
-
                     response.data.access.forEach(access => {
                         this.$user.setAppAccess(
                             access.access_token, 
-                            access.quantity, 
-                            access.expiration_date
+                            access.expiration_date,
+                            access.quantity
                         )
                     })
+
+                    console.log('adjust-admin access', this.$user.access.tokens)
                 }
                 
                 // Redirect if requested

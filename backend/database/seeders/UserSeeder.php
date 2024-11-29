@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\UserAccess;
-use App\Models\UserEntity;
+use App\Models\UserCockpit;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        UserEntity::create([
+        UserCockpit::create([
             'user_id' => $userID,
         ]);
 
@@ -60,7 +60,7 @@ class UserSeeder extends Seeder
                 'updated_at' => now(),
             ]);
 
-            UserEntity::create([
+            UserCockpit::create([
                 'user_id' => $id,
             ]);
         }
