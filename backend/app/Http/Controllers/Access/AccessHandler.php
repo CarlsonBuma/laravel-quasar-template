@@ -22,18 +22,21 @@ class AccessHandler
      * @return object
      */
     static public function addUserAccess(int $userID, int $transactionID = null, string $accessToken, int $quantity, string $expirationDate, string $message): object
-    {
-        return UserAccess::create([
+{
+    return UserAccess::updateOrCreate([
             'user_id' => $userID,
+            'access_token' => $accessToken
+        ], [
             'transaction_id' => $transactionID,
-            'access_token' => $accessToken,
             'quantity' => $quantity,
             'expiration_date' => $expirationDate,
             'is_active' => true,
             'status' => 'access.granted',
             'message' => $message
-        ]);
-    }
+        ]
+    );
+}
+
     
     /**
      * Check current access

@@ -36,11 +36,13 @@
                 <q-td key="id" :props="props">
                     {{ props.rowIndex + 1 }}
                 </q-td>
-                <q-td key="token" :props="props">
-                    {{ props.row.price?.name ?? 'No price defined.' }}
+                <q-td key="name" :props="props">
+                    {{ props.row.price?.name ?? 'No price defined.' }}<br>
+                    <span class="text-caption">{{ props.row.access_token }}</span>
                 </q-td>
-                <q-td key="token" :props="props">
-                    {{ props.row.access_token }}
+                <q-td key="status" :props="props">
+                    {{ props.row.status }}<br>
+                    <span class="text-caption">{{ props.row.message }}</span>
                 </q-td>
                 <q-td key="is_active" :props="props">
                     <q-checkbox v-model="props.row.is_active"/>
@@ -95,9 +97,9 @@ export default {
                 align: 'left',
                 sortable: true
             }, {
-                name: 'token',
-                label: 'Access token',
-                field: 'token',
+                name: 'status',
+                label: 'Status',
+                field: 'status',
                 align: 'left',
                 sortable: true
             }, {
