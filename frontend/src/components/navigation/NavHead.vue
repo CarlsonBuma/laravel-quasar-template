@@ -29,7 +29,7 @@
                     </q-item>
                     <q-item clickable v-close-popup @click="$router.push('/pricing')">
                         <q-item-section>
-                            <span class="q-ml-xs cursor-pointer">Pricing</span>
+                            <span class="q-ml-xs cursor-pointer">Services &amp; Pricing</span>
                         </q-item-section>
                     </q-item>
                     <q-item clickable v-close-popup @click="$router.push('/about')">
@@ -70,7 +70,7 @@
                     color="primary" square glossy text-color="white" 
                     @click="$router.push('/cockpit/dashboard')" 
                     icon="groups_3" 
-                    label="My Cockpit" 
+                    label="My cockpit" 
                 />
                 <q-fab-action 
                     color="primary" square glossy text-color="white"
@@ -115,7 +115,7 @@
                                             <q-icon name="groups_3" class="q-mr-sm" />
                                         </q-item-section>
                                         <q-item-section>
-                                            <q-item-label>My Cockpit</q-item-label>
+                                            <q-item-label>My cockpit</q-item-label>
                                         </q-item-section>
                                     </q-item>
                                     <q-item @click="$router.push('/user/dashboard')" clickable v-ripple >
@@ -123,7 +123,7 @@
                                             <q-icon name="contacts" class="q-mr-sm" />
                                         </q-item-section>
                                         <q-item-section>
-                                            <q-item-label>My Avatar</q-item-label>
+                                            <q-item-label>My avatar</q-item-label>
                                         </q-item-section>
                                     </q-item>
                                 </q-list>

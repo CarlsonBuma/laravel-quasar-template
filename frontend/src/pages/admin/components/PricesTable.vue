@@ -28,7 +28,7 @@
                 </q-td>
                 <q-td key="name" :props="props">
                     <span>{{ props.row.name }}</span><br>
-                    <span class="text-caption"><em>{{ props.row.access_token }}</em></span>
+                    <span class="text-caption"><em>"{{ props.row.access_token }}"</em></span>
                 </q-td>
                 <q-td key="is_active" :props="props">
                     <q-checkbox v-model="props.row.is_active"/>
@@ -98,15 +98,16 @@ export default {
                 align: 'left',
             }, {
                 name: 'name',
-                label: 'Product',
+                label: 'Token',
                 field: 'name',
                 align: 'left',
-                sortable: false
+                sortable: false,
+                note: 'Tokens allow you gain access to provided app features.'
             }, {
                 name: 'is_active',
                 label: 'is public',
                 field: 'is_active',
-                note: 'Users can gain access to the app by purchasing access tokens through Paddle Prices.'
+                note: 'Publishes tokens, enabling users to gain access through Paddle pricing plans.'
             }, {
                 name: 'billing_type',
                 label: 'Billing type',
@@ -118,7 +119,7 @@ export default {
                 label: 'Access period',
                 field: 'billing_period',
                 align: 'left',
-                note: 'Duration of access to the provided featurs per transaction.'
+                note: 'Duration of access to the provided featurs.'
             }, {
                 name: 'trial_mode',
                 label: 'Trial mode',

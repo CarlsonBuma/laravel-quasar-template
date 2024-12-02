@@ -31,9 +31,9 @@ class PaddlePrices extends Model
         'billing_frequency',
         'trial_interval',
         'trial_frequency',
-        'access_token',
-        'duration_months',       
-        'status',           // Active vs. archived
+        'access_token',     // $Flag: Access
+        'duration_months',    
+        'status',           // $Flag: Active vs. archived
         'message',
     ];
 

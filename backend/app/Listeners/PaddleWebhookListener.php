@@ -16,25 +16,79 @@ use App\Http\Controllers\Access\PaddleSubscriptionHandler;
 class PaddleWebhookListener extends Controller
 {
     /**
-     ** Setup Paddle Price in Cockpit
-     * Prices defines user-access, which are set within Paddle Cockpit
-     * Make sure, you define price and 'custom_data' accordingly
-     *  > 'access_token': Defines app / features access
-     *  > 'duration_months': Defines period of current access
-     *      > overwritten, by subscription.billing_period.ends_at
+     ** Webhookhandling via Paddle Service Provider
      * 
-     ** Setup Webhook Gateway:
-     * https://sandbox-vendors.paddle.com/notifications
-     *  > Endpoint: https://{URL}/access/webhook
-     *  > Docs: https://developer.paddle.com/webhooks/overview
-     *
+     *  
+     * These features are defined by the price token and expiration period, which are configured 
+     * within the Paddle Cockpit. 
+     * 
+     ** Call
+     * User purchase access token from our provided products (ref. Paddle Prices). 
+     * s can buy tokens at a specified price to access various app features via our Paddle Provider.
+     * Triggers: Paddle events (see https://developer.paddle.com/webhooks/overview)
+     *  - Paddle transaction has been initialized by one-time purchase or subscription
+     *  - Price has been updated 
+     *  - Subscription updated (incl. cancelation)
+     * 
+     ** Action
+     * 
+     * 
+     * 
+     ** Goal
+     * By handling webhooks accordingly, access tokens will be granted to users after purchasing Prices
+     * privided via Paddle Price Cockpit.
+     *  - User can buy price via PaddleJS UI
+     *  - After successfull initialization of transaction, webhooks are verifying user's access
+     * 
+     * 
+     * 
+     * **Definition:
+     * User can gain access to provided app features, according to prices and its token.
+     * Access tokens are issued to user, after successfull verification of transactions automatically.
+     * 
+     * **Call:
+     * Paddle Event: see https://developer.paddle.com/webhooks/overview
+     *  - Paddle transaction has been initialized by one-time purchase or subscription
+     *  - Price has been updated 
+     *  - Subscription updated (incl. cancelation)
+     * 
+     * **Action:
+     * Handling webhook according event
+     *  - Price: Price been updated
+     *  - Subscription: User subscription has been updated / canceled 
+     *  - Transaction: Issue access token to user, after successfull verification of transaction.
+     *      - User gains access to provided app features, according flags: 
+     *          - $access_token: feature definition 
+     *          - $expiration_period: access definition (deadline)
+     *          - $quantity: access definition (amount of something)
+     *  
+     ** Restrictions:
+     *  - Access requests has been already initialized after successful client checkout via PaddleJS (UI-REST API call).
+     *      - User request access via Client to a provided token, that allows him using certain app features.
+     *          - See: "\Controllers\Access\UserAccessController.php" as initial client access request     
+     *      - This setup allows us to verify users for subsequent webhook calls.
+     * 
+     ** Dependencies:
+     *  - See: "\Controllers\Access\UserAccessController.php" as initial client access request
+     *  - Paddle Cockpit: Our webhooks correspond to its correct configuration within price setup.
+     *      1. Ensure including 'custom_data' in price configuration:
+     *          > 'access_token' (required): Defines access to the app and its features.
+     *          > 'duration_months': Defines the period of access.
+     *              > Note: This is overridden by the subscription.billing_period.ends_at value
+     *      3. Define access token based on the logic:
+     *          > Add token to "\Controllers\Access\AccessHandler.php"
+     *          > Enable the current token within "\Controllers\Access\PaddlePriceHandler.php".
+     *      4. Setup Webhook Gateway:
+     *          > Webhook URL: https://sandbox-vendors.paddle.com/notifications
+     *          > Endpoint: https://{URL}/access/webhook    
+     *      5. Add logic according to access tokens within app.
+     * 
      * @param WebhookReceived $event
      * @return void
      */
     public function handleWebhook(Request $request): void
     {
         try {
-
             // Prepare
             $payload = $request->json()->all();
             $contentData = $payload['data'];
@@ -57,18 +111,34 @@ class PaddleWebhookListener extends Controller
             else if ($paddleStatus === 'price.created' || $paddleStatus === 'price.updated') {
                 $this->updatePrice($contentData);
             }
-
         } catch (Exception $e) {
             return;
         }
     }
 
     /**
-     * Initizalize User Access via Webhook, after transaction.completed
-     * Transactions correlate to 
-     *  > Payment initialized recently by user client checkout
-     *  > New transaction fired by users active subscriptions
+     ** Definition
+     * Initialize user access via webhook after transaction completion (transaction.completed).
+     * 
+     ** Defintion
+     * Types of transactions:
+     *  - "One-Time Purchase": The user pays once.
+     *      - User access is granted for a one-time period, either based on expiration date or quantity. 
+     *  - "Subscription": The user subscribes to a price, which is billed periodically by the payment provider. 
+     *      - User access is granted on a recurring basis via webhook, linked to the subscription token and the corresponding user.
+     * 
+     ** Call
+     * Transactions are triggered by:
+     *  > A transaction initiated by the user client during payment checkout.
+     *  > A new transaction generated by an active user subscription.
      *
+     ** Action
+     *  - Verify transaction according privided transaction_token or subscription_token
+     *  - Grant access to referred user, according price and its access token 
+     *
+     ** Restrictions
+     *  - User verified by transaction_token or subscription_token
+     * 
      * @param array $contentData
      * @return void
      */
@@ -91,7 +161,7 @@ class PaddleWebhookListener extends Controller
             if(!$PaddleTransaction->transaction && $PaddleTransaction->subscription_token) {
                 $PaddleTransaction->initializeUserTransactionBySubscription(
                     $PaddleTransaction->subscription_token,
-                    'webhook.subscription.transaction.verified'
+                    'webhook.subscription.transaction'
                 );
             }
 
@@ -102,7 +172,7 @@ class PaddleWebhookListener extends Controller
                 $PaddleTransaction->createSubscriptionByTransaction('webhook.subscription.verified');
 
             // Process Webhook
-            $PaddleTransaction->completeTransaction('webhook.transaction.verified');
+            $PaddleTransaction->completeTransaction('webhook.transaction.completed');
 
             // Add Access
             AccessHandler::addUserAccess(
@@ -111,7 +181,7 @@ class PaddleWebhookListener extends Controller
                 $PaddleTransaction->access_token,
                 $PaddleTransaction->quantity,
                 $PaddleTransaction->expiration_date,
-                'created.by.webhook'
+                'webhook.access.granted'
             );
 
             // Close transaction, after access granted
@@ -125,8 +195,8 @@ class PaddleWebhookListener extends Controller
     }
 
     /**
-     * Remove user-access, if transactions failed
-     *  > Status 'past_due' is not considered yet!
+     * Remove user access, 
+     * if transactions failed
      *
      * @param array $contentData
      * @return void
@@ -141,12 +211,13 @@ class PaddleWebhookListener extends Controller
 
         $PaddleTransaction->transaction->update([
             'status' => $PaddleTransaction->status,
-            'message' => 'user.access.removed',
+            'message' => 'webhook.access.removed',
         ]);
     }
 
     /**
-     * Update subscription changes within Paddle Cockpit
+     * Update subscription changes that have 
+     * been triggered within Paddle Cockpit
      *
      * @param array $contentData
      * @return void
@@ -165,7 +236,8 @@ class PaddleWebhookListener extends Controller
     }
 
     /**
-     * Update price changes within Paddle Cockpit
+     * Update price changes that have 
+     * been triggered within Paddle Cockpit
      *
      * @param array $contentData
      * @return void

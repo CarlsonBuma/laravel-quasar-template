@@ -10,11 +10,25 @@ use App\Http\Controllers\Access\AccessHandler;
 class AppAccessCockpit
 {
     /**
-     * Access to Feature "Cockpit", according to issued price access-token by paddle
-     *  > Make sure set custom_data 'access_token' in product-price in Paddle
-     *  > Current price access-token must be defined in .env file "APP_ACCESS_COCKPIT"
-     *  > Watch-out: UI will handle Feature-Access-Token "Cockpit" as $Flag accordingly
-     *  > https://vendors.paddle.com/
+     ** Middleware to check user access for certain features within the application.
+     * 
+     * **Definition:**
+     * Validates user access based on the "access-cockpit" token
+     * 
+     * **Call:**
+     * Triggered when a client tries to access certain features
+     *  
+     * **Action:**
+     *  - Verifies the presence and validity of the "business-admin" token
+     *  - Logic is implemented in the "\Controllers\Admin" folder.
+     *  
+     * **Restrictions:**
+     *  - The token must be issued to user by admin or by our webhook
+     * 
+     * **Dependencies**
+     *  - See: "\Controllers\Admin\BackpanelAccessController.php" for granting user access by admin
+     *  - See: "\Listeners\PaddleWebhookListener.php" for detailed access handling
+     *  - See: "\Controllers\Access\AccessHandler" for detailed token handling
      *
      * @param Request $request
      * @param Closure $next
@@ -22,24 +36,14 @@ class AppAccessCockpit
      */
     public function handle(Request $request, Closure $next)
     {   
-        $accessToken = SELF::getAccessToken();
+        $accessToken = AccessHandler::$tokenCockpit;
         if(AccessHandler::checkUserAccessByToken(Auth::id(), $accessToken)) 
             return $next($request);   
 
         return response()->json([
             'access_token' => $accessToken,
-            'status' => 'no_access_to_service',
-            'message' => 'No access to current service.'
+            'status' => 'no_access_to_feature',
+            'message' => 'No access to feature.'
         ], 401);  
-    }
-
-    /**
-     * Get access token
-     *
-     * @return string
-     */
-    static public function getAccessToken(): string
-    {
-        return env('APP_ACCESS_COCKPIT');
     }
 }

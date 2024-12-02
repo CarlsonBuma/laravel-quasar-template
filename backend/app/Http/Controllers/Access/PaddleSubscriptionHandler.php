@@ -10,7 +10,7 @@ class PaddleSubscriptionHandler
     public $subscription = null;
 
     /**
-     * Set subription
+     * Set subscription
      *
      * @param object|null $subscription
      * @return void

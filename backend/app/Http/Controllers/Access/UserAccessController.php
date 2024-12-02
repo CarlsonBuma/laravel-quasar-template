@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Access;
 
 use Exception;
 use GuzzleHttp\Client;
+use App\Models\UserAccess;
 use App\Models\PaddlePrices;
 use Illuminate\Http\Request;
 use App\Models\PaddleTransactions;
 use App\Models\PaddleSubscriptions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Collections\UserCollection;
 use GuzzleHttp\Exception\GuzzleException;
 use App\Http\Collections\AccessCollection;
-use App\Http\Collections\UserCollection;
 use App\Http\Controllers\Access\AccessHandler;
 use App\Http\Controllers\Access\PaddleTransactionHandler;
 use App\Http\Controllers\Access\PaddleSubscriptionHandler;
@@ -28,27 +29,36 @@ class UserAccessController extends Controller
     public function loadUserAccess()
     {
         $prices = PaddlePrices::where('is_active', true)
+            ->where('status', 'active')
             ->get()
             ->map(function($price) {
                 return AccessCollection::renderUserPrice($price, Auth::id());
+            });
+
+        $userAccess = UserAccess::where('user_id', Auth::id())
+            ->orderBy('expiration_date', 'desc')
+            ->get()
+            ->map(function($access) {
+                return AccessCollection::renderUserAccess($access);
             });
 
         $userTransactions = PaddleTransactions::where('user_id', Auth::id())
             ->orderBy('updated_at', 'desc')
             ->get()
             ->map(function($transaction) {
-                return AccessCollection::renderUserTransactions($transaction);
+                return AccessCollection::renderUserTransaction($transaction);
             });
 
         return response()->json([
             'prices' => $prices,
+            'access' => $userAccess,
             'transactions' => $userTransactions,
             'message' => 'Transactions loaded.',
         ], 200);
     }
 
     /**
-     * Check user access by "$access_token"
+     * Check user access by "access_token"
      *
      * @param string $access_token
      * @return void
@@ -64,12 +74,12 @@ class UserAccessController extends Controller
     }
 
     /**
-     * Initialize user's client checkout
-     *  > Starting Point of whole user-access process
-     *      > "$transaction_token" is assigned to user, for further webhook verifications
-     *      > Further verification, will be handled by "/Listeners/PaddleWebhookListener" 
-     *  > Transaction types: "one-time purchases" or "subscription"-start
-     *
+     * Initialize user's client checkout.
+     * This marks the starting point of the entire user access verification process:
+     *  > A "transaction_token" is assigned to the user for subsequent webhook verifications
+     *  > Further verification will be handled by 
+     *    "/Listeners/PaddleWebhookListener"
+     * 
      * @param Request $request
      * @return void
      */
@@ -94,8 +104,8 @@ class UserAccessController extends Controller
     }
 
     /**
-     * Verify user transaction by "$transaction_token"
-     *  > Check if transaction has been already verified by webhook successfully
+     * Verify user transaction by "transaction_token"
+     * Check if transaction has been already verified by webhook successfully
      *
      * @param Request $request
      * @return void
@@ -187,7 +197,6 @@ class UserAccessController extends Controller
     /**
      * Request cancel subscription via provider api-call
      *  > Incl. Duplicates (why-so-ever)
-     *  > 
      *
      * @param object $subscription
      * @return boolean

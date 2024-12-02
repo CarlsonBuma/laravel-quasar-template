@@ -1,4 +1,46 @@
-# Laravel 12 - Framework
+# Project Overview
+* Webhookhandling and access management
+     * 
+     ** Logic
+     * Users can purchase products at a specified price to access various app features. 
+     * These features are defined by the price token and expiration period, which are configured 
+     * within the Paddle Cockpit. Our Webhook Listener listens for webhook calls to verify users 
+     * and define access based on the defined logic.
+     * 
+     *  > Documentation: https://developer.paddle.com/webhooks/overview
+     * 
+     * 
+     ** Initialization 
+     * Access requests are initialized after client checkout via PaddleJS (UI-REST API call). 
+     * This setup allows us to verify users for subsequent webhook calls.
+     * 
+     *  > Initial logic: "/Controllers/Access/UserAccessController::initializeClientCheckoutTransaction(Request)"
+     * 
+     ** Setup 
+     * Our webhooks correspond to the Paddle Cockpit and its correct configuration.
+     *  1. Within Paddle, access tokens are defined by the prices users purchase, which grant access 
+     *     to specific features in the app. Ensure including 'custom_data' in price configuration:
+     *      > 'access_token' (required): Defines access to the app and its features.
+     *      > 'duration_months': Defines the period of access.
+     *          > Note: This is overridden by the subscription.billing_period.ends_at value
+     *  3. Define access token based on the logic:
+     *      > Define a new APP_ACCESS_TOKEN in your .env file, according to the price token.
+     *      > Enable the current token within "/Controllers/Access/PaddlePriceHandler".
+     *  4. Setup Webhook Gateway:
+     *      > Webhook URL: https://sandbox-vendors.paddle.com/notifications
+     *      > Endpoint: https://{URL}/access/webhook    
+     *  5. Add logic according to access tokens within app.
+     * 
+     ** Important Note: 
+     * The logic only considers the webhook calls that are defined within this handler. 
+     * Any undefined webhook events must be handled and adjusted by the logic:
+     *   > See Controllers: "/Access"
+     *   > See Collections: "AccessCollection.php"
+     *   > See Middleware: 
+     *      > "AppAccessCockpit"
+     *      > Add logic as needed.
+
+# Setup: Laravel 12 - Framework
 Website: https://laravel.com/
 
 ## Initialization

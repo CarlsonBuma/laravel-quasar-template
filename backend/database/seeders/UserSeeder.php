@@ -2,14 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\UserAccess;
 use App\Models\UserCockpit;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Middleware\AppAccessAdmin;
 use App\Http\Controllers\Access\AccessHandler;
-use App\Http\Middleware\AppAccessCockpit;
 
 class UserSeeder extends Seeder
 {
@@ -34,7 +31,7 @@ class UserSeeder extends Seeder
         AccessHandler::addUserAccess(
             $userID,
             null,
-            AppAccessAdmin::getAccessToken(),
+            AccessHandler::$tokenAdmin,
             1000,
             '2050-31-12',
             'created.by.seeder'
@@ -43,7 +40,7 @@ class UserSeeder extends Seeder
         AccessHandler::addUserAccess(
             $userID,
             null,
-            AppAccessCockpit::getAccessToken(),
+            AccessHandler::$tokenCockpit,
             1000,
             '2050-31-12',
             'created.by.seeder'

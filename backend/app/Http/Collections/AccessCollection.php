@@ -52,6 +52,7 @@ abstract class AccessCollection
             'billing_frequency' => $price->billing_frequency,
             'trial_interval' => $price->trial_interval,
             'trial_frequency' => $price->trial_frequency,
+            'tax_mode' => $price->tax_mode,
             'duration_months' => $price->duration_months,
             'access_token' => $price->access_token,
             'has_access' => AccessHandler::checkUserAccessByToken($userID, $price->access_token),
@@ -73,7 +74,7 @@ abstract class AccessCollection
      * @param object $price
      * @return array
      */
-    static public function renderUserTransactions(object $transaction): array
+    static public function renderUserTransaction(object $transaction): array
     {
         $price = $transaction->belongs_to_price;
 

@@ -7,10 +7,14 @@ use App\Models\UserAccess;
 
 class AccessHandler
 {
+    public static $tokenAdmin = 'access-admin';
+    public static $tokenCockpit = 'access-cockpit';
+
     /**
      * Add user app-access, by provided '$access_token'
+     * Access can either be handeled via expiration_date or quantity
      *  > Flag $access_token: Defines access to app-features
-     *  > Flag $quantity: Undefined (add logic)
+     *  > Flag $quantity: Amount of something (add logic)
      *  > Flag $expiration_date: End of access
      *
      * @param integer $userID
@@ -22,20 +26,20 @@ class AccessHandler
      * @return object
      */
     static public function addUserAccess(int $userID, int $transactionID = null, string $accessToken, int $quantity, string $expirationDate, string $message): object
-{
-    return UserAccess::updateOrCreate([
-            'user_id' => $userID,
-            'access_token' => $accessToken
-        ], [
-            'transaction_id' => $transactionID,
-            'quantity' => $quantity,
-            'expiration_date' => $expirationDate,
-            'is_active' => true,
-            'status' => 'access.granted',
-            'message' => $message
-        ]
-    );
-}
+    {
+        return UserAccess::updateOrCreate([
+                'user_id' => $userID,
+                'access_token' => $accessToken
+            ], [
+                'transaction_id' => $transactionID,
+                'quantity' => $quantity,
+                'expiration_date' => $expirationDate,
+                'is_active' => true,
+                'status' => 'access.granted',
+                'message' => $message
+            ]
+        );
+    }
 
     
     /**
@@ -75,7 +79,7 @@ class AccessHandler
     }
 
     /**
-     * Get latest access, by '$accessToken'
+     * Get latest access, by access token
      *
      * @param integer $userID
      * @param string $accessToken
@@ -94,7 +98,7 @@ class AccessHandler
     }
 
     /**
-     * Get latest access, by '$transactionID'
+     * Get latest access, by transaction_id
      *
      * @param integer $userID
      * @param integer $transactionID
@@ -112,7 +116,7 @@ class AccessHandler
     }
 
     /**
-     * Remove user app-access
+     * Remove user app access by transaction
      *
      * @param object $transaction
      * @return void

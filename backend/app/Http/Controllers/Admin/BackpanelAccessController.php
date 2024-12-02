@@ -76,7 +76,7 @@ class BackpanelAccessController extends Controller
                 ->orderBy('updated_at', 'desc')
                 ->get()
                 ->map(function($transaction) use($user) {
-                    return AccessCollection::renderUserTransactions($transaction);
+                    return AccessCollection::renderUserTransaction($transaction);
                 });
             
             return response()->json([

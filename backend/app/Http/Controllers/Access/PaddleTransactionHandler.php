@@ -55,7 +55,7 @@ class PaddleTransactionHandler
      * Sets attributes, according providers webhook
      * https://developer.paddle.com/webhooks/overview
      * 
-     **Note: Prices defines transaction-data, which are set within Paddle Cockpit
+     ** Note: Prices defines transaction-data, which are set within Paddle Cockpit
      * Make sure, you define price and 'custom_data' accordingly
      *  > 'access_token' (required): Defines app / features access
      *  > 'duration_months': Defines period of current access
@@ -134,10 +134,10 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Validate User, by subscription token
-     *  > Add new user transaction submitted by '$subscription_token' via webhook
-     *  > Happens only, if user subscribes to price of type 'subscription'
-     *  > Get associated user from '$subscription_token'
+     * Validate user by subscription token.
+     *  > A new user transaction is submitted via the '$subscription_token' through the webhook.
+     *  > This occurs only when the user subscribes to a price of type 'subscription'.
+     *  > Retrieve the associated user using the '$subscription_token' and initialize new transaction.
      *
      * @param string $subscriptionToken
      * @param string $message
@@ -157,6 +157,7 @@ class PaddleTransactionHandler
 
     /**
      * Complete transaction
+     * Before user access granted
      *
      * @param string $message
      * @return void
@@ -179,7 +180,8 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Close transaction, after user-access granted
+     * Close transaction 
+     * After user access granted
      *
      * @return void
      */
@@ -194,8 +196,14 @@ class PaddleTransactionHandler
     }
 
     /**
-     * User-access: Calculate expiration date
-     *  > We get expiration_date by Provider
+     * Calculate user access expiration date.
+     * This is only considered if 'custom_data' contains a "duration_period" 
+     * and no other expiration date is set.
+     *
+     ** Note: 
+     * This only applies to one-time purchases. In this case, we ensure that the 
+     * new expiration period is applied to the current expiration date.
+     *  > For example, instead of purchasing a quantity, users purchase access time.
      *
      * @param integer $accessPeriod
      * @return string

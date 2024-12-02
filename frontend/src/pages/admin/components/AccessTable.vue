@@ -38,7 +38,7 @@
                 </q-td>
                 <q-td key="name" :props="props">
                     {{ props.row.price?.name ?? 'No price defined.' }}<br>
-                    <span class="text-caption">{{ props.row.access_token }}</span>
+                    <span class="text-caption"><em>"{{ props.row.access_token }}"</em></span>
                 </q-td>
                 <q-td key="status" :props="props">
                     {{ props.row.status }}<br>

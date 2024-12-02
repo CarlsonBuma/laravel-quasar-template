@@ -2,8 +2,7 @@
     
     <q-table
         flat
-        class="table-width q-mb-md"
-        title="Products"
+        title="My access"
         row-key="id"
         :rows="prices"
         :columns="columnsProducts"
@@ -27,7 +26,12 @@
                     {{ props.rowIndex + 1 }}
                 </q-td>
                 <q-td key="name" :props="props">
-                    {{ props.row.name }}
+                    <span>{{ props.row.name }}</span><br>
+                    <span class="text-caption">'{{ props.row.access_token }}'</span>
+                </q-td>
+                <q-td key="price" :props="props">
+                    <span> {{ props.row.currency_code + ' ' + props.row.price }}</span><br>
+                    <span class="text-caption">Tax: {{ props.row.tax_mode }}</span>
                 </q-td>
                 <q-td key="billing_type" :props="props">
                     {{ props.row.type }}
@@ -35,9 +39,9 @@
                 <q-td key="billing_period" :props="props">
                     {{ 
                         props.row.billing_frequency 
-                            ? props.row.billing_frequency + 'x ' + props.row.billing_interval 
+                            ? props.row.billing_frequency + ' ' + props.row.billing_interval 
                             : props.row.duration_months 
-                                ? props.row.duration_months + ' month' 
+                                ? props.row.duration_months + ' months' 
                                 : 'none'
                     }}
                 </q-td>
@@ -47,9 +51,6 @@
                             ? props.row.trial_frequency + ' ' + props.row.trial_interval + 's'
                             : 'none' 
                     }}
-                </q-td>
-                <q-td key="price" :props="props">
-                    {{ props.row.currency_code + ' ' + props.row.price }}
                 </q-td>
                 <q-td key="status" :props="props">
                     
@@ -73,11 +74,15 @@
                         :label="props.row.has_access && !props.row.is_subscription 
                             ? 'Active'
                             : 'Get access'"
-                        :color="props.row.has_access && !props.row.is_subscription 
+                        :color="props.row.has_access
                             ? 'green' 
                             : 'primary'"
                         @click="$emit('action', props.row)"
-                    />
+                    >
+                        <q-tooltip v-if="props.row.has_access">
+                            Expires: {{ props.row.has_access.expiration_date }}
+                        </q-tooltip>
+                    </q-btn>
                 </q-td>
             </q-tr>
         </template>
@@ -107,33 +112,34 @@ export default {
                 align: 'left',
             }, {
                 name: 'name',
-                label: 'Product',
+                label: 'Token',
                 field: 'name',
                 align: 'left',
-                sortable: true
-            }, {
-                name: 'billing_type',
-                label: 'Billing type',
-                field: 'billing_type',
-                align: 'left',
-                note: 'Depending on type, transactions will be generated automatically or manually (one-time). You are able to cancel subscriptions any time.'
-            }, {
-                name: 'billing_period',
-                label: 'Access period',
-                field: 'billing_period',
-                align: 'left',
-                note: 'Amount of time, you will gain access to the provided service per transaction.'
-            }, {
-                name: 'trial_mode',
-                label: 'Trial mode',
-                field: 'trial_mode',
-                align: 'left',
+                sortable: false,
+                note: 'Tokens allow you gain access to provided app features.'
             }, {
                 name: 'price',
                 label: 'Price',
                 field: 'price',
                 align: 'left',
-                sortable: true
+                sortable: false
+            }, {
+                name: 'billing_type',
+                label: 'Billing type',
+                field: 'billing_type',
+                align: 'left',
+                note: 'One-time purchases are charged a single time. Subscriptions allow periodic renewal of access automatically, with the option to cancel at any time.'
+            }, {
+                name: 'billing_period',
+                label: 'Access period',
+                field: 'billing_period',
+                align: 'left',
+                note: 'Duration of access to the provided featurs.'
+            }, {
+                name: 'trial_mode',
+                label: 'Trial mode',
+                field: 'trial_mode',
+                align: 'left',
             }, {
                 name: 'status',
                 label: 'Status',

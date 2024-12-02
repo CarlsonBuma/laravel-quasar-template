@@ -6,10 +6,10 @@
         </template>
 
         <!-- Price -->
-        <div class="row table-width justify-center">
+        <div class="row w-100 justify-center">
             <PricesTable 
-                class="w-100"
-                title="Manage prices"
+                class="table-width"
+                title="Manage tokens"
                 :prices="prices"
                 @update="(price) => updatePrice(price.id, price.is_active)"
             />
@@ -20,10 +20,12 @@
         </div>
 
         <!-- Access -->
-        <q-separator class="table-width q-my-md" />
-        <div class="row table-width q-mb-md justify-center">
+        <div class="row w-100 justify-center q-my-md">
+            <q-separator class="table-width" />
+        </div>
+        <div class="row w-100 justify-center">
             <AccessTable 
-                class="w-100"
+                class="table-width"
                 title="User access"
                 :access="userAccess"
                 @search="(email) => serachUser(email)"
@@ -33,15 +35,15 @@
         </div>
 
         <!-- Transactions -->
-        <div class="row justify-center table-width">
+        <div class="row q-mt-md w-100 justify-center">
             <TransactionsTable
-                class="w-100" 
+                class="table-width" 
                 title="User transactions"
                 :transactions="userTransactions"
             />
             <SectionNote>
                 Transactions are initiated either manually by user purchase or automatically via subscription.<br>
-                Transactions correspond to our provided price tokens, granting users access.
+                Transactions correspond to our provided price tokens, granting users access via Paddle Webhooks.
             </SectionNote>
         </div>
 

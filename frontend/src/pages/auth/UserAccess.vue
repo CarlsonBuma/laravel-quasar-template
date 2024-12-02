@@ -6,19 +6,29 @@
         </template>
 
         <!-- Price -->
-        <PricesTable 
-            :prices="prices"
-            @action="(price) => openPaymentGateway(price.price_token)"
-            @cancel="(price) => confirmCancelSubscription(price)"
-        />
+        <div class="row w-100 justify-center">
+            <PricesTable
+                class="table-width" 
+                :prices="prices"
+                @action="(price) => openPaymentGateway(price.price_token)"
+                @cancel="(price) => confirmCancelSubscription(price)"
+            />
+            <SectionNote>
+                By purchasing tokens through payments, you are able to gain access to our provided app features.<br>
+                For further information see our <router-link to="/pricing">Pricing details</router-link> 
+                and <router-link to="/legal">Terms &amp; Conditions</router-link>.
+            </SectionNote>
+        </div>
+        
 
         <!-- Transactions -->
+        <div class="row w-100 justify-center q-my-md">
+            <q-separator class="table-width" />
+        </div>
         <div class="row w-100 justify-center">
-            <TransactionsTable :transactions="transactions"/>
+            <TransactionsTable class="table-width" :transactions="transactions"/>
             <SectionNote>
-                *Transactions are payments corresponding to our provided products, you gained access.<br>
-                For further informations please check our
-                <router-link to="/legal">Terms &amp; Conditions</router-link>.
+                Payment History: Each transaction represents a payment made from your access token purchases.
             </SectionNote>
         </div>
         
@@ -96,6 +106,7 @@ export default {
                 const response = await this.$axios.get('load-user-access')
                 this.prices = response.data.prices;
                 this.transactions = response.data.transactions;
+                console.log(this.prices, this.transactions, response.data.access)
             } catch (error) {
                 this.$toast.error(error.response ?? error);
                 console.log('user.access.error', error.response ?? error)

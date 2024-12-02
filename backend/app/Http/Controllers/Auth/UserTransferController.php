@@ -114,7 +114,7 @@ class UserTransferController extends Controller
             if(User::where('email', $transfer)->exists()) {
                 $user->email_verified_at = now();
                 $user->save();
-                throw new Exception('We are sorry, email already exists! Please contact previous owner.');
+                throw new Exception('This email is already in use. Please log in with your previous credentials.');
             }
             
             // Set new email

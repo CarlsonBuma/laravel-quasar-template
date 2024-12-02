@@ -37,7 +37,7 @@
         <!-- Note -->
         <q-separator v-if="note" />
         <q-card-section v-if="note">
-            <p class="text-caption q-mb-none"><em>{{ note }}</em></p>
+            <span class="text-caption"><em><b>Note:</b> {{ note }}</em></span>
         </q-card-section>
     </q-card>
     

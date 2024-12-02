@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\URL;
 abstract class Modulate
 {
     /**
-     * Verification Links template
+     * Links sent via email by the backend should be modulated 
+     * and redirected to the Single Page Application (SPA) for the app.
      *
-     * @param String $route, url from application
-     * @param Array $params, implents parameter to URL
+     * @param String $route
+     * @param Array|null $params
      * @return String
      */
     static public function signedLink(String $route, Array $params = null): String
@@ -35,7 +36,7 @@ abstract class Modulate
     }
 
     /**
-     * Sanitize Links
+     * Sanitize link
      *
      * @param string $rawPath
      * @return string|null
@@ -44,18 +45,17 @@ abstract class Modulate
     {
         $string = null;
         if(!$rawPath) return null;
-        if(
+        if( // Validate
             strpos($rawPath, 'http://') !== false 
             || strpos($rawPath, 'https://') !== false 
             || strpos($rawPath, 'www.') !== false
         ) {
-            // Manipulate
-            // Remove characters before https, http and www.
-            // Set to 'www.' + $string
-            // Remove all special characters
+            // Replace characters before 'https', 'http' by 'www.'
             $string = preg_replace('/^.*?(https?:\/\/|www\.)/i', '', $rawPath);
             $string = str_replace(array('http://','https://', 'www.', 'http://www.', 'https://www.'), '', $string);
             $string = 'www.' . $string;
+
+            // Remove all special characters
             $string =  preg_replace("#[^a-zA-Z0-9_\-./:@%+~=?&\#]#", "", $string);   
         }
 

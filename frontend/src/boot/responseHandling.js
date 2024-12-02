@@ -66,7 +66,7 @@ export class ResponseHandler {
         }
 
         // No access to Service / Subscription
-        else if(serverResponse.status === 401 && serverResponse.data.status === 'no_access_to_service') {
+        else if(serverResponse.status === 401 && serverResponse.data.status === 'no_access_to_feature') {
             store().removeAppAccess(serverResponse.data.access_token);
             router.push('/');
             throw serverResponse.data.message 

@@ -17,7 +17,7 @@
                 </q-td>
                 <q-td key="name" :props="props">
                     {{ props.row.price?.name ?? 'No price assigned.' }}<br>
-                    <span class="text-caption">{{ props.row.price?.access_token }}</span>
+                    <span class="text-caption"><em>"{{ props.row.price?.access_token ?? 'undefined' }}"</em></span>
                 </q-td>
                 <q-td key="quantity" :props="props">
                     {{ props.row.quantity }}
@@ -31,12 +31,12 @@
                 <q-td key="active" :props="props">
                     <q-icon name="verified" :color="props.row.access ? 'green' : 'grey'" />
                 </q-td>
+                <q-td key="expiration_date" :props="props">
+                    {{ props.row.access?.expiration_date ?? '-' }}
+                </q-td>
                 <q-td key="status" :props="props">
                     {{ props.row.status }}<br>
                     <span class="text-caption">{{ props.row.message }}</span>
-                </q-td>
-                <q-td key="expiration_date" :props="props">
-                    {{ props.row.access?.expiration_date ?? '-' }}
                 </q-td>
                 <q-td key="updated_at" :props="props">
                     {{ props.row.updated_at }}
@@ -91,16 +91,16 @@ export default {
                 label: 'has access',
                 field: 'active',
             }, {
-                name: 'status',
-                label: 'Status',
-                field: 'status',
-                align: 'left',
-            }, {
                 name: 'expiration_date',
                 label: 'Expiration date',
                 field: 'expiration_date',
                 align: 'left',
                 sortable: false
+            }, {
+                name: 'status',
+                label: 'Status',
+                field: 'status',
+                align: 'left',
             }, {
                 name: 'updated_at',
                 label: 'Latest update',

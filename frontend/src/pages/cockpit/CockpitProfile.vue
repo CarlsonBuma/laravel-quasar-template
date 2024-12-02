@@ -9,7 +9,7 @@
             <!-- Make public -->
             <CardSimple 
                 title="Join our community" 
-                tooltip="Publish your cockpit."
+                tooltip="No logic defined yet."
                 tooltipIconColor="primary"
             >
                 <template #actions>

@@ -6,9 +6,6 @@
         :columns="columnsTransaction"
         title="Transactions"
         row-key="id"
-        class="table-width"
-        :sort-method="customSort"
-        :filter="filterInput"
         :pagination="{
             rowsPerPage: 7
         }"
@@ -26,7 +23,8 @@
                     {{ props.rowIndex + 1 }}
                 </q-td>
                 <q-td key="name" :props="props">
-                    {{ props.row.name }}
+                    {{ props.row.price?.name ?? 'No price assigned.' }}<br>
+                    <span class="text-caption"><em>"{{ props.row.price?.access_token ?? 'undefined' }}"</em></span>
                 </q-td>
                 <q-td key="status" :props="props">
                     {{ props.row.status }}
@@ -40,22 +38,14 @@
                 <q-td key="tax" :props="props">
                     {{ props.row.tax }}
                 </q-td>
-                <q-td key="created_at" :props="props">
-                    {{ date.formatDate(props.row.created_at, dateFormat) }}
+                <q-td key="updated_at" :props="props">
+                    {{ props.row.updated_at }}
                 </q-td>
                 <q-td key="expiration_date" :props="props">
-                    {{ date.formatDate(props.row.expiration_date, dateFormat) }}
+                    {{ props.row.access?.expiration_date ?? '-' }}
                 </q-td>
                 <q-td key="active" :props="props">
-                    <q-icon 
-                        name="verified" 
-                        :color="props.row.is_active 
-                            && date.formatDate(props.row.expiration_date, 'YYYY-MM-DD') 
-                                > date.formatDate(new Date(), 'YYYY-MM-DD')  
-                            ? 'green' 
-                            : 'grey'
-                        "
-                    />
+                    <q-icon name="verified" :color="props.row.access ? 'green' : 'grey'" />
                 </q-td>
             </q-tr>
         </template>
@@ -64,10 +54,6 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import { date } from 'quasar';
-import { globalMasks } from 'src/boot/globals.js';
-
 export default {
     name: 'TransactionsTable',
 
@@ -76,23 +62,6 @@ export default {
     },
 
     setup() {
-        const dateFormat = globalMasks.date.switzerland
-        const filterInput = ref('');
-        const customSort = (rows, sortBy, descending) => {
-            const data = [...rows]
-            if (sortBy) {
-                data.sort((a, b) => {
-                    const x = descending ? b : a
-                    const y = descending ? a : b
-                    if (sortBy === 'name' || sortBy === 'expiration_date')
-                        return x[sortBy] > y[sortBy] ? 1 : x[sortBy] < y[sortBy] ? -1 : 0
-                    else if(sortBy === 'price')
-                        return parseFloat(x[sortBy]) - parseFloat(y[sortBy]);
-                })
-            }
-            return data
-        };
-
         const columnsTransaction = [
             {
                 name: 'id',
@@ -101,7 +70,7 @@ export default {
                 align: 'left',
             }, {
                 name: 'name',
-                label: 'Product',
+                label: 'Token',
                 field: 'name',
                 align: 'left',
                 sortable: true
@@ -126,13 +95,13 @@ export default {
                 field: 'tax',
                 align: 'left',
             }, {
-                name: 'created_at',
-                label: 'Billed at',
-                field: 'created_at',
+                name: 'updated_at',
+                label: 'Latest update',
+                field: 'updated_at',
                 align: 'left',
             }, {
                 name: 'expiration_date',
-                label: 'Expiration',
+                label: 'Expiration date',
                 field: 'expiration_date',
                 align: 'left',
                 sortable: true
@@ -144,10 +113,6 @@ export default {
         ];
 
         return {
-            date,
-            dateFormat,
-            filterInput,
-            customSort,
             columnsTransaction
         };
     },

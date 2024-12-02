@@ -37,11 +37,7 @@
                             buttonIcon="person"
                             @submit="submitUsername()"
                         >
-                            <q-input
-                                filled
-                                v-model="$user.user.name"
-                                label="Username"
-                            />
+                            <q-input v-model="$user.user.name" label="Username" />
                         </FormWrapper>
                     </q-card-section>
                 </CardSimple> 
@@ -55,18 +51,12 @@
                             @submit="submitPassword(password.current, password.new, password.confirm)"
                         >
                             <q-input
-                                filled
                                 type="password"
                                 v-model="password.current"
                                 label="Confirm current password"
                             />
                             <div>
-                                <q-input
-                                    filled
-                                    type="password"
-                                    v-model="password.new"
-                                    label="Enter new password"
-                                >
+                                <q-input type="password" v-model="password.new" label="Enter new password" >
                                     <!-- Validation -->
                                     <template v-slot:append>
                                         <q-icon name="info">
@@ -79,12 +69,7 @@
                                         </q-icon>
                                     </template>
                                 </q-input>
-                                <q-input
-                                    filled
-                                    type="password"
-                                    v-model="password.confirm"
-                                    label="Confirm new password"
-                                />
+                                <q-input type="password" label="Confirm new password" v-model="password.confirm"/>
                             </div>
                         </FormWrapper>
                     </q-card-section>
@@ -95,9 +80,9 @@
             <div class="avatar-width">
                 <CardSimple 
                     title="Transfer account" 
-                    tooltip="Change the email of your account. The new email must be verified by the new owner."
+                    tooltip="Update your account email address. The new email must be verified by its owner to complete the change."
                     tooltipIconColor="orange"
-                    note="*To undo the transfering process, please login with your old credentials and follow the procedure."
+                    note="To cancel the transfer process, log in with your previous credentials and follow the provided steps."
                 >
                     <q-card-section>
                         <FormWrapper
@@ -106,21 +91,18 @@
                             @submit="submitEmail(this.transferEmail, this.emailPassword)"
                         >
                             <q-input
-                                filled
                                 disable
                                 type="email"
                                 v-model="$user.user.email"
                                 label="Current owner"
                             />
                             <q-input
-                                filled
                                 type="email"
                                 v-model="transferEmail"
                                 label="Transfer account to"
                                 placeholder="Enter email"
                             />
                             <q-input
-                                filled
                                 type="password"
                                 v-model="emailPassword"
                                 label="Confirm by password"
@@ -132,8 +114,8 @@
                 <!-- Delete Account -->
                 <CardSimple 
                     title="Delete account"
-                    note="*No restore possible! Your account will be removed permanently."
-                    tooltip="After deleting the account, your personal data and all its linked data is removed from our system."
+                    note="Account restoration is not possible. Your account will be permanently deleted."
+                    tooltip="Once the account is deleted, all your personal data and any associated information will be permanently removed from our system."
                 >
                     <q-card-section >
                         <FormWrapper
@@ -142,12 +124,7 @@
                             buttonColor="red"
                             @submit="deleteAccountConfirm()"
                         >
-                            <q-input
-                                filled
-                                type="password"
-                                v-model="deletePassword"
-                                label="Confirm by password"
-                            />
+                            <q-input type="password" label="Confirm by password" v-model="deletePassword" />
                         </FormWrapper>
                     </q-card-section>
                 </CardSimple>
