@@ -128,7 +128,7 @@ export default {
                 label: 'Billing type',
                 field: 'billing_type',
                 align: 'left',
-                note: 'One-time purchases are charged a single time. Subscriptions allow periodic renewal of access automatically, with the option to cancel at any time.'
+                note: 'One-time purchases are charged a single time. Subscriptions allow periodic renewal of access, with the option to cancel at any time.'
             }, {
                 name: 'billing_period',
                 label: 'Access period',

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Access;
 
 use App\Models\User;
 use App\Models\UserAccess;
@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Collections\AccessCollection;
 use App\Http\Controllers\Access\AccessHandler;
 
-class BackpanelAccessController extends Controller
+class AdminAccessController extends Controller
 {
     /**
      * Undocumented function

@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-11-30T15:58:56.366Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="pqE6R5tuj05ioXI7pBTE" version="22.1.15" type="device" pages="2">
+<mxfile host="Electron" modified="2024-12-21T09:57:06.783Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="Vvt83y3PrXp1WJkc7Vmr" version="22.1.15" type="device">
   <diagram id="07fea595-8f29-1299-0266-81d95cde20df" name="AMC">
     <mxGraphModel dx="4941" dy="-784" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
       <root>
@@ -29,10 +29,10 @@
           <mxGeometry x="-1690" y="2698" width="420" height="450" as="geometry" />
         </mxCell>
         <mxCell id="q8ubCS3UPAsnNKlZQyiB-730" value="&lt;div style=&quot;font-size: 26px&quot;&gt;&lt;font style=&quot;font-size: 26px&quot;&gt;Cost Structure&lt;/font&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;What are the most important costs inherent in our app?&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;&lt;b&gt;Definition:&lt;/b&gt;&lt;/font&gt;&lt;/div&gt;&lt;div style=&quot;font-size: 10px&quot;&gt;&lt;font style=&quot;font-size: 10px&quot;&gt;Fixed Costs (salaries, rents, utilities),&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Variable costs&lt;/span&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=#e8edf0;strokeWidth=5;fillColor=#ffffff;fontSize=12;fontColor=#2F5B7C;align=left;verticalAlign=top;spacing=30;" parent="1" vertex="1">
-          <mxGeometry x="-2950" y="3148" width="1050" height="330" as="geometry" />
+          <mxGeometry x="-2950" y="3148" width="1050" height="502" as="geometry" />
         </mxCell>
         <mxCell id="q8ubCS3UPAsnNKlZQyiB-731" value="&lt;div style=&quot;font-size: 26px&quot;&gt;Market Establishment&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;How we reach them and how do we sell our product? What are key values of our users?&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Definition:&lt;/div&gt;&lt;div&gt;The process of introducing our app into a market and securing a position where it gains recognition, customer adoption, and competitive advantage.&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeColor=#e8edf0;strokeWidth=5;fillColor=#ffffff;fontSize=12;fontColor=#2F5B7C;align=left;verticalAlign=top;spacing=30;" parent="1" vertex="1">
-          <mxGeometry x="-1905" y="3148" width="1050" height="330" as="geometry" />
+          <mxGeometry x="-1900" y="3148" width="1050" height="502" as="geometry" />
         </mxCell>
         <mxCell id="q8ubCS3UPAsnNKlZQyiB-732" value="The App Model Canvas" style="text;html=1;resizable=0;points=[];autosize=1;align=left;verticalAlign=top;spacingTop=-4;fontSize=60;fontColor=#2F5B7C;" parent="1" vertex="1">
           <mxGeometry x="-2950" y="2138" width="650" height="80" as="geometry" />
@@ -80,7 +80,7 @@
           <mxGeometry x="-2922" y="2550" width="160" height="90" as="geometry" />
         </mxCell>
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-3" value="Students&lt;br&gt;&amp;amp; Independant Learners" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="-2830" y="2698" width="160" height="90" as="geometry" />
+          <mxGeometry x="-2780" y="2701.5" width="160" height="90" as="geometry" />
         </mxCell>
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-4" value="Visitor" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="-2490" y="2428" width="108" height="62" as="geometry" />
@@ -124,16 +124,13 @@
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-9" value="&lt;b&gt;Frontend&lt;/b&gt;&lt;br&gt;VueJS, Quasar Framework" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="-2310" y="2910" width="130" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-18" value="Scalable &lt;br&gt;App Setup" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1640" y="2425.25" width="120" height="64.75" as="geometry" />
-        </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-19" value="Customizable&lt;br&gt;Template" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1500" y="2410.5" width="120" height="64.75" as="geometry" />
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-18" value="Prototype of a Scalable App Setup" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="-1530" y="2402.88" width="120" height="64.75" as="geometry" />
         </mxCell>
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-20" value="Learning-by-doing" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="-1490" y="2580" width="120" height="64.75" as="geometry" />
         </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-22" value="Basic App&amp;nbsp;&lt;br&gt;Approach" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-22" value="Performant SPA &lt;br&gt;Applications" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="-1650" y="2575.25" width="120" height="64.75" as="geometry" />
         </mxCell>
         <UserObject label="Google Geolocation API" link="https://developers.google.com/maps/documentation/geocoding/start" id="lBGvVB8ArlER4a5Iz0_V-24">
@@ -149,20 +146,14 @@
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-26" value="Ngrok&amp;nbsp;&lt;br&gt;&quot;Reverse Proxy&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="-2270" y="2997.38" width="110" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-27" value="Simple&lt;br&gt;UX / UI Design" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1200" y="2760" width="120" height="64.75" as="geometry" />
-        </mxCell>
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-28" value="Scalable App Development" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1030" y="2481" width="120" height="64.75" as="geometry" />
+          <mxGeometry x="-1010" y="2652.13" width="120" height="64.75" as="geometry" />
         </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-29" value="Well &lt;br&gt;Documented" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="-1230" y="2462.63" width="120" height="64.75" as="geometry" />
-        </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-31" value="Error &amp;amp; Exception Handling" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="-1080" y="2780" width="120" height="64.75" as="geometry" />
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-31" value="Error &amp;amp; Exception Handling" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-1000" y="2751.5" width="120" height="64.75" as="geometry" />
         </mxCell>
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-32" value="Call-to-Actions &amp;amp; Restrictions" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1100" y="2718" width="120" height="64.75" as="geometry" />
+          <mxGeometry x="-1180" y="2644.75" width="120" height="64.75" as="geometry" />
         </mxCell>
         <UserObject label="Google Geolocation API&lt;br&gt;Up to 10k Requests for free (+/-)" link="https://mapsplatform.google.com/pricing/?hl=de" id="lBGvVB8ArlER4a5Iz0_V-33">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
@@ -174,26 +165,17 @@
             <mxGeometry x="-2330" y="3250" width="170" height="64.75" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-35" value="Best-App-Approach" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-35" value="MVP &lt;br&gt;Principles" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="-1440.5" y="2500" width="105.5" height="58.62" as="geometry" />
         </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-23" value="Assistance for understanding basics of webapps" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="-1574.5" y="2518" width="140" height="72" as="geometry" />
-        </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-36" value="Single-Page&lt;br&gt;Applications" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="-996" y="2540" width="120" height="64.75" as="geometry" />
-        </mxCell>
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-37" value="High Performance" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1030" y="2600" width="120" height="64.75" as="geometry" />
-        </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-38" value="Split&lt;br&gt;Front- &amp;amp; Backend" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="-1180" y="2920" width="120" height="64.75" as="geometry" />
+          <mxGeometry x="-1040" y="2850.4900000000002" width="120" height="64.75" as="geometry" />
         </mxCell>
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-39" value="Rest-APIs&lt;br&gt;Calls" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1130" y="2982.63" width="120" height="64.75" as="geometry" />
+          <mxGeometry x="-1050" y="2947.87" width="120" height="64.75" as="geometry" />
         </mxCell>
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-40" value="Quality Assurance &lt;br&gt;&amp;amp; Testing" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1210" y="2580.01" width="120" height="64.75" as="geometry" />
+          <mxGeometry x="-1242" y="2517.25" width="120" height="64.75" as="geometry" />
         </mxCell>
         <UserObject label="Live" id="lBGvVB8ArlER4a5Iz0_V-41">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
@@ -205,23 +187,20 @@
             <mxGeometry x="-1400" y="3060" width="80" height="42.62" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-43" value="Open Source Template" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="-1800" y="3320" width="120" height="64.75" as="geometry" />
-        </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-44" value="Let them help us, improve our template" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1730" y="3370" width="120" height="64.75" as="geometry" />
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-43" value="Open Source Template" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-1810" y="3320" width="120" height="64.75" as="geometry" />
         </mxCell>
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-45" value="Advanced Webapp Development Guide" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1490" y="3320" width="120" height="64.75" as="geometry" />
+          <mxGeometry x="-1560" y="3340" width="130" height="75.25" as="geometry" />
         </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-46" value="Provide Tutorials&lt;br&gt;&amp;amp; Guideance" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="-1440" y="3370" width="120" height="64.75" as="geometry" />
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-46" value="Provide Tutorials&lt;br&gt;&amp;amp; Guideance" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-1820" y="3430" width="130" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-47" value="Best-App Approach" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-          <mxGeometry x="-1340" y="3320" width="120" height="64.75" as="geometry" />
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-47" value="Best App Approach" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="-1447.75" y="3297.63" width="120" height="64.75" as="geometry" />
         </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-48" value="Focus on whole App Live-Cycle, instead of Softwaredevelopment only!" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
-          <mxGeometry x="-1230" y="3362.38" width="160" height="80" as="geometry" />
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-48" value="Focus on whole App-Life-Cycle, instead of Softwaredevelopment only!" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-1440" y="3380" width="160" height="80" as="geometry" />
         </mxCell>
         <UserObject label="Github&lt;br&gt;0 - 4USD per User / Month" link="https://github.com/pricing" id="lBGvVB8ArlER4a5Iz0_V-49">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
@@ -243,47 +222,57 @@
             <mxGeometry x="-1880" y="2840" width="120" height="64.75" as="geometry" />
           </mxCell>
         </UserObject>
-        <UserObject label="Google Analytics" id="lBGvVB8ArlER4a5Iz0_V-54">
-          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-            <mxGeometry x="-1455" y="2890.63" width="120" height="64.75" as="geometry" />
-          </mxCell>
-        </UserObject>
         <UserObject label="UI: Server&lt;br&gt;Response Handling" id="lBGvVB8ArlER4a5Iz0_V-55">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
             <mxGeometry x="-2028" y="2810" width="120" height="64.75" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="7FOcymX67m-cCyJudOTW-1" value="Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="-1150" y="2520" width="90" height="40" as="geometry" />
+        <mxCell id="7FOcymX67m-cCyJudOTW-1" value="Logic" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-1088" y="2517.25" width="90" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="7FOcymX67m-cCyJudOTW-2" value="Architecture" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
-          <mxGeometry x="-1160" y="2428" width="90" height="40" as="geometry" />
+        <mxCell id="7FOcymX67m-cCyJudOTW-2" value="Architecture &amp;amp; Structure" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-1209" y="2850.49" width="110" height="55.37" as="geometry" />
         </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-  <diagram id="TQIe_4uHOltv75BCskIT" name="MVP">
-    <mxGraphModel dx="1434" dy="870" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
-      <root>
-        <mxCell id="0" />
-        <mxCell id="1" parent="0" />
-        <mxCell id="aLfW_IBLXIyHBJd2TAI4-1" value="Well structured Documentation" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="340" y="360" width="140" height="140" as="geometry" />
+        <mxCell id="vKAiGrFiaG_Dv00owzDu-1" value="Product Owner &amp;amp; Product Management" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-2880" y="2840" width="160" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="aLfW_IBLXIyHBJd2TAI4-2" value="Code Comment&lt;br&gt;Template" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="330" y="300" width="80" height="80" as="geometry" />
+        <UserObject label="Geolocation" id="vKAiGrFiaG_Dv00owzDu-2">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+            <mxGeometry x="-2005" y="2915.2400000000002" width="120" height="64.75" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="vKAiGrFiaG_Dv00owzDu-3" value="Documentation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-1670" y="2475.25" width="120" height="64.75" as="geometry" />
         </mxCell>
-        <mxCell id="aLfW_IBLXIyHBJd2TAI4-3" value="Readme" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="440" y="320" width="80" height="80" as="geometry" />
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-23" value="Assistance for understanding strategical approach of Softwaredevelopment" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="-1574.5" y="2518" width="140" height="72" as="geometry" />
         </mxCell>
-        <mxCell id="aLfW_IBLXIyHBJd2TAI4-4" value="App Model Canvas" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="450" y="440" width="80" height="80" as="geometry" />
+        <mxCell id="vKAiGrFiaG_Dv00owzDu-4" value="Minimal Viable Documentation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="-1093" y="2415.63" width="100" height="52" as="geometry" />
         </mxCell>
-        <mxCell id="aLfW_IBLXIyHBJd2TAI4-5" value="Features&lt;br&gt;Definitions" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="350" y="480" width="80" height="80" as="geometry" />
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-38" value="Split&lt;br&gt;Front- &amp;amp; Backend" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-1240" y="2943.12" width="120" height="64.75" as="geometry" />
         </mxCell>
-        <mxCell id="aLfW_IBLXIyHBJd2TAI4-6" value="StoryPoints" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="270" y="390" width="80" height="80" as="geometry" />
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-27" value="Lean&lt;br&gt;UX / UI Design" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="-1099" y="2701.5" width="120" height="64.75" as="geometry" />
+        </mxCell>
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-29" value="Well &lt;br&gt;Documented" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="-1178" y="2461.88" width="120" height="64.75" as="geometry" />
+        </mxCell>
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-36" value="Single-Page&lt;br&gt;Applications" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="-1140" y="2895" width="120" height="64.75" as="geometry" />
+        </mxCell>
+        <mxCell id="vKAiGrFiaG_Dv00owzDu-6" value="Knowledge Assurance" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="-1250" y="2422.63" width="100" height="50.75" as="geometry" />
+        </mxCell>
+        <mxCell id="vKAiGrFiaG_Dv00owzDu-7" value="Payments &amp;amp; Webhooks" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="-1060" y="3047.38" width="120" height="64.75" as="geometry" />
+        </mxCell>
+        <mxCell id="vKAiGrFiaG_Dv00owzDu-5" value="Access &lt;br&gt;Managment" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="-1150" y="2995.25" width="120" height="64.75" as="geometry" />
+        </mxCell>
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-44" value="Refine our template and create a comprehensive sample application" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="-1714" y="3370" width="160" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

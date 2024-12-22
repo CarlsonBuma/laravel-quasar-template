@@ -28,7 +28,7 @@
                 </q-markup-table>
             </div>
             <div class="col-12 flex justify-end q-mb-sm">
-                <q-btn label="Publish" color="primary" @click="createNewRelease(newEntry)"/>
+                <q-btn label="Publish" color="primary" @click="createNewNewsfeed(newEntry)"/>
             </div>
         </div>
         
@@ -36,7 +36,7 @@
         <q-separator class="w-content q-ma-md" />
         <q-table
             title="Newsfeed"
-            :rows="releases"
+            :rows="newsfeed"
             :columns="columns"
             row-key="id"
             class="w-content q-mt-sm"
@@ -166,7 +166,7 @@ export default {
                 description: '',
                 type: ''
             },
-            releases: []
+            newsfeed: []
         }
     },
 
@@ -178,8 +178,8 @@ export default {
         async getReleases() {
             try {
                 this.rendering = true;
-                const response = await this.$axios.get("/get-app-releases/all");
-                this.releases = response.data.releases
+                const response = await this.$axios.get("/get-app-newsfeed/all");
+                this.newsfeed = response.data.newsfeed
             } catch (error) {
                 this.$toast.error(error.response)
             } finally {
@@ -187,18 +187,18 @@ export default {
             }
         },
 
-        async createNewRelease(newEntry) {
+        async createNewNewsfeed(newEntry) {
             try {
                 if(!newEntry.title) throw 'Please enter titel.'
                 this.$toast.load();
-                const response = await this.$axios.post("/create-app-release", {
+                const response = await this.$axios.post("/create-app-newsfeed", {
                     title: newEntry.title,
                     description: newEntry.description,
                     version: newEntry.version,
                     type: newEntry.type
                 });
                 this.$toast.success(response.data.message)
-                this.releases.unshift({
+                this.newsfeed.unshift({
                     id: response.data.entry_id,
                     title: newEntry.title,
                     version: newEntry.version,
@@ -223,7 +223,7 @@ export default {
         async updateEntry(entry) {
             try {
                 this.$toast.load();
-                const response = await this.$axios.post("/update-app-release", {
+                const response = await this.$axios.post("/update-app-newsfeed", {
                     id: entry.id,
                     title: entry.title,
                     description: entry.description,
@@ -252,10 +252,10 @@ export default {
         async deleteEntry(entry) {
             try {
                 this.$toast.load();
-                const response = await this.$axios.delete("/delete-app-release/" + entry.id);
+                const response = await this.$axios.delete("/delete-app-newsfeed/" + entry.id);
                 this.$toast.success(response.data.message)
-                this.releases.forEach((release, index) => {
-                    if(release.id === entry.id) this.releases.splice(index, 1)
+                this.newsfeed.forEach((release, index) => {
+                    if(release.id === entry.id) this.newsfeed.splice(index, 1)
                 })
             } catch (error) {
                 this.$toast.error(error.response)

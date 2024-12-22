@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BackpanelController;
-use App\Http\Controllers\Admin\AppReleasesController;
-use App\Http\Controllers\Admin\BackpanelAccessController;
+use App\Http\Controllers\Admin\AppNewsfeedController;
+use App\Http\Controllers\Access\AdminAccessController;
 
 Route::middleware(['auth:api', 'email_verified', 'access_admin'])->group(function () {
     
@@ -12,24 +12,24 @@ Route::middleware(['auth:api', 'email_verified', 'access_admin'])->group(functio
         ->name('admin.backpanel');
 
     //* Access Management
-    Route::get('/get-app-prices', [BackpanelAccessController::class, 'loadPrices'])
+    Route::get('/get-app-prices', [AdminAccessController::class, 'loadPrices'])
         ->name('get.app.prices');
-    Route::post('/update-app-price', [BackpanelAccessController::class, 'updatePrice'])
+    Route::post('/update-app-price', [AdminAccessController::class, 'updatePrice'])
         ->name('update.app.price');
-    Route::get('/get-app-user-access', [BackpanelAccessController::class, 'loadUserAccess'])
+    Route::get('/get-app-user-access', [AdminAccessController::class, 'loadUserAccess'])
         ->name('get.app.user.access');
-    Route::post('/update-app-user-access', [BackpanelAccessController::class, 'updateUserAccess'])
+    Route::post('/update-app-user-access', [AdminAccessController::class, 'updateUserAccess'])
         ->name('update.app.user.access');
-    Route::post('/create-app-user-access', [BackpanelAccessController::class, 'createUserAccess'])
+    Route::post('/create-app-user-access', [AdminAccessController::class, 'createUserAccess'])
         ->name('create.app.user.access');
 
     //* Releasemanagement
-    Route::get('/get-app-releases/all', [AppReleasesController::class, 'loadAllReleases'])
-        ->name('get.app.release.details.all');
-    Route::post('/create-app-release', [AppReleasesController::class, 'create'])
-        ->name('create.app.release');
-    Route::post('/update-app-release', [AppReleasesController::class, 'update'])
-        ->name('update.app.release');
-    Route::delete('/delete-app-release/{id}', [AppReleasesController::class, 'delete'])
-        ->name('delete-app-release');
+    Route::get('/get-app-newsfeed/all', [AppNewsfeedController::class, 'loadEntries'])
+        ->name('get.app.newsfeed.all');
+    Route::post('/create-app-newsfeed', [AppNewsfeedController::class, 'create'])
+        ->name('create.app.newsfeed');
+    Route::post('/update-app-newsfeed', [AppNewsfeedController::class, 'update'])
+        ->name('update.app.newsfeed');
+    Route::delete('/delete-app-newsfeed/{id}', [AppNewsfeedController::class, 'delete'])
+        ->name('delete.app.newsfeed');
 });

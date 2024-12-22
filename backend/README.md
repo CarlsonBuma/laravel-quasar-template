@@ -14,7 +14,7 @@
      * Access requests are initialized after client checkout via PaddleJS (UI-REST API call). 
      * This setup allows us to verify users for subsequent webhook calls.
      * 
-     *  > Initial logic: "/Controllers/Access/UserAccessController::initializeClientCheckoutTransaction(Request)"
+     *  > Initial logic: "/Controllers/Access/UserAccessController::initializeClientCheckout(Request)"
      * 
      ** Setup 
      * Our webhooks correspond to the Paddle Cockpit and its correct configuration.

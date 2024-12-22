@@ -10,25 +10,7 @@ use App\Http\Controllers\Access\AccessHandler;
 class AppAccessCockpit
 {
     /**
-     ** Middleware to check user access for certain features within the application.
-     * 
-     * **Definition:**
-     * Validates user access based on the "access-cockpit" token
-     * 
-     * **Call:**
-     * Triggered when a client tries to access certain features
-     *  
-     * **Action:**
-     *  - Verifies the presence and validity of the "business-admin" token
-     *  - Logic is implemented in the "\Controllers\Admin" folder.
-     *  
-     * **Restrictions:**
-     *  - The token must be issued to user by admin or by our webhook
-     * 
-     * **Dependencies**
-     *  - See: "\Controllers\Admin\BackpanelAccessController.php" for granting user access by admin
-     *  - See: "\Listeners\PaddleWebhookListener.php" for detailed access handling
-     *  - See: "\Controllers\Access\AccessHandler" for detailed token handling
+     * Verify access for the "Cockpit" feature.
      *
      * @param Request $request
      * @param Closure $next

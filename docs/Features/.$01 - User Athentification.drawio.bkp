@@ -121,7 +121,7 @@
         <mxCell id="BHmO6kIKdRI3CrME6PaI-41" value="- is_public: bool (false)&lt;br&gt;- 639-1: nullable, string&lt;br&gt;- 639-2: nullable, string&lt;br&gt;- family: nullable, string&lt;br&gt;- name: nullable, string&lt;br&gt;- nativeName: nullable, string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="BHmO6kIKdRI3CrME6PaI-40" vertex="1">
           <mxGeometry y="30" width="178" height="110" as="geometry" />
         </mxCell>
-        <mxCell id="n4Qi0mfz-kGRpUW987u9-1" value="app_releases" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
+        <mxCell id="n4Qi0mfz-kGRpUW987u9-1" value="app_newsfeed" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" parent="1" vertex="1">
           <mxGeometry x="1870" y="280" width="140" height="110" as="geometry" />
         </mxCell>
         <mxCell id="n4Qi0mfz-kGRpUW987u9-2" value="- titel: string&lt;br&gt;- version: string&lt;br&gt;- description: text&lt;br&gt;- type: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="n4Qi0mfz-kGRpUW987u9-1" vertex="1">

@@ -2,13 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Public\AppController;
-use App\Http\Controllers\Public\ContentController;
-
-//* App content
-Route::get('/get-app-releases', [ContentController::class, 'loadIndexedReleases'])
-    ->name('get.app.release');
 
 //* App attributes
+Route::get('/get-app-newsfeed', [AppController::class, 'loadNewsfeedIndex'])
+    ->name('get.app.newsfeed');
 Route::get('/get-app-languages', [AppController::class, 'loadLanguages'])
     ->name('get.app.language');
 Route::get('/get-app-countries', [AppController::class, 'loadCountries'])

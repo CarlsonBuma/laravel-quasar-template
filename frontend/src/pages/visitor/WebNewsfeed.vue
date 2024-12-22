@@ -22,12 +22,12 @@
                     class="w-card-lg"
                     :disable="isLastEntry"
                     :loading="rendering"
-                    @load="getReleases(releases.length)" 
+                    @load="getNewsfeed(newsfeed.length)" 
                 >
-                    <NoData v-if="releases.length === 0 && !rendering" text="No news announced." />
+                    <NoData v-if="newsfeed.length === 0 && !rendering" text="No news announced." />
                     <div
                         v-else 
-                        v-for="(entry, index) in releases"
+                        v-for="(entry, index) in newsfeed"
                         :key="index"
                         class="flex w-100"
                         :class="entry.type !== 'Good News' ? 'justify-end' : 'justify-start'"
@@ -51,7 +51,7 @@
                                                 ? 'grade' 
                                                 : entry.type === 'Notification'
                                                     ? 'notifications'
-                                                    : 'new_releases'"
+                                                    : 'new_newsfeed'"
                                         >
                                             <span class="_text-break q-pb-none">{{ entry.description }}</span>
                                         </q-timeline-entry>
@@ -90,7 +90,7 @@ export default {
 
     data() {
         return {
-            releases: []
+            newsfeed: []
         }
     },
 
@@ -99,7 +99,7 @@ export default {
     },
 
     methods: {
-        async getReleases(index) {
+        async getNewsfeed(index) {
             try {
                 // Limit to last entry
                 // Only load if there are more entries existing.
@@ -108,12 +108,12 @@ export default {
                 
                 // Request
                 this.rendering = true;
-                const response = await this.$axios.get("/get-app-releases", { params: { 
+                const response = await this.$axios.get("/get-app-newsfeed", { params: { 
                     index: index 
                 }});
 
-                // Add releases & check if there are more
-                this.releases.push(...response.data.releases);
+                // Add newsfeed & check if there are more
+                this.newsfeed.push(...response.data.newsfeed);
                 this.isLastEntry = response.data.is_last_entry;
             } catch (error) {
                 console.log('visitor.newsfeed', error.response ?? error)

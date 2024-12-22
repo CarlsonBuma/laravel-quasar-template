@@ -45,8 +45,21 @@ export class ResponseHandler {
      */
      errorHandling(serverResponse, router) {
         
+        // Ongoing subscriptions
+        if(serverResponse.status === 422 && serverResponse.data.status === 'active_subscriptions') {
+            router.push('/account/access');
+            throw serverResponse.data.message ?? 'Please cancel active subscriptions.'
+        }
+
+        // No access to Feature
+        else if(serverResponse.status === 401 && serverResponse.data.status === 'no_access_to_feature') {
+            store().removeAppAccess(serverResponse.data.access_token);
+            router.push('/');
+            throw serverResponse.data.message ?? 'Access denied.'
+        }
+        
         // Email not verified
-        if(serverResponse.status === 401 && serverResponse.data.status === 'email_not_verified') {
+        else if(serverResponse.status === 401 && serverResponse.data.status === 'email_not_verified') {
             store().removeBearerToken();
             store().removeSession();
             router.push({
@@ -58,34 +71,8 @@ export class ResponseHandler {
             throw serverResponse.data.message;
         }
 
-        // No Admin
-        else if (serverResponse.status === 401 && serverResponse.data.status === 'no_admin') {
-            store().removeAdmin();
-            router.push('/');
-            throw serverResponse.data.message;
-        }
-
-        // No access to Service / Subscription
-        else if(serverResponse.status === 401 && serverResponse.data.status === 'no_access_to_feature') {
-            store().removeAppAccess(serverResponse.data.access_token);
-            router.push('/');
-            throw serverResponse.data.message 
-                ? serverResponse.data.message 
-                : 'Your subscription is expired.'
-        }
-
-        // Ongoing subscriptions
-        else if(serverResponse.status === 422 && serverResponse.data.status === 'active_subscriptions') {
-            router.push('/account/access');
-            throw serverResponse.data.message 
-                ? serverResponse.data.message 
-                : 'Please cancel active subscriptions.'
-        }
-
         // No access
         else if(serverResponse.status === 401) {
-            store().removeBearerToken();
-            store().removeSession();
             router.push('/');
             throw serverResponse.data.message 
                 ? serverResponse.data.message 

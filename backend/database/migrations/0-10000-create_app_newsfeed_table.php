@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('app_releases', function (Blueprint $table) {
+        Schema::create('app_newsfeed', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('version')->nullable();
@@ -20,6 +20,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('app_releases');
+        Schema::dropIfExists('app_newsfeed');
     }
 };

@@ -11,7 +11,15 @@ use Illuminate\Support\Facades\Auth;
 class PaddleNoActiveSubscriptions
 {
     /**
-     * Check active user subscriptions
+     * Restrict actions to ensure no active subscriptions.
+     * 
+     * Logic:
+     * Subscriptions are periodically billed via Paddle.
+     * It is critical to ensure that current users are not adversely affected by app actions.
+     * 
+     * Example: 
+     * If a user deletes their account while having active subscriptions within our external provider,
+     * this could cause billing issues or service disruptions.
      *
      * @param Request $request
      * @param Closure $next
@@ -19,8 +27,7 @@ class PaddleNoActiveSubscriptions
      */
     public function handle(Request $request, Closure $next)
     {  
-        if(
-            !PaddleSubscriptions::where([
+        if(!PaddleSubscriptions::where([
                 'user_id' => Auth::id(),
                 'canceled_at' => null,
             ])->exists()

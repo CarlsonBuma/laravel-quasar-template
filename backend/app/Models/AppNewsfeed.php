@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Seed by admin
  */
-class AppReleases extends Model
+class AppNewsfeed extends Model
 {
     use HasFactory;
 
-    protected $table = 'public.app_releases';
+    protected $table = 'public.app_newsfeed';
 
     protected $fillable = [
         'title',

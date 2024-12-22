@@ -3,21 +3,21 @@
 namespace App\Http\Controllers\Admin;
 
 use Exception;
-use App\Models\AppReleases;
+use App\Models\AppNewsfeed;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class AppReleasesController extends Controller
+class AppNewsfeedController extends Controller
 {
     /**
      * Undocumented function
      *
      * @return void
      */
-    public function loadAllReleases()
+    public function loadEntries()
     {
         return response()->json([
-            'releases' => AppReleases::orderBy('created_at', 'desc')->get()
+            'newsfeed' => AppNewsfeed::orderBy('created_at', 'desc')->get()
         ], 200);
     }
 
@@ -36,7 +36,7 @@ class AppReleasesController extends Controller
             'type' => ['required', 'string', 'max:255'],
         ]);
 
-        $entryID = AppReleases::create([
+        $entryID = AppNewsfeed::create([
             'title' => $data['title'],
             'version' => $data['version'],
             'description' => $data['description'],
@@ -65,7 +65,7 @@ class AppReleasesController extends Controller
             'type' => ['required', 'string', 'max:255'],
         ]);
 
-        AppReleases::find($data['id'])->update([
+        AppNewsfeed::find($data['id'])->update([
             'title' => $data['title'],
             'version' => $data['version'],
             'description' => $data['description'],
@@ -87,7 +87,7 @@ class AppReleasesController extends Controller
     {
         try {
             if(!$id) throw new Exception('ID is required.');
-            AppReleases::find((int) $id)->delete();
+            AppNewsfeed::find((int) $id)->delete();
         } catch (Exception $e) {
             return response()->json([
                 'message' => $e->getMessage(),

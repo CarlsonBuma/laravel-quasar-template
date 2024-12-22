@@ -37,9 +37,9 @@ class PaddleTransactionHandler
 
     /**
      * Set default attributes
-     *  $transaction 
-     *  $transaction_token
-     *  $user_id
+     *  > $transaction 
+     *  > $transaction_token
+     *  > $user_id
      *
      * @param object|null $transactionEntry
      */

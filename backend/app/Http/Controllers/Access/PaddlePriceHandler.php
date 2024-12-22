@@ -1,46 +1,42 @@
 <?php
 
-namespace App\Http\Controllers\Access;
+namespace App\Http\Controllers\Access\AccessHandling;
 
-use App\Http\Middleware\AppAccessCockpit;
 use App\Models\PaddlePrices;
-
+use App\Http\Controllers\Access\AccessHandler;
 
 class PaddlePriceHandler
 {
-    // App Price Model
     public $price = null;
 
     /**
-     * Update or create price via our webhook listener.
-     * See File: "/Listeners/PaddleWebhookListener".
+     * Update price changes that have been triggered within Paddle
+     * Sandbox: https://sandbox-vendors.paddle.com/products-v2
      * 
-     * Prices are configured within the Paddle Cockpit. 
-     * Ensure that the price tokens are correctly defined:
-     *  > Setup price and its data in Paddle Cockpit
-     *      > 'access_token' (required): Defines app / features access
-     *      > 'duration_months': Defines period of current access
-     *  > Set access token within .env-file
-     *  > Setup logic witin app
-     *  > Allow new access token within app, within this file
-     * 
+     ** Setup: Price Catalog Cockpit
+     *  - Set Price and its attributes
+     *  - Ensure 'custom_data' is included in the price configuration
+     *      > 'access_token' (required): Defines access to the app and its features
+     *      > 'duration_months': Defines the period of access
+     *          - Note: This is overridden by the subscription.billing_period.ends_at value
+     *  - Enable price access token within function "updatePriceByWebhook()"
+     *
      * @param array $contentData
      * @return void
      */
     public function updatePriceByWebhook(array $contentData): void
     {
-        // Restrict prices to token set within system - see Middleware \Access{Name}
         $accessTokenByPaddle = $contentData['custom_data']['access_token'] ?? null;
         if($accessTokenByPaddle && (
             AccessHandler::$tokenCockpit === $accessTokenByPaddle
             
             // ------------------------------------
-            // Allow other tokens within app here
+            // Allow other price tokens within app here
             // ------------------------------------
 
         )) { 
             // Price is available and defined within app
-            $this->price = PaddlePrices::updateOrCreate([
+            PaddlePrices::updateOrCreate([
                 'price_token' => $contentData['id'],
             ], [
                 'product_token' => $contentData['product_id'],

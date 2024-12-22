@@ -2,12 +2,42 @@
 
 namespace App\Http\Controllers\Public;
 
+use App\Models\AppNewsfeed;
 use App\Models\AppCountries;
 use App\Models\AppLanguages;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AppController extends Controller
 {
+    /**
+     * Undocumented function
+     *
+     * @param integer $index
+     * @return void
+     */
+    public function loadNewsfeedIndex(Request $request)
+    {
+        $entriesPerRequest = 12;
+        $data = $request->validate([
+            'index' => ['required', 'numeric'],
+        ]);
+        
+        $newsfeed = AppNewsfeed::orderBy('created_at', 'desc')
+            ->skip($data['index'])
+            ->take($entriesPerRequest + 1)
+            ->get();
+        
+        // Check last entry
+        $isLastEntry = $newsfeed->count() <= $entriesPerRequest;
+        if(!$isLastEntry) $newsfeed->pop();
+        
+        return response()->json([
+            'newsfeed' => $newsfeed,
+            'is_last_entry' => $isLastEntry
+        ], 200);
+    }
+
     /**
      * Undocumented function
      *

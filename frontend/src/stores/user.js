@@ -21,9 +21,6 @@ const storeUser = defineStore({
     
     actions: {
 
-        /**
-         * Set app access
-         */
         setAppAccess(accessToken = '', expirationDate = '', quantity = 0) {
             if(!accessToken || !expirationDate) return;
             this.access.tokens[accessToken] = {
@@ -33,16 +30,10 @@ const storeUser = defineStore({
             }
         },
 
-        /**
-         * Remove app access
-         */
         removeAppAccess(accessToken) {
             this.access.tokens[accessToken] = null;
         },
 
-        /**
-         * Set user and access
-         */
         setUser(userID, userName, userAvatarSrc, userEmail) {
             this.access.user = true;
             this.user.id = userID;

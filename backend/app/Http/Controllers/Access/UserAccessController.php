@@ -16,13 +16,11 @@ use GuzzleHttp\Exception\GuzzleException;
 use App\Http\Collections\AccessCollection;
 use App\Http\Controllers\Access\AccessHandler;
 use App\Http\Controllers\Access\PaddleTransactionHandler;
-use App\Http\Controllers\Access\PaddleSubscriptionHandler;
-
 
 class UserAccessController extends Controller
 {
     /**
-     * Load dashboard
+     * Load prices, transactions and access
      *
      * @return void
      */
@@ -77,13 +75,12 @@ class UserAccessController extends Controller
      * Initialize user's client checkout.
      * This marks the starting point of the entire user access verification process:
      *  > A "transaction_token" is assigned to the user for subsequent webhook verifications
-     *  > Further verification will be handled by 
-     *    "/Listeners/PaddleWebhookListener"
+     *  > Further verification will be handled by "/Listeners/PaddleWebhookListener"
      * 
      * @param Request $request
      * @return void
      */
-    public function initializeClientCheckoutTransaction(Request $request) 
+    public function initializeClientCheckout(Request $request) 
     {
         $data = $request->validate([
             'transaction_token' => ['required', 'string'],
@@ -152,6 +149,7 @@ class UserAccessController extends Controller
      */
     public function cancelSubscription(Request $request)
     {
+        $userSubscription = null;
         $data = $request->validate([
             'price_token' => ['required', 'string'],
         ]);
@@ -170,7 +168,7 @@ class UserAccessController extends Controller
 
             // Handle cancleation of subscription(s)
             foreach($subscriptions as $subscription) {
-                $PaddleSubscription = new PaddleSubscriptionHandler($subscription);
+                $userSubscription = $subscription;
                 if($this->requestCancelSubscription($subscription)) {
                     $subscription->update([
                         'canceled_at' => now(),
@@ -180,7 +178,7 @@ class UserAccessController extends Controller
                 }
             }
         } catch (Exception $e) {
-            $PaddleSubscription->subscription?->update([
+            $userSubscription?->update([
                 'message' => 'client.subscription.cancel.error' . $e->getMessage()
             ]);
 

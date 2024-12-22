@@ -4,24 +4,32 @@ namespace App\Http\Controllers\Access;
 
 use App\Models\UserAccess;
 
-
 class AccessHandler
 {
+    /**
+     * User Access Management
+     * Defines user-access-tokens within our app.
+     *  > Public access can be purchased by users (ref. app-prices)
+     *      - User access will be initiated by Paddle webhooks
+     *      - See "App\Listeners\PaddleWebhookListener.php"
+     *  > Private access can be definied within app (eg. access-admin)
+     *      - Access must be initiated to user manually
+     * 
+     * ...........................................
+     * . Define own access tokens here
+     * ...........................................
+     */
     public static $tokenAdmin = 'access-admin';
     public static $tokenCockpit = 'access-cockpit';
 
     /**
-     * Add user app-access, by provided '$access_token'
-     * Access can either be handeled via expiration_date or quantity
-     *  > Flag $access_token: Defines access to app-features
-     *  > Flag $quantity: Amount of something (add logic)
-     *  > Flag $expiration_date: End of access
+     * Add user app-access, by defined '$access_token'
      *
      * @param integer $userID
      * @param integer|null $transactionID
-     * @param string $accessToken
-     * @param integer $quantity
-     * @param string $expirationDate
+     * @param string $accessToken, defines access to app-features
+     * @param integer $quantity, amount of something (add logic)
+     * @param string $expirationDate, end of access
      * @param string $message
      * @return object
      */
@@ -40,7 +48,6 @@ class AccessHandler
             ]
         );
     }
-
     
     /**
      * Check current access
@@ -56,26 +63,6 @@ class AccessHandler
             ])->whereDate('expiration_date', '>=', date('Y-m-d'))
             ->latest('expiration_date')
             ->first();
-    }
-
-    /**
-     * Get all active accesses, unified by access_token
-     *  > Entry with latest expiration_date
-     *
-     * @param integer $userID
-     * @return object
-     */
-    static public function getLatestUserAccesses(int $userID): object
-    {
-        return UserAccess::select('user_access.*')
-            ->where([
-                'user_id' => $userID,
-                'is_active' => true,
-            ])->whereDate('expiration_date', '>=', date('Y-m-d'))
-            ->orderBy('access_token')
-            ->orderBy('expiration_date', 'desc')
-            ->distinct('access_token')
-            ->get();
     }
 
     /**
@@ -113,6 +100,26 @@ class AccessHandler
             ])->whereDate('expiration_date', '>=', date('Y-m-d'))
             ->latest('expiration_date')
             ->first();
+    }
+
+    /**
+     * Get all active accesses by latest expiration_date
+     * Unified by access_token
+     *
+     * @param integer $userID
+     * @return object
+     */
+    static public function getLatestUserAccesses(int $userID): object
+    {
+        return UserAccess::select('user_access.*')
+            ->where([
+                'user_id' => $userID,
+                'is_active' => true,
+            ])->whereDate('expiration_date', '>=', date('Y-m-d'))
+            ->orderBy('access_token')
+            ->orderBy('expiration_date', 'desc')
+            ->distinct('access_token')
+            ->get();
     }
 
     /**
