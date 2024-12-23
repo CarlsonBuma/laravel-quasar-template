@@ -57,11 +57,12 @@
                     Define access tokens to allow users to access certain app features. 
                     Tokens are defined within the app. For more information, please refer to the documentation.
                 </span>
-                <q-input 
-                    label="Define access token"
-                    hint="Local access tokens: 'access-admin'"
-                    v-model="newAccess.access_token" 
-                />
+                <q-input label="Enter access token" v-model="newAccess.access_token" />
+                <span class="text-caption">
+                    <b>Existing access tokens:</b><br>
+                    Private tokens: 'access-admin'<br>
+                    Public tokens: 'access-cockpit'
+                </span>
             </q-card-section>
             <q-card-section>
                 <span>

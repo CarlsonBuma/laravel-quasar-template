@@ -11,6 +11,7 @@ class AppAccessAdmin
 {
     /**
      * Verify access for the "Admin" feature.
+     * See folder "\Controllers\Admin"
      *
      * @param Request $request
      * @param Closure $next

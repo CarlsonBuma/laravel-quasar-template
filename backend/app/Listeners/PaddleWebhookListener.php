@@ -6,7 +6,6 @@ use Exception;
 use Illuminate\Http\Request;
 use App\Models\PaddleTransactions;
 use App\Http\Controllers\Controller;
-use Laravel\Paddle\Events\WebhookReceived;
 use App\Http\Controllers\Access\AccessHandler;
 use App\Http\Controllers\Access\AccessHandling\PaddlePriceHandler;
 use App\Http\Controllers\Access\AccessHandling\PaddleSubscriptionHandler;
@@ -25,20 +24,21 @@ class PaddleWebhookListener extends Controller
      *  - Updated subscription
      * 
      ** Setup: Webhook App Access Management
-     *  1. Initialize app access by Paddle price
-     *      - see "\Controllers\Access\PaddlePriceHandler" 
-     *  2. Define access token based on the logic:
-     *      - Add the token to "\Controllers\Access\AccessHandler.php"
-     *  3. Set up the Webhook Gateway in Paddle Cockpit:
-     *      > Webhook URL: https://sandbox-vendors.paddle.com/notifications
-     *      > Endpoint: https://{URL}/access/webhook
-     *          - See "routes\web.php"
-     *  4. Add logic according to the access token within the app:
+     *  1. Initialize Paddle price
+     *      - Users is able to gain access to app features by defined price tokens
+     *          > see "\Controllers\Access\PaddlePriceHandler" 
+     *  2. Define Webhooks:
+     *      - Set up the Webhook Gateway in Paddle Cockpit:
+     *          > Webhook URL: https://sandbox-vendors.paddle.com/notifications
+     *          > Endpoint: https://{URL}/access/webhook
+     *              - See "routes\web.php"
+     *  4. Set access:
+     *      - Add access token to "\Controllers\Access\AccessHandler.php"
      *      - Set up Middleware to validate feature access:
      *          > Example: "\Middleware\AppAccessCockpit.php"
-     *      - Define app logic...
+     *      - Define app logic, according access token
      * 
-     * @param WebhookReceived $event The webhook event instance.
+     * @param Request $request
      * @return void
      */
     public function handleWebhook(Request $request): void
@@ -80,26 +80,21 @@ class PaddleWebhookListener extends Controller
      *  - "One-Time Purchase": The user pays once.
      *      > User access is granted for a one-time period, either based on expiration date or quantity. 
      *  - "Subscription": The user subscribes to a price, which is billed periodically by Paddle. 
-     *      > User access is granted on a recurring basis via webhook, linked to the subscription token and the corresponding user.
+     *      > User access is granted on a recurring basis via webhook, linked to the subscription and the corresponding user.
      * 
-     ** Logic: Client & Server access verification 
-     *  1. Fontend: Client Checkout (PaddleJS)
-     *      - Users can purchase price via the client, allowing access to specific app features.
-     *          > Important: Price must be defined within Paddle
-     *          > Important: "Access-Token" must be implemented in app logic
-     *  2. Backend: User access initialization
-     *      - After client checkout, a "user-access-request" for further verification (Backend, by Webhooks) must be initiated
-     *          > Important: This setup allows us to verify user for subsequent webhook calls
-     *          > See "\Controllers\Access\UserAccessController::initializeClientCheckout()"
-     *  3. Webhook: Verify transactions
-     *      - Paddle fires a transaction webhook, after new registered transaction
-     *         > Verify user according provided transaction_token or subscription_token
+     ** Logic: User access verification 
+     *  1. Client access initialization 
+     *      - After client checkout via PaddleJS, the inital user-access-request must be stored in DB to verify subsequent webhook calls     
+     *          >  See "\Controllers\Access\UserAccessController::initializeClientCheckout()"
+     *  2. Verify user access
+     *      - Paddle fires a webhook call, after new registered transaction
+     *          > Verify transactions and grand user access according transaction_token or subscription_token
      *              - transaction_token does exists: Price has been purchased very recently by client
      *              - transaction_token does not exists: Transaction must be initialized by a subscription
-     *          > Grant access to referred user, according price-access-token
+     *          > Grant access to referred user, according price access
      *              - $access_token: feature access 
-     *              - $expiration_period: access limits (deadline)
-     *              - $quantity: access limits (amount of something)
+     *              - $expiration_period: access limit (deadline)
+     *              - $quantity: access limit (amount of something)
      * 
      * @param array $contentData
      * @return void
@@ -119,7 +114,7 @@ class PaddleWebhookListener extends Controller
 
             // If no transaction is found
             // Webhook is initialized via subscription by some user
-            $PaddleTransaction->setTransactionAttributes($contentData);
+            $PaddleTransaction->setTransactionAccessAttributes($contentData);
             if(!$PaddleTransaction->transaction && $PaddleTransaction->subscription_token) {
                 $PaddleTransaction->initializeUserTransactionBySubscription(
                     $PaddleTransaction->subscription_token,
@@ -168,7 +163,11 @@ class PaddleWebhookListener extends Controller
             PaddleTransactions::where('transaction_token', $contentData['id'])->first()
         );
 
-        AccessHandler::cancelUserAccessByTransaction($PaddleTransaction->transaction);
+        AccessHandler::cancelUserAccessByTransaction(
+            $PaddleTransaction->transaction,
+            'inactive',
+            'canceled.by.webhook'
+        );
 
         $PaddleTransaction->transaction->update([
             'status' => $PaddleTransaction->status,

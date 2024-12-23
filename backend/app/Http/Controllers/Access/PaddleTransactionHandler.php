@@ -13,21 +13,26 @@ class PaddleTransactionHandler
     // Access
     public $user_id = null;
     public $access = null;
+    
     // Transaction
     public $transaction = null;
     public $transaction_token = null;
+
     // Subscription
     public $subscription = null;
     public $subscription_token = null;
+    
     // Price
     public $price = null;
     public $price_token = null;
     public $price_id = null;
+    
     // Access
     public $access_token = 'default-token';
     public $access_quantity = 1;
     public $expiration_date = null;
     public $quantity = 1;
+    
     // Meta
     public $status = 'processing...';
     public $customer_token = null;
@@ -37,9 +42,7 @@ class PaddleTransactionHandler
 
     /**
      * Set default attributes
-     *  > $transaction 
-     *  > $transaction_token
-     *  > $user_id
+     * Webhook: "\Listeners\PaddleWebhookListener"
      *
      * @param object|null $transactionEntry
      */
@@ -52,39 +55,46 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Sets attributes, according providers webhook
-     * https://developer.paddle.com/webhooks/overview
+     * Sets attributes, to verify transaction and define user access
+     * Transaction webhook doc: https://developer.paddle.com/webhooks/overview
      * 
-     ** Note: Prices defines transaction-data, which are set within Paddle Cockpit
-     * Make sure, you define price and 'custom_data' accordingly
-     *  > 'access_token' (required): Defines app / features access
-     *  > 'duration_months': Defines period of current access
-     *      > overwritten, by subscription.billing_period.ends_at
+     * Logic: User access
+     * User gains access, according transaction data
+     *  - Important: The transaction-price-object defines the user access
+     *      - ref. "\Access\PaddlePriceHandler"
+     * 
+     * Logic: User access expiration
+     * Access expiration will be defined either by quantity or expiration_date
+     *  - ref. "\Controllers\Access\AccessHandler"
      *
      * @param array $contentData
      * @return void
      */
-    public function setTransactionAttributes(array $contentData): void
+    public function setTransactionAccessAttributes(array $contentData): void
     {
         // Transaction Attributes
         $item = $contentData['items'][0] ?? null;
         $this->transaction_token = $contentData['id'];
         $this->price_token = $item['price']['id'] ?? null;
         $this->customer_token = $contentData['customer_id'];
-        $this->quantity = (int) $item['quantity'] ?? 0;
         $this->total = ((float) $contentData['details']['totals']['total']) / 100 ?? 0;
         $this->tax = ((float) $contentData['details']['totals']['tax']) / 100 ?? 0;
         $this->currencyCode = $contentData['currency_code'] ?? 'CHF';
         $this->status = $contentData['status'];
 
-        // Access Attributes
+        // Price
         $this->price = PaddlePrices::where('price_token', $this->price_token)->first();
         $this->price_id = $this->price?->id;
+        
+        // Access token
         $this->access_token = $this->price->access_token 
             ?? $item['price']['custom_data']['access_token']
                 ?? $this->access_token;
+        
+        // Access quantity
+        $this->quantity = (int) $item['quantity'] ?? 0;
 
-        // Access Period, according to paddle-price
+        // Access expiration date
         $defaultPeriod = $item['price']['custom_data']['duration_months'] ?? 0;
         $this->expiration_date = $contentData['current_billing_period']['ends_at'] 
             ?? $contentData['billing_period']['ends_at']
@@ -95,7 +105,7 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Create intital user transaction
+     * Intitalize user transaction
      *
      * @param integer $userID
      * @param string $transactionToken
@@ -134,10 +144,8 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Validate user by subscription token.
-     *  > A new user transaction is submitted via the '$subscription_token' through the webhook.
-     *  > This occurs only when the user subscribes to a price of type 'subscription'.
-     *  > Retrieve the associated user using the '$subscription_token' and initialize new transaction.
+     * Validate user by provided subscription token
+     * Note: This occurs only if price is type "subscription"
      *
      * @param string $subscriptionToken
      * @param string $message
@@ -157,7 +165,7 @@ class PaddleTransactionHandler
 
     /**
      * Complete transaction
-     * Before user access granted
+     * Note: Before user access granted
      *
      * @param string $message
      * @return void
@@ -181,7 +189,7 @@ class PaddleTransactionHandler
 
     /**
      * Close transaction 
-     * After user access granted
+     * Note: After user access granted
      *
      * @return void
      */
@@ -196,14 +204,9 @@ class PaddleTransactionHandler
     }
 
     /**
-     * Calculate user access expiration date.
-     * This is only considered if 'custom_data' contains a "duration_period" 
-     * and no other expiration date is set.
-     *
-     ** Note: 
-     * This only applies to one-time purchases. In this case, we ensure that the 
-     * new expiration period is applied to the current expiration date.
-     *  > For example, instead of purchasing a quantity, users purchase access time.
+     * Calculate user access expiration date
+     * Note: This scenario only applies to one-time purchases
+     *  > Make sure 'custom_data' contains a "duration_period" 
      *
      * @param integer $accessPeriod
      * @return string

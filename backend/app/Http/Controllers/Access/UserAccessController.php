@@ -73,7 +73,9 @@ class UserAccessController extends Controller
 
     /**
      * Initialize user's client checkout.
-     * This marks the starting point of the entire user access verification process:
+     * 
+     * Logic:
+     * This marks the starting point of the entire user access verification process
      *  > A "transaction_token" is assigned to the user for subsequent webhook verifications
      *  > Further verification will be handled by "/Listeners/PaddleWebhookListener"
      * 
@@ -140,9 +142,12 @@ class UserAccessController extends Controller
     }
 
     /**
-     * Cancel user subscriptions belonging to the provided price
+     * Cancel user price subscription within Paddle
      *  > Request via paddle api-call
      *  > https://developer.paddle.com/api-reference/subscriptions/cancel-subscription
+     * 
+     * Note: 
+     * Allows user to cancel Paddle price subscription at any time.
      * 
      * @param Request $request
      * @return void
@@ -194,7 +199,6 @@ class UserAccessController extends Controller
 
     /**
      * Request cancel subscription via provider api-call
-     *  > Incl. Duplicates (why-so-ever)
      *
      * @param object $subscription
      * @return boolean
@@ -206,7 +210,7 @@ class UserAccessController extends Controller
             // Setup client
             $client = new Client([
                 'verify' => !(bool) env('PADDLE_SANDBOX'),
-                'base_uri' => env('PADDLE_URL'),
+                'base_uri' => env('PADDLE_API_URL'),
             ]);
     
             // Start request

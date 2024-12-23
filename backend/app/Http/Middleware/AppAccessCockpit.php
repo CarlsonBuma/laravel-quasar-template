@@ -11,6 +11,7 @@ class AppAccessCockpit
 {
     /**
      * Verify access for the "Cockpit" feature.
+     * See folder "\Controllers\UserCockpit"
      *
      * @param Request $request
      * @param Closure $next

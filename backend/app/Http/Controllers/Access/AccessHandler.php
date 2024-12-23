@@ -8,12 +8,13 @@ class AccessHandler
 {
     /**
      * User Access Management
-     * Defines user-access-tokens within our app.
-     *  > Public access can be purchased by users (ref. app-prices)
-     *      - User access will be initiated by Paddle webhooks
-     *      - See "App\Listeners\PaddleWebhookListener.php"
+     * Defines user access within our app
+     *  > Public access can be purchased by users themself (ref. app-prices)
+     *      - User access will be initiated by provided prices and its access token
+     *      - Important: Allow access token within app!
+     *          - see "\Access\PaddlePriceHandler"
      *  > Private access can be definied within app (eg. access-admin)
-     *      - Access must be initiated to user manually
+     *      - Access must be initiated to a user manually (eg. by admin)
      * 
      * ...........................................
      * . Define own access tokens here
@@ -23,7 +24,7 @@ class AccessHandler
     public static $tokenCockpit = 'access-cockpit';
 
     /**
-     * Add user app-access, by defined '$access_token'
+     * Add user app access
      *
      * @param integer $userID
      * @param integer|null $transactionID
@@ -33,7 +34,7 @@ class AccessHandler
      * @param string $message
      * @return object
      */
-    static public function addUserAccess(int $userID, int $transactionID = null, string $accessToken, int $quantity, string $expirationDate, string $message): object
+    static public function addUserAccess(int $userID, int $transactionID = null, string $accessToken = 'undefined', int $quantity = 0, string $expirationDate, string $message): object
     {
         return UserAccess::updateOrCreate([
                 'user_id' => $userID,
@@ -128,13 +129,15 @@ class AccessHandler
      * @param object $transaction
      * @return void
      */
-    static public function cancelUserAccessByTransaction(object $transaction): void
+    static public function cancelUserAccessByTransaction(object $transaction, string $status, string $message): void
     {
         UserAccess::where([
             'user_id' => $transaction->user_id,
             'transaction_id' => $transaction->id,
         ])->update([
-            'is_active' => false
+            'is_active' => false,
+            'status' => $status,
+            'message' => $message
         ]);
     }
 }

@@ -11,8 +11,8 @@ class PaddleWebhookVerification
 {
     /**
      * Verify paddle webhooks
-     *  > https://developer.paddle.com/webhooks/signature-verification#extract-ts-h1
-     *  > Validate against PADDLE_WEBHOOK_SECRET
+     *  - Doc: https://developer.paddle.com/webhooks/signature-verification#extract-ts-h1
+     *  > Note: Validate against PADDLE_WEBHOOK_SECRET
      *
      * @param Request $request
      * @param Closure $next

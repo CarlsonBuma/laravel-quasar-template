@@ -30,7 +30,7 @@ class AdminAccessController extends Controller
     }
 
     /**
-     * Update Price
+     * Undocumented function
      *
      * @param Request $request
      * @return void
@@ -52,9 +52,9 @@ class AdminAccessController extends Controller
     }
 
     /**
-     * Find and load user-access
+     * Undocumented function
      *
-     * @param string $email
+     * @param Request $request
      * @return void
      */
     public function loadUserAccess(Request $request)
@@ -91,10 +91,11 @@ class AdminAccessController extends Controller
         ], 422);
     }
 
+
     /**
-     * Find and load user-access
+     * Undocumented function
      *
-     * @param string $email
+     * @param Request $request
      * @return void
      */
     public function createUserAccess(Request $request)
@@ -128,9 +129,9 @@ class AdminAccessController extends Controller
     }
 
     /**
-     * Find and load user-access
+     * Undocumented function
      *
-     * @param string $email
+     * @param Request $request
      * @return void
      */
     public function updateUserAccess(Request $request)

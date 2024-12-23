@@ -12,14 +12,15 @@ class PaddlePriceHandler
     /**
      * Update price changes that have been triggered within Paddle
      * Sandbox: https://sandbox-vendors.paddle.com/products-v2
+     * Webhook: "\Listeners\PaddleWebhookListener"
      * 
      ** Setup: Price Catalog Cockpit
-     *  - Set Price and its attributes
+     *  - Set Price and its attributes within Paddle
      *  - Ensure 'custom_data' is included in the price configuration
-     *      > 'access_token' (required): Defines access to the app and its features
-     *      > 'duration_months': Defines the period of access
+     *      > 'access_token' (string, required): Defines access to the app and its features
+     *      > 'duration_months' (int, optional): Defines the period of access
      *          - Note: This is overridden by the subscription.billing_period.ends_at value
-     *  - Enable price access token within function "updatePriceByWebhook()"
+     *  - Enable price-access-token within function "updatePriceByWebhook()"
      *
      * @param array $contentData
      * @return void
@@ -37,23 +38,23 @@ class PaddlePriceHandler
         )) { 
             // Price is available and defined within app
             PaddlePrices::updateOrCreate([
-                'price_token' => $contentData['id'],
+                'price_token' => $contentData['id'],                                                // Required by access logic
             ], [
-                'product_token' => $contentData['product_id'],
-                'name' => $contentData['name'],
-                'description' => $contentData['description'],
-                'type' => $contentData['billing_cycle'] ? 'subscription' : 'one-time-purchase',
-                'price' => $contentData['unit_price']['amount'] / 100 ?? null,
-                'tax_mode' => $contentData['tax_mode'] === 'external' ? 'excluded' : 'included',
-                'currency_code' => $contentData['unit_price']['currency_code'] ?? null,
-                'billing_interval' => $contentData['billing_cycle']['interval'] ?? null,
-                'billing_frequency' => $contentData['billing_cycle']['frequency'] ?? null,
-                'trial_interval' => $contentData['trial_period']['interval'] ?? null,
-                'trial_frequency' => $contentData['trial_period']['frequency'] ?? null,
-                'access_token' => $contentData['custom_data']['access_token'] ?? 'undefined',
-                'duration_months' => $contentData['custom_data']['duration_months'] ?? 0,
-                'status' => $contentData['status'],
-                'message' => 'webhook.price.updated',
+                'product_token' => $contentData['product_id'],                                      // Optional
+                'name' => $contentData['name'],                                                     // Optional
+                'description' => $contentData['description'],                                       // Optional
+                'type' => $contentData['billing_cycle'] ? 'subscription' : 'one-time-purchase',     // Optional
+                'price' => $contentData['unit_price']['amount'] / 100 ?? null,                      // Optional
+                'tax_mode' => $contentData['tax_mode'] === 'external' ? 'excluded' : 'included',    // Optional
+                'currency_code' => $contentData['unit_price']['currency_code'] ?? null,             // Optional
+                'billing_interval' => $contentData['billing_cycle']['interval'] ?? null,            // Optional
+                'billing_frequency' => $contentData['billing_cycle']['frequency'] ?? null,          // Optional
+                'trial_interval' => $contentData['trial_period']['interval'] ?? null,               // Optional
+                'trial_frequency' => $contentData['trial_period']['frequency'] ?? null,             // Optional
+                'access_token' => $contentData['custom_data']['access_token'] ?? 'undefined',       // Required by access logic
+                'duration_months' => $contentData['custom_data']['duration_months'] ?? 0,           // Required by access logic
+                'status' => $contentData['status'],                                                 // Optional
+                'message' => 'webhook.price.updated',                                               // Optional
             ]);
         }
     }
