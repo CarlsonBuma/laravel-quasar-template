@@ -1,11 +1,12 @@
 'use strict';
 import { route } from 'quasar/wrappers';
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router';
-import routesVisitors from './visitors';
 import routesAuth from './auth';
+import routesAccess from './access';
 import routesUser from './user';
 import routesCockpit from './cockpit';
 import routesBackpanel from './admin';
+import routesVisitors from './visitors';
 
 export default route(function (/* { store, ssrContext } */) {
     const createHistory = process.env.SERVER
@@ -19,11 +20,12 @@ export default route(function (/* { store, ssrContext } */) {
     }];
 
     // Routes
-    routes.push(...routesVisitors)
     routes.push(...routesAuth);
+    routes.push(...routesAccess);
     routes.push(...routesUser);
     routes.push(...routesCockpit);
     routes.push(...routesBackpanel);
+    routes.push(...routesVisitors);
 
     // Init Router
     const Router = createRouter({

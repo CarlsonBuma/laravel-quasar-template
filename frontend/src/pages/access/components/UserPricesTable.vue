@@ -2,7 +2,7 @@
     
     <q-table
         flat
-        :title="title"
+        title="My access"
         row-key="id"
         :rows="prices"
         :columns="columnsProducts"
@@ -10,7 +10,6 @@
             rowsPerPage: 5
         }"
     >
-        <!-- Prices -->
         <template v-slot:header-cell="props">
             <q-th :props="props">
                 {{ props.col.label }}
@@ -28,10 +27,11 @@
                 </q-td>
                 <q-td key="name" :props="props">
                     <span>{{ props.row.name }}</span><br>
-                    <span class="text-caption"><em>"{{ props.row.access_token }}"</em></span>
+                    <span class="text-caption">'{{ props.row.access_token }}'</span>
                 </q-td>
-                <q-td key="is_active" :props="props">
-                    <q-checkbox v-model="props.row.is_active"/>
+                <q-td key="price" :props="props">
+                    <span> {{ props.row.currency_code + ' ' + props.row.price }}</span><br>
+                    <span class="text-caption">Tax: {{ props.row.tax_mode }}</span>
                 </q-td>
                 <q-td key="billing_type" :props="props">
                     {{ props.row.type }}
@@ -39,9 +39,9 @@
                 <q-td key="billing_period" :props="props">
                     {{ 
                         props.row.billing_frequency 
-                            ? props.row.billing_frequency + ' per ' + props.row.billing_interval 
+                            ? props.row.billing_frequency + ' ' + props.row.billing_interval 
                             : props.row.duration_months 
-                                ? props.row.duration_months + ' month' 
+                                ? props.row.duration_months + ' months' 
                                 : 'none'
                     }}
                 </q-td>
@@ -52,20 +52,37 @@
                             : 'none' 
                     }}
                 </q-td>
-                <q-td key="price" :props="props">
-                    {{ props.row.currency_code + ' ' + props.row.price }}
-                </q-td>
                 <q-td key="status" :props="props">
-                    {{ props.row.status }}
-                </q-td>
-                <q-td key="actions" :props="props">
+                    
+                    <!-- Cancel subscriptions -->
                     <q-btn 
-                        icon="update"
+                        v-if="props.row.has_active_subscription"
+                        label="Deactivate"
+                        icon="generating_tokens"
+                        size="sm"
+                        color="purple"
+                        outline
+                        @click="$emit('cancel', props.row)"
+                    />
+
+                    <!-- Get Access -->
+                    <q-btn 
+                        v-else
+                        icon="generating_tokens"
                         size="sm"
                         outline
-                        color="primary"
-                        @click="$emit('update', props.row)"
-                    />
+                        :label="props.row.has_access && !props.row.is_subscription 
+                            ? 'Active'
+                            : 'Get access'"
+                        :color="props.row.has_access
+                            ? 'green' 
+                            : 'primary'"
+                        @click="$emit('action', props.row)"
+                    >
+                        <q-tooltip v-if="props.row.has_access">
+                            Expires: {{ props.row.has_access.expiration_date }}
+                        </q-tooltip>
+                    </q-btn>
                 </q-td>
             </q-tr>
         </template>
@@ -74,19 +91,16 @@
 </template>
 
 <script>
-
-
 export default {
-    name: 'PricesTable',
+    name: 'UserPricesTable',
 
     props: {
-        title: String,
         prices: Array
     },
 
     emits: [
-        'search',
-        'update',
+        'action',
+        'cancel'
     ],
 
     setup() {
@@ -104,16 +118,17 @@ export default {
                 sortable: false,
                 note: 'Tokens allow you gain access to provided app features.'
             }, {
-                name: 'is_active',
-                label: 'is public',
-                field: 'is_active',
-                note: 'Publishes tokens, enabling users to gain access through Paddle pricing plans.'
+                name: 'price',
+                label: 'Price',
+                field: 'price',
+                align: 'left',
+                sortable: false
             }, {
                 name: 'billing_type',
                 label: 'Billing type',
                 field: 'billing_type',
                 align: 'left',
-                note: 'One-time purchases are charged a single time. Subscriptions allow for periodic renewal of access, with the option to cancel at any time.'
+                note: 'One-time purchases are charged a single time. Subscriptions allow periodic renewal of access, with the option to cancel at any time.'
             }, {
                 name: 'billing_period',
                 label: 'Access period',
@@ -126,20 +141,9 @@ export default {
                 field: 'trial_mode',
                 align: 'left',
             }, {
-                name: 'price',
-                label: 'Price',
-                field: 'price',
-                align: 'left',
-                sortable: false
-            }, {
                 name: 'status',
-                label: 'Paddle status',
+                label: 'Status',
                 field: 'status',
-                note: 'Whether this token can be used in Paddle. If its archived, price is no longer available.'
-            },  {
-                name: 'actions',
-                label: 'Actions',
-                field: 'actions',
             },
         ];
 

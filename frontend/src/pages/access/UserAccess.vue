@@ -44,8 +44,8 @@
 <script>
 import { ref } from 'vue';
 import PaddlePriceJS from 'components/PaddlePriceJS.vue';
-import PricesTable from './components/PricesTable.vue';
-import TransactionsTable from './components/TransactionsTable.vue';
+import PricesTable from './components/UserPricesTable.vue';
+import TransactionsTable from './components/UserTransactionsTable.vue';
 
 export default {
     name: 'UserAccess',

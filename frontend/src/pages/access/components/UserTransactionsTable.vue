@@ -4,12 +4,19 @@
         flat
         :rows="transactions"
         :columns="columnsTransaction"
-        :title="title"
+        title="Transactions"
         row-key="id"
         :pagination="{
             rowsPerPage: 7
         }"
     >
+        <template v-slot:top-right>
+            <q-input borderless dense debounce="300" v-model="filterInput" placeholder="Search">
+                <template v-slot:append>
+                    <q-icon name="search" />
+                </template>
+            </q-input>
+        </template>
         <template v-slot:body="props">
             <q-tr :props="props">
                 <q-td key="id" :props="props">
@@ -19,27 +26,26 @@
                     {{ props.row.price?.name ?? 'No price assigned.' }}<br>
                     <span class="text-caption"><em>"{{ props.row.price?.access_token ?? 'undefined' }}"</em></span>
                 </q-td>
+                <q-td key="status" :props="props">
+                    {{ props.row.status }}
+                </q-td>
                 <q-td key="quantity" :props="props">
-                    {{ props.row.quantity }}
+                    {{ props.row.quantity }}<br>
                 </q-td>
                 <q-td key="price" :props="props">
-                    {{ props.row.currency_code + ' ' + props.row.total }}
+                    {{ props.row.currency_code + ' ' + props.row.total }}<br>
                 </q-td>
                 <q-td key="tax" :props="props">
                     {{ props.row.tax }}
                 </q-td>
-                <q-td key="active" :props="props">
-                    <q-icon name="verified" :color="props.row.access ? 'green' : 'grey'" />
+                <q-td key="updated_at" :props="props">
+                    {{ props.row.updated_at }}
                 </q-td>
                 <q-td key="expiration_date" :props="props">
                     {{ props.row.access?.expiration_date ?? '-' }}
                 </q-td>
-                <q-td key="status" :props="props">
-                    {{ props.row.status }}<br>
-                    <span class="text-caption">{{ props.row.message }}</span>
-                </q-td>
-                <q-td key="updated_at" :props="props">
-                    {{ props.row.updated_at }}
+                <q-td key="active" :props="props">
+                    <q-icon name="verified" :color="props.row.access ? 'green' : 'grey'" />
                 </q-td>
             </q-tr>
         </template>
@@ -48,13 +54,10 @@
 </template>
 
 <script>
-import { date } from 'quasar';
-
 export default {
-    name: 'TransactionsTable',
+    name: 'UserTransactionsTable',
 
     props: {
-        title: String,
         transactions: Array
     },
 
@@ -67,10 +70,15 @@ export default {
                 align: 'left',
             }, {
                 name: 'name',
-                label: 'Product',
+                label: 'Token',
                 field: 'name',
                 align: 'left',
-                sortable: false
+                sortable: true
+            }, {
+                name: 'status',
+                label: 'Status',
+                field: 'status',
+                align: 'left',
             }, {
                 name: 'quantity',
                 label: 'Quantity',
@@ -87,30 +95,24 @@ export default {
                 field: 'tax',
                 align: 'left',
             }, {
-                name: 'active',
-                label: 'has access',
-                field: 'active',
+                name: 'updated_at',
+                label: 'Latest update',
+                field: 'updated_at',
+                align: 'left',
             }, {
                 name: 'expiration_date',
                 label: 'Expiration date',
                 field: 'expiration_date',
                 align: 'left',
-                sortable: false
+                sortable: true
             }, {
-                name: 'status',
-                label: 'Status',
-                field: 'status',
-                align: 'left',
-            }, {
-                name: 'updated_at',
-                label: 'Latest update',
-                field: 'updated_at',
-                align: 'left',
+                name: 'active',
+                label: 'Access',
+                field: 'active',
             },
         ];
 
         return {
-            date,
             columnsTransaction
         };
     },

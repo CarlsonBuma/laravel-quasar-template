@@ -3,16 +3,8 @@ import store from "src/stores/user.js";
 
 const routesAuth = [
     
-    // User account
+    // User
     {
-        path: "/account/access",
-        name: "UserAccess",
-        component: () => import('src/pages/auth/UserAccess.vue'),
-        beforeEnter: (to, from, next) => {
-            if (!store().access.user) next('/');
-            else next();
-        },
-    }, {
         path: "/account/settings",
         name: "UserAccount",
         component: () => import('src/pages/auth/UserAccount.vue'),
@@ -22,7 +14,7 @@ const routesAuth = [
         },
     }, 
     
-    // Public access
+    // Public
     {
         path: "/create-account",
         name: "CreateNewAccount",

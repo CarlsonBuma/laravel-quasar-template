@@ -69,7 +69,7 @@
 import { ref } from 'vue';
 
 export default {
-    name: 'AccessTable',
+    name: 'AdminAccessTable',
 
     props: {
         title: String,

@@ -88,12 +88,12 @@
 
 <script>
 import { ref } from 'vue';
-import PricesTable from './components/PricesTable.vue';
-import AccessTable from './components/AccessTable.vue';
-import TransactionsTable from './components/TransactionsTable.vue';
+import PricesTable from './components/AdminPricesTable.vue';
+import AccessTable from './components/AdminAccessTable.vue';
+import TransactionsTable from './components/AdminTransactionsTable.vue';
 
 export default {
-    name: 'UserAccess',
+    name: 'AdminAccessManagement',
     components: {
         PricesTable, AccessTable, TransactionsTable
     },

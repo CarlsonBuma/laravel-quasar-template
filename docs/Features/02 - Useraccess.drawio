@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-12-21T12:21:47.599Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="dp01rHbSq9RHDb-m6v_v" version="22.1.15" type="device" pages="5">
+<mxfile host="Electron" modified="2024-12-23T00:19:33.663Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="NDl-cHAZEYtXRZF8TPGm" version="22.1.15" type="device" pages="5">
   <diagram id="UitA2do2NvOQAMUplk1J" name="Feature Overview">
-    <mxGraphModel dx="3860" dy="1338" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2694" dy="661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -52,7 +52,7 @@
             <mxPoint x="1112.5" y="1052.5" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="mPV1iCZunj8795xC_7on-1" value="&lt;h1&gt;Defintions&lt;/h1&gt;&lt;p&gt;&lt;u&gt;Checkout&lt;/u&gt;:&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;User can pay provided Price to gain app access (ref. Initial Payment) via Client Checkout by PaddleJS. Price can be type of a &quot;one-time-purchase&quot; or &quot;subscription&quot;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;u&gt;One-Time-Purchase&lt;/u&gt;: User pay only once, for a specific quantity or expiration_time of a specific price. User Access will be granted for &quot;once&quot; until expiration (date vs. quantity-tokens).&lt;/p&gt;&lt;p&gt;&lt;u&gt;Subscription&lt;/u&gt;: User is subscribing to Price, which will be periodically charged, by Payment Provider. User Access will be granted &quot;periodically&quot; via Webhook corresponding the subscription_token and corresponding user.&lt;/p&gt;&lt;p&gt;&lt;u&gt;Webhook&lt;/u&gt;: Actions sent to our Backend, by our Payment Provider, as soon specific events taking place.&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;b&gt;Documentation&lt;/b&gt;:&amp;nbsp;&lt;a href=&quot;https://developer.paddle.com/&quot;&gt;Home - Paddle Developer&lt;/a&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+        <mxCell id="mPV1iCZunj8795xC_7on-1" value="&lt;h1&gt;Defintions&lt;/h1&gt;&lt;p&gt;&lt;u&gt;Checkout&lt;/u&gt;:&amp;nbsp;&lt;span style=&quot;background-color: initial;&quot;&gt;User can purchase provided app prices to gain access to app via Client Checkout by PaddleJS. Price can be type of a &quot;one-time-purchase&quot; or &quot;subscription&quot;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;u&gt;One-Time-Purchase&lt;/u&gt;: User pay only once, for a specific quantity or expiration_time defined by price. User Access will be granted for &quot;once&quot; until expiration (expiration date vs. quantity).&lt;/p&gt;&lt;p&gt;&lt;u&gt;Subscription&lt;/u&gt;: User is subscribing to Price, which will be periodically charged, by Payment Provider. User Access will be granted &quot;periodically&quot; via Webhook corresponding the subscription_token and corresponding user.&lt;/p&gt;&lt;p&gt;&lt;u&gt;Webhook&lt;/u&gt;: Actions sent to our Backend, by our Payment Provider, as soon specific events taking place.&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;/p&gt;&lt;b&gt;Documentation&lt;/b&gt;:&amp;nbsp;&lt;a href=&quot;https://developer.paddle.com/&quot;&gt;Home - Paddle Developer&lt;/a&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
           <mxGeometry x="-1580" y="320" width="340" height="355" as="geometry" />
         </mxCell>
         <mxCell id="-dZIRAtPOdo9v_Imx_vp-21" value="Verify&lt;br&gt;transaction" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
@@ -86,7 +86,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="XLDXQ8pQ_xPOunSGDu-5-2" value="&lt;b&gt;Call: Webhook&lt;/b&gt;&amp;nbsp;&lt;br&gt;Price&amp;nbsp;&lt;span style=&quot;color: rgb(51, 51, 51); text-align: center;&quot;&gt;set&lt;/span&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;verticalAlign=top;" parent="1" vertex="1">
-          <mxGeometry x="-929.31" y="1107.5" width="150" height="65" as="geometry" />
+          <mxGeometry x="-929.31" y="1070" width="150" height="65" as="geometry" />
         </mxCell>
         <mxCell id="XLDXQ8pQ_xPOunSGDu-5-4" value="&lt;b&gt;Action&lt;/b&gt;: Create new Price or Update Price according price_token.&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;ul&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;Prices are stored according Paddle Price&lt;/li&gt;&lt;li style=&quot;&quot;&gt;Price access_token must be implemented in app feature logic.&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;spacing=12;verticalAlign=top;" parent="1" vertex="1">
           <mxGeometry x="-1064.75" y="1462.19" width="240.5" height="145.31" as="geometry" />
@@ -151,40 +151,40 @@
         <mxCell id="huzISX9o3MUVbkpnmKz_-13" value="&lt;b&gt;Action:&amp;nbsp;&lt;/b&gt;Subscription will be canceled&lt;br&gt;&lt;ul&gt;&lt;li&gt;User is not charged anymore.&lt;/li&gt;&lt;li&gt;Owner can cancel subscription manually within Paddle Cockpit.&lt;/li&gt;&lt;/ul&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;spacing=12;" parent="1" vertex="1">
           <mxGeometry x="980" y="682.5" width="245" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="GjguRNVwzjblkNLckBbc-1" value="Set&lt;br&gt;App Price" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="GjguRNVwzjblkNLckBbc-1" value="Set&lt;br&gt;App Price" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="-979.5" y="1222.5" width="70" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="GjguRNVwzjblkNLckBbc-2" value="&lt;b&gt;Paddle Payments&lt;br&gt;&lt;/b&gt;Payment Gateway" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;dashed=1;" vertex="1" parent="1">
+        <mxCell id="GjguRNVwzjblkNLckBbc-2" value="&lt;b&gt;Paddle Payments&lt;br&gt;&lt;/b&gt;Payment Gateway" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;dashed=1;" parent="1" vertex="1">
           <mxGeometry x="-569" y="767.5" width="180" height="180" as="geometry" />
         </mxCell>
-        <mxCell id="GjguRNVwzjblkNLckBbc-3" value="Setup" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="GjguRNVwzjblkNLckBbc-3" value="Setup" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="-1070" y="927.5" width="65" height="65" as="geometry" />
         </mxCell>
-        <mxCell id="GjguRNVwzjblkNLckBbc-5" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="fAkgLg6Yq0fzTYVt4pPN-4" target="GjguRNVwzjblkNLckBbc-4">
+        <mxCell id="GjguRNVwzjblkNLckBbc-5" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" parent="1" source="fAkgLg6Yq0fzTYVt4pPN-4" target="GjguRNVwzjblkNLckBbc-4" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="-855" y="1353" as="sourcePoint" />
             <mxPoint x="-590" y="1353" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GjguRNVwzjblkNLckBbc-4" value="Load&lt;br&gt;App Prices" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="GjguRNVwzjblkNLckBbc-4" value="Load&lt;br&gt;App Prices" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
           <mxGeometry x="-618" y="1317.5" width="70" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="f1oyIB4GkQQLYOil8gvG-1" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;dashed=1;" edge="1" parent="1" source="f1oyIB4GkQQLYOil8gvG-2" target="Tur9mPzXtXX7kOvMszdY-5">
+        <mxCell id="f1oyIB4GkQQLYOil8gvG-1" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;dashed=1;" parent="1" source="f1oyIB4GkQQLYOil8gvG-2" target="Tur9mPzXtXX7kOvMszdY-5" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="60" y="903" as="sourcePoint" />
             <mxPoint x="60" y="1218" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="f1oyIB4GkQQLYOil8gvG-2" value="New transaction" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="f1oyIB4GkQQLYOil8gvG-2" value="New transaction" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="-421.25" y="800" width="70" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="f1oyIB4GkQQLYOil8gvG-4" value="&lt;b&gt;Action: &lt;/b&gt;Each payment initalize a transaction, according payment status (completed, failed etc.).&lt;br&gt;&lt;div&gt;&lt;p style=&quot;border-color: var(--border-color);&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;Types of transactions:&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color);&quot;&gt;&lt;/p&gt;&lt;ul style=&quot;border-color: var(--border-color);&quot;&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;u&gt;One-time purchase&lt;/u&gt;: are charged a single time.&amp;nbsp;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;u&gt;Subscription&lt;/u&gt;: allow periodic renewal of access, with the option to cancel at any time (see Paddle Subscriptions).&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;spacing=12;" vertex="1" parent="1">
+        <mxCell id="f1oyIB4GkQQLYOil8gvG-4" value="&lt;b&gt;Action: &lt;/b&gt;Each payment initalize a transaction, according payment status (completed, failed etc.).&lt;br&gt;&lt;div&gt;&lt;p style=&quot;border-color: var(--border-color);&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;Types of transactions:&lt;/b&gt;&lt;/p&gt;&lt;p style=&quot;border-color: var(--border-color);&quot;&gt;&lt;/p&gt;&lt;ul style=&quot;border-color: var(--border-color);&quot;&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;u&gt;One-time purchase&lt;/u&gt;: are charged a single time.&amp;nbsp;&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;u&gt;Subscription&lt;/u&gt;: allow periodic renewal of access, with the option to cancel at any time (see Paddle Subscriptions).&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;spacing=12;" parent="1" vertex="1">
           <mxGeometry x="-129.2" y="480" width="308.38" height="195" as="geometry" />
         </mxCell>
-        <mxCell id="f1oyIB4GkQQLYOil8gvG-6" value="&lt;div&gt;&lt;b&gt;Call: &lt;/b&gt;Initial&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;transaction generated.&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;verticalAlign=top;" vertex="1" parent="1">
+        <mxCell id="f1oyIB4GkQQLYOil8gvG-6" value="&lt;div&gt;&lt;b&gt;Call: &lt;/b&gt;Initial&lt;span style=&quot;background-color: initial;&quot;&gt;&amp;nbsp;transaction generated.&lt;/span&gt;&lt;/div&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;verticalAlign=top;" parent="1" vertex="1">
           <mxGeometry x="-288.38" y="840" width="170" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="f1oyIB4GkQQLYOil8gvG-7" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="Tur9mPzXtXX7kOvMszdY-7" target="f1oyIB4GkQQLYOil8gvG-8">
+        <mxCell id="f1oyIB4GkQQLYOil8gvG-7" value="" style="shape=flexArrow;endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;dashed=1;" parent="1" source="Tur9mPzXtXX7kOvMszdY-7" target="f1oyIB4GkQQLYOil8gvG-8" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
             <mxPoint x="170" y="1363" as="sourcePoint" />
             <mxPoint x="500" y="1363" as="targetPoint" />
@@ -193,16 +193,16 @@
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="f1oyIB4GkQQLYOil8gvG-8" value="Update&lt;br&gt;Subscription" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;dashed=1;" vertex="1" parent="1">
+        <mxCell id="f1oyIB4GkQQLYOil8gvG-8" value="Update&lt;br&gt;Subscription" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;dashed=1;" parent="1" vertex="1">
           <mxGeometry x="57.5" y="1252.5" width="67.5" height="67.5" as="geometry" />
         </mxCell>
-        <mxCell id="f1oyIB4GkQQLYOil8gvG-9" value="&lt;b&gt;Call: &lt;/b&gt;Update subscription&lt;br&gt;&lt;ul&gt;&lt;li&gt;Subscription Status must be updated within our app.&lt;/li&gt;&lt;/ul&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="f1oyIB4GkQQLYOil8gvG-9" value="&lt;b&gt;Call: &lt;/b&gt;Update subscription&lt;br&gt;&lt;ul&gt;&lt;li&gt;Subscription Status must be updated within our app.&lt;/li&gt;&lt;/ul&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="685.5" y="807.5" width="244" height="100" as="geometry" />
         </mxCell>
-        <mxCell id="lpv_V7dIOGIIX44eoK-m-1" value="Checkout completed" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="lpv_V7dIOGIIX44eoK-m-1" value="Checkout completed" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="-420" y="1317.5" width="67.5" height="67.5" as="geometry" />
         </mxCell>
-        <mxCell id="lpv_V7dIOGIIX44eoK-m-2" value="Verified" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+        <mxCell id="lpv_V7dIOGIIX44eoK-m-2" value="Verified" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;" parent="1" vertex="1">
           <mxGeometry x="100" y="1321.25" width="62.5" height="62.5" as="geometry" />
         </mxCell>
         <mxCell id="XLDXQ8pQ_xPOunSGDu-5-8" value="&lt;br&gt;&lt;b&gt;Call:&amp;nbsp;&lt;/b&gt;New transaction generated.&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;ul style=&quot;border-color: var(--border-color);&quot;&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;Transaction_Token exists&lt;/b&gt;: Transaction has been initialized via PaddleJS recently (Initial Payment)&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;Transaction_Token does not exist&lt;/b&gt;: Transaction initialized by a user subscription in past.&lt;/li&gt;&lt;/ul&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
