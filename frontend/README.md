@@ -1,7 +1,7 @@
 # Quasar CLI - Framework
 Website: https://quasar.dev/introduction-to-quasar
 
-## Initialization
+## App Initialization
  - npm install
     > quasar info         // Current dependencies
     > quasar dev          // Dev Mode
@@ -15,42 +15,40 @@ Website: https://quasar.dev/introduction-to-quasar
 
 # Additional Microservices
 ## PaddleJS
+A user can buy access to app features, by purchasing prices. Payments will be handeled within Client Checkout provided by PaddleJS.
     1. Setup Paddle Account
         - https://developer.paddle.com/paddlejs/overview
-    2. Setup .env File
-    4. Implement '@/components/PaddlePriceJS.vue'
-    5. Handle PaddleJS according Logic
-        - Prices and Tokens will be provided by our server
-        - or define them manually in UI
-    6. Initialize Client Checkout
-        - see backend/"UserCheckoutController"
+        - Set public key in .env file
+    2. Implement PaddleJS
+        - see "\components\PaddlePriceJS.vue"
+        - Note: Available prices and its access are provided by our backend
+    3. Initialize: Client Checkout
+        - see "\src\access\"
+        - Note: Initial user-access-request must be verified by backend via Paddle Webhooks 
 
 ## Google Developer Services API
+Google Geolocation allows geolocating addresses within our app.
     1. Create Google Developers Account
         - Google Maps: Geolocation
             - https://developers.google.com/maps/documentation/geocoding/start 
         - Google Maps: Map Implementation    
             - https://github.com/inocan-group/vue3-google-map
             - https://developers.google.com/maps/documentation/javascript?hl=de
-    2. Setup .env File
-    3. Implement '@/components/GoogleLocations.vue' 
+        - Setup .env File
+    3. Initialize Geolocation
+        - see "\components\GoogleLocations.vue"
+        - Note: Sets address and geolocation of a entity.
+    4.  Initialize GoogleMaps
+        - see "\components\GoogleMaps.vue"
+        - Note: Allows system to retrieve matching entites within specified area by geolocation.
         
-[X] Cookie-Consent (GDPR, for Google Analytics, Bing UET, etc.)
-    1. Define Cookies in '@modules/cookieConsent.js'
+## Cookie-Consent (for Google Analytics, Bing UET, etc.)
+GDPR Compliant Cookie Consent, that allows implement optional analytic tools.
+    1. Setup Cookie Consent
         - Dok: https://github.com/eyecatchup/vue-cookieconsent
-        - Global: "this.$cc"
-        - Implemented: "App.js" & "quasar.config.js" (as boot-file)
-        - Module '@modules/cookieConsent.js"
-        - Implementes Cookies: 
-            - cc_consent (by Cookie-Consent)
-            - Google Analytics / Tag Manager included
-                - Setup Tag Manager Account (Google Tag Manager)
-                - Import Script to Bootfiles "cookie-consens.js"
-                - Define in Cookie-Consent
-
-[X] QR Code
-    - https://github.com/scopewu/qrcode.vue
-
+    2. Implement: Define optional Cookies
+        - see "\boot\cookieConsent.js"
+    3. Initialize: see "App.js"
 
 # Live Deployment
  - See Vue 3 / Quasar Framework

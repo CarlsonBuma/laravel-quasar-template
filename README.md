@@ -1,13 +1,17 @@
-### V.1.0, by Gigup Solutions
-Web App Template
-by Carlson, -v.2.0, 12.11.2024
+# Webapp Template
+by Carlson, v.1.0
+Documentation: see "\docs"
+Tutorial: https://www.youtube.com/watch?v=Jdg9x3BDT38
 
-# Microservices
- * Dev Environemnt:     Server::9003, UI::3000
- * Github:              Code Management
- * Mail Host:           Hosted Server
- * Paddle:              https://developer.paddle.com/build/overview
- * Google API:          https://developers.google.com
+## Folder Structure
+Root folder:
+   - /backend (see Readme.md)
+   - /docs
+   - /frontend (see Readme.md)
+   - Start Environment - "start in terminal":
+      > "./env-start.ps1"
+   - Setup Docker Environment - "docker compose up":
+      > "./docker-compose.yml"
 
 ## Security Check
    - go "/frontend": 
@@ -18,66 +22,48 @@ by Carlson, -v.2.0, 12.11.2024
       - composer outdated
       - composer update
 
-## Folder Structure
-Root:
-   - /backend
-      - see Readme.md
-   - /documents
-   - /frontend
-      - see Readme.md
-   - Start Environment - "start in terminal":
-      > ./env-start.ps1
-   - Setup Docker Environment - "docker compose up":
-      > ./docker-compose.yml
-
 # System Dependencies
-Tutorial: https://www.youtube.com/watch?v=Jdg9x3BDT38
 Root:
-- Backend (Laravel 11 + Database)
-   > PHP 8.3 Compiler
-   > User Auth: Laravel Passport (Oauth 2.0)
+- Backend
+   > Laravel 11, PHP 8.3
    > DB: PSQL - pgvector/pgvector:latest 
       > implements Extension "vectors"
-   > Paddle Paymentgateway (See AccessFiles + PaddleJS)
-      > https://developer.paddle.com/build/overview
-- Frontend (Quasar CLI - Vue3 Framework)
-   > Quasar "$quasar info"
+   > User Authentication
+      > by Laravel Passport (Oauth 2.0)
+      > see "\Controllers\Auth\"
+   > User Access Management
+      > Paddle Payment Gateway
+      > see "\Controllers\Access\"
+- Frontend 
+   > Quasar CLI v.2.17 ("$quasar info") 
+      > VueJS Framework
+   > User Authentication
+      > see "\src\pages\auth\"
+   > User Access Management
+      > see "\src\pages\access\"
+      > Note: Client Checkout (by PaddleJS) as initial user-access-request
+         > User-access-request must be verified via our backend webhooks
+         > see: "User Access Management"
    > Cookie Consent (cookieConsent.js)
       > https://github.com/eyecatchup/vue-cookieconsent
+      > see "\boot\cookieConsent"
    > Google API - Geolocation
       > https://developers.google.com/maps/documentation/geocoding/start
-      > https://developers.google.com/maps/documentation/javascript?hl=de
-      > https://developers.google.com/maps/documentation/geocoding/get-api-key?hl=de
+      > see "\components\Google..."
 
-## Setup Payment Gateway by Paddle
-Handle Webhooks
-   1. Install Ngrok (Reverse Proxy) - Webhooks
-      - ngrok http http://127.0.0.1:8000
-      - ngrok http http://localhost:9000/#
-   2. Login to Paddle Sandbox
-      - Notifications: Setup Webhook URL
-      - Paste Webhook Secret Key in .env file
-   3. Define Prices
-      - 'One-Time Purchase' vs. 'Subscription'
-      - add custom attributes to price
-         - 'access_token' (string): Allows to set flags according user-access
-         - 'duration_months' (int): Default Expiration (by 'One-Time Purchase')
-            - Overwritten by paddles 'ends_at' (by 'Subscription')
+# Local System Requirements
+## Setup Database
+Database (Psql/Vector) runs in a Docker Container
+  - Setup: see "root/docker-compose.yml"
+  - Initiate: "docker-compose up -d"
 
-## Setup Docker Environment
-   - Docker Setup Environment - "docker-compose up -d"
-   - Initiate Docker "root/docker-compose.yml"
-      - Vector Database PostgreSQL: Latest
-      - PG_Admin: Latest
-      - PHP:Latest
-
-### Local Backend Compiler (PHP)
+## Local Backend Compiler (PHP)
 Instead of Docker, use a local Backend Compiler
    - Install newest PHP Compiler
    - Setup Environment Variables "Path/to/php.exe"
    - Setup php.ini (Development) file by
-      > Variables
-      > Extensions
+      > Set Variables
+      > Set Extensions
    - PHP - Xdebug
       > Download php_xdebug
       > Adjust php.ini file
