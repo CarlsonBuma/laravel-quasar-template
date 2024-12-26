@@ -1,78 +1,98 @@
-<mxfile host="Electron" modified="2024-12-15T13:06:35.483Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="dDIhBFxcS0TYq7GFvNwd" version="22.1.15" type="device" pages="8">
-  <diagram id="LEcOnBPNGMNCyC66CDnr" name="Feature Overview">
-    <mxGraphModel dx="1588" dy="1022" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="Electron" modified="2024-12-26T20:26:42.649Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="lZHhg4JJOWsnR1XvyVxS" version="22.1.15" type="device" pages="9">
+  <diagram id="zQzWoQQZE2D7Y3lbiM3B" name="Feature Definition">
+    <mxGraphModel dx="2868" dy="1740" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="tBfM9Uj1NrSRURVnFFje-1" value="Features: User Athentification" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="390" y="460" width="1040" height="480" as="geometry" />
+        <mxCell id="jJExvIB-3Cb2zFcHsTqu-2" value="&lt;b&gt;Middleware&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="730" y="280" width="863" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="jeZlMYzHbekSfppVLT9O-1" value="&lt;h1&gt;User Account Management&lt;/h1&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Overview&lt;/b&gt;&lt;br style=&quot;border-color: var(--border-color); padding: 0px; margin: 0px;&quot;&gt;User Account Management allows users to manage their accounts and credentials effectively. The following features are included:&lt;br style=&quot;border-color: var(--border-color); padding: 0px; margin: 0px;&quot;&gt;&lt;br style=&quot;border-color: var(--border-color); padding: 0px; margin: 0px;&quot;&gt;&lt;br style=&quot;border-color: var(--border-color); padding: 0px; margin: 0px;&quot;&gt;&lt;b&gt;1. Account Creation and Verification&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Visitors can create an account.&lt;/span&gt;&lt;ul&gt;&lt;li&gt;Each account must have a unique email address.&lt;/li&gt;&lt;li&gt;Accounts must be verified via email.&lt;/li&gt;&lt;li&gt;Users receive a token via email to verify their account and set a password.&lt;/li&gt;&lt;/ul&gt;&lt;br style=&quot;border-color: var(--border-color); padding: 0px; margin: 0px;&quot;&gt;&lt;b&gt;2. Password Management:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Visitors can reset their password by providing their email.&lt;/span&gt;&lt;ul&gt;&lt;li&gt;User receive a token via email to set a new password.&lt;/li&gt;&lt;li&gt;Upon successfully storing the new password, the email is verified if it wasn&#39;t already.&lt;/li&gt;&lt;/ul&gt;&lt;br style=&quot;border-color: var(--border-color); padding: 0px; margin: 0px;&quot;&gt;&lt;b&gt;3. Login:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Visitors can log in.&lt;/span&gt;&lt;ul&gt;&lt;li&gt;Login attempts are limited to 6 tries per minute.&lt;/li&gt;&lt;li&gt;If the email is not verified, users must verify their email before logging in.&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;b&gt;User Authentification&lt;/b&gt; though Laravel Passport&amp;nbsp; _Bearer Tokens&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;br style=&quot;border-color: var(--border-color); padding: 0px; margin: 0px;&quot;&gt;&lt;b&gt;4. Account Management:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Users can manage their account details:&lt;/span&gt;&lt;ul&gt;&lt;li&gt;Update Name: Users can update their name.&lt;/li&gt;&lt;li&gt;Update/Delete Avatar Image:Users can update or delete their avatar image.&amp;nbsp;&lt;/li&gt;&lt;ul&gt;&lt;li&gt;The image must be stored appropriately and linked to the user account.&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;&amp;nbsp;Update Password: User must confirm changes with their current password.&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;br style=&quot;border-color: var(--border-color); padding: 0px; margin: 0px;&quot;&gt;&lt;b&gt;5. Email Transfer:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Users can transfer their email to a new email-address:&lt;/span&gt;&lt;ul&gt;&lt;li&gt;Email Transfer Request by current user:&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Users must confirm changes with their current password.&lt;/li&gt;&lt;li&gt;The new email must be unique.&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;If an active subscription exists (see User Access Management), the transafer request is denied.&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;The email verification status of the user must be set to null.&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;Users log out must be initiated.&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Email Transfer Verification by new user&lt;/li&gt;&lt;ul&gt;&lt;li&gt;New account credentials must be set by the new owner via a verification link sent to the new email.&lt;/li&gt;&lt;li&gt;The new email must be unique&lt;/li&gt;&lt;li&gt;After successful verification, the new email and password will be set in the account.&lt;/li&gt;&lt;li&gt;User login&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Old user can log in with their old account credentials to interrupt the transfer process by following email verification procedure.&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;br style=&quot;border-color: var(--border-color); padding: 0px; margin: 0px;&quot;&gt;&lt;b&gt;6. Account Deletion:&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Users can delete their account.&lt;/span&gt;&lt;ul&gt;&lt;li&gt;If an active subscription exists (see User Access Management), the delete action is denied.&lt;/li&gt;&lt;li&gt;All avatar images (User avatar and Cockpit avatar) must be removed.&lt;/li&gt;&lt;li&gt;The profile must be deleted.&lt;/li&gt;&lt;li&gt;Users log out must be initiated.&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="140" y="35" width="490" height="1100" as="geometry" />
+        </mxCell>
+        <mxCell id="3QnAwzzoc5azbh9LF-Gp-1" value="&lt;b&gt;&quot;email_verified&quot;: 401&lt;/b&gt;&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(51, 51, 51);&quot;&gt;Response&lt;/span&gt;&lt;/li&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;color: rgb(51, 51, 51);&quot;&gt;status: &quot;email_not_verified&quot;&lt;/span&gt;&lt;/li&gt;&lt;li&gt;email: string&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Error handling:&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Remove user access&lt;/li&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;Redirect:&amp;nbsp;&lt;span style=&quot;border-color: var(--border-color); font-size: 11px;&quot;&gt;&quot;/email-verification-request/{email}&quot;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;verticalAlign=top;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="830" y="670" width="340" height="155" as="geometry" />
+        </mxCell>
+        <mxCell id="3QnAwzzoc5azbh9LF-Gp-2" value="&lt;b&gt;&quot;auth:api&quot;:&amp;nbsp;&lt;/b&gt;&lt;b style=&quot;border-color: var(--border-color);&quot;&gt;401&lt;/b&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;User authentification by Laravel Passport (Oauth 2.0)&lt;br&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Error handling:&lt;/span&gt;&lt;/li&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Go: Logout.logout()&lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;Redirect:&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;background-color: initial; border-color: var(--border-color); font-size: 11px;&quot;&gt;&quot;/landingpage&quot;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;verticalAlign=top;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="780" y="400" width="270" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="3QnAwzzoc5azbh9LF-Gp-3" value="&lt;b&gt;&quot;throttle: 3,1&quot;: 422&lt;br&gt;&lt;/b&gt;&lt;ul&gt;&lt;li&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;Too many attempts&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;verticalAlign=top;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="370" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="jJExvIB-3Cb2zFcHsTqu-1" value="&lt;b&gt;&quot;paddle_no_active_subscriptions&quot;: 422&lt;/b&gt;&lt;br&gt;User has active subscriptions ongoing &lt;br&gt;(see FTR. &quot;User Access Management&quot;)&lt;br&gt;&lt;ul&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;Response&lt;/li&gt;&lt;ul style=&quot;border-color: var(--border-color);&quot;&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color); color: rgb(51, 51, 51);&quot;&gt;status: &quot;active_subscriptions&quot;&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Error Handling&lt;/li&gt;&lt;ul&gt;&lt;li style=&quot;border-color: var(--border-color);&quot;&gt;Redirect &quot;/account/access&quot;&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;align=left;verticalAlign=top;spacing=12;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1250" y="570" width="290" height="170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="LEcOnBPNGMNCyC66CDnr" name="Feature Overview">
+    <mxGraphModel dx="1366" dy="829" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="tBfM9Uj1NrSRURVnFFje-1" value="Features: User Athentification" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="320" y="360" width="1040" height="580" as="geometry" />
         </mxCell>
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-1" value="Create Account" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-          <mxGeometry x="630" y="550" width="190" height="80" as="geometry" />
+          <mxGeometry x="560" y="450" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-7" value="E-Mail verification" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
-          <mxGeometry x="820" y="550" width="190" height="80" as="geometry" />
+          <mxGeometry x="750" y="450" width="190" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="TwT0ZUCcCZXVXbUhEPY0-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="_ZzYiV3CQgJYt5CbaP2R-13" target="_ZzYiV3CQgJYt5CbaP2R-7">
+        <mxCell id="TwT0ZUCcCZXVXbUhEPY0-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" parent="1" source="_ZzYiV3CQgJYt5CbaP2R-13" target="_ZzYiV3CQgJYt5CbaP2R-7" edge="1">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1100" y="520" />
-              <mxPoint x="915" y="520" />
+              <mxPoint x="1030" y="420" />
+              <mxPoint x="845" y="420" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="TwT0ZUCcCZXVXbUhEPY0-3" value="email_not_verified" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="TwT0ZUCcCZXVXbUhEPY0-2">
+        <mxCell id="TwT0ZUCcCZXVXbUhEPY0-3" value="email_not_verified" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="TwT0ZUCcCZXVXbUhEPY0-2" vertex="1" connectable="0">
           <mxGeometry x="-0.1187" y="1" relative="1" as="geometry">
             <mxPoint x="-11" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-13" value="Login" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" parent="1" vertex="1">
-          <mxGeometry x="1005" y="550" width="190" height="80" as="geometry" />
+          <mxGeometry x="935" y="450" width="190" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="_ZzYiV3CQgJYt5CbaP2R-23" value="User Account&lt;br&gt;On- &amp;amp; Offboarding" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" parent="1" vertex="1">
-          <mxGeometry x="430" y="550" width="190" height="80" as="geometry" />
+        <mxCell id="_ZzYiV3CQgJYt5CbaP2R-23" value="&amp;nbsp;Account&lt;br&gt;On- &amp;amp; Offboarding" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#0050ef;strokeColor=#001DBC;fontColor=#ffffff;" parent="1" vertex="1">
+          <mxGeometry x="360" y="450" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-24" value="Logout" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
-          <mxGeometry x="1190" y="550" width="190" height="80" as="geometry" />
+          <mxGeometry x="1120" y="450" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-28" value="Reset Password Request" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
-          <mxGeometry x="630" y="780" width="190" height="80" as="geometry" />
+          <mxGeometry x="560" y="540" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-33" value="Manage User Account" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
-          <mxGeometry x="820" y="780" width="190" height="80" as="geometry" />
+          <mxGeometry x="550" y="680" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-38" value="Transfer User Account" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
-          <mxGeometry x="1005" y="780" width="190" height="80" as="geometry" />
+          <mxGeometry x="730" y="680" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-44" value="Delete User Account" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
-          <mxGeometry x="1190" y="780" width="190" height="80" as="geometry" />
+          <mxGeometry x="915" y="680" width="190" height="80" as="geometry" />
         </mxCell>
         <mxCell id="_ZzYiV3CQgJYt5CbaP2R-52" value="User Account&lt;br&gt;Management" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d80073;strokeColor=#A50040;fontColor=#ffffff;" parent="1" vertex="1">
-          <mxGeometry x="430" y="780" width="190" height="80" as="geometry" />
+          <mxGeometry x="360" y="680" width="190" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="_ZzYiV3CQgJYt5CbaP2R-57" value="&lt;h1&gt;Defintion: User Authentification&lt;/h1&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;User can create, verify and manage it&#39;s account and credentials.&lt;/span&gt;&lt;u&gt;&lt;br&gt;&lt;/u&gt;&lt;p&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Create Account&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Verify E-Mail&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;User Login &amp;amp; Authenticate&lt;/li&gt;&lt;ul&gt;&lt;li&gt;Manage Account&lt;/li&gt;&lt;li&gt;Transfer Account&lt;/li&gt;&lt;li&gt;Delete Account&lt;/li&gt;&lt;li&gt;Logout&lt;br&gt;&lt;/li&gt;&lt;/ul&gt;&lt;li&gt;Reset Password via E-Mail&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;" style="text;html=1;strokeColor=none;fillColor=none;spacing=5;spacingTop=-20;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
-          <mxGeometry x="190" y="190" width="400" height="250" as="geometry" />
+        <mxCell id="gORC_erpZxJiYLLGO4Wf-1" value="&quot;auth:api&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="550" y="770" width="540" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="TwT0ZUCcCZXVXbUhEPY0-4" value="Quality: 5&lt;br&gt;Comlexity: 3&lt;br&gt;Value: 1" style="image;html=1;image=img/lib/clip_art/general/Star_128x128.png;labelBackgroundColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1260" y="830" width="50" height="40" as="geometry" />
+        <mxCell id="yiNllmHBU557bvoaYoGI-1" value="" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="107" y="1729" width="234" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="TwT0ZUCcCZXVXbUhEPY0-5" value="Quality: 5&lt;br&gt;Comlexity: 2&lt;br&gt;Value: 5" style="image;html=1;image=img/lib/clip_art/general/Star_128x128.png;labelBackgroundColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1075" y="600" width="50" height="40" as="geometry" />
+        <mxCell id="yiNllmHBU557bvoaYoGI-2" value="&quot;paddle_no_active_subscriptions&lt;span style=&quot;border-color: var(--border-color); color: rgb(51, 51, 51); background-color: initial;&quot;&gt;&quot;&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="735" y="820" width="350" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="TwT0ZUCcCZXVXbUhEPY0-6" value="Quality: 5&lt;br&gt;Comlexity: 3&lt;br&gt;Value: 3" style="image;html=1;image=img/lib/clip_art/general/Star_128x128.png;labelBackgroundColor=none;" vertex="1" parent="1">
-          <mxGeometry x="1070" y="830" width="50" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="TwT0ZUCcCZXVXbUhEPY0-7" value="Active &lt;br&gt;Subscriptions" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="1070" y="730" width="120" height="80" as="geometry" />
-        </mxCell>
-        <mxCell id="ufF1Twu72P-R7CuFb7i6-1" value="Active &lt;br&gt;Subscriptions" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
-          <mxGeometry x="1250" y="730" width="120" height="80" as="geometry" />
+        <mxCell id="yiNllmHBU557bvoaYoGI-3" value="&quot;auth:api&quot;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="540" width="170" height="40" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram name="DB Structure" id="TGDNc4WADawrQPTaSJyK">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="607" dy="870" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -163,13 +183,13 @@
         <mxCell id="K_-HhPMUVLDt36al2YbP-5" value="&lt;b&gt;Delete&lt;/b&gt;&lt;br&gt;Check active Subscriptons" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="1370" y="550" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="N5oVkka9cjxnkFyus6cQ-1" value="&lt;b&gt;Delete&lt;/b&gt;:&lt;br&gt;Remove&lt;br&gt;Files (avatar)" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+        <mxCell id="N5oVkka9cjxnkFyus6cQ-1" value="&lt;b&gt;Delete&lt;/b&gt;:&lt;br&gt;Remove&lt;br&gt;Files (avatar)" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="1680" y="800" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="N5oVkka9cjxnkFyus6cQ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.483;entryY=1.009;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.995;exitY=0.767;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="IQ_1w8GRNhxzr8pyk5GO-2" target="gHhB2bujktUi70MqKiqd-2">
+        <mxCell id="N5oVkka9cjxnkFyus6cQ-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.483;entryY=1.009;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.995;exitY=0.767;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="IQ_1w8GRNhxzr8pyk5GO-2" target="gHhB2bujktUi70MqKiqd-2" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="N5oVkka9cjxnkFyus6cQ-3" value="1:n&lt;br&gt;Set null" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="N5oVkka9cjxnkFyus6cQ-2">
+        <mxCell id="N5oVkka9cjxnkFyus6cQ-3" value="1:n&lt;br&gt;Set null" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="N5oVkka9cjxnkFyus6cQ-2" vertex="1" connectable="0">
           <mxGeometry x="-0.6386" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -636,7 +656,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="88rApvWlyC_cv8mVCpa_" name="4 - Transfer Account">
-    <mxGraphModel dx="2049" dy="74" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="-299" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -838,61 +858,61 @@
     </mxGraphModel>
   </diagram>
   <diagram id="ALqniaUr9GzKv1GsAqx2" name="6 - Delete">
-    <mxGraphModel dx="1134" dy="-439" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="-299" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-1" value="User" style="swimlane;startSize=20;horizontal=0;html=1;whiteSpace=wrap;" vertex="1" parent="1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-1" value="User" style="swimlane;startSize=20;horizontal=0;html=1;whiteSpace=wrap;" parent="1" vertex="1">
           <mxGeometry x="31" y="1449" width="766" height="200" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-2" value="&quot;/account/settings&quot;" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=standard;symbol=general;" vertex="1" parent="JkbKnRz5IxGsLWJk3qLi-1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-2" value="&quot;/account/settings&quot;" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=standard;symbol=general;" parent="JkbKnRz5IxGsLWJk3qLi-1" vertex="1">
           <mxGeometry x="110" y="85" width="50" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-3" value="User delets account" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=user;" vertex="1" parent="JkbKnRz5IxGsLWJk3qLi-1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-3" value="User delets account" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=user;" parent="JkbKnRz5IxGsLWJk3qLi-1" vertex="1">
           <mxGeometry x="260" y="70" width="120" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="JkbKnRz5IxGsLWJk3qLi-1" source="JkbKnRz5IxGsLWJk3qLi-2" target="JkbKnRz5IxGsLWJk3qLi-3">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="JkbKnRz5IxGsLWJk3qLi-1" source="JkbKnRz5IxGsLWJk3qLi-2" target="JkbKnRz5IxGsLWJk3qLi-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-5" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=catching;symbol=signal;" vertex="1" parent="JkbKnRz5IxGsLWJk3qLi-1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-5" value="" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=catching;symbol=signal;" parent="JkbKnRz5IxGsLWJk3qLi-1" vertex="1">
           <mxGeometry x="480" y="85" width="50" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="JkbKnRz5IxGsLWJk3qLi-1" source="JkbKnRz5IxGsLWJk3qLi-3" target="JkbKnRz5IxGsLWJk3qLi-5">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="JkbKnRz5IxGsLWJk3qLi-1" source="JkbKnRz5IxGsLWJk3qLi-3" target="JkbKnRz5IxGsLWJk3qLi-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="JkbKnRz5IxGsLWJk3qLi-1" source="JkbKnRz5IxGsLWJk3qLi-5" target="JkbKnRz5IxGsLWJk3qLi-8">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" parent="JkbKnRz5IxGsLWJk3qLi-1" source="JkbKnRz5IxGsLWJk3qLi-5" target="JkbKnRz5IxGsLWJk3qLi-8" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="630" y="110" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-8" value="logout()" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=throwing;symbol=link;" vertex="1" parent="JkbKnRz5IxGsLWJk3qLi-1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-8" value="logout()" style="points=[[0.145,0.145,0],[0.5,0,0],[0.855,0.145,0],[1,0.5,0],[0.855,0.855,0],[0.5,1,0],[0.145,0.855,0],[0,0.5,0]];shape=mxgraph.bpmn.event;html=1;verticalLabelPosition=bottom;labelBackgroundColor=#ffffff;verticalAlign=top;align=center;perimeter=ellipsePerimeter;outlineConnect=0;aspect=fixed;outline=throwing;symbol=link;" parent="JkbKnRz5IxGsLWJk3qLi-1" vertex="1">
           <mxGeometry x="620" y="85" width="50" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-9" value="POST&lt;br&gt;&quot;user-delete-account&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;&lt;/span&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-9" value="POST&lt;br&gt;&quot;user-delete-account&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;&lt;/span&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="271" y="1850" width="160" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-11" value="password: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="JkbKnRz5IxGsLWJk3qLi-9">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-11" value="password: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="JkbKnRz5IxGsLWJk3qLi-9" vertex="1">
           <mxGeometry y="50" width="160" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-12" value="&lt;ul&gt;&lt;li&gt;Verify password&lt;/li&gt;&lt;li&gt;Check if no active subscriptions within our Paddle Provider (see FTR &quot;Access Management&quot;)&lt;/li&gt;&lt;li&gt;Remove&lt;/li&gt;&lt;ul&gt;&lt;li&gt;User avatar image&lt;/li&gt;&lt;li&gt;Cockpit avatar image&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=businessRule;verticalAlign=top;align=left;fontFamily=Helvetica;" vertex="1" parent="1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-12" value="&lt;ul&gt;&lt;li&gt;Verify password&lt;/li&gt;&lt;li&gt;Check if no active subscriptions within our Paddle Provider (see FTR &quot;Access Management&quot;)&lt;/li&gt;&lt;li&gt;Remove&lt;/li&gt;&lt;ul&gt;&lt;li&gt;User avatar image&lt;/li&gt;&lt;li&gt;Cockpit avatar image&lt;/li&gt;&lt;/ul&gt;&lt;/ul&gt;" style="points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];shape=mxgraph.bpmn.task;whiteSpace=wrap;rectStyle=rounded;size=10;html=1;container=1;expand=0;collapsible=0;taskMarker=businessRule;verticalAlign=top;align=left;fontFamily=Helvetica;" parent="1" vertex="1">
           <mxGeometry x="271" y="1940" width="330" height="140" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-13" value="Response" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-13" value="Response" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="471" y="1870" width="130" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" edge="1" parent="1" source="JkbKnRz5IxGsLWJk3qLi-13" target="JkbKnRz5IxGsLWJk3qLi-5">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;dashed=1;" parent="1" source="JkbKnRz5IxGsLWJk3qLi-13" target="JkbKnRz5IxGsLWJk3qLi-5" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" edge="1" parent="1" source="JkbKnRz5IxGsLWJk3qLi-3" target="JkbKnRz5IxGsLWJk3qLi-9">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;dashed=1;" parent="1" source="JkbKnRz5IxGsLWJk3qLi-3" target="JkbKnRz5IxGsLWJk3qLi-9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-16" value="&quot;auth:api&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;&lt;/span&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-16" value="&quot;auth:api&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;&lt;/span&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="107" y="1810" width="234" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-17" value="&quot;email_verified&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;&lt;/span&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-17" value="&quot;email_verified&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;&lt;/span&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="107" y="1770" width="234" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="JkbKnRz5IxGsLWJk3qLi-18" value="&quot;paddle_no_active_subscriptions&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;&lt;/span&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" vertex="1" parent="1">
+        <mxCell id="JkbKnRz5IxGsLWJk3qLi-18" value="&quot;paddle_no_active_subscriptions&lt;span style=&quot;background-color: initial;&quot;&gt;&quot;&lt;/span&gt;" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="107" y="1729" width="234" height="30" as="geometry" />
         </mxCell>
       </root>
