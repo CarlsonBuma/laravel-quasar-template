@@ -121,21 +121,7 @@
                         buttonIcon="update"
                         @submit="updateLocation(cockpit.location)"
                     >
-                        <GoogleLocation 
-                            :location="cockpit.location"
-                            @reset="() => cockpit.location = {}"
-                            @fetched="(place_id, lng, lat, address, area, area_short, country, country_short, zip_code) => {
-                                cockpit.location.place_id = place_id
-                                cockpit.location.lng = lng
-                                cockpit.location.lat = lat
-                                cockpit.location.address = address
-                                cockpit.location.area = area
-                                cockpit.location.area_short = area_short
-                                cockpit.location.country = country
-                                cockpit.location.country_short = country_short
-                                cockpit.location.zip_code = zip_code
-                            }"
-                        />
+                        <GoogleLocation v-model="cockpit.location" />
                     </FormWrapper>
                 </q-card-section>
             </CardSimple>
@@ -191,7 +177,9 @@ export default {
 
     data() {
         return {
-            cockpit: {}
+            cockpit: {
+                location: {}
+            }
         }
     },
 

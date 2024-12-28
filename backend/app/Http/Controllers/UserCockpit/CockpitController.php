@@ -207,10 +207,16 @@ class CockpitController extends Controller
             'zip_code' => ['nullable', 'string', 'max:19'],
         ]);
 
-        $geolocation = new AppGeolocations();
-        UserCockpit::where('user_id', Auth::id())->update([
-            'location_id' => $geolocation->add_new_entry($data),
-        ]);
+        $cockpit = UserCockpit::where('user_id', Auth::id())->first();
+        if(!$data['address']) {
+            $cockpit->location_id = null;
+            $cockpit->save();
+        } else {
+            $geolocation = new AppGeolocations();
+            $cockpit->update([
+                'location_id' => $geolocation->add_new_entry($data),
+            ]);
+        }
 
         return response()->json([
             'message' => 'Location updated.',

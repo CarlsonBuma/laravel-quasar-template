@@ -4,7 +4,7 @@
         <q-space />
         <q-tabs class="text-weight-regular" active-color="primary" shrink stretch>
             <q-route-tab to="/cockpit/dashboard" icon="dashboard" />
-            <q-route-tab to="/cockpit/profile" label="My rofile" />
+            <q-route-tab to="/cockpit/profile" label="Profile settings" />
         </q-tabs>
     </q-toolbar>
 
