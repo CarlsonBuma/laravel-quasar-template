@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import { passwordRequirements } from 'src/boot/globals.js';
+import { checkPasswordRequirements } from 'src/boot/modules/globals.js';
 import CardWrapper from 'components/CardWrapper.vue';
 import PasswordCheck from 'components/PasswordCheck.vue';
 
@@ -107,7 +107,7 @@ export default {
         async makeValidationRequest(pw, pw_confirm) {
             try {
                 // Verify Password
-                const passwordCheck = passwordRequirements(pw, pw_confirm);
+                const passwordCheck = checkPasswordRequirements(pw, pw_confirm);
                 if(passwordCheck) throw passwordCheck;
                 
                 // Request

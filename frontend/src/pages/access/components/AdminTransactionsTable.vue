@@ -32,14 +32,14 @@
                     <q-icon name="verified" :color="props.row.access ? 'green' : 'grey'" />
                 </q-td>
                 <q-td key="expiration_date" :props="props">
-                    {{ props.row.access?.expiration_date ?? '-' }}
+                    {{ $tp.date(props.row.access?.expiration_date ?? '-') }}
                 </q-td>
                 <q-td key="status" :props="props">
                     {{ props.row.status }}<br>
                     <span class="text-caption">{{ props.row.message }}</span>
                 </q-td>
                 <q-td key="updated_at" :props="props">
-                    {{ props.row.updated_at }}
+                    {{ $tp.date(props.row.updated_at) }}
                 </q-td>
             </q-tr>
         </template>

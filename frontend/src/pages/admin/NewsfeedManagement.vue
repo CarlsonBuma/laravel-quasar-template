@@ -75,7 +75,7 @@
                         </q-popup-edit>
                     </q-td>
                     <q-td key="date" :props="props">
-                        {{ props.row.created_at }}
+                        {{ $tp.date(props.row.created_at) }}
                     </q-td>
                     <q-td key="edit" :props="props">
                         <div class="flex justify-end">

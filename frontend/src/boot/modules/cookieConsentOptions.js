@@ -1,5 +1,5 @@
 'use strict';
-import 'vue-cookieconsent/vendor/cookieconsent.css';
+
 
 /** 
  * GDPR: Cookie Consent
@@ -96,12 +96,12 @@ const consentOptions = {
                         cookie_table: [             // list of all expected cookies
                             {
                                 col1: 'cc_cookie',
-                                col2: process.env.VUE_APP_URL,
+                                col2: process.env.APP_NAME,
                                 col3: '160 days',
                                 col4: 'Cookie Consent - Defines, if consent to analyze data has been given.',
                             }, {
-                                col1: 'Usersession',
-                                col2: process.env.SESSION_NAME,
+                                col1: 'User Session',
+                                col2: process.env.APP_NAME,
                                 col3: '365 days',
                                 col4: 'Local JWT Session, to verify your client and allow you to interact with your account.',
                             },
@@ -116,13 +116,13 @@ const consentOptions = {
                             readonly: false
                         },
                         cookie_table: [             // list of all expected cookies
-                            {
-                                col1: '^_ga',
-                                col2: 'google.com',
-                                col3: '1 years',
-                                col4: 'Google Analytics (GA-4) - session statistics, approx. geolocation, device infos, default events, user properties, client ID, etc. See https://support.google.com/analytics/answer/11593727?hl=en',
-                                is_regex: true
-                            },
+                            // {
+                            //     col1: '^_ga',
+                            //     col2: 'google.com',
+                            //     col3: '1 years',
+                            //     col4: 'Google Analytics (GA-4) - session statistics, approx. geolocation, device infos, default events, user properties, client ID, etc. See https://support.google.com/analytics/answer/11593727?hl=en',
+                            //     is_regex: true
+                            // },
                         ]
                     },
                     {

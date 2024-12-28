@@ -49,22 +49,24 @@ class UserAuthController extends Controller
                 'password' => ['required'],
             ]);
 
-            // Check if Email is verified
-            $user = User::where('email', $credentials['email'])->first();
-            if($user && !$user->email_verified_at instanceof Carbon) {
-                return response()->json([
-                    'status' => 'email_not_verified',
-                    'email' => $credentials['email'],
-                    'message' => 'Please verify your email before accessing your account.',
-                ], 401);
-            }
-
             // Check Credentials
             if (Auth::attempt([
                 'email' => $credentials['email'],
                 'password' => $credentials['password']
             ])) {
-                $token = User::find(Auth::id())->createToken('user')->accessToken;
+                
+                // Check if Email is verified
+                $user = User::find(Auth::id());
+                if($user && !$user->email_verified_at instanceof Carbon) {
+                    return response()->json([
+                        'status' => 'email_not_verified',
+                        'email' => $credentials['email'],
+                        'message' => 'Please verify your email before accessing your account.',
+                    ], 401);
+                }
+
+                // Create client-access token
+                $token = $user->createToken('user')->accessToken;
                 return response()->json([
                     'token' => $token,
                     'message' => 'Session started.'
@@ -82,14 +84,14 @@ class UserAuthController extends Controller
     }
 
     /**
-     * Remove Session / Logout user
+     * Remove session
      *
      * @return void
      */
     public function logoutUser()
     {
         // @intelephense-ignore next-line
-        Auth::user()->token()->delete();
+        $user = Auth::user()->token()->delete();
         return response()->json([
             'message' => 'Session removed.'
         ], 200);

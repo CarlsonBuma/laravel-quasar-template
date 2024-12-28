@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { regRules } from 'src/boot/globals.js';
+import { regRules } from 'src/boot/modules/globals.js';
 
 export default {
     name: 'PasswordCheck',

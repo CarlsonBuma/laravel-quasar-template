@@ -70,7 +70,7 @@
 
 <script>
 import { openURL } from 'quasar';
-import { redirects } from 'boot/globals.js'
+import { redirects } from 'src/boot/modules/globals.js'
 
 export default {
     name: 'NavFoot',

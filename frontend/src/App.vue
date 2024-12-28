@@ -60,7 +60,6 @@
 import { ref } from 'vue';
 import NavHead from 'src/components/navigation/NavHead.vue';
 import NavFoot from 'src/components/navigation/NavFoot.vue';
-import CookieConsentOptions from 'src/boot/cookieConsent.js';
 
 export default {
     name: 'App',
@@ -76,9 +75,13 @@ export default {
     },
 
     mounted() {
+        // Darkmode
         const darkMode = false;         // this.$q.dark.isActive;
         this.$q.dark.set(darkMode);
-        this.$cc.run(CookieConsentOptions);
+
+        // App settings
+        this.$tp.client_settings.value.dateFormat = 'international';
+        this.$tp.client_settings.value.language = 'de';
     },
 
     methods: {
@@ -101,6 +104,7 @@ export default {
                         response.data.user.email, 
                     );
 
+                    // Set app access
                     response.data.access.forEach(access => {
                         this.$user.setAppAccess(
                             access.access_token, 
@@ -108,8 +112,6 @@ export default {
                             access.quantity
                         )
                     })
-
-                    console.log('adjust-admin access', this.$user.access.tokens)
                 }
                 
                 // Redirect if requested

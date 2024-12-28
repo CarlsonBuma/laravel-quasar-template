@@ -51,7 +51,7 @@
                     {{ props.row.quantity }}<br>
                 </q-td>
                 <q-td key="expiration_date" :props="props">
-                    {{ props.row.expiration_date }}
+                    {{ $tp.date(props.row.expiration_date) }}
                 </q-td>
                 <q-td key="has_access" :props="props">
                     <q-icon name="verified" :color="props.row.access?.id ? 'green' : 'grey'" />
@@ -92,7 +92,7 @@ export default {
                 align: 'left',
             }, {
                 name: 'name',
-                label: 'Product',
+                label: 'Price',
                 field: 'name',
                 align: 'left',
                 sortable: true

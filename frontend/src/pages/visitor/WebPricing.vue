@@ -5,9 +5,9 @@
             <SectionSplit>
                 <template #left>
                     <SectionTitle 
-                        header="Join our community! Get access to the proivded services."
-                        title="Start collaboring within our unique community."
-                        subtitle="Lorem ipsum etcetera"
+                        header="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam."
+                        title="Lorem ipsum dolor sit amet, consetetur sadipscing elitr."
+                        subtitle="Lorem ipsum etcetera."
                     >
                         Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore 
                         et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. 
@@ -25,13 +25,13 @@
                         priceTag='forever'
                         title='Title'
                         description="
-                            Join our network and start collaborating within our community.
-                            Establish your experience and network with other unique collaborators.
+                            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore 
+                            et dolore magna aliquyam erat, sed diam voluptua. At vero eos et..
                         "
                         :items="[{
                             icon: 'done_all',
                             title: 'Personal Avatar',
-                            description: 'Get your own unique avatar and gain access to our community.',
+                            description: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy.',
                         }]"
                     >
                         <template #actions>
@@ -62,12 +62,12 @@
                     class="w-card-lg"
                     iconName="business"
                     iconSize='220px'
-                    price='249.00 CHF'
-                    priceTag='+12 month'
+                    price='CHF 249.00'
+                    priceTag='/12 month'
                     title='My Cockpit'
                     description="
-                        Welcome to your Cockpit. Join our community and start collaborating with our members.
-                        We provide the best experience for a sustainable establishment for your business.
+                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore 
+                        et dolore magna aliquyam erat, sed diam voluptua. At vero eos et.
                     "
                     :items="[{
                         icon: 'done_all',
@@ -118,7 +118,7 @@
 </template>
 
 <script>
-import { redirects } from 'boot/globals.js'
+import { redirects } from 'src/boot/modules/globals.js'
 import CardService from 'components/CardService.vue';
 
 export default {

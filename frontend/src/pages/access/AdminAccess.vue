@@ -9,13 +9,13 @@
         <div class="row w-100 justify-center">
             <PricesTable 
                 class="table-width"
-                title="Manage tokens"
+                title="Manage prices"
                 :prices="prices"
                 @update="(price) => updatePrice(price.id, price.is_active)"
             />
             <SectionNote>
-                Make the price publicly available to allow users access to certain features within our app.<br>
-                For further information, please see the documentation.
+                Public available prices enable users to purchase access to specific features within our app.<br>
+                Prices can be set within Paddle Cockpit. For further information, please refer to the documentation.
             </SectionNote>
         </div>
 
@@ -42,31 +42,35 @@
                 :transactions="userTransactions"
             />
             <SectionNote>
-                Transactions are initiated either manually by user purchase or automatically via subscription.<br>
-                Transactions correspond to our provided price tokens, granting users access via Paddle Webhooks.
+                Transactions are payments initiated either by "one-time purchases" or "subscriptions" charged periodically.<br>
+                These transactions correspond to our provided prices, granting users access to specific app features.
             </SectionNote>
         </div>
 
         <!-- Add new access-->
         <DialogWrapper v-model="showAddUserAccessPopup" title="Add user access">
             <q-card-section>
-                <span class="text-caption">Grant new access to: <b>{{ requestedAccessEmail }}</b></span>
+                <span>Grant access to: <b>{{ requestedAccessEmail }}</b></span>
             </q-card-section>
+            <q-separator/>
             <q-card-section>
                 <span>
-                    Define access tokens to allow users to access certain app features. 
+                    Define access token to allow users to access certain app features. 
                     Tokens are defined within the app. For more information, please refer to the documentation.
                 </span>
                 <q-input label="Enter access token" v-model="newAccess.access_token" />
-                <span class="text-caption">
-                    <b>Existing access tokens:</b><br>
-                    Private tokens: 'access-admin'<br>
-                    Public tokens: 'access-cockpit'
-                </span>
+                <div class="text-caption q-pt-sm q-pl-sm">
+                    <span><b>Existing tokens:</b></span>
+                    <ul>
+                        <li><u>Price tokens</u>: 'access-cockpit'</li>
+                        <li><u>Private tokens</u>: 'access-admin'</li>
+                    </ul>
+                </div>
             </q-card-section>
+            <q-separator/>
             <q-card-section>
                 <span>
-                    The duration and quantity define the period of access. Depending on the logic, 
+                    The duration and quantity define the access limits. Depending on the logic, 
                     the quantity may represent credits, or the expiration date may define the period of access.
                 </span>
                 <q-input v-model="newAccess.expiration_date" label="Define expiration date" type="date" />
@@ -93,7 +97,7 @@ import AccessTable from './components/AdminAccessTable.vue';
 import TransactionsTable from './components/AdminTransactionsTable.vue';
 
 export default {
-    name: 'AdminAccessManagement',
+    name: 'AdminAccess',
     components: {
         PricesTable, AccessTable, TransactionsTable
     },

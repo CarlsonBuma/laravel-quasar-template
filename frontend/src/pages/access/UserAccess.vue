@@ -43,7 +43,7 @@
 
 <script>
 import { ref } from 'vue';
-import PaddlePriceJS from 'components/PaddlePriceJS.vue';
+import PaddlePriceJS from 'src/pages/access/components/PaddlePriceJS.vue';
 import PricesTable from './components/UserPricesTable.vue';
 import TransactionsTable from './components/UserTransactionsTable.vue';
 

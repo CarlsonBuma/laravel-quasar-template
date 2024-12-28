@@ -17,7 +17,6 @@
 
 <script>
 import { ref } from 'vue'
-import LoadingData from 'src/components/global/LoadingData.vue';
 
 export default {
     name: 'InfiteScroll',
@@ -29,10 +28,6 @@ export default {
     emits: [
         'load'
     ],
-
-    components: {
-        LoadingData
-    },
 
     setup (props, context) {
         const scrollOffset = 1220;      // Trigger load event

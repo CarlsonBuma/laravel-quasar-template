@@ -9,7 +9,13 @@ const storeUser = defineStore({
         access: {
             bearer_token: false,    // Bearer to authorize user
             user: false,            // Access to memberarea
-            tokens: {},             // ['access-token', 'quantity', 'expiration_date']
+            tokens: {
+                'default': {
+                    id: 'token',
+                    expiration_date: '2024-12-24',
+                    quantity: 0,
+                }
+            },
         },
         user: {
             id: 0,
@@ -24,9 +30,9 @@ const storeUser = defineStore({
         setAppAccess(accessToken = '', expirationDate = '', quantity = 0) {
             if(!accessToken || !expirationDate) return;
             this.access.tokens[accessToken] = {
+                id: accessToken,
                 expiration_date: expirationDate,
                 quantity: quantity,
-                access_token: accessToken
             }
         },
 
@@ -81,10 +87,16 @@ const storeUser = defineStore({
          */
         removeSession() {
             axios.defaults.headers.common['Authorization'] = '';
+            this.user = {};
             this.access.bearer_token = false
             this.access.user = false;
-            this.access.tokens = null;
-            this.user = {};
+            this.access.tokens = {
+                'default': {
+                    id: 'token',
+                    expiration_date: '2024-12-24',
+                    quantity: 0,
+                }
+            };
         },
     }
 });

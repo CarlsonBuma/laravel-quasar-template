@@ -3,9 +3,16 @@
 // Default modules
 import { ref } from 'vue';
 import { boot } from 'quasar/wrappers';
-import { ResponseHandler } from 'src/boot/responseHandling.js';
+import { ResponseHandler } from 'src/boot/modules/responseHandling.js';
 import storeUser from "src/stores/user.js";
+
+// Translations - l18n workaround
+import translationPack from './translations/index.js'
+
+// Cookie Consent
 import CookieConsent from 'vue-cookieconsent';
+import CookieConsentOptions from 'src/boot/modules/cookieConsentOptions.js';
+import 'vue-cookieconsent/vendor/cookieconsent.css';
 
 // Global compnents
 import PageWrapper from 'src/components/global/PageWrapper.vue';
@@ -31,35 +38,24 @@ import NavAdmin from 'src/components/navigation/NavAdmin.vue';
 
 export default boot(({ app, router }) => {
     
-    // Env Variable
+    // Env Variables
     app.config.globalProperties.$env = {
-        SESSION_NAME: process.env.APP_SESSION_NAME,
-        APP_URL: process.env.APP_URL,
         APP_NAME: process.env.APP_NAME,
-        APP_SLOGAN: process.env.APP_SLOGAN,
-        APP_API_URL: process.env.APP_API_URL,
-
-        // Google Geolocation
-        APP_GOOGLE_API_KEY: process.env.APP_GOOGLE_API_KEY,
-
-        // Checkout - initialize user access
-        APP_PADDLE_ENVIRONMENT: process.env.APP_PADDLE_ENVIRONMENT,
-        APP_PADDLE_PUBLIC_KEY: process.env.APP_PADDLE_PUBLIC_KEY,
-
-        // App access
         APP_ACCESS_ADMIN: process.env.APP_ACCESS_ADMIN,
         APP_ACCESS_COCKPIT: process.env.APP_ACCESS_COCKPIT
     };
     
     // Defaults
-    app.config.globalProperties.$allowAuth = true;
     app.config.globalProperties.$user = storeUser();
     app.config.globalProperties.$toast = new ResponseHandler(router, app);
     app.config.globalProperties.$drawerLeft = ref(false);
+
+    // Translation Package
+    app.config.globalProperties.$tp = translationPack();
  
     // Cookie-Consent accessible by this.$cc
-    // Init Options (APP.VUE): this.$cc.run(this.$cookieConsentOptions)
     app.use(CookieConsent);
+    app.config.globalProperties.$cc.run(CookieConsentOptions);
 
     // Glboal Components
     app.component('PageWrapper', PageWrapper)

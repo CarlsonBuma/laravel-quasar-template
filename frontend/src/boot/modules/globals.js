@@ -1,12 +1,5 @@
 'use strict';
 
-export const globalMasks = {
-    date: {
-        default: 'YYYY-MM-DD',
-        switzerland: 'DD.MM.YYYY',
-    },
-}
-
 export const redirects = {
     linkLegal: '/legal',
     linkGoolgeMaps: 'https://www.google.com/maps/search/?api=1&query=',
@@ -26,7 +19,7 @@ export const regRules = {
     sanitizeLink: /^(https?:\/\/)?([\w-]+(\.[\w-]+)+)(:[0-9]{1,5})?(\/.*)?$/i
 };
 
-export const passwordRequirements = (password, password_confirm) => {
+export const checkPasswordRequirements = (password, password_confirm) => {
     if (!regRules.passwordPattern.min_length.test(password)) return 'Password must contain more than 7 characters.'
     else if (!regRules.passwordPattern.capital_letter.test(password)) return 'Password must contain 1 capital letter.'
     else if (!regRules.passwordPattern.number.test(password)) return 'Password must contain 1 number.';

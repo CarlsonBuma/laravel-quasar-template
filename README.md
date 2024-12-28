@@ -1,5 +1,6 @@
 # Webapp Template
 by Carlson, v.1.0
+Init: git clone URL
 Documentation: see "\docs"
 Tutorial: https://www.youtube.com/watch?v=Jdg9x3BDT38
 

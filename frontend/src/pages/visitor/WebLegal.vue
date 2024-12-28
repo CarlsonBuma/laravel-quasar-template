@@ -56,7 +56,7 @@
 
             <CardSimple 
                 class="w-card-md"
-                v-for="(term, index) in terms"
+                v-for="(term, index) in $tp.lang('legal_terms')"
                 :key="index"
                 :title="term.title" 
             >
@@ -78,7 +78,7 @@
             />
             <CardSimple 
                 class="w-card-md"
-                v-for="(privacy, index) in privacies"
+                v-for="(privacy, index) in $tp.lang('legal_privacy')"
                 :key="index"
                 :title="privacy.title" 
             >
@@ -95,10 +95,8 @@
 </template>
 
 <script>
-import { redirects } from 'boot/globals.js'
+import { redirects } from 'src/boot/modules/globals.js'
 import CardFocus from 'components/CardFocus.vue';
-import legalTerms from 'src/i18n/de-CH/legal_terms'
-import legalPrivacy from 'src/i18n/de-CH/legal_privacy'
 
 export default {
     name: 'WebLegal',
@@ -109,8 +107,6 @@ export default {
     setup() {
         return {
             redirects,
-            terms: legalTerms,
-            privacies: legalPrivacy
         }
     },
 
@@ -118,6 +114,10 @@ export default {
         return {
             // 
         }
-    }
+    },
+
+    mounted() {
+        console.log(this.$tp)
+    },
 };
 </script>

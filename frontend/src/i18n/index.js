@@ -1,9 +1,5 @@
-import legalTerms from './de-CH/legal_terms'
-import legalPrivacy from './de-CH/legal_privacy'
+import enUS from './en-US/index'
 
 export default {
-  'de-CH': {
-    'legal-privacy': legalPrivacy,
-    'legal-terms': legalTerms,
-  },
+  'en-US': enUS,
 }

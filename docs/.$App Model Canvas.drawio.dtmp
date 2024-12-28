@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-12-28T03:05:26.976Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="yy7Jn74WbY5ADMcZ-LJB" version="22.1.15" type="device" pages="2">
+<mxfile host="Electron" modified="2024-12-28T03:05:31.716Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="v2pe_2G0y3LQ1PD0fWjD" version="22.1.15" type="device" pages="2">
   <diagram id="07fea595-8f29-1299-0266-81d95cde20df" name="AMC">
     <mxGraphModel dx="4941" dy="-784" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
       <root>
@@ -300,7 +300,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="Bav2oq8mXFuTR9LEcAUd" name="App Architecture">
-    <mxGraphModel dx="1793" dy="1088" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="870" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />

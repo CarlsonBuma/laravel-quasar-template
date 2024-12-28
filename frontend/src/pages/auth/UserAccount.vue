@@ -135,7 +135,7 @@
 </template>
 
 <script>
-import { passwordRequirements } from 'src/boot/globals.js';
+import { checkPasswordRequirements } from 'src/boot/modules/globals.js';
 import PasswordCheck from 'components/PasswordCheck.vue';
 import CardUploadImage from 'components/CardUploadImage.vue';
 
@@ -151,7 +151,6 @@ export default {
 
     data() {
         return {
-            qr_value: process.env.APP_URL,
             password: {
                 current: '',
                 new: '',
@@ -196,7 +195,7 @@ export default {
         async submitPassword(current, newPw, confirmed) {
             try {
                 if(!current) throw 'Please enter new password.';
-                const passwordCheck = passwordRequirements(newPw, confirmed);
+                const passwordCheck = checkPasswordRequirements(newPw, confirmed);
                 if(passwordCheck) throw passwordCheck;
                 
                 // Request

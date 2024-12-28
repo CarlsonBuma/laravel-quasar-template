@@ -65,8 +65,8 @@ export default {
                 this.$user.setBearerToken(response.data.token);
                 this.$emit('authorize', '/user/dashboard');
             } catch (error) {
-                // Wrong Credentials && Email_Not_Verified
-                this.$toast.error(error.response ?? error);
+                // No Error processing
+                this.$toast.error(error.response?.data.message ?? error);
             } finally {
                 this.login.password = '';
             }

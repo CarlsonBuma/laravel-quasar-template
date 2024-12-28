@@ -29,14 +29,14 @@
 
                 <!-- Terms & Conditions -->
                 <div class="q-pa-sm">
-                    <p>Please agree "Terms-of-use":</p>
+                    <p>Please agree terms-of-use:</p>
                     <div class="flex items-center">
                         <q-checkbox v-model="user.agreed.terms"/>I agree with&nbsp;
-                        <router-link to="/legal">Terms &amp; Conditions</router-link>.
+                        <router-link target="_blank" to="/legal">Terms &amp; Conditions</router-link>.
                     </div>
                     <div class="flex items-center">
                         <q-checkbox v-model="user.agreed.privacy" />I agree with&nbsp;
-                        <router-link to="/legal">Data Privacy</router-link>.
+                        <router-link target="_blank" to="/legal">Data Privacy</router-link>.
                     </div>
                 </div>
             </FormWrapper>

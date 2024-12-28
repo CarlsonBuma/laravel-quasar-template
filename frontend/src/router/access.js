@@ -14,7 +14,7 @@ const routesAccess = [
     }, {
         path: '/admin/access',
         name: 'AccessManagement',
-        component: () => import('src/pages/access/AccessManagement.vue'),
+        component: () => import('src/pages/access/AdminAccess.vue'),
         beforeEnter: (to, from, next) => {
             if (!store().access.tokens[process.env.APP_ACCESS_ADMIN]) next(fallBackRouteBackpanel);
             else next();

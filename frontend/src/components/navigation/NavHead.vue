@@ -1,6 +1,8 @@
 <style lang="sass">
 .my-account-menu-width
   width: 420px
+.settings-menu-width
+  width: 220px
 </style>
 
 <template>
@@ -41,10 +43,33 @@
             </q-btn-dropdown>
         </q-toolbar-title>
 
+        <!-- App Settings -->
+        <q-btn flat size="12px" icon="settings">
+            <q-menu class="settings-menu-width">
+                <q-list separator>
+                    <q-item>
+                        <q-item-section>
+                            <q-item-label overline>System Settings:</q-item-label>
+                        </q-item-section>
+                    </q-item>
+                    <q-item>
+                        <q-select class="w-100" label="Language" v-model="$tp.client_settings.value.language" :options="$tp.client_options.lang" />
+                    </q-item>
+                    <q-item>
+                        <q-select class="w-100" label="Date format" v-model="$tp.client_settings.value.dateFormat" :options="$tp.client_options.date" />
+                    </q-item>
+                    <q-item>
+                        <q-item-section>
+                            <q-item-label caption><b>Note:</b> Flags must be implement by system or cooookies.</q-item-label>
+                        </q-item-section>
+                    </q-item>
+                </q-list>
+            </q-menu>
+        </q-btn>
+
         <!-- Authorization -->
         <div v-if="!$user.access.user">
             <q-btn
-                v-if="$allowAuth"
                 :disable="loading"
                 @click="goMemberArea()" 
                 flat 
@@ -90,9 +115,6 @@
             
             <!-- Big Screen -->
             <div class="gt-xs flex justify-end">
-
-                <!-- Quicklinks -->
-                <q-btn class="gt-xs" @click="$router.push('/')" flat size="12px" icon="bookmark_added" />
 
                 <!-- Account -->
                 <q-separator vertical color="white" class="q-mt-md q-mb-md q-ml-sm q-mr-sm" />

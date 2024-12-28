@@ -170,7 +170,7 @@
 
 <script>
 import { ref } from 'vue'
-import { regRules } from 'src/boot/globals';
+import { regRules } from 'src/boot/modules/globals';
 import NavCockpit from 'src/components/navigation/NavCockpit.vue';
 import FormWrapper from 'src/components/global/FormWrapper.vue';
 import GoogleLocation from 'src/components/GoogleLocation.vue';

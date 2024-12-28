@@ -13,14 +13,14 @@ Website: https://laravel.com/
 
 ### DB Migrate Data
   - php artisan migrate
-  - php artisan passport:install --force
+  - php artisan passport:client --personal
   - Enter Client Secrets in .env File
 
 ### DB Seeding
   - php artisan db:seed --class=UserSeeder
 
 ### Storage Setup
-  - add 'storage/app/public'
+  - add folder 'storage/app/*public'
   - php artisan storage:link
 
 ### Setup Mail Driver

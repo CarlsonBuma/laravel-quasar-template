@@ -6,7 +6,7 @@
 <template>
 
     <PageWrapper noMargin>
-        <SectionDesignClear >
+        <SectionDesignDefault>
             <div class="w-content-sm w-100 flex justify-center">
 
                 <!-- Title -->
@@ -19,7 +19,7 @@
 
                 <!-- Content - infinite scroll -->
                 <InfiniteScroll 
-                    class="w-card-lg"
+                    class="w-content-xs"
                     :disable="isLastEntry"
                     :loading="rendering"
                     @load="getNewsfeed(newsfeed.length)" 
@@ -32,7 +32,7 @@
                         class="flex w-100"
                         :class="entry.type !== 'Good News' ? 'justify-end' : 'justify-start'"
                     >
-                        <CardSimple class="w-card-lg">
+                        <CardSimple class="w-card-xl">
                             <q-card-section class="q-py-none">
                                     <!-- All Releases -->
                                     <q-timeline 
@@ -46,12 +46,12 @@
                                         <q-timeline-entry
                                             class="q-pa-none timeline-release"
                                             :title="entry.title"
-                                            :subtitle="entry.type + ', ' + date.formatDate(entry.created_at, dateFormat)"
+                                            :subtitle="entry.type + ', ' + $tp.date(entry.created_at)"
                                             :icon="entry.type === 'Good News' 
                                                 ? 'grade' 
                                                 : entry.type === 'Notification'
                                                     ? 'notifications'
-                                                    : 'new_newsfeed'"
+                                                    : 'emoji_events'"
                                         >
                                             <span class="_text-break q-pb-none">{{ entry.description }}</span>
                                         </q-timeline-entry>
@@ -62,15 +62,13 @@
                     </div>
                 </InfiniteScroll>
             </div>
-        </SectionDesignClear>
+        </SectionDesignDefault>
     </PageWrapper>
 
 </template>
 
 <script>
 import { ref } from 'vue';
-import { date } from 'quasar';
-import { globalMasks } from 'src/boot/globals.js';
 import InfiniteScroll from 'components/InfiniteScroll.vue';
 
 export default {
@@ -81,8 +79,6 @@ export default {
 
     setup() {
         return {
-            dateFormat: globalMasks.date.switzerland,
-            date,
             rendering: ref(false),
             isLastEntry: ref(false),
         }
@@ -92,10 +88,6 @@ export default {
         return {
             newsfeed: []
         }
-    },
-
-    mounted() {
-        // Code
     },
 
     methods: {

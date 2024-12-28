@@ -94,11 +94,11 @@
                     <p>Please agree "Terms-of-use":</p>
                     <div class="flex items-center">
                         <q-checkbox v-model="agreed.terms"/>I agree with&nbsp;
-                        <router-link to="/legal">Terms &amp; Conditions</router-link>.
+                        <router-link target="_blank" to="/legal">Terms &amp; Conditions</router-link>.
                     </div>
                     <div class="flex items-center">
                         <q-checkbox v-model="agreed.privacy" />I agree with&nbsp;
-                        <router-link to="/legal">Data Privacy</router-link>.
+                        <router-link  target="_blank" to="/legal">Data Privacy</router-link>.
                     </div>
                 </div>
             </FormWrapper>
@@ -109,7 +109,7 @@
 
 <script>
 import { ref } from 'vue';
-import { passwordRequirements} from 'src/boot/globals.js';
+import { checkPasswordRequirements} from 'src/boot/modules/globals.js';
 import CardWrapper from 'components/CardWrapper.vue';
 import PasswordCheck from 'components/PasswordCheck.vue';
 
@@ -148,7 +148,7 @@ export default {
         async makeValidationRequest(pw, pw_confirm, agreed) {
             try {
                 // Validate
-                const passwordCheck = passwordRequirements(pw, pw_confirm);
+                const passwordCheck = checkPasswordRequirements(pw, pw_confirm);
                 if(passwordCheck) throw passwordCheck;
                 if(!agreed.terms || !agreed.privacy) throw 'Please agree to our terms-of-use.'
                 
@@ -166,11 +166,10 @@ export default {
                 this.$toast.success(response.data.message)
                 this.$user.setBearerToken(response.data.token);
                 this.$emit('authorize', '/user/dashboard');
-            } catch (error) {
-                this.$toast.error(error.response ?? error);
-            } finally {
                 this.password = '';
                 this.password_confirm = '';
+            } catch (error) {
+                this.$toast.error(error.response ?? error);
             }
         }
     }

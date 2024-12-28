@@ -49,7 +49,7 @@
                 id="map-div"
                 ref="mapRef"
                 :zoom="mapZoomLevel"
-                :api-key="$env.APP_GOOGLE_API_KEY" 
+                :api-key="googleAPIKey" 
                 :center="{
                     lat: initialLatitude ? initialLatitude : 0, 
                     lng: initialLongitude ? initialLongitude : 0
@@ -107,6 +107,7 @@ export default {
     ],
 
     setup(props, context) {
+        const googleAPIKey = process.env.APP_GOOGLE_API_KEY ?? '';
         const mapRef = ref(null);
         const mapSearchDiameter = ref(50);
         const mapSearchRadius = ref(0)      // [km]
@@ -163,6 +164,7 @@ export default {
         }
 
         return {
+            googleAPIKey,
             mapRef,
             mapSearchDiameter,
             mapSearchRadius,

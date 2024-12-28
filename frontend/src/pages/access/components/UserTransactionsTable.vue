@@ -39,10 +39,10 @@
                     {{ props.row.tax }}
                 </q-td>
                 <q-td key="updated_at" :props="props">
-                    {{ props.row.updated_at }}
+                    {{ $tp.date(props.row.updated_at) }}
                 </q-td>
                 <q-td key="expiration_date" :props="props">
-                    {{ props.row.access?.expiration_date ?? '-' }}
+                    {{ $tp.date(props.row.access?.expiration_date ?? '-') }}
                 </q-td>
                 <q-td key="active" :props="props">
                     <q-icon name="verified" :color="props.row.access ? 'green' : 'grey'" />

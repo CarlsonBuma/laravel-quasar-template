@@ -76,7 +76,7 @@
 </template>
 
 <script>
-import { passwordRequirements } from 'src/boot/globals.js';
+import { checkPasswordRequirements } from 'src/boot/modules/globals.js';
 import CardWrapper from 'components/CardWrapper.vue';
 import PasswordCheck from 'components/PasswordCheck.vue';
 
@@ -98,7 +98,7 @@ export default {
         async setUserPassword(password, password_confirm) {
             try {
                 // Validate
-                const passwordCheck = passwordRequirements(password, password_confirm);
+                const passwordCheck = checkPasswordRequirements(password, password_confirm);
                 if(passwordCheck) throw passwordCheck;
                 
                 // Request
@@ -112,11 +112,10 @@ export default {
                 // Login
                 this.$user.setBearerToken(response.data.token);
                 this.$emit('authorize', '/user/dashboard');
-            } catch (error) {
-                this.$toast.error(error.response ? error.response : error);
-            } finally {
                 this.password = '';
                 this.password_confirm = '';
+            } catch (error) {
+                this.$toast.error(error.response ? error.response : error);
             }
         },
     }
