@@ -5,28 +5,28 @@ import languagePack from './lang/index.js';
 
 export default () => {
 
+    // Client provides translation options
+    const clientTranslationOptions = {
+        'date': ['international', 'eu', 'us', 'test'] ,
+        'lang': ['de', 'en', 'error']
+    };
+
     // Client can choose translation settings
     const clientTranslationSettings = ref({
         dateFormat: 'international',        
         language: 'en' 
     });
 
-    // Client can choose between translation options
-    const clientTranslationOptions = {
-        'date': ['international', 'eu', 'us'] ,
-        'lang': ['de', 'en']
-    };
-
     // Return Package
     return {
-        'client_settings': clientTranslationSettings,
         'client_options': clientTranslationOptions,
+        'client_settings': clientTranslationSettings,
         'date': (rawDate) => dateFormat[clientTranslationSettings.value.dateFormat]
             ? dateFormat[clientTranslationSettings.value.dateFormat](rawDate) 
-            : null,
+            : 'undefined',
         'lang': (key) => languagePack[clientTranslationSettings.value.language] && languagePack[clientTranslationSettings.value.language][key]
             ? languagePack[clientTranslationSettings.value.language][key]
-            : null
+            : null,
 
         // ----------------------
         // Extend Package here...

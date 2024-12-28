@@ -75,11 +75,11 @@ export default {
     },
 
     mounted() {
-        // Darkmode
-        const darkMode = false;         // this.$q.dark.isActive;
+        // Initial darkmode
+        const darkMode = false; // this.$q.dark.isActive;
         this.$q.dark.set(darkMode);
 
-        // App settings
+        // Inital app translation settings
         this.$tp.client_settings.value.dateFormat = 'international';
         this.$tp.client_settings.value.language = 'de';
     },

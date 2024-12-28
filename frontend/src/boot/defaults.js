@@ -7,7 +7,7 @@ import { ResponseHandler } from 'src/boot/modules/responseHandling.js';
 import storeUser from "src/stores/user.js";
 
 // Translations - l18n workaround
-import translationPack from './translations/index.js'
+import translationPackage from './translations/index.js'
 
 // Cookie Consent
 import CookieConsent from 'vue-cookieconsent';
@@ -51,7 +51,7 @@ export default boot(({ app, router }) => {
     app.config.globalProperties.$drawerLeft = ref(false);
 
     // Translation Package
-    app.config.globalProperties.$tp = translationPack();
+    app.config.globalProperties.$tp = translationPackage();
  
     // Cookie-Consent accessible by this.$cc
     app.use(CookieConsent);
