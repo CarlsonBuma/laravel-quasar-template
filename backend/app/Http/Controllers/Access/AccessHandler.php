@@ -11,14 +11,17 @@ class AccessHandler
      * Defines user access within our app
      * 
      * Note: 
-     * Allow public available pricea-access-tokens within "\Access\PaddlePriceHandler"
-     * Private access-tokens can not be issued via prices access request (eg. $tokenAdmin)
+     * Public Access Tokens: Allow users gain access via prices 
+     *  - ref. "\Access\PaddlePriceHandler"
+     * Private Access Tokens: can not be issued by user itself 
+     *  - eg. $tokenAdmin
      * 
      * Logic References:
      * Add logic to handle new access-token accordingly within app.
-     *  - Middleware: eg. "\Middleware\PaddleWebhookListener"
+     *  - Access Management: "\Controllers\Access\" 
+     *  - Middleware: eg. "\Middleware\"
      *  - Webhook Listener: "\Listeners\PaddleWebhookListener"
-     *  - Access Management: "\Controllers\Access\AppAccessCockpit"
+     *  - eg. $tokenCockpit
      */
     public static $tokenCockpit = 'access-cockpit';
     public static $tokenAdmin = 'access-admin';
