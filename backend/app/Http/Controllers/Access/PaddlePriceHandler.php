@@ -11,14 +11,15 @@ class PaddlePriceHandler
 
     /**
      * Update price changes that have been triggered within Paddle
-     * Sandbox: https://sandbox-vendors.paddle.com/products-v2
-     * Webhook: "\Listeners\PaddleWebhookListener"
+     *  - Sandbox: https://sandbox-vendors.paddle.com/products-v2
+     *  - Webhook: "\Listeners\PaddleWebhookListener"
      * 
-     ** Setup: Price Catalog Cockpit
-     *  - Enable price-access-token within function "updatePriceByWebhook()"
+     * Setup:
+     *  0. Define price-access within app logic.
+     *  1. Implement price-access-token within function "updatePriceByWebhook()"
      *      - Define new access-tokens in "\Access\AccessHandler"
      *      - May add logic to handle new access-token accordingly within app
-     *  - Set Price and its attributes within Paddle
+     *  2. Set Price and its attributes within Paddle
      *      - Ensure 'custom_data' is included in the price configuration
      *          > 'access_token' (string, required): Defines access to the app and its features
      *          > 'duration_months' (int, optional): Defines the period of access
@@ -32,7 +33,7 @@ class PaddlePriceHandler
         $accessTokenByPaddle = $contentData['custom_data']['access_token'] ?? null;
         if($accessTokenByPaddle && (
             $accessTokenByPaddle === AccessHandler::$tokenCockpit
-            || $accessTokenByPaddle === 'testing-access'
+            
             // ------------------------------------
             // Allow other price tokens within app here
             // ------------------------------------

@@ -9,23 +9,26 @@ class AccessHandler
     /**
      * User Access Management
      * Defines user access within our app
-     *  > Public access can be purchased by users themself (ref. app-prices)
-     *      - User access will be initiated by provided prices and its access token
-     *      - Important: Allow access token within app!
-     *          - see "\Access\PaddlePriceHandler"
-     *  > Private access can be definied within app (eg. access-admin)
-     *      - Access must be initiated to a user manually (eg. by admin)
      * 
-     * ...........................................
-     * . Define own access tokens here
-     * ...........................................
+     * Note: 
+     * Allow public available pricea-access-tokens within "\Access\PaddlePriceHandler"
+     * Private access-tokens can not be issued via prices access request (eg. $tokenAdmin)
+     * 
+     * Logic References:
+     * Add logic to handle new access-token accordingly within app.
+     *  - Middleware: eg. "\Middleware\PaddleWebhookListener"
+     *  - Webhook Listener: "\Listeners\PaddleWebhookListener"
+     *  - Access Management: "\Controllers\Access\AppAccessCockpit"
      */
-    public static $tokenAdmin = 'access-admin';
     public static $tokenCockpit = 'access-cockpit';
+    public static $tokenAdmin = 'access-admin';
 
     /**
      * Add user app access
-     * Note: for transpirancy purpose, we always add new access
+     * 
+     * Note: 
+     * For transpirancy purpose, we always add new access,
+     * instead of updating existing access.
      *
      * @param integer $userID
      * @param integer|null $transactionID

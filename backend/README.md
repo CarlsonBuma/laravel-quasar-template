@@ -27,29 +27,7 @@ Website: https://laravel.com/
   - Choose your Mail Driver (according Serverhost)
   - Enter Attributes into .env file
 
-# Additional Microservices
-## Paddle Payment Provider
-Manages client payments and interacts with our app (via backend webhooks) to verify user access, according purchased prices.
-   1. Webhook testing: Install Ngrok (Reverse Proxy)
-      - ngrok http http://127.0.0.1:8000
-      - Check Webhooks: Ngrok Web Interface
-   2. Setup Paddle Account
-      1. Paddle Cockpit Authentication: Set .env-variables
-      2. Paddle Cockpit Notifications: Add new webhook destination
-        - Set URL: { ASSET_URL } + /access/webhook
-          - see "\routes\web"
-        - Set webhook events
-        - Paste Webhook Secret Key in .env file
-   3. Define Prices in Paddle
-      1. Set Price according "\Controllers\Access\PaddlePriceHandler"
-        - Default price-access-token: see "\Access\AccessHandler::$tokenCockpit"
-      2. Adjust logic of price access (if neccessary)
-        - Webhook Listener: "\Listeners\PaddleWebhookListener"
-        - Access Management: "\Controllers\Access\"
-      3. Implement price token within logic
-        - Example: "\Middleware\AppAccessCockpit"
-
- # Live Deployment
+ ## Live Deployment
  See Laravel 11 Docs & it's Dependencies
   - .env set to production
   - php artisan vendor:publish --tag=passport-config
@@ -58,3 +36,33 @@ Manages client payments and interacts with our app (via backend webhooks) to ver
   - php artisan config:cache
   - php artisan event:cache
   - php artisan route:cache
+
+
+# Feature enhacements
+Key features, that enriches our backend.
+
+## User Account Management
+Basic user authentification via Laravel Passport and account access.
+    - See "\Controllers\Auth"
+
+## User Access Management
+Manages client payments and interacts with our app backend (via  webhooks) to verify user access requests, according purchased prices.
+   1. Webhook testing: Install Ngrok (Reverse Proxy)
+      - ngrok http http://127.0.0.1:8000
+      - Check Webhooks: Ngrok Web Interface
+   2. Set Paddle Developer Tools
+      1. Paddle Cockpit Authentication: Set .env-variables
+      2. Paddle Cockpit Notifications: Add new webhook destination
+        - Set URL: { ASSET_URL } + /access/webhook
+          - see "\routes\web"
+        - Select webhook events
+        - Paste Webhook Secret Key in .env file
+   3. Define app logic according price-access
+      - Adjust logic of price access (if neccessary)
+      - Example: "\Controllers\Access\AccessHandler::$tokenCockpit"
+   4. Initiate new Price Access 
+      - see "\Controllers\Access\PaddlePriceHandler"
+
+## App Geolocation
+Google Geolocation allows geolocating addresses within our app, provided by Client.
+  - see "\Models\AppGeolocations\"
