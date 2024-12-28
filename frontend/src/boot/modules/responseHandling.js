@@ -11,7 +11,7 @@ import store from "src/stores/user.js";
  *      > UI Error vs. Server Error 
  *      > errorHandling(): process accordingly     
  */
-export class ResponseHandler {
+export default class ResponseHandler {
 
     /**
      * Hanlding Server Response

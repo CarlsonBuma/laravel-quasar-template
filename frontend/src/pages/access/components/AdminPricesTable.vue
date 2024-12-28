@@ -33,7 +33,7 @@
                 <q-td key="billing_period" :props="props">
                     {{ 
                         props.row.billing_frequency 
-                            ? props.row.billing_frequency + ' per ' + props.row.billing_interval 
+                            ? props.row.billing_frequency + ' ' + props.row.billing_interval 
                             : props.row.duration_months 
                                 ? props.row.duration_months + ' month' 
                                 : 'none'

@@ -76,7 +76,6 @@
 </template>
 
 <script>
-import { checkPasswordRequirements } from 'src/boot/modules/globals.js';
 import CardWrapper from 'components/CardWrapper.vue';
 import PasswordCheck from 'components/PasswordCheck.vue';
 
@@ -98,7 +97,7 @@ export default {
         async setUserPassword(password, password_confirm) {
             try {
                 // Validate
-                const passwordCheck = checkPasswordRequirements(password, password_confirm);
+                const passwordCheck = this.$globals.checkPasswordRequirements(password, password_confirm);
                 if(passwordCheck) throw passwordCheck;
                 
                 // Request

@@ -25,6 +25,7 @@ class AccessHandler
 
     /**
      * Add user app access
+     * Note: for transpirancy purpose, we always add new access
      *
      * @param integer $userID
      * @param integer|null $transactionID
@@ -36,10 +37,9 @@ class AccessHandler
      */
     static public function addUserAccess(int $userID, int $transactionID = null, string $accessToken = 'undefined', int $quantity = 0, string $expirationDate, string $message): object
     {
-        return UserAccess::updateOrCreate([
+        return UserAccess::create([
                 'user_id' => $userID,
-                'access_token' => $accessToken
-            ], [
+                'access_token' => $accessToken,
                 'transaction_id' => $transactionID,
                 'quantity' => $quantity,
                 'expiration_date' => $expirationDate,

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Access\AccessHandling;
+namespace App\Http\Controllers\Access;
 
 use App\Models\PaddlePrices;
 use App\Http\Controllers\Access\AccessHandler;
@@ -15,12 +15,14 @@ class PaddlePriceHandler
      * Webhook: "\Listeners\PaddleWebhookListener"
      * 
      ** Setup: Price Catalog Cockpit
-     *  - Set Price and its attributes within Paddle
-     *  - Ensure 'custom_data' is included in the price configuration
-     *      > 'access_token' (string, required): Defines access to the app and its features
-     *      > 'duration_months' (int, optional): Defines the period of access
-     *          - Note: This is overridden by the subscription.billing_period.ends_at value
      *  - Enable price-access-token within function "updatePriceByWebhook()"
+     *      - Define new access-tokens in "\Access\AccessHandler"
+     *      - May add logic to handle new access-token accordingly within app
+     *  - Set Price and its attributes within Paddle
+     *      - Ensure 'custom_data' is included in the price configuration
+     *          > 'access_token' (string, required): Defines access to the app and its features
+     *          > 'duration_months' (int, optional): Defines the period of access
+     *              - Note: This is overridden by the subscription.billing_period.ends_at value
      *
      * @param array $contentData
      * @return void
@@ -29,15 +31,15 @@ class PaddlePriceHandler
     {
         $accessTokenByPaddle = $contentData['custom_data']['access_token'] ?? null;
         if($accessTokenByPaddle && (
-            AccessHandler::$tokenCockpit === $accessTokenByPaddle
-            
+            $accessTokenByPaddle === AccessHandler::$tokenCockpit
+            || $accessTokenByPaddle === 'testing-access'
             // ------------------------------------
             // Allow other price tokens within app here
             // ------------------------------------
 
         )) { 
             // Price is available and defined within app
-            PaddlePrices::updateOrCreate([
+            $this->price = PaddlePrices::updateOrCreate([
                 'price_token' => $contentData['id'],                                                // Required by access logic
             ], [
                 'product_token' => $contentData['product_id'],                                      // Optional

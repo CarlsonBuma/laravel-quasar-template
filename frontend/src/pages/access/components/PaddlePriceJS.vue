@@ -24,7 +24,7 @@ export default {
                     environment: process.env.APP_PADDLE_ENVIRONMENT
                         ? process.env.APP_PADDLE_ENVIRONMENT
                         : 'sandbox',
-                    token: process.env.APP_PADDLE_PUBLIC_KEY,
+                    token: process.env.APP_PADDLE_CLIENT_KEY,
                     eventCallback: function(data) {
                         context.emit('paddleEvents', data)
                     }

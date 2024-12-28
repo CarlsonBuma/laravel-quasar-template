@@ -2,7 +2,7 @@
     
     <q-table
         flat
-        :rows="transactions"
+        :rows="filteredTransactions"
         :columns="columnsTransaction"
         title="Transactions"
         row-key="id"
@@ -54,6 +54,8 @@
 </template>
 
 <script>
+import { ref } from 'vue';
+
 export default {
     name: 'UserTransactionsTable',
 
@@ -73,7 +75,6 @@ export default {
                 label: 'Token',
                 field: 'name',
                 align: 'left',
-                sortable: true
             }, {
                 name: 'status',
                 label: 'Status',
@@ -104,7 +105,6 @@ export default {
                 label: 'Expiration date',
                 field: 'expiration_date',
                 align: 'left',
-                sortable: true
             }, {
                 name: 'active',
                 label: 'Access',
@@ -113,8 +113,21 @@ export default {
         ];
 
         return {
-            columnsTransaction
+            columnsTransaction,
+            filterInput: ref(''),
         };
     },
+
+    computed: {
+        filteredTransactions() {
+            if (!this.filterInput) return this.transactions;
+            const filter = this.filterInput.toLowerCase();
+            return this.transactions.filter(row => {
+                const price = row.price || {};
+                return (price.name && price.name.toLowerCase().includes(filter)) ||
+                    (price.access_token && price.access_token.toLowerCase().includes(filter));
+            });
+        }
+    }
 };
 </script>

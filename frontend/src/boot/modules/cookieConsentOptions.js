@@ -1,13 +1,12 @@
 'use strict';
 
-
 /** 
  * GDPR: Cookie Consent
  *  > https://github.com/eyecatchup/vue-cookieconsent
  *  > https://github.com/orestbida/cookieconsent
  *      > Define Consent-Options
  *      > Enter Analytics Scripts in "onAccept()"
- *      > Init consentOptions in App.js
+ *      > Init consentOptions in $cc.run()
  */
 const consentOptions = {
     autorun: true,

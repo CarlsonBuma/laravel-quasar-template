@@ -123,36 +123,7 @@
                     <q-menu class="my-account-menu-width">
                         <div class="row no-wrap q-pa-md">
 
-                            <!-- Profile Settings -->
-                            <div class="col-grow">
-                                <span class="text-overline">My Account</span>
-                                <q-separator class="w-100"/>
-                                <q-list padding >
-                                    <q-item 
-                                        v-if="$user.access.tokens[$env.APP_ACCESS_COCKPIT]" 
-                                        @click="$router.push('/cockpit/dashboard')" 
-                                        clickable v-ripple 
-                                    >
-                                        <q-item-section avatar>
-                                            <q-icon name="groups_3" class="q-mr-sm" />
-                                        </q-item-section>
-                                        <q-item-section>
-                                            <q-item-label>My cockpit</q-item-label>
-                                        </q-item-section>
-                                    </q-item>
-                                    <q-item @click="$router.push('/user/dashboard')" clickable v-ripple >
-                                        <q-item-section avatar>
-                                            <q-icon name="contacts" class="q-mr-sm" />
-                                        </q-item-section>
-                                        <q-item-section>
-                                            <q-item-label>My avatar</q-item-label>
-                                        </q-item-section>
-                                    </q-item>
-                                </q-list>
-                            </div>
-
                             <!-- User Profile -->
-                            <q-separator vertical inset class="q-mx-lg" />
                             <div class="col-auto text-center">
                                 <q-avatar 
                                     v-if="$user.user.avatar_src"
@@ -199,6 +170,37 @@
                                     label="Darkmode"
                                 />
                             </div>
+
+                            <!-- Profile Settings -->
+                            <q-separator vertical inset class="q-mx-lg" />
+                            <div class="col-grow">
+                                <span class="text-overline">My Account</span>
+                                <q-separator class="w-100"/>
+                                <q-list padding >
+                                    <q-item 
+                                        v-if="$user.access.tokens[$env.APP_ACCESS_COCKPIT]" 
+                                        @click="$router.push('/cockpit/dashboard')" 
+                                        clickable v-ripple 
+                                    >
+                                        <q-item-section avatar>
+                                            <q-icon name="groups_3" class="q-mr-sm" />
+                                        </q-item-section>
+                                        <q-item-section>
+                                            <q-item-label>My cockpit</q-item-label>
+                                        </q-item-section>
+                                    </q-item>
+                                    <q-item @click="$router.push('/user/dashboard')" clickable v-ripple >
+                                        <q-item-section avatar>
+                                            <q-icon name="contacts" class="q-mr-sm" />
+                                        </q-item-section>
+                                        <q-item-section>
+                                            <q-item-label>My avatar</q-item-label>
+                                        </q-item-section>
+                                    </q-item>
+                                </q-list>
+                            </div>
+
+                            
                         </div>
                     </q-menu>
                 </q-item>

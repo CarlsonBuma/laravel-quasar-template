@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-12-28T00:36:00.276Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="EEFw8aRFEQLLnRshd97x" version="22.1.15" type="device">
+<mxfile host="Electron" modified="2024-12-28T17:23:56.805Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="OoUH7iYmiy-e54vrul7r" version="22.1.15" type="device">
   <diagram id="a2R4c12gUgRJsUf4LZfT" name="Knowledge Assurance">
-    <mxGraphModel dx="1687" dy="2153" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1434" dy="2039" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -29,7 +29,7 @@
           <mxGeometry x="130" y="365" width="180" height="70" as="geometry" />
         </mxCell>
         <mxCell id="KGttFFYj1Ws7Kt1SQNXw-11" value="Code References &amp;amp; Implementations" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
-          <mxGeometry x="130" y="700" width="180" height="70" as="geometry" />
+          <mxGeometry x="130" y="780" width="180" height="70" as="geometry" />
         </mxCell>
         <mxCell id="KGttFFYj1Ws7Kt1SQNXw-14" value="&lt;span style=&quot;text-align: left; background-color: initial;&quot;&gt;Define dept and scope of documentation, to reduce time for documentation.&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1411" y="210" width="160" height="70" as="geometry" />
@@ -98,7 +98,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="jnVhGJbDJn7CfHbvZlt4-2" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.reload;" parent="1" vertex="1">
-          <mxGeometry x="200" y="760" width="22" height="20" as="geometry" />
+          <mxGeometry x="200" y="840" width="22" height="20" as="geometry" />
         </mxCell>
         <mxCell id="jnVhGJbDJn7CfHbvZlt4-3" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.reload;" parent="1" vertex="1">
           <mxGeometry x="200" y="425" width="22" height="20" as="geometry" />
@@ -172,7 +172,7 @@
         <mxCell id="KoOwORCeLMPU9U5R05W2-2" value="&lt;span style=&quot;text-align: left; background-color: initial;&quot;&gt;Helps identify needs.&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="1290" y="-740" width="190" height="80" as="geometry" />
         </mxCell>
-        <mxCell id="darAnxIzqBDrsFBkMVsz-1" value="Priority: 5&lt;br&gt;Readability: 3&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Complextity: 5" style="image;html=1;image=img/lib/clip_art/general/Star_128x128.png" parent="1" vertex="1">
+        <mxCell id="darAnxIzqBDrsFBkMVsz-1" value="Priority: 5&lt;br&gt;Quality: 4&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Complextity: 5" style="image;html=1;image=img/lib/clip_art/general/Star_128x128.png" parent="1" vertex="1">
           <mxGeometry x="810" y="-350" width="70" height="60" as="geometry" />
         </mxCell>
         <mxCell id="darAnxIzqBDrsFBkMVsz-2" value="Priority: 5&lt;br&gt;Quality: 4&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;Complextity: 5" style="image;html=1;image=img/lib/clip_art/general/Star_128x128.png" parent="1" vertex="1">
@@ -187,8 +187,35 @@
         <mxCell id="P735Me0Jq9XliikHX_fQ-1" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;b&gt;Knowledge Assurance&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;Ensures accuracy, consistency, and reliability of collaborations throughout the development lifecycle to maintain high quality and reduce errors.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;" parent="1" vertex="1">
           <mxGeometry x="502.51" y="-140" width="238.12" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="DTS-GgIOJ-LSIOUk_R0d-1" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: initial; text-align: left;&quot;&gt;&lt;b&gt;System Scope&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;Technology Stack,&amp;nbsp;Security, Governance, DevOps, Environment, Stakeholders, Constraints,&amp;nbsp;Dependencies etc.&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+        <mxCell id="DTS-GgIOJ-LSIOUk_R0d-1" value="&lt;div style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: initial; text-align: left;&quot;&gt;&lt;b&gt;System Scope&lt;/b&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: center;&quot;&gt;&lt;div style=&quot;border-color: var(--border-color);&quot;&gt;Technology Stack,&amp;nbsp;Security, Governance, DevOps, Environment, Stakeholders, Constraints,&amp;nbsp;Dependencies etc.&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="380" y="-7.5" width="190" height="125" as="geometry" />
+        </mxCell>
+        <mxCell id="QWBiyG1merQWxmZXbuwq-1" value="&lt;span style=&quot;text-align: left; background-color: initial;&quot;&gt;External Microservices implementations and Interactions must be documented.&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1340" y="850" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="D1KQ4xUv4XsdXqoA8qd5-1" value="&lt;span style=&quot;text-align: left; background-color: initial;&quot;&gt;Flags and Restictions must be defined.&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="1121.25" y="870" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="D1KQ4xUv4XsdXqoA8qd5-2" value="Bugs" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" parent="1" vertex="1">
+          <mxGeometry x="130" y="690" width="180" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="D1KQ4xUv4XsdXqoA8qd5-3" value="" style="html=1;verticalLabelPosition=bottom;align=center;labelBackgroundColor=#ffffff;verticalAlign=top;strokeWidth=2;strokeColor=#0080F0;shadow=0;dashed=0;shape=mxgraph.ios7.icons.reload;" parent="1" vertex="1">
+          <mxGeometry x="200" y="750" width="22" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="lDIHpoYLvZgONbROUCO_-1" value="&lt;span style=&quot;text-align: left; background-color: initial;&quot;&gt;Readme Files help understand system requriements and logic.&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1220" y="790" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lDIHpoYLvZgONbROUCO_-2" value="&lt;span style=&quot;text-align: left; background-color: initial;&quot;&gt;Use AI to imporve readability and consistency.&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="1470" y="760" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lDIHpoYLvZgONbROUCO_-5" value="&lt;span style=&quot;text-align: left; background-color: initial;&quot;&gt;Readme Files help understand system requriements and logic.&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
+          <mxGeometry x="985" y="680" width="140" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lDIHpoYLvZgONbROUCO_-6" value="&lt;div style=&quot;&quot;&gt;Define Collections, API-References, Middleware etc.&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=center;" parent="1" vertex="1">
+          <mxGeometry x="952.5" y="900" width="175" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="E1pqNw2gWn9oipevK-c2-1" value="&lt;span style=&quot;text-align: left; background-color: initial;&quot;&gt;Lean UX Desing, reduces clickrates.&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="800" y="860" width="160" height="80" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -34,7 +34,7 @@
                         </span>
                         <template #note>
                             <p class="q-mb-none">
-                                <span>Contact us: <a :href="'mailto:' + redirects.emailLegal">{{ redirects.emailLegal }}</a></span>
+                                <span>Contact us: <a :href="'mailto:' + $globals.redirects.emailLegal">{{ $globals.redirects.emailLegal }}</a></span>
                             </p>
                         </template>
                     </CardFocus>
@@ -95,7 +95,6 @@
 </template>
 
 <script>
-import { redirects } from 'src/boot/modules/globals.js'
 import CardFocus from 'components/CardFocus.vue';
 
 export default {
@@ -106,7 +105,7 @@ export default {
 
     setup() {
         return {
-            redirects,
+            //
         }
     },
 

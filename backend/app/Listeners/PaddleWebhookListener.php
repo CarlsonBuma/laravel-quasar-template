@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\PaddleTransactions;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Access\AccessHandler;
-use App\Http\Controllers\Access\AccessHandling\PaddlePriceHandler;
-use App\Http\Controllers\Access\AccessHandling\PaddleSubscriptionHandler;
+use App\Http\Controllers\Access\PaddlePriceHandler;
+use App\Http\Controllers\Access\PaddleSubscriptionHandler;
 use App\Http\Controllers\Access\PaddleTransactionHandler;
 
 class PaddleWebhookListener extends Controller

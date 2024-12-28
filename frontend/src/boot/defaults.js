@@ -3,8 +3,9 @@
 // Default modules
 import { ref } from 'vue';
 import { boot } from 'quasar/wrappers';
-import { ResponseHandler } from 'src/boot/modules/responseHandling.js';
+import ResponseHandler from 'src/boot/modules/responseHandling.js';
 import storeUser from "src/stores/user.js";
+import globals from 'src/boot/modules/globals.js';
 
 // Translations - l18n workaround
 import translationPackage from './translations/index.js'
@@ -46,9 +47,10 @@ export default boot(({ app, router }) => {
     };
     
     // Defaults
-    app.config.globalProperties.$user = storeUser();
-    app.config.globalProperties.$toast = new ResponseHandler(router, app);
     app.config.globalProperties.$drawerLeft = ref(false);
+    app.config.globalProperties.$toast = new ResponseHandler(router, app);
+    app.config.globalProperties.$user = storeUser();
+    app.config.globalProperties.$globals = globals;
 
     // Translation Package
     app.config.globalProperties.$tp = translationPackage();

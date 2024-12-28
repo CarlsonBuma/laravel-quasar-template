@@ -106,7 +106,6 @@ export default {
                 const response = await this.$axios.get('load-user-access')
                 this.prices = response.data.prices;
                 this.transactions = response.data.transactions;
-                console.log(this.prices, this.transactions, response.data.access)
             } catch (error) {
                 this.$toast.error(error.response ?? error);
                 console.log('user.access.error', error.response ?? error)
@@ -161,9 +160,12 @@ export default {
                         );
 
                         // Check if its a subscription
+                        const priceID = response.data.price_id;
                         this.prices.forEach((price, index) => {
-                            if(price.id === response.data.price_id && price.is_subscription) 
-                                this.prices[index].has_active_subscription = true;
+                            if(price.id === priceID)
+                                this.prices[index].has_access = access; 
+                            if(price.id === priceID && price.is_subscription) 
+                                this.prices[index].has_active_subscription = true; 
                         });
 
                         // Clear interval

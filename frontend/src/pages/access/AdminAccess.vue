@@ -148,23 +148,6 @@ export default {
             }
         }, 
 
-        async serachUser(email) {
-            try {
-                if(!email) throw 'Email field is required.'
-                this.$toast.load();
-                const response = await this.$axios.get("/get-app-user-access", { params: { 
-                    email: email
-                }});
-
-                this.userAccess = response.data.access;
-                this.userTransactions = response.data.transactions;
-                this.$toast.success(response.data.message)
-            } catch (error) {
-                this.$toast.error(error.response ?? error);
-                console.log('admin.user.access.error', error.response ?? error)
-            }
-        },
-
         async updatePrice(priceID, status){
             try {
                 this.$toast.load();
@@ -178,6 +161,23 @@ export default {
                 console.log('admin.user.access.error', error.response ?? error)
             }
         }, 
+
+        async serachUser(email) {
+            try {
+                if(!email) throw 'Email field is required.'
+                this.$toast.load();
+                const response = await this.$axios.get("/get-app-user-access", { params: { 
+                    email: email
+                }});
+
+                this.userAccess = response.data.latest_access;
+                this.userTransactions = response.data.transactions;
+                this.$toast.success(response.data.message)
+            } catch (error) {
+                this.$toast.error(error.response ?? error);
+                console.log('admin.user.access.error', error.response ?? error)
+            }
+        },
 
         async updateAccess(accessID, status){
             try {

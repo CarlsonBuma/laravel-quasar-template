@@ -34,16 +34,20 @@ Manages client payments and interacts with our app (via backend webhooks) to ver
       - ngrok http http://127.0.0.1:8000
       - Check Webhooks: Ngrok Web Interface
    2. Setup Paddle Account
-      1. Define Prices in Paddle and App, allowing feature access within app
-        - see "\Controllers\Access\PaddlePriceHandler"
-      2. Define Paddle Notification Webhooks
-        - see "\routes\web"
+      1. Paddle Cockpit Authentication: Set .env-variables
+      2. Paddle Cockpit Notifications: Add new webhook destination
+        - Set URL: { ASSET_URL } + /access/webhook
+          - see "\routes\web"
+        - Set webhook events
         - Paste Webhook Secret Key in .env file
-      3. Set other Paddle variables in .env file
-   3. Adjust logic (optional)
-      - Middleware: "\Middleware\"
-      - Webhook Listener: "\Listeners\PaddleWebhookListener"
-      - Access Management: "\Controllers\Access\"
+   3. Define Prices in Paddle
+      1. Set Price according "\Controllers\Access\PaddlePriceHandler"
+        - Default price-access-token: see "\Access\AccessHandler::$tokenCockpit"
+      2. Adjust logic of price access (if neccessary)
+        - Webhook Listener: "\Listeners\PaddleWebhookListener"
+        - Access Management: "\Controllers\Access\"
+      3. Implement price token within logic
+        - Example: "\Middleware\AppAccessCockpit"
 
  # Live Deployment
  See Laravel 11 Docs & it's Dependencies

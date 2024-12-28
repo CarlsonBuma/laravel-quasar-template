@@ -18,7 +18,7 @@ const routesAuth = [
     {
         path: "/create-account",
         name: "CreateNewAccount",
-        component: () => import('src/pages/auth/CreateNewAccount.vue'),
+        component: () => import('src/pages/auth/CreateAccount.vue'),
     }, {
         path: "/password-reset-request",
         name: "PasswordResetRequest",

@@ -26,3 +26,9 @@ export const checkPasswordRequirements = (password, password_confirm) => {
     else if(!password_confirm || password !== password_confirm) return 'Password does not match.'
     return;
 }
+
+export default {
+    redirects,
+    regRules,
+    checkPasswordRequirements
+}

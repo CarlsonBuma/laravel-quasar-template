@@ -4,8 +4,8 @@
         <span class="gt-xs">{{ title ?? 'My Avatar' }}</span>
         <q-space />
         <q-tabs class="text-weight-regular" active-color="primary" shrink stretch>
-            <q-route-tab to="/user/dashboard" exact label="Dashboard" />
-            <q-btn-dropdown auto-close stretch flat label="My avatar">
+            <q-route-tab to="/user/dashboard" exact icon="dashboard" />
+            <q-btn-dropdown auto-close stretch flat label="My Account">
                 <q-list>
                     <q-item clickable @click="$router.push('/account/access')">
                         <q-item-section>My access</q-item-section>

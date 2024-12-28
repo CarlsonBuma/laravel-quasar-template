@@ -7,6 +7,7 @@ use App\Models\UserAccess;
 use App\Models\PaddlePrices;
 use Illuminate\Http\Request;
 use App\Models\PaddleTransactions;
+use App\Models\PaddleSubscriptions;
 use App\Http\Controllers\Controller;
 use App\Http\Collections\AccessCollection;
 use App\Http\Controllers\Access\AccessHandler;
@@ -42,7 +43,7 @@ class AdminAccessController extends Controller
             'is_active' => ['required', 'boolean'],
         ]);
 
-        PaddlePrices::find($data['id'])?->update([
+        PaddlePrices::find($data['price_id'])?->update([
             'is_active' => (bool) $data['is_active']
         ]);
 
@@ -65,9 +66,7 @@ class AdminAccessController extends Controller
 
         if($user = User::where('email', $data['email'])->first()) {
 
-            $userAccess = UserAccess::where('user_id', $user->id)
-                ->orderBy('expiration_date', 'desc')
-                ->get()
+            $userAccess = AccessHandler::getLatestUserAccesses($user->id)
                 ->map(function($access) {
                     return AccessCollection::renderUserAccess($access);
                 });
@@ -80,7 +79,7 @@ class AdminAccessController extends Controller
                 });
             
             return response()->json([
-                'access' => $userAccess,
+                'latest_access' => $userAccess,
                 'transactions' => $userTransactions,
                 'message' => 'User found.',
             ], 200);
@@ -93,7 +92,10 @@ class AdminAccessController extends Controller
 
 
     /**
-     * Undocumented function
+     * Add user access
+     * 
+     * Restrictions:
+     *  > Access upgrade to active subscriptions must be denied.
      *
      * @param Request $request
      * @return void
@@ -108,6 +110,15 @@ class AdminAccessController extends Controller
         ]);
 
         if($user = User::where('email', $data['email'])->first()) {
+
+            // Restrictions
+            if($this->hasActiveSubription($user->id, $data['access_token'])) {
+                return response()->json([
+                    'message' => 'User has active subscriptions.',
+                ], 422);
+            }
+
+            // Add Access
             $access = AccessHandler::addUserAccess(
                 $user->id,
                 null,
@@ -147,5 +158,31 @@ class AdminAccessController extends Controller
         return response()->json([
             'message' => 'Access updated.',
         ], 200);
+    }
+
+    /**
+     * Check if a user has an active subscription.
+     *
+     * @param int $userID
+     * @param string $token
+     * @return bool
+     */
+    private function hasActiveSubription(int $userID, string $token): bool
+    {
+        // Retrieve UserAccess records that match the user ID and access token.
+        $accessRecords = UserAccess::where([
+            'user_id' => $userID,
+            'access_token' => $token,
+        ])->get();
+
+        // Check if any of the user's subscriptions associated with these records are active.
+        foreach ($accessRecords as $access) {
+            $userSubscriptionToAccess = $access->belongs_to_transaction?->belongs_to_subscription;
+            if ($userSubscriptionToAccess && $userSubscriptionToAccess->status === 'active') {
+                return true; // Active subscription found
+            }
+        }
+
+        return false; // No active subscriptions found
     }
 }

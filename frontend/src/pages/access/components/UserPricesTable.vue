@@ -63,7 +63,13 @@
                         color="purple"
                         outline
                         @click="$emit('cancel', props.row)"
-                    />
+                    >
+                        <q-tooltip v-if="props.row.has_access">
+                            <b>Limits:</b><br>
+                            Expires: {{ $tp.date(props.row.has_access.expiration_date) }}<br>
+                            Credits: {{ props.row.has_access.quantity }}
+                        </q-tooltip>
+                    </q-btn>
 
                     <!-- Get Access -->
                     <q-btn 
@@ -80,7 +86,9 @@
                         @click="$emit('action', props.row)"
                     >
                         <q-tooltip v-if="props.row.has_access">
-                            Expires: {{ props.row.has_access.expiration_date }}
+                            <b>Limits:</b><br>
+                            Expires: {{ $tp.date(props.row.has_access.expiration_date) }}<br>
+                            Credits: {{ props.row.has_access.quantity }}
                         </q-tooltip>
                     </q-btn>
                 </q-td>

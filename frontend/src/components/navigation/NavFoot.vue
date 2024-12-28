@@ -31,19 +31,19 @@
         <div class="col-12 col-md-3 q-pa-lg text-center">
             <div class="q-pa-md q-mt-xl">
                 <q-btn 
-                    @click="openURL(redirects.linkLinkedin)"
+                    @click="openURL($globals.redirects.linkLinkedin)"
                     round 
                     color="black" 
                     icon="thumb_up_alt" 
                     class="q-mr-xs"/>
                 <q-btn 
-                    @click="openURL(redirects.linkYoutube)"
+                    @click="openURL($globals.redirects.linkYoutube)"
                     round 
                     color="black" 
                     icon="play_circle_filled" 
                     class="q-mr-xs"/>
                 <q-btn 
-                    @click="openURL('mailto:' + redirects.emailContact)"
+                    @click="openURL('mailto:' + $globals.redirects.emailContact)"
                     round 
                     color="black" 
                     icon="email" 
@@ -70,7 +70,6 @@
 
 <script>
 import { openURL } from 'quasar';
-import { redirects } from 'src/boot/modules/globals.js'
 
 export default {
     name: 'NavFoot',
@@ -78,7 +77,6 @@ export default {
     setup () {
         return {
             openURL,
-            redirects,
         }
     },
 

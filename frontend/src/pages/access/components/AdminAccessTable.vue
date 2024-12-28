@@ -40,9 +40,8 @@
                     {{ props.row.price?.name ?? 'No price defined.' }}<br>
                     <span class="text-caption"><em>"{{ props.row.access_token }}"</em></span>
                 </q-td>
-                <q-td key="status" :props="props">
-                    {{ props.row.status }}<br>
-                    <span class="text-caption">{{ props.row.message }}</span>
+                <q-td key="has_access" :props="props">
+                    <q-icon name="verified" :color="props.row.access?.id ? 'green' : 'grey'" />
                 </q-td>
                 <q-td key="is_active" :props="props">
                     <q-checkbox v-model="props.row.is_active"/>
@@ -53,8 +52,13 @@
                 <q-td key="expiration_date" :props="props">
                     {{ $tp.date(props.row.expiration_date) }}
                 </q-td>
-                <q-td key="has_access" :props="props">
-                    <q-icon name="verified" :color="props.row.access?.id ? 'green' : 'grey'" />
+                <q-td key="access_type" :props="props">
+                    {{ props.row.price?.type ?? 'private' }}<br>
+                    <span class="text-caption">Status: {{ props.row.subscription?.status ?? 'Closed' }}</span>
+                </q-td>
+                <q-td key="status" :props="props">
+                    {{ props.row.status }}<br>
+                    <span class="text-caption">{{ props.row.message }}</span>
                 </q-td>
                 <q-td key="actions" :props="props">
                     <q-btn outline icon="update" size="sm" color="primary" @click="$emit('update', props.row)" />
@@ -92,16 +96,15 @@ export default {
                 align: 'left',
             }, {
                 name: 'name',
-                label: 'Price',
+                label: 'Access',
                 field: 'name',
                 align: 'left',
                 sortable: true
             }, {
-                name: 'status',
-                label: 'Status',
-                field: 'status',
-                align: 'left',
-                sortable: true
+                name: 'has_access',
+                label: 'has access',
+                field: 'has_access',
+                align: 'center',
             }, {
                 name: 'is_active',
                 label: 'is active',
@@ -114,14 +117,20 @@ export default {
                 align: 'left',
             }, {
                 name: 'expiration_date',
-                label: 'Expires',
+                label: 'Expiration date',
                 field: 'expiration_date',
                 align: 'left',
             }, {
-                name: 'has_access',
-                label: 'has access',
-                field: 'has_access',
-                align: 'center',
+                name: 'access_type',
+                label: 'Access type',
+                field: 'access_type',
+                align: 'left',
+            }, {
+                name: 'status',
+                label: 'Status',
+                field: 'status',
+                align: 'left',
+                sortable: true
             }, {
                 name: 'actions',
                 label: 'Actions',

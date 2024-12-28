@@ -105,7 +105,7 @@
                             <p>We are here to support you. Please do not hesitate to contact us via
                                 <span>
                                     <q-icon name="email" class="q-mr-xs" />
-                                    <a :href="'mailto:' + redirects.emailContact">{{ redirects.emailContact }}</a>
+                                    <a :href="'mailto:' + $globals.redirects.emailContact">{{ $globals.redirects.emailContact }}</a>
                                 </span>.
                             </p>
                         </q-card-section>
@@ -118,7 +118,6 @@
 </template>
 
 <script>
-import { redirects } from 'src/boot/modules/globals.js'
 import CardService from 'components/CardService.vue';
 
 export default {
@@ -133,7 +132,7 @@ export default {
 
     setup() {
         return {
-            redirects
+            // Code
         }
     },
 

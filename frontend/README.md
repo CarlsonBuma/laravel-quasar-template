@@ -18,13 +18,14 @@ Website: https://quasar.dev/introduction-to-quasar
 A user can buy access to app features, by purchasing prices. Payments will be handeled within Client Checkout provided by PaddleJS.
     1. Setup Paddle Account
         - https://developer.paddle.com/paddlejs/overview
-        - Set public key in .env file
+        - Paddle Cockpit Authentication: Create Client Side Token
+            - Set key in .env file
     2. Implement PaddleJS
-        - see "\components\PaddlePriceJS.vue"
-        - Note: Available prices and its access are provided by our backend
+        - see "src\pages\access\components\PaddlePriceJS.vue"
+        - Note: Available prices and its access are provided via app backend
     3. Initialize: Client Checkout
-        - see "\src\access\"
-        - Note: Initial user-access-request must be verified by backend via Paddle Webhooks 
+        - see "\src\pages\access\"
+        - Note: Initialize user-access-request after client checkout completed, for further access verification via backend webooks handling.
 
 ## Google Developer Services API
 Google Geolocation allows geolocating addresses within our app.

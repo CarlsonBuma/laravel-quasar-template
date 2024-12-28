@@ -23,10 +23,31 @@ abstract class AccessCollection
             'access_token' => $access->access_token,
             'quantity' => $access->quantity,
             'expiration_date' => Carbon::parse($access->expiration_date)->format('Y-m-d'),
-            'status' => $access->status,
-            'message' => $access->message,
             'price' => $access->belongs_to_transaction?->belongs_to_price,
             'access' => AccessHandler::checkAccessByID($access->id),
+            'subscription' => SELF::renderUserSubscription($access->belongs_to_transaction?->belongs_to_subscription),
+            'status' => $access->status,
+            'message' => $access->message,
+        ];
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param object|null $subscription
+     * @return array|null
+     */
+    static public function renderUserSubscription(object $subscription = null): ?array
+    {
+        if(!$subscription) return null;
+        return [
+            '_type' => 'Collection $subscription',
+            'id' => $subscription->id,
+            'canceled_at' => $subscription->canceled_at,
+            'paused_at' => $subscription->paused_at,
+            'started_at' => $subscription->started_at,
+            'status' => $subscription->status,
+            'message' => $subscription->message,
         ];
     }
 

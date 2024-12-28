@@ -2,7 +2,7 @@
     
     <q-table
         flat
-        :rows="transactions"
+        :rows="filteredTransactions"
         :columns="columnsTransaction"
         :title="title"
         row-key="id"
@@ -10,6 +10,14 @@
             rowsPerPage: 7
         }"
     >
+        <template v-slot:top-right>
+            <q-input borderless dense debounce="300" v-model="filterInput" placeholder="Search">
+                <template v-slot:append>
+                    <q-icon name="search" />
+                </template>
+            </q-input>
+        </template>
+
         <template v-slot:body="props">
             <q-tr :props="props">
                 <q-td key="id" :props="props">
@@ -48,7 +56,7 @@
 </template>
 
 <script>
-import { date } from 'quasar';
+import { ref } from 'vue';
 
 export default {
     name: 'AdminTransactionsTable',
@@ -67,7 +75,7 @@ export default {
                 align: 'left',
             }, {
                 name: 'name',
-                label: 'Product',
+                label: 'Access',
                 field: 'name',
                 align: 'left',
                 sortable: false
@@ -110,9 +118,21 @@ export default {
         ];
 
         return {
-            date,
-            columnsTransaction
+            columnsTransaction,
+            filterInput: ref(''),
         };
     },
+
+    computed: {
+        filteredTransactions() {
+            if (!this.filterInput) return this.transactions;
+            const filter = this.filterInput.toLowerCase();
+            return this.transactions.filter(row => {
+                const price = row.price || {};
+                return (price.name && price.name.toLowerCase().includes(filter)) ||
+                    (price.access_token && price.access_token.toLowerCase().includes(filter));
+            });
+        }
+    }
 };
 </script>
