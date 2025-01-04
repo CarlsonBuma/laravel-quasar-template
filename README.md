@@ -1,8 +1,13 @@
-# Collabris
+# Webapp Template
 by Carlson, v.1.0
 Init: git clone URL
 Documentation: see "\docs"
 Tutorial: https://www.youtube.com/watch?v=Jdg9x3BDT38
+
+## Git Push request
+The master branch is protected, and changes must be made through a pull request.
+1. git checkout -b your-new-branch-name
+2. git push origin your-new-branch-name
 
 ## Folder Structure
 Root folder:
@@ -22,6 +27,7 @@ Root folder:
    - go "/backend": 
       - composer outdated
       - composer update
+      test
 
 # System Dependencies
 Root:
