@@ -9,10 +9,6 @@ const routesVisitors = [
         name: 'LandingPage',
         component: () => import('src/pages/visitor/LandingPage.vue'),
     }, {
-        path: '/awards',
-        name: 'WebAwards',
-        component: () => import('src/pages/visitor/WebAwards.vue'),
-    }, {
         path: "/newsfeed",
         name: "WebNewsfeed",
         component: () => import('src/pages/visitor/WebNewsfeed.vue'),

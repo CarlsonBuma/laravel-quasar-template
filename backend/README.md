@@ -13,7 +13,7 @@ Website: https://laravel.com/
 
 ### DB Migrate Data
   - php artisan migrate
-  - php artisan passport:client --personal
+  - php artisan passport:install
   - Enter Client Secrets in .env File
 
 ### DB Seeding

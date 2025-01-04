@@ -4,6 +4,16 @@ Init: git clone URL
 Documentation: see "\docs"
 Tutorial: https://www.youtube.com/watch?v=Jdg9x3BDT38
 
+## Git 
+### Push request
+The master branch is protected, and changes must be made through a pull request.
+1. git checkout -b your-new-branch-name
+2. git push origin your-new-branch-name
+
+### Pull request
+1. git checkout your-branch-name
+2. git pull origin master
+
 ## Folder Structure
 Root folder:
    - /backend (see Readme.md)
@@ -22,6 +32,7 @@ Root folder:
    - go "/backend": 
       - composer outdated
       - composer update
+      test
 
 # System Dependencies
 Root:
