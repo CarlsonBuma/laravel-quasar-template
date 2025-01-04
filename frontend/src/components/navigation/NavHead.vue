@@ -71,6 +71,17 @@
                         />
                     </q-item>
                     <q-item>
+<<<<<<< HEAD
+                        <q-toggle 
+                            label="Darkmode"
+                            :model-value="$tp.client_preferences.value.darkmode"
+                            @update:model-value="(value) => $tp.set_darkmode(value)"
+                        />
+                    </q-item>
+                    <q-item>
+                        <q-item-section>
+                            <q-item-label caption><b>Note:</b> Flags are stored via client cookies.</q-item-label>
+=======
                         <q-item-section avatar>
                             <q-toggle 
                                 size="sm"
@@ -85,6 +96,7 @@
                     <q-item>
                         <q-item-section>
                             <q-item-label caption><b>Note:</b> Preferences are stored via cookies.</q-item-label>
+>>>>>>> 5bd24bdbbecffa2dee9ab7d464e5c94bed02abe3
                         </q-item-section>
                     </q-item>
                 </q-list>
