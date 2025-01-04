@@ -1,8 +1,8 @@
 /* eslint-env node */
-const { configure } = require('quasar/wrappers');
+import { defineConfig } from '#q-app/wrappers'
 const path = require('path');
 
-module.exports = configure(function (/* ctx */) {
+module.exports = defineConfig(function (/* ctx */) {
     return {
         eslint: {
             // fix: true,
@@ -47,7 +47,13 @@ module.exports = configure(function (/* ctx */) {
                     // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
                     // compositionOnly: false,
                     include: path.resolve(__dirname, './src/i18n/**')
-                }]
+                }], 
+                ['vite-plugin-checker', {
+                    eslint: {
+                        lintCommand: 'eslint -c ./eslint.config.js "./src*/**/*.{js,mjs,cjs,vue}"',
+                        useFlatConfig: true
+                    }
+                }, { server: false }]
             ]
         },
 
@@ -55,8 +61,6 @@ module.exports = configure(function (/* ctx */) {
             // https: true,
             open: true,
         },
-
-        
 
         framework: {
             cssAddon: true,

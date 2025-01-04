@@ -1,6 +1,6 @@
 <style lang="sass">
 .my-account-menu-width
-  width: 420px
+  width: 360px
 .settings-menu-width
   width: 220px
 </style>
@@ -71,15 +71,20 @@
                         />
                     </q-item>
                     <q-item>
-                        <q-toggle 
-                            label="Darkmode"
-                            :model-value="$tp.client_preferences.value.darkmode"
-                            @update:model-value="(value) => $tp.set_darkmode(value)"
-                        />
+                        <q-item-section avatar>
+                            <q-toggle 
+                                size="sm"
+                                :model-value="$tp.client_preferences.value.darkmode"
+                                @update:model-value="(value) => $tp.set_darkmode(value)"
+                            />
+                        </q-item-section>
+                        <q-item-section>
+                            <q-item-label caption>Darkmode</q-item-label>
+                        </q-item-section>
                     </q-item>
                     <q-item>
                         <q-item-section>
-                            <q-item-label caption><b>Note:</b> Flags are stored via client cookies.</q-item-label>
+                            <q-item-label caption><b>Note:</b> Preferences are stored via cookies.</q-item-label>
                         </q-item-section>
                     </q-item>
                 </q-list>

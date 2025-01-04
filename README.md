@@ -1,4 +1,4 @@
-# Webapp Template
+# Collabris
 by Carlson, v.1.0
 Init: git clone URL
 Documentation: see "\docs"
