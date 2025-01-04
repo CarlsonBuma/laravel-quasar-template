@@ -23,7 +23,6 @@ Key features, that enriches our UI.
 ## User Account Management
 Basic user authentification via _BearerTokens and account access.
     - See "\pages\auth"
-    Test
 
 ## User Access Management
 Access to users will be granted manually (eg. via admin) or automatically letting users purchase a Price, which defines access to certain app features. See "\src\pages\access\"
