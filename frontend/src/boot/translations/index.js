@@ -11,7 +11,7 @@ const setCookie = (name, format) => {
         secure: true,
         expires: '160'
     })
-    
+
     return Cookies.get(name) ?? format
 }
 
@@ -23,7 +23,7 @@ export default () => {
         'lang': ['de', 'en', 'error']
     };
 
-    // Client can choose translation settings
+    // User can choose translation settings
     // We store settings as client cookies
     const clientTranslationSettings = ref({
         dateFormat: Cookies.get('client_dateformat') 
