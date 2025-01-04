@@ -104,18 +104,12 @@ const consentOptions = {
                                 col3: '365 days',
                                 col4: 'Local JWT session token to authenticate the client and enable account interactions.',
                             }, {
-                                col1: 'client_language',
+                                col1: 'client_*',
                                 col2: process.env.APP_NAME,
                                 col3: '160 days',
-                                col4: "Saves the client's language preference for the app.",
+                                col4: "Saves the client's preference for the app.",
                             }, {
-                                col1: 'client_dateformat',
-                                col2: process.env.APP_NAME,
-                                col3: '160 days',
-                                col4: "Saves the user's date format preference for the app.",
-                            },
-                            {
-                                col1: '*paddle_checkout_session',
+                                col1: '*client_payment',
                                 col2: '.paddle',
                                 col3: 'Session',
                                 col4: "Collection of cookies related to buy access within the app. More information see https://www.paddle.com/",

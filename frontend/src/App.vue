@@ -75,9 +75,7 @@ export default {
     },
 
     mounted() {
-        // Initial darkmode
-        const darkMode = false; // this.$q.dark.isActive;
-        this.$q.dark.set(darkMode);
+        // Code
     },
 
     methods: {
