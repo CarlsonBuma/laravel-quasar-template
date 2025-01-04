@@ -78,10 +78,6 @@ export default {
         // Initial darkmode
         const darkMode = false; // this.$q.dark.isActive;
         this.$q.dark.set(darkMode);
-
-        // Inital app translation settings
-        this.$tp.client_settings.value.dateFormat = 'eu';
-        this.$tp.client_settings.value.language = 'de';
     },
 
     methods: {

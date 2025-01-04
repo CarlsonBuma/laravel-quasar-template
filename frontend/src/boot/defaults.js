@@ -8,7 +8,7 @@ import storeUser from "src/stores/user.js";
 import globals from 'src/boot/modules/globals.js';
 
 // Translations - l18n workaround
-import translationPackage from './translations/index.js'
+import initTranslationPackage from './translations/index.js'
 
 // Cookie Consent
 import CookieConsent from 'vue-cookieconsent';
@@ -51,13 +51,13 @@ export default boot(({ app, router }) => {
     app.config.globalProperties.$toast = new ResponseHandler(router, app);
     app.config.globalProperties.$user = storeUser();
     app.config.globalProperties.$globals = globals;
-
-    // Translation Package
-    app.config.globalProperties.$tp = translationPackage();
  
     // Cookie-Consent accessible by this.$cc
     app.use(CookieConsent);
     app.config.globalProperties.$cc.run(CookieConsentOptions);
+
+    // Translation Package
+    app.config.globalProperties.$tp = initTranslationPackage();
 
     // Glboal Components
     app.component('PageWrapper', PageWrapper)

@@ -97,12 +97,28 @@ const consentOptions = {
                                 col1: 'cc_cookie',
                                 col2: process.env.APP_NAME,
                                 col3: '160 days',
-                                col4: 'Cookie Consent - Defines, if consent to analyze data has been given.',
+                                col4: 'Records whether data analysis consent has been provided by the user.',
                             }, {
-                                col1: 'User Session',
+                                col1: 'user_session',
                                 col2: process.env.APP_NAME,
                                 col3: '365 days',
-                                col4: 'Local JWT Session, to verify your client and allow you to interact with your account.',
+                                col4: 'Local JWT session token to authenticate the client and enable account interactions.',
+                            }, {
+                                col1: 'client_language',
+                                col2: process.env.APP_NAME,
+                                col3: '160 days',
+                                col4: "Saves the client's language preference for the app.",
+                            }, {
+                                col1: 'client_dateformat',
+                                col2: process.env.APP_NAME,
+                                col3: '160 days',
+                                col4: "Saves the user's date format preference for the app.",
+                            },
+                            {
+                                col1: '*paddle_checkout_session',
+                                col2: '.paddle',
+                                col3: 'Session',
+                                col4: "Collection of cookies related to buy access within the app. More information see https://www.paddle.com/",
                             },
                         ]
                     },
@@ -126,7 +142,7 @@ const consentOptions = {
                     },
                     {
                         title: 'More information',
-                        description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#contact">contact us</a>.',
+                        description: 'For any queries in relation to our policy on cookies and your choices, please <a class="cc-link" href="#/legal">contact us</a>.',
                     }
                 ]
             }

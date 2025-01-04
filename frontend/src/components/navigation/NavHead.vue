@@ -53,10 +53,22 @@
                         </q-item-section>
                     </q-item>
                     <q-item>
-                        <q-select class="w-100" label="Language" v-model="$tp.client_settings.value.language" :options="$tp.client_options.lang" />
+                        <q-select 
+                            class="w-100" 
+                            label="Language" 
+                            v-model="$tp.client_settings.value.language" 
+                            :options="$tp.client_options.lang" 
+                            @update:model-value="(value) => $tp.set_cookie('client_language', value)"
+                        />
                     </q-item>
                     <q-item>
-                        <q-select class="w-100" label="Date format" v-model="$tp.client_settings.value.dateFormat" :options="$tp.client_options.date" />
+                        <q-select 
+                            class="w-100" 
+                            label="Date format" 
+                            v-model="$tp.client_settings.value.dateFormat" 
+                            :options="$tp.client_options.date" 
+                            @update:model-value="(value) => $tp.set_cookie('client_dateformat', value)"
+                        />
                     </q-item>
                     <q-item>
                         <q-item-section>
