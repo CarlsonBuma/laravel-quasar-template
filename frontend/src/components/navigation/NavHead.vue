@@ -49,14 +49,14 @@
                 <q-list separator>
                     <q-item>
                         <q-item-section>
-                            <q-item-label overline>System Settings:</q-item-label>
+                            <q-item-label overline>System settings:</q-item-label>
                         </q-item-section>
                     </q-item>
                     <q-item>
                         <q-select 
                             class="w-100" 
                             label="Language" 
-                            v-model="$tp.client_settings.value.language" 
+                            v-model="$tp.client_preferences.value.language" 
                             :options="$tp.client_options.lang" 
                             @update:model-value="(value) => $tp.set_cookie('client_language', value)"
                         />
@@ -65,14 +65,21 @@
                         <q-select 
                             class="w-100" 
                             label="Date format" 
-                            v-model="$tp.client_settings.value.dateFormat" 
+                            v-model="$tp.client_preferences.value.dateFormat" 
                             :options="$tp.client_options.date" 
                             @update:model-value="(value) => $tp.set_cookie('client_dateformat', value)"
                         />
                     </q-item>
                     <q-item>
+                        <q-toggle 
+                            label="Darkmode"
+                            :model-value="$tp.client_preferences.value.darkmode"
+                            @update:model-value="(value) => $tp.set_darkmode(value)"
+                        />
+                    </q-item>
+                    <q-item>
                         <q-item-section>
-                            <q-item-label caption><b>Note:</b> Flags must be implement by system or cooookies.</q-item-label>
+                            <q-item-label caption><b>Note:</b> Flags are stored via client cookies.</q-item-label>
                         </q-item-section>
                     </q-item>
                 </q-list>
@@ -161,26 +168,6 @@
                                         v-close-popup
                                     />
                                 </div>
-                                <div class="w-100">
-                                    <q-btn
-                                        v-if="$user.access.tokens[$env.APP_ACCESS_ADMIN]"
-                                        @click="$router.push('/admin/dashboard')"
-                                        label="Backpanel"
-                                        class="q-mt-sm"
-                                        color="primary"
-                                        push
-                                        size="sm"
-                                        v-close-popup
-                                    />
-                                </div>
-
-                                <!-- Darkmode -->
-                                <q-separator class="w-100 q-mt-md"/>
-                                <q-toggle 
-                                    :model-value="$q.dark.mode"
-                                    @click="$q.dark.toggle()" 
-                                    label="Darkmode"
-                                />
                             </div>
 
                             <!-- Profile Settings -->
@@ -189,6 +176,8 @@
                                 <span class="text-overline">My Account</span>
                                 <q-separator class="w-100"/>
                                 <q-list padding >
+
+                                    <!-- Feature 1: Cockpit -->
                                     <q-item 
                                         v-if="$user.access.tokens[$env.APP_ACCESS_COCKPIT]" 
                                         @click="$router.push('/cockpit/dashboard')" 
@@ -201,6 +190,8 @@
                                             <q-item-label>My cockpit</q-item-label>
                                         </q-item-section>
                                     </q-item>
+
+                                    <!-- Avatar -->
                                     <q-item @click="$router.push('/user/dashboard')" clickable v-ripple >
                                         <q-item-section avatar>
                                             <q-icon name="contacts" class="q-mr-sm" />
@@ -209,10 +200,22 @@
                                             <q-item-label>My avatar</q-item-label>
                                         </q-item-section>
                                     </q-item>
+
+                                    <!-- Backpanel -->
+                                    <q-item 
+                                        clickable v-ripple
+                                        v-if="$user.access.tokens[$env.APP_ACCESS_ADMIN]" 
+                                        @click="$router.push('/admin/dashboard')"
+                                    >
+                                        <q-item-section avatar>
+                                            <q-icon name="admin_panel_settings" class="q-mr-sm" />
+                                        </q-item-section>
+                                        <q-item-section>
+                                            <q-item-label>Backpanel</q-item-label>
+                                        </q-item-section>
+                                    </q-item>
                                 </q-list>
                             </div>
-
-                            
                         </div>
                     </q-menu>
                 </q-item>

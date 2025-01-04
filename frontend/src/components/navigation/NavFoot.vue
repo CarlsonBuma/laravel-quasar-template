@@ -57,10 +57,10 @@
                     name="dark_mode" 
                     size="22px" 
                 />
-                <q-toggle
-                    :model-value="$q.dark.mode"
-                    @click="$q.dark.toggle()"
-                    label="Dark"
+                <q-toggle 
+                    label="Darkmode"
+                    :model-value="$tp.client_preferences.value.darkmode"
+                    @update:model-value="(value) => $tp.set_darkmode(value)"
                 />
             </q-item>
         </div>
