@@ -17,7 +17,6 @@ Website: https://quasar.dev/introduction-to-quasar
  - See Vue 3 / Quasar Framework
  - Google API, restrict API-Token to current App-Url
 
-
 # Feature enhacements
 Key features, that enriches our UI.
 
