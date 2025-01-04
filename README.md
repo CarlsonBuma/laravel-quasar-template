@@ -27,6 +27,7 @@ Root folder:
    - go "/backend": 
       - composer outdated
       - composer update
+      test
 
 # System Dependencies
 Root:
