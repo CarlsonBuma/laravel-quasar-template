@@ -24,14 +24,11 @@ export default () => {
     };
 
     // User can choose translation settings
-    // We store settings as client cookies
+    // Cookie Consent: We store preferences as client cookies
     const clientTranslationPreferences = ref({
-        dateFormat: Cookies.get('client_dateformat') 
-            ?? setCookie('client_dateformat', 'international'),        
-        language: Cookies.get('client_language') 
-            ?? setCookie('client_language', 'en'), 
-        darkmode: (Cookies.get('client_darkmode') === 'true') 
-            || setCookie('client_darkmode', 'false') === 'true'
+        dateFormat: Cookies.get('client_dateformat') ?? 'international',        
+        language: Cookies.get('client_language') ?? 'en', 
+        darkmode: Cookies.get('client_darkmode') === 'true'
     });
 
     // Set environment
@@ -40,7 +37,8 @@ export default () => {
     // Return Translation Package
     return {
 
-        // Set variables
+        // System preferences
+        'get_cookie': (name) => Cookies.get(name),
         'set_cookie': (name, value) => setCookie(name, value),
         'set_darkmode': (value) => {
             clientTranslationPreferences.value.darkmode = value;
