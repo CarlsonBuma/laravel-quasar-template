@@ -73,6 +73,8 @@ export default class ResponseHandler {
 
         // No access
         else if(serverResponse.status === 401) {
+            store().removeBearerToken();
+            store().removeSession();
             router.push('/');
             throw serverResponse.data.message 
                 ? serverResponse.data.message 

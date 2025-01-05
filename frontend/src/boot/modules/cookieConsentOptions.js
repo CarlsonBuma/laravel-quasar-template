@@ -1,4 +1,20 @@
 'use strict';
+import initTranslationPackage from '../translations/index.js'
+
+const setRequiredCookies = () => {
+    // Allow client preferences
+    const translationPack = initTranslationPackage();
+    translationPack.get_cookie('client_dateformat') 
+        ?? translationPack.set_cookie('client_dateformat', 'international')
+    translationPack.get_cookie('client_language') 
+        ?? translationPack.set_cookie('client_language', 'en')
+    translationPack.get_cookie('client_darkmode') 
+        ?? translationPack.set_cookie('client_darkmode', 'false')
+}
+
+const setOptionalCookies = () => {
+    // Option cookies
+}
 
 /** 
  * GDPR: Cookie Consent
@@ -39,17 +55,17 @@ const consentOptions = {
 
     /** Process consent on accept */
     onAccept: function (cookie) {
+
+        // Check optional cookie set
         let allowOptionalAnalytics = false;
         cookie.level.forEach((level) => {
             if(level === 'analytics') 
                 allowOptionalAnalytics = true;
         });
-
-        if(!allowOptionalAnalytics) return;
         
-        //****************************
-        // Add analytic scripts here
-        //****************************
+        // Set Cookies
+        setRequiredCookies();
+        if(allowOptionalAnalytics) setOptionalCookies();
     },
 
     /** Edit Content here */
