@@ -1,5 +1,5 @@
 # Webapp Template
-by Carlson, v.1.0
+by Carlson, v.1.1
 - Documentation: see "\docs"
 - Tutorial: https://www.youtube.com/watch?v=Jdg9x3BDT38
 
@@ -21,7 +21,6 @@ Root folder:
    - go "/backend": 
       - composer outdated
       - composer update
-      test
 
 # System Dependencies
 Root:
