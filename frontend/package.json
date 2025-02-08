@@ -1,8 +1,8 @@
 {
-    "name": "app-collabris",
+    "name": "app-template",
     "version": "1.0.0",
-    "description": "Collabris",
-    "productName": "Collabris",
+    "description": "SaaS Template",
+    "productName": "Template",
     "author": "CarlsonBuma <75643791+CarlsonBuma@users.noreply.github.com>",
     "private": true,
     "main": "index.js",
