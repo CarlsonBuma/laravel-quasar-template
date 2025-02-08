@@ -1,20 +1,4 @@
 'use strict';
-import initTranslationPackage from '../translations/index.js'
-
-const setRequiredCookies = () => {
-    // Allow client preferences
-    const translationPack = initTranslationPackage();
-    translationPack.get_cookie('client_dateformat') 
-        ?? translationPack.set_cookie('client_dateformat', 'international')
-    translationPack.get_cookie('client_language') 
-        ?? translationPack.set_cookie('client_language', 'en')
-    translationPack.get_cookie('client_darkmode') 
-        ?? translationPack.set_cookie('client_darkmode', 'false')
-}
-
-const setOptionalCookies = () => {
-    // Option cookies
-}
 
 /** 
  ** Cookie Consent
@@ -36,7 +20,6 @@ const setOptionalCookies = () => {
  *  > See Cookie preferences
  *  > May adjust options as well
  */
-
 import initTranslationPackage from '../translations/index.js'
 
 const setRequiredCookies = () => {
