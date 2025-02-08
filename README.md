@@ -1,5 +1,5 @@
 # Webapp Template
-by Carlson, v.1.1
+by Carlson, v.1.2
 - Documentation: see "\docs"
 - Tutorial: https://www.youtube.com/watch?v=Jdg9x3BDT38
 
