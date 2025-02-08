@@ -2,7 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\UserCockpit;
+use App\Models\Cockpit;
+use App\Models\UserAccess;
 use App\Models\PaddleTransactions;
 use Laravel\Passport\HasApiTokens;
 use App\Models\PaddleSubscriptions;
@@ -37,7 +38,7 @@ class User extends Authenticatable
     ];
 
     public function has_cockpit() {
-        return $this->hasOne(UserCockpit::class, 'user_id');
+        return $this->hasOne(Cockpit::class, 'user_id');
     }
 
     public function has_subsciptions() {

@@ -6,10 +6,10 @@ use Exception;
 use Illuminate\Http\Request;
 use App\Models\PaddleTransactions;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Access\AccessHandler;
-use App\Http\Controllers\Access\PaddlePriceHandler;
-use App\Http\Controllers\Access\PaddleSubscriptionHandler;
-use App\Http\Controllers\Access\PaddleTransactionHandler;
+use App\Http\Controllers\User\Access\AccessHandler;
+use App\Http\Controllers\User\Access\PaddlePriceHandler;
+use App\Http\Controllers\User\Access\PaddleSubscriptionHandler;
+use App\Http\Controllers\User\Access\PaddleTransactionHandler;
 
 class PaddleWebhookListener extends Controller
 {
@@ -35,7 +35,7 @@ class PaddleWebhookListener extends Controller
      *  4. Set access:
      *      - Add access token to "\Controllers\Access\AccessHandler.php"
      *      - Set up Middleware to validate feature access:
-     *          > Example: "\Middleware\AppAccessCockpit.php"
+     *          > Example: "\Middleware\AccessCockpit.php"
      *      - Define app logic, according access token
      * 
      * @param Request $request

@@ -8,6 +8,17 @@ use Illuminate\Support\Facades\Storage;
 
 abstract class UserCollection
 {
+    static public function render_public_user(object $user = null): array
+    {
+        if(!$user) return [];
+        return [
+            '_type' => 'Collection $publicUser',
+            'id' => $user->id,
+            'avatar_src' => SELF::render_avatar_src($user->avatar),
+            'name' => $user->name
+        ];
+    }
+
     /**
      * Render user and its access
      *
@@ -20,9 +31,7 @@ abstract class UserCollection
             '_type' => 'Collection $user',
             'id' => $user->id,
             'name' => $user->name,
-            'avatar' => $user->avatar
-                ? URL::to(Storage::url('user')) . '/' . $user->avatar
-                : '',
+            'avatar' => SELF::render_avatar_src($user->avatar),
             'email' => $user->email,
         ];
     }
@@ -42,5 +51,18 @@ abstract class UserCollection
             'quantity' => $access->quantity,
             'expiration_date' => Carbon::parse($access->expiration_date)->format('Y-m-d')
         ];
+    }
+
+    /**
+     * Undocumented function
+     *
+     * @param string|null $avatarSrc
+     * @return string
+     */
+    static private function render_avatar_src(string $avatarSrc = null): string
+    {
+        return $avatarSrc
+            ? URL::to(Storage::url('user')) . '/' . $avatarSrc
+            : '';
     }
 }

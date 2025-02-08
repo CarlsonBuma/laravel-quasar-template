@@ -40,8 +40,7 @@ export default {
         password_confirm: String
     },
 
-    setup(context, test) {
-        console.log(context, test)
+    setup() {
         return {
             regRulesPassword: regRules.passwordPattern
         };

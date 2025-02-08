@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\UserAuthController;
-use App\Http\Controllers\Auth\UserAccountController;
-use App\Http\Controllers\Auth\UserTransferController;
-use App\Http\Controllers\Auth\CreateAccountController;
-use App\Http\Controllers\Auth\PasswordResetController;
-use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Controllers\User\Auth\UserAuthController;
+use App\Http\Controllers\User\Auth\UserAccountController;
+use App\Http\Controllers\User\Auth\UserTransferController;
+use App\Http\Controllers\User\Auth\CreateAccountController;
+use App\Http\Controllers\User\Auth\PasswordResetController;
+use App\Http\Controllers\User\Auth\EmailVerificationController;
 
 Route::middleware(['auth:api', 'email_verified'])->group(function () {
 

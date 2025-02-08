@@ -1,34 +1,41 @@
 ######################################
 # Vector Database: PostgreSQL
+## docker-compose down
 ## docker-compose up -d
 ### After initializiation, pgAdmin 
 ### CREATE EXTENSION vector;
+######################################
+# Connect via browser to container
+## docker ps
+## docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <container_id>
+### PG Admin create new server
+#### Hostname: Provided IP Adress
 ######################################
 
 version: "3.9"
 
 services:
-    php:
-        image: php:8.2-fpm
-        restart: always
-        container_name: php_8_2_container
-        volumes:
-            - php_8_2:/var/www/html
-        ports:
-            - "9000:9003"
-        networks:
-            - php_network
-    psql:
+    # php_8_2:
+    #     image: php:8.2-fpm
+    #     restart: always
+    #     container_name: php_8_2_container
+    #     volumes:
+    #         - php_8_2:/var/www/html
+    #     ports:
+    #         - "8000:9003"
+    #     networks:
+    #         - php_network
+    pgvector:
         image: pgvector/pgvector:latest
         restart: always
         environment:
-            POSTGRES_DB: development
+            POSTGRES_DB: postgres
             POSTGRES_PASSWORD: postgres
             POSTGRES_USER: postgres
         ports: 
-            - "5444:5432"
+            - "5555:5432"
         volumes:
-            - postgres:/var/lib/postgresql/data
+            - pgvector:/var/lib/postgresql/data
     pgadmin:
         image: dpage/pgadmin4:latest
         restart: always
@@ -41,34 +48,12 @@ services:
         volumes:
             - pgadmin:/var/lib/pgadmin
         depends_on:
-            - psql
-    # postgres:
-    #     image: postgres
-    #     restart: always
-    #     environment:
-    #         POSTGRES_PASSWORD: postgres
-    #         POSTGRES_USER: postgres
-    #     ports: 
-    #         - "5444:5432"
-    #     volumes:
-    #         - postgres:/var/lib/postgresql/data
-    # psql:
-    #     image: ankane/pgvector:latest
-    #     restart: always
-    #     environment:
-    #         POSTGRES_DB: development
-    #         POSTGRES_PASSWORD: postgres
-    #         POSTGRES_USER: postgres
-    #     ports: 
-    #         - "5444:5432"
-    #     volumes:
-    #         - postgres:/var/lib/postgresql/data
+            - pgvector
 
 volumes:
-  postgres:
+  pgvector:
   pgadmin:
   php_8_2:
-
 
 networks:
   php_network:

@@ -1,7 +1,19 @@
 "use strict";
+
+/**
+ ** Translation Pack
+ *  > Init: "boot/defaults"
+ *  > Access: this.$tp
+ *
+ * ------------------------------------
+ * Extend Package accordingly
+ * ------------------------------------   
+ */
+
 import { ref } from 'vue';
 import { Cookies, Dark } from 'quasar'
 import dateFormat from './formats/date.js';
+import datetimeFormat from './formats/datetime.js';
 import languagePack from './lang/index.js';
 
 // Set Cookie 'client_
@@ -13,6 +25,12 @@ const setCookie = (name, value) => {
     })
 
     return Cookies.get(name) ?? value
+}
+
+const removeSystemCookies = () => {
+    Cookies.remove('client_dateformat')
+    Cookies.remove('client_language')
+    Cookies.remove('client_darkmode')
 }
 
 export default () => {
@@ -34,12 +52,15 @@ export default () => {
     // Set environment
     Dark.set(clientTranslationPreferences.value.darkmode);
 
-    // Return Translation Package
+    // Define Translation Package
     return {
 
         // System preferences
         'get_cookie': (name) => Cookies.get(name),
         'set_cookie': (name, value) => setCookie(name, value),
+        'remove_cookies': () => removeSystemCookies(),
+
+        // Design
         'set_darkmode': (value) => {
             clientTranslationPreferences.value.darkmode = value;
             Dark.set(value);
@@ -54,12 +75,11 @@ export default () => {
         'date': (rawDate) => dateFormat[clientTranslationPreferences.value.dateFormat]
             ? dateFormat[clientTranslationPreferences.value.dateFormat](rawDate) 
             : 'undefined',
+        'datetime': (rawDate) => datetimeFormat[clientTranslationPreferences.value.dateFormat]
+            ? datetimeFormat[clientTranslationPreferences.value.dateFormat](rawDate) 
+            : 'undefined',
         'lang': (key) => languagePack[clientTranslationPreferences.value.language] && languagePack[clientTranslationPreferences.value.language][key]
             ? languagePack[clientTranslationPreferences.value.language][key]
             : null,
-
-        // ----------------------
-        // Extend Package here...
-        // ----------------------
     }
 }

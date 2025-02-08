@@ -1,11 +1,18 @@
 <template>
-    <div></div>
+    <div class="paddlejs-container"></div>
 </template>
 
 <script>
 import { ref, onMounted } from 'vue';
 import { initializePaddle } from '@paddle/paddle-js';
 
+/**
+ * Dependency: PaddleJS instance
+ * https://developer.paddle.com/
+ * 
+ * Setup:
+ * Initialize Paddle instance
+ */
 export default {
     name: 'PaddlePriceJS',
 
@@ -14,8 +21,6 @@ export default {
         'loaded'
     ],
 
-    // Initialize Paddle instance
-    // Docs: https://developer.paddle.com/
     setup(props, context) {
         const PaddleCheckout = ref(null);
         onMounted(async () => {

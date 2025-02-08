@@ -11,7 +11,7 @@
                 
         <!-- Logo -->
         <q-toolbar-title class="flex no-wrap items-center">
-            <q-avatar @click="$emit('logoClick')" icon="school" size="lg" clickable />
+            <q-avatar @click="$emit('logoClick')" icon="gamepad" size="lg" clickable />
             <q-btn-dropdown
                 class="transparent text-subtitle1"
                 size="md"
@@ -49,7 +49,7 @@
                 <q-list separator>
                     <q-item>
                         <q-item-section>
-                            <q-item-label overline>System settings:</q-item-label>
+                            <q-item-label overline>App Preferences</q-item-label>
                         </q-item-section>
                     </q-item>
                     <q-item>
@@ -79,12 +79,23 @@
                     </q-item>
                     <q-item>
                         <q-item-section>
-                            <q-item-label caption><b>Note:</b> Flags are stored via client cookies.</q-item-label>
+                            <q-item-label caption>
+                                <b>Note:</b> Preferences are stored via client cookies.
+                                <a href="#" @click.prevent="this.$tp.remove_cookies()">Reset cookies</a>.
+                            </q-item-label>
                         </q-item-section>
                     </q-item>
                 </q-list>
             </q-menu>
         </q-btn>
+
+        <!-- Cockpit -->
+        <q-btn 
+            flat
+            icon="groups_3"
+            v-if="$user.access.tokens[$env.APP_ACCESS_COCKPIT]" 
+            @click="$router.push('/cockpit/dashboard')"
+        />
 
         <!-- Authorization -->
         <div v-if="!$user.access.user">
@@ -242,7 +253,7 @@ export default {
     methods: {
         async goMemberArea() {
             if(!this.$user.checkBearerTokenSet()) this.$router.push('/login')
-            else this.$emit('authUser', '/user/dashboard')
+            else this.$emit('authUser')
         }
     }
 };

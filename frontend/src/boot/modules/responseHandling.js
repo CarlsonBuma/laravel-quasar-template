@@ -1,9 +1,11 @@
 'use strict';
-import { Loading, QSpinnerGears, Notify } from 'quasar';
-import store from "src/stores/user.js";
 
 /**
- * Request Handling
+ ** Request Handling
+ *  > Init: "boot/defaults"
+ *  > Access: this.$toast()
+ *
+ * CTA:
  *  > loading(): waiting for response
  *  > done(): close waiting notification
  *  > success(): response is successful
@@ -11,6 +13,10 @@ import store from "src/stores/user.js";
  *      > UI Error vs. Server Error 
  *      > errorHandling(): process accordingly     
  */
+
+import { Loading, QSpinnerGears, Notify } from 'quasar';
+import store from "src/stores/user.js";
+
 export default class ResponseHandler {
 
     /**
@@ -32,7 +38,7 @@ export default class ResponseHandler {
         this.durationError = 5500;
         this.class = "toaster-container"
         this.defaultLoadMessage = "Processing data. Please wait..."
-        this.defaultSuccessMessage = "Your settings have been saved.";
+        this.defaultSuccessMessage = "Response success.";
         this.defaultErrorMessage = "Ops, some error occured.";
     }
 
@@ -43,7 +49,7 @@ export default class ResponseHandler {
      * @param {Object} serverResponse 
      * @param {Object} router 
      */
-     errorHandling(serverResponse, router) {
+     errorHandling(serverResponse, router, redirect) {
         
         // Ongoing subscriptions
         if(serverResponse.status === 422 && serverResponse.data.status === 'active_subscriptions') {
@@ -75,10 +81,16 @@ export default class ResponseHandler {
         else if(serverResponse.status === 401) {
             store().removeBearerToken();
             store().removeSession();
-            router.push('/');
+            if(redirect) router.push('/');
             throw serverResponse.data.message 
-                ? serverResponse.data.message 
-                : 'Hmm, some error occured. Please try again.'
+                ?? serverResponse.statusText 
+                    ?? 'Hmm, some error occured. Please try again.'
+        }
+
+        else {
+            throw serverResponse.data.message 
+                ?? serverResponse.statusText 
+                    ?? 'Hmm, some error occured. Please try again.'
         }
     }
 
@@ -125,7 +137,7 @@ export default class ResponseHandler {
      * @param {*} responseError String | Object
      * @return { String } 
      */
-    error(responseError) {
+    error(responseError, redirect = true) {
         try {
             this.loading = false;
             this.done();
@@ -138,7 +150,7 @@ export default class ResponseHandler {
             else if (typeof responseError === 'object') {
                 // Error response by server
                 if(responseError.data) {
-                    this.errorHandling(responseError, this.router);
+                    this.errorHandling(responseError, this.router, redirect);
                     this.message = responseError.data.message 
                         ?  responseError.data.message
                         :  responseError.status

@@ -5,7 +5,7 @@
             <NavCockpit />
         </template>
 
-        <div class="avatar-width">
+        <div class="w-avatar">
             <!-- Make public -->
             <CardSimple 
                 title="Join our community" 
@@ -112,7 +112,7 @@
         </div>
 
         <!-- SEO -->
-        <div class="avatar-width">
+        <div class="w-avatar">
             <!-- Geolocation -->
             <CardSimple v-if="cockpit.location" title="Location">
                 <q-card-section>
@@ -194,7 +194,7 @@ export default {
                 const cockpitResponse = await this.$axios.get('/load-cockpit-profile');
                 this.cockpit = cockpitResponse.data.cockpit;
             } catch (error) {
-                this.$toast.error(error.response ? error.response : error)
+                this.$toast.error(error.response ?? error)
             } finally {
                 this.loading = false;
             }
