@@ -11,8 +11,9 @@ use App\Http\Controllers\Controller;
 class AppController extends Controller
 {
     /**
-     * Undocumented function
-     *
+     * Public Newsfeed
+     * Indexing newsfeed response by latest position
+     * 
      * @param integer $index
      * @return void
      */
@@ -43,7 +44,7 @@ class AppController extends Controller
      *
      * @return void
      */
-    public function loadLanguages() 
+    public function loadPublicLanguages() 
     {
         return response()->json([
             'language' => AppLanguages::where('is_public', true)->get(),
@@ -56,7 +57,7 @@ class AppController extends Controller
      *
      * @return void
      */
-    public function loadCountries() 
+    public function loadPublicCountries() 
     {
         return response()->json([
             'countries' => AppCountries::where('is_public', true)->get(),

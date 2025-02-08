@@ -17,13 +17,43 @@ const setOptionalCookies = () => {
 }
 
 /** 
- * GDPR: Cookie Consent
- *  > https://github.com/eyecatchup/vue-cookieconsent
- *  > https://github.com/orestbida/cookieconsent
- *      > Define Consent-Options
- *      > Enter Analytics Scripts in "onAccept()"
- *      > Init consentOptions in $cc.run()
+ ** Cookie Consent
+ * GDPR Compliant Cookie Consent for clients browers.
+ *
+ * Doks:
+ * https://github.com/eyecatchup/vue-cookieconsent
+ *  > Init: "boot/defaults"
+ *  > Access: this.$cc
+ * 
+ * CTA: OnAccept()
+ * Called, after user set cookie preferences
+ *  > Initialize Analytics Scripts
+ *      - setRequiredCookies()
+ *      - setOptionalCookies()
+ * 
+ * Note: 
+ * Dont forget to define used cookies!
+ *  > See Cookie preferences
+ *  > May adjust options as well
  */
+
+import initTranslationPackage from '../translations/index.js'
+
+const setRequiredCookies = () => {
+    // Allow client preferences
+    const translationPack = initTranslationPackage();
+    translationPack.get_cookie('client_dateformat') 
+        ?? translationPack.set_cookie('client_dateformat', 'international')
+    translationPack.get_cookie('client_language') 
+        ?? translationPack.set_cookie('client_language', 'en')
+    translationPack.get_cookie('client_darkmode') 
+        ?? translationPack.set_cookie('client_darkmode', 'false')
+}
+
+const setOptionalCookies = () => {
+    // Option cookies
+}
+
 const consentOptions = {
     autorun: true,
     current_lang: 'en',

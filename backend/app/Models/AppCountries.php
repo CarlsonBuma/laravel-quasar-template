@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\UserCockpit;
+use App\Models\Cockpit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -23,6 +23,6 @@ class AppCountries extends Model
     ];
 
     public function has_cockpits() {
-        return $this->hasMany(UserCockpit::class, 'country_id');
+        return $this->hasMany(Cockpit::class, 'country_id');
     }
 }

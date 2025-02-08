@@ -6,9 +6,9 @@ use App\Http\Controllers\Public\AppController;
 //* App attributes
 Route::get('/get-app-newsfeed', [AppController::class, 'loadNewsfeedIndex'])
     ->name('get.app.newsfeed');
-Route::get('/get-app-languages', [AppController::class, 'loadLanguages'])
+Route::get('/get-app-languages', [AppController::class, 'loadPublicLanguages'])
     ->name('get.app.language');
-Route::get('/get-app-countries', [AppController::class, 'loadCountries'])
+Route::get('/get-app-countries', [AppController::class, 'loadPublicCountries'])
     ->name('get.app.countries');
     
 //* Import Routes

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use App\Models\PaddleTransactions;
 use App\Models\PaddleSubscriptions;
 use Illuminate\Database\Eloquent\Model;

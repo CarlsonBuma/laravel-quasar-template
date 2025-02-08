@@ -19,7 +19,7 @@ class EmailVerified
     public function handle(Request $request, Closure $next)
     {  
         // E-Mail must be verified
-        $user = Auth::user(); 
+        $user = (object) Auth::user(); 
         if($user->email_verified_at)
             return $next($request);
 

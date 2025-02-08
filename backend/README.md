@@ -7,11 +7,10 @@ Website: https://laravel.com/
     > php artisan --version
     > composer clear cache
     > composer show "pgvector/pgvector" --alL
-  - define .env File
-    - php artisan key:generate
   - Setup meta-data in package.json
 
 ### DB Migrate Data
+  - php artisan key:generate
   - php artisan migrate
   - php artisan passport:install
   - Enter Client Secrets in .env File

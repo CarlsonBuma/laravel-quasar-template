@@ -17,7 +17,7 @@ import 'vue-cookieconsent/vendor/cookieconsent.css';
 
 // Global compnents
 import PageWrapper from 'src/components/global/PageWrapper.vue';
-import PageDrawer from 'src/components/global/PageDrawer.vue';
+import PageDrawer from 'src/components/navigation/PageDrawer.vue';
 import CardSimple from 'src/components/global/CardSimple.vue';
 import FormWrapper from 'src/components/global/FormWrapper.vue';
 import DialogWrapper from 'src/components/global/DialogWrapper.vue';
@@ -42,15 +42,18 @@ export default boot(({ app, router }) => {
     // Env Variables
     app.config.globalProperties.$env = {
         APP_NAME: process.env.APP_NAME,
+        APP_BASE_URL: process.env.APP_BASE_URL,
         APP_ACCESS_ADMIN: process.env.APP_ACCESS_ADMIN,
         APP_ACCESS_COCKPIT: process.env.APP_ACCESS_COCKPIT
     };
     
     // Defaults
-    app.config.globalProperties.$drawerLeft = ref(false);
-    app.config.globalProperties.$toast = new ResponseHandler(router, app);
+    app.config.globalProperties.$showDrawer = ref(false);
     app.config.globalProperties.$user = storeUser();
     app.config.globalProperties.$globals = globals;
+
+    // ReponseHandling
+    app.config.globalProperties.$toast = new ResponseHandler(router, app);
  
     // Cookie-Consent accessible by this.$cc
     app.use(CookieConsent);

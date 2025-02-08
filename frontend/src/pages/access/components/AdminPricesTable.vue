@@ -16,7 +16,7 @@
                 {{ props.col.label }}
                 <q-icon v-if="props.col.note" name="help_outline" size="14px" color="primary" >
                     <q-tooltip>
-                        <p class="q-ma-none tooltip-width">{{ props.col.note }}</p>
+                        <p class="q-ma-none w-tooltip">{{ props.col.note }}</p>
                     </q-tooltip> 
                 </q-icon>
             </q-th>

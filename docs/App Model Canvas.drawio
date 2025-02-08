@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2025-01-04T18:35:48.285Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="bnwCBFtTmpcI4M9huytC" version="22.1.15" type="device" pages="2">
+<mxfile host="Electron" modified="2025-01-09T15:43:50.447Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.15 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="JKK32qaPoS-WC0_1ZYZW" version="22.1.15" type="device" pages="2">
   <diagram id="07fea595-8f29-1299-0266-81d95cde20df" name="AMC">
-    <mxGraphModel dx="4941" dy="-784" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
+    <mxGraphModel dx="4287" dy="-1158" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -88,7 +88,7 @@
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-5" value="&lt;b&gt;User&lt;/b&gt;&lt;br&gt;&quot;Access to default features&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
           <mxGeometry x="-2320" y="2548" width="148" height="72" as="geometry" />
         </mxCell>
-        <mxCell id="lBGvVB8ArlER4a5Iz0_V-6" value="&lt;b&gt;UserCockpit&lt;/b&gt;&lt;br&gt;&quot;Access to cockpit features&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="lBGvVB8ArlER4a5Iz0_V-6" value="&lt;b&gt;Cockpit&lt;/b&gt;&lt;br&gt;&quot;Access to cockpit features&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
           <mxGeometry x="-2210" y="2600" width="140" height="70" as="geometry" />
         </mxCell>
         <mxCell id="lBGvVB8ArlER4a5Iz0_V-7" value="&lt;b&gt;Admin&lt;/b&gt;&lt;br&gt;&quot;Manages certain Data within App&quot;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
@@ -216,12 +216,12 @@
         </UserObject>
         <UserObject label="UI: Cookie Consent&lt;br&gt;GDPR" id="lBGvVB8ArlER4a5Iz0_V-52">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-            <mxGeometry x="-1710" y="2870" width="120" height="64.75" as="geometry" />
+            <mxGeometry x="-1738" y="2970" width="120" height="64.75" as="geometry" />
           </mxCell>
         </UserObject>
         <UserObject label="UI: Server&lt;br&gt;Response Handling" id="lBGvVB8ArlER4a5Iz0_V-55">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-            <mxGeometry x="-1858" y="2840" width="120" height="64.75" as="geometry" />
+            <mxGeometry x="-1880" y="2970" width="120" height="64.75" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="7FOcymX67m-cCyJudOTW-1" value="Collaboration &amp;amp; Communication" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
@@ -235,7 +235,7 @@
         </mxCell>
         <UserObject label="Google &lt;br&gt;Geolocation" id="vKAiGrFiaG_Dv00owzDu-2">
           <mxCell style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">
-            <mxGeometry x="-1835" y="2945.2400000000002" width="120" height="64.75" as="geometry" />
+            <mxGeometry x="-1880" y="3042.6200000000003" width="120" height="64.75" as="geometry" />
           </mxCell>
         </UserObject>
         <mxCell id="vKAiGrFiaG_Dv00owzDu-3" value="Documentation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" parent="1" vertex="1">

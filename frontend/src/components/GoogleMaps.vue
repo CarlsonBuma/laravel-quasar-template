@@ -1,6 +1,6 @@
 <style lang="sass" scoped>
 #map-div
-    height: 500px
+    height: 460px
 #map-circle-geolocation
     position: absolute
     border-radius: 50%
@@ -16,35 +16,26 @@
     border-radius: 50%
     border: 1px solid $primary
     background-color: rgba($primary, 0.7)
-.component-maps-width
-    width: 360px
 </style>
 
 <template>
 
-    <q-menu @hide="setGeolocationStats()" class="q-ma-md">
-        <div class="row w-100 flex q-pa-md"> 
-            <div class="col flex align-center w-100 q-mr-md">
-                <q-slider
-                    switch-label-side
-                    v-model="mapSearchDiameter"
-                    :min="1"
-                    :step="1"
-                    :label="mapSearchRadius ? true : false"
-                    :label-value="computedMapSearchDistance"
-                    @update:model-value="calcGeolocationSearchRadius(mapSearchDiameter)"
-                />
-            </div>
-
-            <!-- Set / Unset -->
-            <q-checkbox 
-                :model-value="allowLocation" 
-                @update:model-value="(value) => $emit('setLocation', value)" 
-                dense
+    <div class="row">
+        <div class="col-12 q-pa-md">
+            <q-slider
+                switch-label-side
+                v-model="mapSearchDiameter"
+                :min="1"
+                :step="1"
+                :label="mapSearchRadius ? true : false"
+                :label-value="computedMapSearchDistance"
+                @update:model-value="calcGeolocationSearchRadius(mapSearchDiameter)"
             />
         </div>
+        <q-separator />
+        
         <!-- Googlemaps -->
-        <div class="component-maps-width">
+        <div class="col-12">
             <GoogleMap
                 id="map-div"
                 ref="mapRef"
@@ -82,7 +73,14 @@
                 </CustomMarker>
             </GoogleMap>
         </div>
-    </q-menu>
+
+        <!-- Geolocation -->
+        <div class="col-12 text-center">
+            <span class="text-caption text-grey">
+                {{ computedMapSearchDistance }}, Lat: {{ latitude }}, Lng: {{ longitude }} 
+            </span>
+        </div>
+    </div>
 
 </template>
 
@@ -98,19 +96,18 @@ export default {
     },
 
     props: {
-        allowLocation: Boolean 
-    },
+        title: String
+    },  
 
     emits: [
-        'setLocation',
-        'updateLocation'
+        'update'
     ],
 
     setup(props, context) {
         const googleAPIKey = process.env.APP_GOOGLE_API_KEY ?? '';
         const mapRef = ref(null);
         const mapSearchDiameter = ref(50);
-        const mapSearchRadius = ref(0)      // [km]
+        const mapSearchRadius = ref(4096)      // [m]
         const mapDefaultZoom = ref(10)
         const mapZoomLevel = ref(10)
         const initialLatitude = ref(0)
@@ -125,8 +122,8 @@ export default {
             initialLongitude.value = position.coords.longitude
             latitude.value = position.coords.latitude
             longitude.value = position.coords.longitude
+            context.emit('update', mapSearchRadius.value, latitude.value, longitude.value)
         })
-
 
         // Calcultate Distance
         const computedMapSearchDistance = computed(() => {
@@ -148,19 +145,20 @@ export default {
             // mapSearchRadius will be in km
             const minZoomDistance = 2;  
             const maxZoomLevels = 22;       // fully zoomed in
-            mapZoomLevel.value = mapRef.value ? mapRef.value.map.data.map.zoom : 10;
+            mapZoomLevel.value = mapRef.value?.map?.data?.map?.zoom ?? 10;
             const RadiusMeter = (minZoomDistance ** (maxZoomLevels - mapZoomLevel.value)) * (factor * 2 / 100);
-
+ 
+            
             // Radius [km]
             mapSearchRadius.value = Math.round(RadiusMeter * 10) / 10;
-            context.emit('updateLocation', mapSearchRadius.value, latitude.value, longitude.value)
+            context.emit('update', mapSearchRadius.value, latitude.value, longitude.value)
         }
 
         const updateLocationCenter = () => {
-            const center = mapRef.value.map.data.map.center;
-            latitude.value = center.lat();
-            longitude.value = center.lng();
-            context.emit('updateLocation', mapSearchRadius.value, latitude.value, longitude.value)
+            const center = mapRef.value?.map?.data?.map?.center;
+            latitude.value = center ? center.lat() : 0;
+            longitude.value = center ? center.lng() : 0;
+            context.emit('update', mapSearchRadius.value, latitude.value, longitude.value)
         }
 
         return {
@@ -189,7 +187,7 @@ export default {
     },
 
     mounted() {
-        this.calcGeolocationSearchRadius(this.mapSearchDiameter);
+      this.updateLocationCenter()
     },
 
     methods: {

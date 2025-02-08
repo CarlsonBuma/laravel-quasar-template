@@ -35,7 +35,7 @@ abstract class CockpitCollection
      * @param boolean $isOwner
      * @return array
      */
-    static public function render_user_cockpit(object $cockpit = null): array
+    static public function render_cockpit(object $cockpit = null): array
     {
         if(!$cockpit) return SELF::$cockpit;
         

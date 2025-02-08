@@ -1,7 +1,7 @@
 <template>
 
-    <PageWrapper noMargin>
-        <SectionDesignClear>
+    <PageWrapper noMargin showFooter>
+        <SectionDesignDefault>
             <SectionSplit>
                 <template #left>
                     <SectionTitle 
@@ -40,7 +40,7 @@
                     </CardFocus>
                 </template>
             </SectionSplit>
-        </SectionDesignClear>
+        </SectionDesignDefault>
 
         <!-- Legal & Compliance -->
         <SectionDesignColored>
@@ -116,7 +116,7 @@ export default {
     },
 
     mounted() {
-        console.log(this.$tp)
+        // 
     },
 };
 </script>

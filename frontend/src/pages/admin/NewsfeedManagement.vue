@@ -214,7 +214,7 @@ export default {
                     type: '',
                 }
             } catch (error) {
-                this.$toast.error(error.response ? error.response : error)
+                this.$toast.error(error.response ?? error)
             } finally {
                 this.$toast.done();
             }

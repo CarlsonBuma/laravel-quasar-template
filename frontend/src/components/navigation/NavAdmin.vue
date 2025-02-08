@@ -1,6 +1,6 @@
 <template>
 
-    <q-toolbar>
+    <q-toolbar class="shadow-1">
         <span class="gt-xs">{{ title ?? 'Backpanel' }}</span>
         <q-space />
         <q-tabs class="text-weight-regular" active-color="primary" shrink stretch>

@@ -1,5 +1,15 @@
 'use strict';
 
+/**
+ ** Use global variables within app
+ *  > Init: "boot/defaults"
+ *  > Access: this.$globals
+ * 
+ * ------------------------------------
+ * Define new Globals here if needed
+ * ------------------------------------
+ */
+
 export const redirects = {
     linkLegal: '/legal',
     linkGoolgeMaps: 'https://www.google.com/maps/search/?api=1&query=',

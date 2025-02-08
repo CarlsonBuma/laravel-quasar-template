@@ -14,7 +14,7 @@
                         :color="tooltipIconColor ? tooltipIconColor : 'red'"
                     >
                         <q-tooltip>
-                            <p class="text-caption tooltip-width">{{ tooltip }}</p>
+                            <p class="text-caption w-tooltip">{{ tooltip }}</p>
                         </q-tooltip>
                     </q-icon>
                     <div class="flex items-center">

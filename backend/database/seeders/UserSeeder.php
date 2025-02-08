@@ -3,11 +3,11 @@
 namespace Database\Seeders;
 
 use Exception;
-use App\Models\UserCockpit;
+use App\Models\Cockpit;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use App\Http\Controllers\Access\AccessHandler;
+use App\Http\Controllers\User\Access\AccessHandler;
 
 class UserSeeder extends Seeder
 {
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
                 ]);
 
                 // User entity
-                UserCockpit::create([
+                Cockpit::create([
                     'user_id' => $userID,
                 ]);
 
@@ -53,25 +53,22 @@ class UserSeeder extends Seeder
                 );
 
                 // Dummy users
-                $environment = env('APP_ENV');
-                if ($environment === 'local') {
-                    for($x = 0; $x < 20; $x++) {
-                        
-                        // Dummy user
-                        $id = $userTable->insertGetId([
-                            'name' => 'User' . $x,
-                            'email' =>'user' . $x .'@user.com',
-                            'email_verified_at' => now(),
-                            'password' => Hash::make('test'),
-                            'created_at' => now(),
-                            'updated_at' => now(),
-                        ]);
+                for($x = 0; $x < 20; $x++) {
+                    
+                    // Dummy user
+                    $id = $userTable->insertGetId([
+                        'name' => 'User' . $x,
+                        'email' =>'user' . $x .'@user.com',
+                        'email_verified_at' => now(),
+                        'password' => Hash::make('test'),
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
 
-                        // User entity
-                        UserCockpit::create([
-                            'user_id' => $id,
-                        ]);
-                    }
+                    // User entity
+                    Cockpit::create([
+                        'user_id' => $id,
+                    ]);
                 }
             DB::commit();
         } catch (Exception $e) {

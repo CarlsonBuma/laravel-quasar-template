@@ -5,7 +5,7 @@
 
 <template>
 
-    <PageWrapper noMargin>
+    <PageWrapper noMargin showFooter>
         <SectionDesignDefault>
             <div class="w-content-sm w-100 flex justify-center">
 

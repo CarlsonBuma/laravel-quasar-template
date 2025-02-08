@@ -1,6 +1,6 @@
 <template>
 
-    <PageWrapper noMargin>
+    <PageWrapper noMargin showFooter>
         <SectionDesignDefault>
             <SectionSplit>
                 <template #left>

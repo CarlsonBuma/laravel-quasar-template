@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\UserCockpit;
+use App\Models\Cockpit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -28,7 +28,7 @@ class AppGeolocations extends Model
     ];
 
     public function has_cockpits() {
-        return $this->hasMany(UserCockpit::class, 'location_id');
+        return $this->hasMany(Cockpit::class, 'location_id');
     }
 
     /**
