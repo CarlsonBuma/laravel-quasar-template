@@ -7,7 +7,7 @@
 ## Starting node.js client
 Write-Host "Loading hosts..."
 Write-Host " Starting frontend environment.."
-Set-Location "./frontend"
+Set-Location "./quasar-web"
 Start-Process powershell.exe -argument "quasar dev"
 
 # Backend Environment

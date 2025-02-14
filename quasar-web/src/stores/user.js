@@ -3,8 +3,7 @@ import { defineStore } from "pinia";
 import { LocalStorage } from 'quasar'
 import axios from 'axios';
 
-const storeUser = defineStore({
-    id: "user",
+const useUserStore = defineStore('user', {
     state: () => ({
         access: {
             bearer_token: false,    // Bearer to authorize user
@@ -101,4 +100,4 @@ const storeUser = defineStore({
     }
 });
 
-export default storeUser;
+export default useUserStore

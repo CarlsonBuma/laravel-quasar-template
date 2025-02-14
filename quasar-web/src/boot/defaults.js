@@ -1,10 +1,10 @@
 'use strict';
 
 // Default modules
+import { defineBoot } from '#q-app/wrappers'
 import { ref } from 'vue';
-import { boot } from 'quasar/wrappers';
 import ResponseHandler from 'src/boot/modules/responseHandling.js';
-import storeUser from "src/stores/user.js";
+import useUserStore from "src/stores/user.js";
 import globals from 'src/boot/modules/globals.js';
 
 // Translations - l18n workaround
@@ -37,7 +37,7 @@ import NavCockpit from 'src/components/navigation/NavCockpit.vue';
 import NavAdmin from 'src/components/navigation/NavAdmin.vue';
 
 
-export default boot(({ app, router }) => {
+export default defineBoot(({ app, router }) => {
     
     // Env Variables
     app.config.globalProperties.$env = {
@@ -49,7 +49,7 @@ export default boot(({ app, router }) => {
     
     // Defaults
     app.config.globalProperties.$showDrawer = ref(false);
-    app.config.globalProperties.$user = storeUser();
+    app.config.globalProperties.$user = useUserStore();
     app.config.globalProperties.$globals = globals;
 
     // ReponseHandling

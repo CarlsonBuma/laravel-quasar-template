@@ -1,5 +1,5 @@
 'use strict';
-import { route } from 'quasar/wrappers';
+import { defineRouter } from '#q-app/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router';
 import routesAuth from './auth';
 import routesAccess from './access';
@@ -8,7 +8,7 @@ import routesCockpit from './cockpit';
 import routesBackpanel from './admin';
 import routesVisitors from './visitors';
 
-export default route(function (/* { store, ssrContext } */) {
+export default defineRouter(function (/* { store, ssrContext } */) {
     const createHistory = process.env.SERVER
         ? createMemoryHistory
         : (process.env.APP_VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory);
